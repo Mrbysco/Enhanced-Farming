@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "bestfarming:golden_orange"
+  },
+  "pattern": [
+    "GGG",
+    "GFG",
+    "GGG"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "F": {
+      "item": "bestfarming:orange"
+    },
+    "G": {
+      "item": "minecraft:gold_nugget"
+    }
+  }
+}

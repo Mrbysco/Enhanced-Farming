@@ -1,0 +1,7 @@
+{
+    "parent": "bestfarming:block/leave_overlay",
+    "textures": {
+        "layer0": "blocks/leaves_oak",
+        "layer1": "bestfarming:blocks/apple_flower_overlay"
+    }
+}

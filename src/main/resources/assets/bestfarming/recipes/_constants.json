@@ -1,0 +1,60 @@
+[
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "plankWood"
+		},
+		"name": "plankWood"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "stickWood"
+		},
+		"name": "stickWood"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "cropWheat"
+		},
+		"name": "cropWheat"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "ingotIron"
+		},
+		"name": "ingotIron"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "ingotGold"
+		},
+		"name": "ingotGold"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "gemDiamond"
+		},
+		"name": "gemDiamond"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "cobblestone"
+		},
+		"name": "cobblestone"
+	},
+	{
+		"ingredient": {
+		  "nbt": {
+			"Potion": "minecraft:water"
+		  },
+		  "item": "minecraft:potion"
+		},
+		"name": "water_bottle"
+	}
+]

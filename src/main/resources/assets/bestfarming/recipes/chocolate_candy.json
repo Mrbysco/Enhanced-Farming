@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "bestfarming:chocolate_candy"
+  },
+  "pattern": [
+    " C ",
+    "CSC",
+    " C "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "minecraft:dye",
+      "data": 3
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    }
+  }
+}

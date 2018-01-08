@@ -1,0 +1,20 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "fruity": {
+			"true": { "model": "bestfarming:orange_leaves"},
+            "false": { "model": "bestfarming:orange_blooming"}
+			},
+		"check_decay": {
+			"true": { },
+            "false": { }
+		},
+		"decayable": {
+			"true": { },
+            "false": { }
+		},
+    "inventory": [{
+        "model": "bestfarming:orange_leaves"
+    }]
+  }
+}

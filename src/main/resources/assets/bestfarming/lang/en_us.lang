@@ -1,0 +1,43 @@
+#config
+bestfarming.config.title=Best Farming
+
+#creativetab
+itemGroup.bestfarming=Best Farming
+
+#blocks
+tile.bestfarming:appleleaves.name=Apple Leaves
+tile.bestfarming:lemonleaves.name=Lemon Leaves
+tile.bestfarming:orangeleaves.name=Orange Leaves
+
+tile.bestfarming:applesapling.name=Apple Seeds
+tile.bestfarming:lemonsapling.name=Lemon Seeds
+tile.bestfarming:orangesapling.name=Orange Seeds
+
+tile.bestfarming:mintcrop.name=Mint Crop
+tile.bestfarming:netherflowercrop.name=Nether Flower Crop
+tile.bestfarming:scarecrow.name=Scarecrow
+
+#items
+item.bestfarming:applejuice.name=Apple Juice
+item.bestfarming:chocolatebar.name=Chocolate Bar
+item.bestfarming:chocolatecandy.name=Chocolate Candy
+item.bestfarming:lemon.name=Lemon
+item.bestfarming:lemonade.name=Lemonade
+item.bestfarming:mintchocolatebar.name=Mint Chocolate Bar
+item.bestfarming:minttea.name=Mint Tea
+item.bestfarming:orange.name=Orange
+item.bestfarming:orangejuice.name=Orange Juice
+item.bestfarming:milkbottle.name=Milk Bottle
+item.bestfarming:woodenrake.name=Wooden Rake
+item.bestfarming:stonerake.name=Stone Rake
+item.bestfarming:ironrake.name=Iron Rake
+item.bestfarming:goldrake.name=Gold Rake
+item.bestfarming:diamondrake.name=Diamond Rake
+item.bestfarming:mintseeds.name=Mint Seeds
+item.bestfarming:mint.name=Mint
+item.bestfarming:netherflowerseeds.name=Nether Flower Seeds
+item.bestfarming:coldchocolatebottle.name=Cold Chocolate Bottle
+item.bestfarming:hotchocolatebottle.name=Hot Chocolate Bottle
+item.bestfarming:hotwater.name=Boiled Water
+item.bestfarming:goldenlemon.name=Golden lemon
+item.bestfarming:goldenorange.name=Golden Orange

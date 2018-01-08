@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "#water_bottle"
+		},
+		{
+			"item": "bestfarming:lemon"
+		}
+	],
+	"result": {
+		"item": "bestfarming:lemonade"
+	}
+}

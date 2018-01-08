@@ -1,0 +1,6 @@
+{
+    "conditions" : {
+        "rakeRecipes": "com.Mrbysco.BestFarming.init.conditions.RakeRecipeCondition",
+        "fruitToSeeds": "com.Mrbysco.BestFarming.init.conditions.FruitToSeedCondition"
+    }
+}

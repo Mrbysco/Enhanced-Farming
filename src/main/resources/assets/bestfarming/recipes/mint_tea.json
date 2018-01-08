@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "bestfarming:hot_water"
+		},
+		{
+			"item": "bestfarming:mint"
+		}
+	],
+	"result": {
+		"item": "bestfarming:mint_tea"
+	}
+}

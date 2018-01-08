@@ -1,0 +1,14 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+        "model": "bestfarming:nothing"
+    },
+    "variants": {
+        "facing": {
+			"east": { "y": 90},
+            "north": { },
+			"west": { "y": 270},
+            "south": {"y": 180}
+        }
+  }
+}
