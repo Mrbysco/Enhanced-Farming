@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "enhancedfarming:iron_rake"
+  },
+  "pattern": [
+    "X X",
+    "XSX",
+    " S "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "#ingotIron"
+    },
+    "S": {
+      "item": "#stickWood"
+    }
+  },
+  "conditions": [{
+    "type": "enhancedfarming:rakeRecipes"
+	}]
+}

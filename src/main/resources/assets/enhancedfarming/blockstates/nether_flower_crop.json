@@ -1,0 +1,34 @@
+
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "enhancedfarming:nether_flower_crop"
+    },
+    "variants": {
+        "normal": [{
+
+        }],
+		
+	   	"age" : {
+   			"0" : { },
+			"1" : { "textures": {
+						"crop": "enhancedfarming:blocks/netherflower1"
+					}},
+			"2" : { "textures": {
+						"crop": "enhancedfarming:blocks/netherflower2"
+					}},
+			"3" : { "textures": {
+						"crop": "enhancedfarming:blocks/netherflower3"
+					}},
+			"4" : { "textures": {
+						"crop": "enhancedfarming:blocks/netherflower4"
+					}},
+			"5" : { "textures": {
+						"crop": "enhancedfarming:blocks/netherflower5"
+					}}
+		},
+		"inventory": [{
+			"model": "enhancedfarming:nether_flower_crop"
+		}]
+    }
+}

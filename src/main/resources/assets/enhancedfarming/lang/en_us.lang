@@ -1,0 +1,43 @@
+#config
+enhancedfarming.config.title=Enhanced Farming Config
+
+#creativetab
+itemGroup.enhancedfarming=Enhanced Farming
+
+#blocks
+tile.enhancedfarming:appleleaves.name=Apple Leaves
+tile.enhancedfarming:lemonleaves.name=Lemon Leaves
+tile.enhancedfarming:orangeleaves.name=Orange Leaves
+
+tile.enhancedfarming:applesapling.name=Apple Seeds
+tile.enhancedfarming:lemonsapling.name=Lemon Seeds
+tile.enhancedfarming:orangesapling.name=Orange Seeds
+
+tile.enhancedfarming:mintcrop.name=Mint Crop
+tile.enhancedfarming:netherflowercrop.name=Nether Flower Crop
+tile.enhancedfarming:scarecrow.name=Scarecrow
+
+#items
+item.enhancedfarming:applejuice.name=Apple Juice
+item.enhancedfarming:chocolatebar.name=Chocolate Bar
+item.enhancedfarming:chocolatecandy.name=Chocolate Candy
+item.enhancedfarming:lemon.name=Lemon
+item.enhancedfarming:lemonade.name=Lemonade
+item.enhancedfarming:mintchocolatebar.name=Mint Chocolate Bar
+item.enhancedfarming:minttea.name=Mint Tea
+item.enhancedfarming:orange.name=Orange
+item.enhancedfarming:orangejuice.name=Orange Juice
+item.enhancedfarming:milkbottle.name=Milk Bottle
+item.enhancedfarming:woodenrake.name=Wooden Rake
+item.enhancedfarming:stonerake.name=Stone Rake
+item.enhancedfarming:ironrake.name=Iron Rake
+item.enhancedfarming:goldrake.name=Gold Rake
+item.enhancedfarming:diamondrake.name=Diamond Rake
+item.enhancedfarming:mintseeds.name=Mint Seeds
+item.enhancedfarming:mint.name=Mint
+item.enhancedfarming:netherflowerseeds.name=Nether Flower Seeds
+item.enhancedfarming:coldchocolatebottle.name=Cold Chocolate Bottle
+item.enhancedfarming:hotchocolatebottle.name=Hot Chocolate Bottle
+item.enhancedfarming:hotwater.name=Boiled Water
+item.enhancedfarming:goldenlemon.name=Golden lemon
+item.enhancedfarming:goldenorange.name=Golden Orange

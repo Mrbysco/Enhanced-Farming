@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "minecraft:apple"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:apple_sapling"
+	},
+	"conditions": [{
+		"type": "enhancedfarming:fruitToSeeds"
+	}]
+}

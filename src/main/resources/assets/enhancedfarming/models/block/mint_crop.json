@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "enhancedfarming:blocks/mintPlant0"
+    }
+}

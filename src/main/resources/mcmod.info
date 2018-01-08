@@ -1,7 +1,7 @@
 [
 {
-  "modid": "bestfarming",
-  "name": "Best Farming",
+  "modid": "enhancedfarming",
+  "name": "Enhanced Farming",
   "description": "A rewritten version of the Better Farming mod",
   "version": "${version}",
   "mcversion": "${mcversion}",
