@@ -16,7 +16,7 @@
 						"cross": "enhancedfarming:blocks/sappling3"
 					}},
 			"4" : { "textures": {
-						"cross": "enhancedfarming:blocks/apple_tree"
+						"cross": "enhancedfarming:blocks/appletree"
 					}}
         }
   }
