@@ -89,31 +89,34 @@ public class BlockFruitLeaves extends BlockLeaves {
 	
 	@Override
 	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
-		if (!worldIn.isRemote)
-		{
-			if (((Boolean)state.getValue(FRUITY)).booleanValue()){
-				if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
+		if (((Boolean)state.getValue(FRUITY)).booleanValue()){
+			if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
+			{
+				if (random.nextInt(FarmingConfigGen.general.othersettings.treeDropRate) == 0)
 				{
-					if (random.nextInt(FarmingConfigGen.general.othersettings.treeDropRate) == 0)
+					ItemStack fruit = new ItemStack(TreeHelper.getFruitfromEnum(this.fruitType));
+					EntityItem fruitItem = new EntityItem(worldIn, pos.getX(), pos.getY() - 0.2, pos.getZ(), fruit);
+					fruitItem.setAgeToCreativeDespawnTime();
+					
+					if (!worldIn.isRemote)
 					{
-						ItemStack fruit = new ItemStack(TreeHelper.getFruitfromEnum(this.fruitType));
-						EntityItem fruitItem = new EntityItem(worldIn, pos.getX(), pos.getY() - 0.2, pos.getZ(), fruit);
-						fruitItem.setAgeToCreativeDespawnTime();
-						
 						worldIn.spawnEntity(fruitItem);
 			            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 2);
 					}
 				}
 			}
-			else
+		}
+		else
+		{
+			if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
 			{
-				if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
+				if (random.nextInt(10) == 1)
 				{
-					if (random.nextInt(10) == 1)
+					if(random.nextInt(2) == 1)
 					{
-						if(random.nextInt(2) == 1)
+						if (!worldIn.isRemote)
 						{
-				            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 2);
+							worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 2);
 						}
 					}
 				}

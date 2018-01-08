@@ -45,6 +45,7 @@ public class EnhancedFarming {
 		logger.debug("Registering Config");
 		MinecraftForge.EVENT_BUS.register(new FarmingConfigGen());
 		
+		logger.debug("Registering Scarecrow TileEntity");
 		GameRegistry.registerTileEntity(TileEntityScarecrow.class, Reference.MOD_ID + "_scarecrow");
 		
 		logger.debug("Initializing Furnace Recipe");
