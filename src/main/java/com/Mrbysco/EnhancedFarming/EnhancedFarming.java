@@ -56,7 +56,7 @@ public class EnhancedFarming {
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		logger.debug("Registering the bottle handler");
+		logger.debug("Registering handlers");
 		MinecraftForge.EVENT_BUS.register(new FarmingHandlers());
 
 		if(FarmingConfigGen.general.othersettings.treeGen) {
