@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 public class ScarecrowRenderer extends TileEntitySpecialRenderer<TileEntityScarecrow>{
 	private ModelScarecrow model;
 	
-	private static final ResourceLocation texture = new ResourceLocation("bestfarming:textures/blocks/scarecrow.png");
+	private static final ResourceLocation texture = new ResourceLocation("enhancedfarming:textures/blocks/scarecrow.png");
 	
 	public ScarecrowRenderer() {
 		this.model = new ModelScarecrow();	

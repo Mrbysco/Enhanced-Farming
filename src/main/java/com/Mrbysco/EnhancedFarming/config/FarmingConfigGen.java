@@ -84,11 +84,11 @@ public class FarmingConfigGen {
 				"minecraft:pumpkin_seeds",
 				"minecraft:melon_seeds",
 				"minecraft:beetroot_seeds",
-                "bestfarming:applesapling",
-                "bestfarming:lemonsapling",
-                "bestfarming:orangesapling",
-                "bestfarming:mintseeds",
-                "bestfarming:netherflowerseeds"
+                "enhancedfarming:applesapling",
+                "enhancedfarming:lemonsapling",
+                "enhancedfarming:orangesapling",
+                "enhancedfarming:mintseeds",
+                "enhancedfarming:netherflowerseeds"
 			};
 			
 			@Config.Comment("Enables rakes")
