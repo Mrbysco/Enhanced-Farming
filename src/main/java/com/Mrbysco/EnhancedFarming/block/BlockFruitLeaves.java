@@ -46,8 +46,8 @@ public class BlockFruitLeaves extends BlockLeaves {
         this.setSoundType(SoundType.PLANT);
 
         this.fruitType = type;
-        //this.setDefaultState(this.blockState.getBaseState().withProperty(FRUITY, true).withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FRUITY, true));
+
+        this.setDefaultState(getDefaultState().withProperty(FRUITY, Boolean.valueOf(true)).withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
 		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
 		this.setRegistryName(registryName);
 	}
@@ -101,8 +101,8 @@ public class BlockFruitLeaves extends BlockLeaves {
 					if (!worldIn.isRemote)
 					{
 						worldIn.spawnEntity(fruitItem);
-			            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 2);
 					}
+		            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 2);
 				}
 			}
 		}
@@ -110,14 +110,11 @@ public class BlockFruitLeaves extends BlockLeaves {
 		{
 			if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
 			{
-				if (random.nextInt(10) == 1)
+				if (random.nextInt(4) == 1)
 				{
 					if(random.nextInt(2) == 1)
 					{
-						if (!worldIn.isRemote)
-						{
-							worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 2);
-						}
+						worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 2);
 					}
 				}
 			}

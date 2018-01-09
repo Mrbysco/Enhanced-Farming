@@ -36,13 +36,13 @@ public class TreeHelper {
 		
 		switch (type) {
 		case Apple:
-			leave = FarmingBlocks.apple_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(true));
+			leave = FarmingBlocks.apple_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(false));
 			break;
 		case Lemon:
-			leave = FarmingBlocks.lemon_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(true));
+			leave = FarmingBlocks.lemon_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(false));
 			break;
 		case Orange:
-			leave = FarmingBlocks.orange_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(true));
+			leave = FarmingBlocks.orange_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(false));
 			break;
 		}
 		
