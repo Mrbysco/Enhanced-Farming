@@ -3,6 +3,7 @@ package com.Mrbysco.EnhancedFarming.util;
 import com.Mrbysco.EnhancedFarming.block.BlockFruitLeaves;
 import com.Mrbysco.EnhancedFarming.block.BlockGrowableSapling;
 import com.Mrbysco.EnhancedFarming.block.EnumSaplingType;
+import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.init.FarmingBlocks;
 import com.Mrbysco.EnhancedFarming.init.FarmingItems;
 
@@ -33,16 +34,20 @@ public class TreeHelper {
 	
 	public static IBlockState getLeaveFromEnum(EnumSaplingType type) {
 		IBlockState leave = null;
+		boolean flag = FarmingConfigGen.general.othersettings.oldLeaveDecay;
 		
 		switch (type) {
 		case Apple:
-			leave = FarmingBlocks.apple_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(false));
+			leave = flag ? FarmingBlocks.apple_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(true)) 
+						: FarmingBlocks.apple_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(false));
 			break;
 		case Lemon:
-			leave = FarmingBlocks.lemon_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(false));
+			leave = flag ? FarmingBlocks.lemon_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(true)) 
+					: FarmingBlocks.lemon_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(false));
 			break;
 		case Orange:
-			leave = FarmingBlocks.orange_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(false));
+			leave = flag ? FarmingBlocks.orange_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(true)) 
+					: FarmingBlocks.orange_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false)).withProperty(BlockFruitLeaves.FRUITY, Boolean.valueOf(false));
 			break;
 		}
 		
