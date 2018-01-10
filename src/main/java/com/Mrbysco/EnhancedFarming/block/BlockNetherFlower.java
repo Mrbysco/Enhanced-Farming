@@ -159,7 +159,7 @@ public class BlockNetherFlower extends BlockBush implements INetherCrop, IGrowab
     
     protected int getBonemealAgeIncrease(World worldIn)
     {
-        return MathHelper.getInt(worldIn.rand, 2, 5) / 5;
+        return MathHelper.getInt(worldIn.rand, 2, 5) / 2;
     }
 
 	@Override

@@ -151,6 +151,6 @@ public class BlockMint extends BlockCrops{
     @Override
     protected int getBonemealAgeIncrease(World worldIn)
     {
-        return super.getBonemealAgeIncrease(worldIn) / 5;
+        return super.getBonemealAgeIncrease(worldIn) / 2;
     }
 }
