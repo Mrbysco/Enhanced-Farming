@@ -90,7 +90,7 @@ public class BlockGrowableSapling extends BlockBush implements IGrowable, IPlant
     		i = this.getStage(state) + this.getBonemealAgeIncrease(worldIn);
     	}
 
-		if (i > j)
+		if (i == j)
         {
             this.growTree(rand, worldIn, pos);
         }

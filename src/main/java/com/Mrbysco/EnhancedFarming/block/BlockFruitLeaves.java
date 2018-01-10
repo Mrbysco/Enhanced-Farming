@@ -7,7 +7,6 @@ import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.init.FarmingColors;
 import com.Mrbysco.EnhancedFarming.util.TreeHelper;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.block.BlockPlanks;
@@ -149,6 +148,7 @@ public class BlockFruitLeaves extends BlockLeaves {
 			}
 		}
 		
+        this.updateTick(worldIn, pos, state, random);
 	}
 	
 
@@ -247,57 +247,5 @@ public class BlockFruitLeaves extends BlockLeaves {
     public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face)
     {
 		return Blocks.LEAVES.getFireSpreadSpeed(world, pos, face);
-    }
-	
-	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-	{
-	    if (worldIn.isRemote)
-	        return;
-	    
-	    boolean checkDecay = ((Boolean)state.getValue(CHECK_DECAY)).booleanValue();
-	    boolean decayable = ((Boolean)state.getValue(DECAYABLE)).booleanValue();
-	    
-	    if (decayable && checkDecay)
-	    {        
-	        int x = pos.getX();
-	        int y = pos.getY();
-	        int z = pos.getZ();
-	        
-	        if (!worldIn.isAreaLoaded(new BlockPos(x - 5, y - 5, z - 5), new BlockPos(x + 5, y + 5, z + 5)))
-	            return;
-	        
-	        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-	        boolean canSustain = false;
-	        for (int cX = -4; cX <= 4; ++cX)
-	        {
-	            for (int cY = -4; cY <= 4; ++cY)
-	            {
-	                for (int cZ = -4; cZ <= 4; ++cZ)
-	                {
-	                    IBlockState blockState = worldIn.getBlockState(mutablePos.setPos(x + cX, y + cY, z + cZ));
-	                    Block block = blockState.getBlock();
-	                    
-	                    if (block.canSustainLeaves(blockState, worldIn, mutablePos.setPos(x + cX, y + cY, z + cZ)))
-	                    {
-	                        canSustain = true;
-	                        break;
-	                    }
-	                }
-	            }
-	        }
-	        
-	        if (!canSustain)
-	        {
-	            this.destroy(worldIn, pos);
-	        }
-	    }
-	}
-	
-	private void destroy(World worldIn, BlockPos pos)
-    {
-        this.dropBlockAsItem(worldIn, pos, worldIn.getBlockState(pos), 0);
-        worldIn.setBlockToAir(pos);
     }
 }
