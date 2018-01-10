@@ -3,9 +3,11 @@ package com.Mrbysco.EnhancedFarming.block;
 import java.util.Random;
 
 import com.Mrbysco.EnhancedFarming.Reference;
+import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.init.FarmingItems;
 
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
@@ -17,11 +19,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
-public class BlockNetherFlower extends BlockBush implements INetherCrop{
+public class BlockNetherFlower extends BlockBush implements INetherCrop, IGrowable{
 
     private static final AxisAlignedBB[] NETHERFLOWER_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D)};
     public static final PropertyInteger WART_AGE = PropertyInteger.create("age", 0, 5);
@@ -140,5 +143,54 @@ public class BlockNetherFlower extends BlockBush implements INetherCrop{
     @Override
     public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
         return super.canBlockStay(worldIn, pos, state);
+    }
+    
+    @Override
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+    	if(FarmingConfigGen.general.othersettings.bonemealGrow)
+    	{
+    		return getAge(state) < getMaxAge();
+    	}
+    	else
+    	{
+    		return false;
+    	}
+    }
+    
+    protected int getBonemealAgeIncrease(World worldIn)
+    {
+        return MathHelper.getInt(worldIn.rand, 2, 5) / 5;
+    }
+
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return !this.isMaxAge(state);
+	}
+
+	@Override
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		int i;
+        int j = this.getMaxAge();;
+        
+    	if (FarmingConfigGen.general.othersettings.instantGrow)
+    	{
+    		i = this.getAge(state) + (j - this.getAge(state));
+    	}
+    	else
+    	{
+    		i = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
+    	}
+
+        if (i > j)
+        {
+            i = j;
+        }
+
+        worldIn.setBlockState(pos, this.withAge(i), 2);
+	}
+	
+	public IBlockState withAge(int age)
+    {
+        return this.getDefaultState().withProperty(this.getAgeProperty(), Integer.valueOf(age));
     }
 }

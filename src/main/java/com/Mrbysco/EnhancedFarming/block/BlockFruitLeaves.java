@@ -89,36 +89,61 @@ public class BlockFruitLeaves extends BlockLeaves {
 	
 	@Override
 	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
-		if (((Boolean)state.getValue(FRUITY)).booleanValue()){
-			if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
-			{
-				if (random.nextInt(FarmingConfigGen.general.othersettings.treeDropRate) == 0)
+		ItemStack fruit = new ItemStack(TreeHelper.getFruitfromEnum(this.fruitType));
+		EntityItem fruitItem = new EntityItem(worldIn, pos.getX(), pos.getY() - 0.2, pos.getZ(), fruit);
+		
+		if (FarmingConfigGen.general.othersettings.oldLeaveDecay)
+		{
+			if (((Boolean)state.getValue(FRUITY)).booleanValue()){
+				if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
 				{
-					ItemStack fruit = new ItemStack(TreeHelper.getFruitfromEnum(this.fruitType));
-					EntityItem fruitItem = new EntityItem(worldIn, pos.getX(), pos.getY() - 0.2, pos.getZ(), fruit);
-					fruitItem.setAgeToCreativeDespawnTime();
-					
-					if (!worldIn.isRemote)
+					if (random.nextInt(FarmingConfigGen.general.othersettings.treeDropRate) == 0)
 					{
-						worldIn.spawnEntity(fruitItem);
+						if (!worldIn.isRemote)
+						{
+							worldIn.spawnEntity(fruitItem);
+						}
+						
+						if (random.nextInt(2) == 0)
+						{
+				            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 2);
+						}
 					}
-		            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 2);
 				}
 			}
 		}
 		else
 		{
-			if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
-			{
-				if (random.nextInt(4) == 1)
+			if (((Boolean)state.getValue(FRUITY)).booleanValue()){
+				if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
 				{
-					if(random.nextInt(2) == 1)
+					if (random.nextInt(FarmingConfigGen.general.othersettings.treeDropRate) == 0)
 					{
-						worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 2);
+						fruitItem.setAgeToCreativeDespawnTime();
+						
+						if (!worldIn.isRemote)
+						{
+							worldIn.spawnEntity(fruitItem);
+						}
+			            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 2);
+					}
+				}
+			}
+			else
+			{
+				if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
+				{
+					if (random.nextInt(4) == 1)
+					{
+						if(random.nextInt(2) == 1)
+						{
+							worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 2);
+						}
 					}
 				}
 			}
 		}
+		
 	}
 	
 

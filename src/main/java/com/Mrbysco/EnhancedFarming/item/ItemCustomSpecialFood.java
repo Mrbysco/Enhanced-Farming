@@ -1,39 +1,30 @@
 package com.Mrbysco.EnhancedFarming.item;
 
-import com.Mrbysco.EnhancedFarming.EnhancedFarming;
-import com.Mrbysco.EnhancedFarming.Reference;
-
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class ItemCustomFood extends ItemFood{
+public class ItemCustomSpecialFood extends ItemCustomFood{
+	
+	private boolean enchanted;
+	private boolean directheal; 
+	private int amount;
 
-	public boolean drinkable;
-	//private boolean enchanted; 
-	private int useTime;
-	
-	public ItemCustomFood(int amount, float saturation, boolean isWolfFood, int stacksize, int useTime, String unlocalizedName, String registryName) {
-		super(amount, saturation, isWolfFood);
-		this.maxStackSize=stacksize;
-		setCreativeTab(EnhancedFarming.tabFarming);
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
-		this.setRegistryName(registryName);
+	public ItemCustomSpecialFood(int amount, float saturation, boolean isWolfFood, int stacksize, int useTime,
+			boolean enchanted, boolean directHeal, String unlocalizedName, String registryName) {
+		super(amount, saturation, isWolfFood, stacksize, useTime, unlocalizedName, registryName);
 		
-		this.useTime = useTime;
-		this.drinkable = false;		
+		this.directheal = directHeal;
+		this.amount = amount;
+		this.enchanted = enchanted;
 	}
-	
-	@Override
+
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
         if (entityLiving instanceof EntityPlayer)
@@ -41,7 +32,16 @@ public class ItemCustomFood extends ItemFood{
             EntityPlayer entityplayer = (EntityPlayer)entityLiving;
             entityplayer.getFoodStats().addStats(this, stack);
             worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
-            this.onFoodEaten(stack, worldIn, entityplayer);
+            
+            if (this.directheal)
+            {
+            	entityplayer.heal(this.amount);
+            }
+            else
+            {
+                this.onFoodEaten(stack, worldIn, entityplayer);	
+            }
+
             entityplayer.addStat(StatList.getObjectUseStats(this));
 
             if (entityplayer instanceof EntityPlayerMP)
@@ -55,29 +55,14 @@ public class ItemCustomFood extends ItemFood{
     }
 	
 	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-		return this.useTime;
-	}
-	
-	public ItemCustomFood setDrinkable(){
-		this.drinkable = true;
-		return this;
-	}
-	
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack)
-    {
-		if(this.drinkable = true)
+	public boolean hasEffect(ItemStack stack) {
+		if(this.enchanted)
 		{
-			return EnumAction.DRINK;
+			return true;
 		}
 		else
 		{
-			return EnumAction.EAT;
+			return false;
 		}
-    }
-	
-	public ItemCustomFood setContaining(Item item) {
-		return (ItemCustomFood) this.setContainerItem(item);
-    }
+	}
 }

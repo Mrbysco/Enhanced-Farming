@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.Mrbysco.EnhancedFarming.EnhancedFarming;
 import com.Mrbysco.EnhancedFarming.Reference;
+import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.util.TreeHelper;
 import com.Mrbysco.EnhancedFarming.world.WorldGenFruitTree;
 
@@ -77,8 +78,19 @@ public class BlockGrowableSapling extends BlockBush implements IGrowable, IPlant
     @Override
     public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state)
     {
-    	//int i = this.getStage(state) + this.getBonemealAgeIncrease(worldIn);
-		if (isMature(state))
+    	int i;
+        int j = this.getMatureStage();;
+        
+    	if (FarmingConfigGen.general.othersettings.instantGrow)
+    	{
+    		i = this.getStage(state) + (j - this.getStage(state));
+    	}
+    	else
+    	{
+    		i = this.getStage(state) + this.getBonemealAgeIncrease(worldIn);
+    	}
+
+		if (i > j)
         {
             this.growTree(rand, worldIn, pos);
         }
@@ -97,14 +109,19 @@ public class BlockGrowableSapling extends BlockBush implements IGrowable, IPlant
     @Override
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state)
     {
-        return (double)worldIn.rand.nextFloat() < 0.45D;
-
-    	//return getStage(state) < getMatureStage();
+    	if(FarmingConfigGen.general.othersettings.bonemealGrow)
+    	{
+    		return (double)worldIn.rand.nextFloat() < 0.45D;
+    	}
+    	else
+    	{
+    		return false;
+    	}
     }
     
     protected int getBonemealAgeIncrease(World worldIn)
     {
-        return MathHelper.getInt(worldIn.rand, 2, 5);
+        return MathHelper.getInt(worldIn.rand, 2, 5) / 5;
     }
 
 	private void growTree(Random rand, World worldIn, BlockPos pos) {
@@ -133,22 +150,6 @@ public class BlockGrowableSapling extends BlockBush implements IGrowable, IPlant
 	public int getMetaFromState(IBlockState state) {
         return ((Integer)state.getValue(STAGE)).intValue();
 	}
-	
-	/*
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-    {
-        return this.getDefaultState().withProperty(STAGE, Integer.valueOf((meta & 8) >> 3));
-    }
-	
-	@Override
-	public int getMetaFromState(IBlockState state)
-    {
-        int i = 0;
-        i = i | ((Integer)state.getValue(STAGE)).intValue() << 3;
-        return i;
-    }
-	*/
 	
 	@Override
     protected BlockStateContainer createBlockState()

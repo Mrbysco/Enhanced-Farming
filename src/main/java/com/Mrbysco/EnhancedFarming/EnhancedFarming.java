@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.handler.FarmingHandlers;
+import com.Mrbysco.EnhancedFarming.init.FarmingBlocks;
+import com.Mrbysco.EnhancedFarming.init.FarmingItems;
 import com.Mrbysco.EnhancedFarming.init.FarmingRecipes;
 import com.Mrbysco.EnhancedFarming.init.FarmingTab;
 import com.Mrbysco.EnhancedFarming.proxy.CommonProxy;
@@ -12,6 +14,7 @@ import com.Mrbysco.EnhancedFarming.tileentity.TileEntityScarecrow;
 import com.Mrbysco.EnhancedFarming.world.NetherWorldGen;
 import com.Mrbysco.EnhancedFarming.world.TreeWorldGen;
 
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -50,6 +53,16 @@ public class EnhancedFarming {
 		
 		logger.debug("Initializing Furnace Recipe");
 		FarmingRecipes.init();
+		
+		if(FarmingConfigGen.general.othersettings.enableRake == false)
+		{
+			logger.debug("Initializing Grass Seeds");
+			MinecraftForge.addGrassSeed(new ItemStack(FarmingItems.mint_seeds), 5);
+			MinecraftForge.addGrassSeed(new ItemStack(FarmingItems.nether_flower_seeds), 2);
+			MinecraftForge.addGrassSeed(new ItemStack(FarmingBlocks.apple_sapling), 5);
+			MinecraftForge.addGrassSeed(new ItemStack(FarmingBlocks.lemon_sapling), 5);
+			MinecraftForge.addGrassSeed(new ItemStack(FarmingBlocks.orange_sapling), 5);
+		}
 		
 		proxy.Preinit();
 	}

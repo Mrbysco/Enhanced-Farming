@@ -91,8 +91,17 @@ public class FarmingConfigGen {
                 "enhancedfarming:nether_flower_seeds"
 			};
 			
-			@Config.Comment("Enables rakes")
-			public boolean tooHot = true;
+			@Config.Comment("Makes it so if you hold hot drinks for too long that you begin taking fire damage")
+			public boolean tooHot = false;
+			
+			@Config.Comment("Enables the old leave behavior. [leaves having a 1/3 chance of becoming a normal leave upon dropping fruit]")
+			public boolean oldLeaveDecay = true;
+			
+			@Config.Comment("Enables bonemeal to work on the mods plants")
+			public boolean bonemealGrow = true;
+			
+			@Config.Comment("Instant grow from bonemeal")
+			public boolean instantGrow = false;
 			
 			@Config.Comment("Enables fruit to seed recipe")
 			public boolean fruitToSeeds = true;

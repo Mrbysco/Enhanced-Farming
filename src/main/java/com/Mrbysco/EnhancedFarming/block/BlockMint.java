@@ -3,6 +3,7 @@ package com.Mrbysco.EnhancedFarming.block;
 import java.util.Random;
 
 import com.Mrbysco.EnhancedFarming.Reference;
+import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.init.FarmingItems;
 
 import net.minecraft.block.BlockCrops;
@@ -32,6 +33,28 @@ public class BlockMint extends BlockCrops{
 		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
 		this.setRegistryName(registryName);
 	}
+    
+    @Override
+    public void grow(World worldIn, BlockPos pos, IBlockState state) {
+    	int i;
+        int j = this.getMaxAge();;
+        
+    	if (FarmingConfigGen.general.othersettings.instantGrow)
+    	{
+    		i = this.getAge(state) + (j - this.getAge(state));
+    	}
+    	else
+    	{
+    		i = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
+    	}
+
+        if (i > j)
+        {
+            i = j;
+        }
+
+        worldIn.setBlockState(pos, this.withAge(i), 2);
+    }
     
     protected PropertyInteger getAgeProperty()
     {
@@ -85,12 +108,6 @@ public class BlockMint extends BlockCrops{
     }
     
     @Override
-    protected int getBonemealAgeIncrease(World worldIn)
-    {
-        return super.getBonemealAgeIncrease(worldIn) / 5;
-    }
-    
-    @Override
     public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(MINT_AGE, Integer.valueOf(meta));
@@ -121,6 +138,19 @@ public class BlockMint extends BlockCrops{
     
     @Override
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-    	return getAge(state) < getMaxAge();
+    	if(FarmingConfigGen.general.othersettings.bonemealGrow)
+    	{
+    		return getAge(state) < getMaxAge();
+    	}
+    	else
+    	{
+    		return false;
+    	}
+    }
+    
+    @Override
+    protected int getBonemealAgeIncrease(World worldIn)
+    {
+        return super.getBonemealAgeIncrease(worldIn) / 5;
     }
 }
