@@ -50,7 +50,7 @@ public class BlockFruitLeaves extends BlockLeaves {
 
         this.fruitType = type;
 
-        this.setDefaultState(getDefaultState().withProperty(FRUITY, Boolean.valueOf(true)).withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FRUITY, Boolean.valueOf(true)).withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
 		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
 		this.setRegistryName(registryName);
 	}
@@ -95,55 +95,40 @@ public class BlockFruitLeaves extends BlockLeaves {
 		ItemStack fruit = new ItemStack(TreeHelper.getFruitfromEnum(this.fruitType));
 		EntityItem fruitItem = new EntityItem(worldIn, pos.getX(), pos.getY() - 0.2, pos.getZ(), fruit);
 		IBlockState regularLeaf = Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.OAK).withProperty(BlockOldLeaf.CHECK_DECAY, Boolean.valueOf(false));
-
-		if (FarmingConfigGen.general.othersettings.oldLeaveDecay)
-		{
-			if (((Boolean)state.getValue(FRUITY)).booleanValue()){
-				if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
+		boolean decayFlag = FarmingConfigGen.general.othersettings.oldLeaveDecay;
+		
+		if (((Boolean)state.getValue(FRUITY)).booleanValue()){
+			if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
+			{
+				if (random.nextInt(FarmingConfigGen.general.othersettings.treeDropRate) == 0)
 				{
-					if (random.nextInt(FarmingConfigGen.general.othersettings.treeDropRate) == 0)
+					if (!worldIn.isRemote)
 					{
-						if (!worldIn.isRemote)
+						worldIn.spawnEntity(fruitItem);
+					}
+					
+					if (decayFlag)
+					{
+						if (random.nextInt(3) == 0)
 						{
-							worldIn.spawnEntity(fruitItem);
-						}
-						
-						if (random.nextInt(2) == 0)
-						{
-				            worldIn.setBlockState(pos, regularLeaf, 3);
+							worldIn.setBlockState(pos, regularLeaf, 3);
 						}
 					}
+					else
+					{
+			            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 3);
+					}
+						
 				}
 			}
 		}
 		else
 		{
-			if (((Boolean)state.getValue(FRUITY)).booleanValue()){
-				if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
-				{
-					if (random.nextInt(FarmingConfigGen.general.othersettings.treeDropRate) == 0)
-					{
-						fruitItem.setAgeToCreativeDespawnTime();
-						
-						if (!worldIn.isRemote)
-						{
-							worldIn.spawnEntity(fruitItem);
-						}
-			            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 3);
-					}
-				}
-			}
-			else
+			if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
 			{
-				if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
+				if (random.nextInt(8) == 0)
 				{
-					if (random.nextInt(4) == 1)
-					{
-						if(random.nextInt(2) == 1)
-						{
-							worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 3);
-						}
-					}
+					worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 3);
 				}
 			}
 		}
