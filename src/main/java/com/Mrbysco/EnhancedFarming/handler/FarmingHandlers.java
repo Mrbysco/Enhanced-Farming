@@ -85,7 +85,7 @@ public class FarmingHandlers {
 			    {
 			        int timeHeld = ++this.heldTime;
 
-			        if(timeHeld == 100)
+			        if(timeHeld == 300)
 			        {
 			            player.setFire(5);
 			            this.heldTime = 0;
