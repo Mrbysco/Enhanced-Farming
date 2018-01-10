@@ -110,7 +110,7 @@ public class BlockFruitLeaves extends BlockLeaves {
 						
 						if (random.nextInt(2) == 0)
 						{
-				            worldIn.setBlockState(pos, regularLeaf, 2);
+				            worldIn.setBlockState(pos, regularLeaf, 3);
 						}
 					}
 				}
@@ -129,7 +129,7 @@ public class BlockFruitLeaves extends BlockLeaves {
 						{
 							worldIn.spawnEntity(fruitItem);
 						}
-			            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 2);
+			            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 3);
 					}
 				}
 			}
@@ -141,7 +141,7 @@ public class BlockFruitLeaves extends BlockLeaves {
 					{
 						if(random.nextInt(2) == 1)
 						{
-							worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 2);
+							worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(true)), 3);
 						}
 					}
 				}
