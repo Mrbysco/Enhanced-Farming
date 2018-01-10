@@ -8,6 +8,8 @@ import com.Mrbysco.EnhancedFarming.init.FarmingColors;
 import com.Mrbysco.EnhancedFarming.util.TreeHelper;
 
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockOldLeaf;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
@@ -91,7 +93,8 @@ public class BlockFruitLeaves extends BlockLeaves {
 	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
 		ItemStack fruit = new ItemStack(TreeHelper.getFruitfromEnum(this.fruitType));
 		EntityItem fruitItem = new EntityItem(worldIn, pos.getX(), pos.getY() - 0.2, pos.getZ(), fruit);
-		
+		IBlockState regularLeaf = Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.OAK).withProperty(BlockOldLeaf.CHECK_DECAY, Boolean.valueOf(false));
+
 		if (FarmingConfigGen.general.othersettings.oldLeaveDecay)
 		{
 			if (((Boolean)state.getValue(FRUITY)).booleanValue()){
@@ -106,7 +109,7 @@ public class BlockFruitLeaves extends BlockLeaves {
 						
 						if (random.nextInt(2) == 0)
 						{
-				            worldIn.setBlockState(pos, state.withProperty(FRUITY, Boolean.valueOf(false)), 2);
+				            worldIn.setBlockState(pos, regularLeaf, 2);
 						}
 					}
 				}
