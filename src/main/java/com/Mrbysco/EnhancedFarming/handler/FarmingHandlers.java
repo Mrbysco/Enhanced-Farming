@@ -3,6 +3,7 @@ package com.Mrbysco.EnhancedFarming.handler;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.init.FarmingItems;
 
 import net.minecraft.entity.Entity;
@@ -14,7 +15,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -48,32 +48,52 @@ public class FarmingHandlers {
 	private int heldTime;
 	private Random rand;
 
-	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+	@SubscribeEvent
 	public void ItemHeld(TickEvent.PlayerTickEvent event) {
-		EntityPlayer player = event.player;
-		
-		Item heldItem = player.getHeldItemMainhand() != ItemStack.EMPTY
-				? player.getHeldItemOffhand().getItem() : null; 
-
-		ArrayList<Item> hotItems = new ArrayList<>();
-		hotItems.add(FarmingItems.hot_water);
-		hotItems.add(FarmingItems.hot_chocolate_bottle);
-		hotItems.add(FarmingItems.mint_tea);
-		
-		for (Item item : hotItems) {
-			if (itemHeld != heldItem && itemHeld == item) 
+		if (FarmingConfigGen.general.othersettings.tooHot)
+		{
+			EntityPlayer player = event.player;
+			
+			if (player.world.isRemote)
+			    return;
+			
+			Item heldItem = null;
+			
+			if (!player.getHeldItemMainhand().isEmpty())
 			{
-				int timeHeld = this.heldTime + 1;
-				this.heldTime = timeHeld;
-				
-				if(timeHeld == 5 * 20){
-	                player.setFire(5);
-	                
-	                this.heldTime = 0;
-				}
+				heldItem = player.getHeldItemMainhand().getItem();
 			}
-		}
+			if (!player.getHeldItemOffhand().isEmpty())
+			{
+				heldItem = player.getHeldItemOffhand().getItem();
+			}
+	
+			ArrayList<Item> hotItems = new ArrayList<>();
+			hotItems.add(FarmingItems.hot_water);
+			hotItems.add(FarmingItems.hot_chocolate_bottle);
+			hotItems.add(FarmingItems.mint_tea);
+			
+			for (Item item : hotItems) 
+			{
+			    if (itemHeld != heldItem && heldItem == item) 
+			    {
+			        this.heldTime = 0;
+			        itemHeld = heldItem;
+			    }
+			    
+			    if (itemHeld == item)
+			    {
+			        int timeHeld = ++this.heldTime;
 
-		itemHeld = heldItem;
+			        if(timeHeld == 100)
+			        {
+			            player.setFire(5);
+			            this.heldTime = 0;
+			        }
+			    }
+			}
+	
+			this.itemHeld = heldItem;
+		}
 	}
 }
