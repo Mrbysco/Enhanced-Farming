@@ -8,8 +8,6 @@ import com.Mrbysco.EnhancedFarming.init.FarmingColors;
 import com.Mrbysco.EnhancedFarming.util.TreeHelper;
 
 import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.BlockOldLeaf;
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
@@ -34,11 +32,11 @@ import net.minecraft.world.biome.BiomeColorHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockFruitLeaves extends BlockLeaves implements ILeafColor{
+public class BlockNonFruitLeaves extends BlockLeaves implements ILeafColor{
 
 	public EnumSaplingType fruitType;
 
-	public BlockFruitLeaves(String unlocalizedName, String registryName, EnumSaplingType type) {
+	public BlockNonFruitLeaves(String unlocalizedName, String registryName, EnumSaplingType type) {
 		super();
         this.setTickRandomly(true);
         this.setHardness(0.2F);
@@ -66,7 +64,7 @@ public class BlockFruitLeaves extends BlockLeaves implements ILeafColor{
 	public int getMetaFromState(IBlockState state)
     {
         int i = 0;
-
+        
         if (!((Boolean)state.getValue(DECAYABLE)).booleanValue())
         {
             i |= 4;
@@ -90,32 +88,15 @@ public class BlockFruitLeaves extends BlockLeaves implements ILeafColor{
 	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
 		ItemStack fruit = new ItemStack(TreeHelper.getFruitfromEnum(this.fruitType));
 		EntityItem fruitItem = new EntityItem(worldIn, pos.getX(), pos.getY() - 0.2, pos.getZ(), fruit);
-		IBlockState regularLeaf = Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.OAK).withProperty(BlockOldLeaf.CHECK_DECAY, Boolean.valueOf(false));
-		IBlockState notFruity = TreeHelper.getBloomingLeaveFromEnum(this.fruitType);
+		IBlockState fruityLeaf = TreeHelper.getLeaveFromEnum(this.fruitType);
+		
 		boolean decayFlag = FarmingConfigGen.general.othersettings.oldLeaveDecay;
 		
 		if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
 		{
-			if (random.nextInt(FarmingConfigGen.general.othersettings.treeDropRate) == 0)
+			if (random.nextInt(8) == 0)
 			{
-				if (!worldIn.isRemote)
-				{
-					worldIn.spawnEntity(fruitItem);
-				}
-				
-				if (decayFlag)
-				{
-					if (random.nextInt(3) == 0)
-					{
-						worldIn.setBlockState(pos, regularLeaf, 6);
-					}
-				}
-				
-				if (!decayFlag)
-				{
-		            worldIn.setBlockState(pos, notFruity, 6);
-				}
-					
+				worldIn.setBlockState(pos, fruityLeaf, 6);
 			}
 		}
 		

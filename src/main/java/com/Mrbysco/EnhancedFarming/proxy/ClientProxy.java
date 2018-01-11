@@ -3,6 +3,7 @@ package com.Mrbysco.EnhancedFarming.proxy;
 import java.util.List;
 
 import com.Mrbysco.EnhancedFarming.block.BlockFruitLeaves;
+import com.Mrbysco.EnhancedFarming.block.ILeafColor;
 import com.Mrbysco.EnhancedFarming.init.FarmingBlocks;
 import com.Mrbysco.EnhancedFarming.render.ScarecrowRenderer;
 import com.Mrbysco.EnhancedFarming.tileentity.TileEntityScarecrow;
@@ -28,8 +29,11 @@ public class ClientProxy extends CommonProxy{
 	
 	public void addLeaves() {
 		coloredBlocks.add(FarmingBlocks.apple_leaves);
+		coloredBlocks.add(FarmingBlocks.blooming_apple_leaves);
 		coloredBlocks.add(FarmingBlocks.lemon_leaves);
+		coloredBlocks.add(FarmingBlocks.blooming_lemon_leaves);
 		coloredBlocks.add(FarmingBlocks.orange_leaves);
+		coloredBlocks.add(FarmingBlocks.blooming_orange_leaves);
 		
 		this.registerColouring();
 	}
@@ -39,7 +43,7 @@ public class ClientProxy extends CommonProxy{
 		
         for (Block block : coloredBlocks)
         {
-            BlockFruitLeaves fruitLeaves = (BlockFruitLeaves)block;
+        	ILeafColor fruitLeaves = (ILeafColor)block;
             if (fruitLeaves.getBlockColor() != null) Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(fruitLeaves.getBlockColor(), block);
             if (fruitLeaves.getItemColor() != null) Minecraft.getMinecraft().getItemColors().registerItemColorHandler(fruitLeaves.getItemColor(), block);
         }

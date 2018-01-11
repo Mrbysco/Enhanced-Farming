@@ -6,6 +6,7 @@ import com.Mrbysco.EnhancedFarming.block.BlockFruitLeaves;
 import com.Mrbysco.EnhancedFarming.block.BlockGrowableSapling;
 import com.Mrbysco.EnhancedFarming.block.BlockMint;
 import com.Mrbysco.EnhancedFarming.block.BlockNetherFlower;
+import com.Mrbysco.EnhancedFarming.block.BlockNonFruitLeaves;
 import com.Mrbysco.EnhancedFarming.block.BlockScarecrow;
 import com.Mrbysco.EnhancedFarming.block.EnumSaplingType;
 
@@ -25,8 +26,11 @@ public class FarmingBlocks {
 	public static BlockBush nether_flower_crop;
 	
 	public static BlockLeaves apple_leaves;
+	public static BlockLeaves blooming_apple_leaves;
 	public static BlockLeaves lemon_leaves;
+	public static BlockLeaves blooming_lemon_leaves;
 	public static BlockLeaves orange_leaves;
+	public static BlockLeaves blooming_orange_leaves;
 	
 	public static BlockGrowableSapling apple_sapling;
 	public static BlockGrowableSapling lemon_sapling;
@@ -45,8 +49,11 @@ public class FarmingBlocks {
 		nether_flower_crop = registerBlock(new BlockNetherFlower("netherflowercrop", "nether_flower_crop"));
 		
 		apple_leaves = registerBlock(new BlockFruitLeaves("appleleaves", "apple_leaves", EnumSaplingType.Apple));
+		blooming_apple_leaves = registerBlock(new BlockNonFruitLeaves("bloomingappleleaves", "blooming_apple_leaves", EnumSaplingType.Apple));
 		lemon_leaves = registerBlock(new BlockFruitLeaves("lemonleaves", "lemon_leaves", EnumSaplingType.Lemon));
+		blooming_lemon_leaves = registerBlock(new BlockNonFruitLeaves("bloominglemonleaves", "blooming_lemon_leaves", EnumSaplingType.Lemon));
 		orange_leaves = registerBlock(new BlockFruitLeaves("orangeleaves", "orange_leaves", EnumSaplingType.Orange));
+		blooming_orange_leaves = registerBlock(new BlockNonFruitLeaves("bloomingrorangeleaves", "blooming_orange_leaves", EnumSaplingType.Orange));
 		
 		scarecrow = registerBlock(new BlockScarecrow("scarecrow", "scarecrow"));
 		

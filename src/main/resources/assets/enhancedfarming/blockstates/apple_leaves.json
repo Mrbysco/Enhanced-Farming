@@ -1,10 +1,9 @@
 {
     "forge_marker": 1,
+	"defaults": {
+		"model": "enhancedfarming:apple_leaves"
+    },
     "variants": {
-        "fruity": {
-			"true": { "model": "enhancedfarming:apple_leaves"},
-            "false": { "model": "enhancedfarming:apple_blooming"}
-        },
 		"check_decay": {
 			"true": { },
             "false": { }

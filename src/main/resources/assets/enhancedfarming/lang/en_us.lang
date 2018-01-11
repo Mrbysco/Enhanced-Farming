@@ -6,8 +6,11 @@ itemGroup.enhancedfarming=Enhanced Farming
 
 #blocks
 tile.enhancedfarming:appleleaves.name=Apple Leaves
+tile.enhancedfarming:bloomingappleleaves.name=Blooming Apple Leaves
 tile.enhancedfarming:lemonleaves.name=Lemon Leaves
+tile.enhancedfarming:bloominglemonleaves.name=Blooming Lemon Leaves
 tile.enhancedfarming:orangeleaves.name=Orange Leaves
+tile.enhancedfarming:bloomingorangeleaves.name=Blooming Orange Leaves
 
 tile.enhancedfarming:applesapling.name=Apple Seeds
 tile.enhancedfarming:lemonsapling.name=Lemon Seeds

@@ -2,10 +2,12 @@ package com.Mrbysco.EnhancedFarming.world;
 
 import java.util.Random;
 
+import com.Mrbysco.EnhancedFarming.block.BlockFruitLeaves;
 import com.Mrbysco.EnhancedFarming.block.BlockGrowableSapling;
 import com.Mrbysco.EnhancedFarming.block.EnumSaplingType;
 import com.Mrbysco.EnhancedFarming.util.TreeHelper;
 
+import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -22,7 +24,7 @@ public class WorldGenFruitTree extends WorldGenAbstractTree {
 		super(true);
 		
 		this.woodType = type.getWoodType();
-		this.leaveType = TreeHelper.getLeaveFromEnum(type);
+		this.leaveType = TreeHelper.getLeaveFromEnum(type).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
 		this.saplingBlock = TreeHelper.getSaplingFromEnum(type);
 	}
 	

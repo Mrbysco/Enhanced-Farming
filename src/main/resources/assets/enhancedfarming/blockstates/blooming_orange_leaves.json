@@ -1,7 +1,7 @@
 {
     "forge_marker": 1,
 	"defaults": {
-		"model": "enhancedfarming:lemon_leaves"
+		"model": "enhancedfarming:orange_blooming"
     },
     "variants": {
 		"check_decay": {
@@ -13,7 +13,7 @@
             "false": { }
 		},
     "inventory": [{
-        "model": "enhancedfarming:lemon_leaves"
+        "model": "enhancedfarming:orange_blooming"
     }]
   }
 }
