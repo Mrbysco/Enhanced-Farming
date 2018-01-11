@@ -68,7 +68,7 @@ public class BlockGrowableSapling extends BlockBush implements IGrowable, IPlant
         {
             super.updateTick(worldIn, pos, state, rand);
 
-            if (worldIn.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(7) == 0 && isMature(state) == true)
+            if (worldIn.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(6) == 0 && !isMature(state))
             {
                 this.grow(worldIn, rand, pos, state);;
             }
