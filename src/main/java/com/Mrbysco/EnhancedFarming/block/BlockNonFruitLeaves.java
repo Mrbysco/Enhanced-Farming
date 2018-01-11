@@ -16,7 +16,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -83,10 +82,7 @@ public class BlockNonFruitLeaves extends BlockLeaves implements ILeafColor{
     }
 	
 	@Override
-	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
-		ItemStack fruit = new ItemStack(TreeHelper.getFruitfromEnum(this.fruitType));
-		EntityItem fruitItem = new EntityItem(worldIn, pos.getX(), pos.getY() - 0.2, pos.getZ(), fruit);
-		
+	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {		
 		boolean decay_value = ((Boolean)state.getValue(DECAYABLE)).booleanValue();
 		boolean check_value = ((Boolean)state.getValue(CHECK_DECAY)).booleanValue();
 		IBlockState fruityLeaf = TreeHelper.getLeaveFromEnum(this.fruitType).withProperty(DECAYABLE, Boolean.valueOf(decay_value)).withProperty(CHECK_DECAY, Boolean.valueOf(check_value));
