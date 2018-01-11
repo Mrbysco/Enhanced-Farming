@@ -3,10 +3,10 @@ package com.Mrbysco.EnhancedFarming.block;
 import java.util.Random;
 
 import com.Mrbysco.EnhancedFarming.Reference;
-import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.init.FarmingColors;
 import com.Mrbysco.EnhancedFarming.util.TreeHelper;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.SoundType;
@@ -15,6 +15,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -46,7 +47,7 @@ public class BlockNonFruitLeaves extends BlockLeaves implements ILeafColor{
         this.fruitType = type;
 
         this.setDefaultState(this.blockState.getBaseState().withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+        this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
 		this.setRegistryName(registryName);
 	}
 	
@@ -63,43 +64,44 @@ public class BlockNonFruitLeaves extends BlockLeaves implements ILeafColor{
 	@Override
 	public int getMetaFromState(IBlockState state)
     {
-        int i = 0;
-        
-        if (!((Boolean)state.getValue(DECAYABLE)).booleanValue())
-        {
-            i |= 4;
-        }
-
-        if (((Boolean)state.getValue(CHECK_DECAY)).booleanValue())
-        {
-            i |= 8;
-        }
-        
-        return i;
+		int i = 0;
+		if(!((Boolean) state.getValue((IProperty) DECAYABLE)).booleanValue())
+		{
+			i |= 2;
+		}
+		if(((Boolean) state.getValue((IProperty) CHECK_DECAY)).booleanValue())
+		{
+			i |= 4;
+		}
+		return i;
     }
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
+        return this.getDefaultState().withProperty(DECAYABLE, Boolean.valueOf((meta & 2) == 0)).withProperty(CHECK_DECAY, Boolean.valueOf((meta & 4) > 0));
     }
 	
 	@Override
 	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
 		ItemStack fruit = new ItemStack(TreeHelper.getFruitfromEnum(this.fruitType));
 		EntityItem fruitItem = new EntityItem(worldIn, pos.getX(), pos.getY() - 0.2, pos.getZ(), fruit);
-		IBlockState fruityLeaf = TreeHelper.getLeaveFromEnum(this.fruitType);
 		
-		boolean decayFlag = FarmingConfigGen.general.othersettings.oldLeaveDecay;
+		boolean decay_value = ((Boolean)state.getValue(DECAYABLE)).booleanValue();
+		boolean check_value = ((Boolean)state.getValue(CHECK_DECAY)).booleanValue();
+		IBlockState fruityLeaf = TreeHelper.getLeaveFromEnum(this.fruitType).withProperty(DECAYABLE, Boolean.valueOf(decay_value)).withProperty(CHECK_DECAY, Boolean.valueOf(check_value));
 		
-		if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
+		if (((Boolean)state.getValue(DECAYABLE)).booleanValue())
 		{
-			if (random.nextInt(8) == 0)
+			if (worldIn.getChunkFromBlockCoords(pos).isLoaded())
 			{
-				worldIn.setBlockState(pos, fruityLeaf, 6);
+				if (random.nextInt(8) == 0)
+				{
+					worldIn.setBlockState(pos, fruityLeaf, 6);
+				}
 			}
 		}
-		
+
         this.updateTick(worldIn, pos, state, random);
 	}
 	
@@ -115,27 +117,13 @@ public class BlockNonFruitLeaves extends BlockLeaves implements ILeafColor{
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
 			EntityPlayer player) {
-    	return new ItemStack(this, 1, this.getMetaFromState(this.getDefaultState().withProperty(DECAYABLE, Boolean.valueOf(false))));
+    	return new ItemStack(this, 1, this.getMetaFromState(this.getDefaultState().withProperty(CHECK_DECAY, Boolean.valueOf(false)).withProperty(DECAYABLE, Boolean.valueOf(false))));
 	}
 	
 	@Override
 	public NonNullList<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
-		IBlockState state = world.getBlockState(pos);
-
-		return NonNullList.withSize(1, new ItemStack(this, 1));
+        return NonNullList.withSize(1, new ItemStack((Block) this, 1) );
 	}
-
-	public boolean getFruityness(int meta)
-    {
-		boolean myBool;
-		
-		if (meta == 1)
-			myBool = true;
-		else
-			myBool = false;
-		
-        return myBool;
-    }
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
@@ -198,4 +186,11 @@ public class BlockNonFruitLeaves extends BlockLeaves implements ILeafColor{
     {
 		return Blocks.LEAVES.getFireSpreadSpeed(world, pos, face);
     }
+	
+	@Override
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer) {
+		 return this.getStateFromMeta(meta).withProperty(CHECK_DECAY, Boolean.valueOf(false)).withProperty(DECAYABLE, Boolean.valueOf(false));	
+	}
+	
 }
