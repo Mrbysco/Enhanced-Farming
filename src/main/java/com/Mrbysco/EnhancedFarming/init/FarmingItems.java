@@ -87,15 +87,15 @@ public class FarmingItems {
 		chocolate_candy = registerItem(new ItemCustomFood(chocolatecandyamount, 0.7F, false, 64, 1, "chocolatecandy", "chocolate_candy"));
 		lemon = registerItem(new ItemCustomFood(lemonamount, 0.5F, false, 64, 32, "lemon", "lemon"));
 		lemonade = registerItem(new ItemCustomFood(lemonadeamount, 0.4F, false, 64, 32, "lemonade", "lemonade").setDrinkable().setContaining(Items.GLASS_BOTTLE));
-		mint_chocolate_bar = registerItem(new ItemCustomSpecialFood(chocolatebaramount, 0.7F, false, 16, 32, false, true, "mintchocolatebar", "mint_chocolate_bar"));
-		mint_tea = registerItem(new ItemCustomSpecialFood(mintteaamount, 0.3F, false, 16, 32, false, true, "minttea", "mint_tea").setDrinkable().setContaining(Items.GLASS_BOTTLE));
+		mint_chocolate_bar = registerItem(new ItemCustomSpecialFood(chocolatebaramount, 0.7F, false, 16, 32, false, true, false, "mintchocolatebar", "mint_chocolate_bar"));
+		mint_tea = registerItem(new ItemCustomSpecialFood(mintteaamount, 0.3F, false, 16, 32, false, true, false, "minttea", "mint_tea").setDrinkable().setContaining(Items.GLASS_BOTTLE));
 		orange = registerItem(new ItemCustomFood(orangeamount, 0.5F, false, 64, 32, "orange", "orange"));
 		orange_juice = registerItem(new ItemCustomFood(orangejuiceamount, 0.3F, false, 64, 32, "orangejuice", "orange_juice").setDrinkable().setContaining(Items.GLASS_BOTTLE));
 
-		golden_lemon = registerItem(new ItemCustomSpecialFood(goldenlemon, 0.5F, false, 64, 32, true, false, "goldenlemon", "golden_lemon").setAlwaysEdible().setPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 30*20, 0), 1F));
-		golden_orange = registerItem(new ItemCustomSpecialFood(goldenorange, 0.5F, false, 64, 32, true, false, "goldenorange", "golden_orange").setAlwaysEdible().setPotionEffect(new PotionEffect(MobEffects.STRENGTH, 30*20, 0), 1F));
+		golden_lemon = registerItem(new ItemCustomSpecialFood(goldenlemon, 0.5F, false, 64, 32, true, false, false, "goldenlemon", "golden_lemon").setAlwaysEdible().setPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 30*20, 0), 1F));
+		golden_orange = registerItem(new ItemCustomSpecialFood(goldenorange, 0.5F, false, 64, 32, true, false, false, "goldenorange", "golden_orange").setAlwaysEdible().setPotionEffect(new PotionEffect(MobEffects.STRENGTH, 30*20, 0), 1F));
 		
-		milk_bottle = registerItem(new ItemCustomFood(milkbottleamount, 0.5f, false, 64, 32, "milkbottle", "milk_bottle").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
+		milk_bottle = registerItem(new ItemCustomSpecialFood(milkbottleamount, 0.5f, false, 64, 32, false, false, true, "milkbottle", "milk_bottle").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
 		cold_chocolate_bottle = registerItem(new ItemCustomFood(coldchocolateamount, 0.4f, false, 64, 32, "coldchocolatebottle", "cold_chocolate_bottle").setDrinkable().setContaining(Items.GLASS_BOTTLE));
 		hot_chocolate_bottle = registerItem(new ItemCustomFood(hotchocolateamount, 0.4f, false, 64, 32, "hotchocolatebottle", "hot_chocolate_bottle").setDrinkable().setContaining(Items.GLASS_BOTTLE));
 

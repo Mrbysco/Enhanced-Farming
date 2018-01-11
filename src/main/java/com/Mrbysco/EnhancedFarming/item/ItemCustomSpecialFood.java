@@ -14,19 +14,22 @@ public class ItemCustomSpecialFood extends ItemCustomFood{
 	
 	private boolean enchanted;
 	private boolean directheal; 
+	private boolean cure;
 	private int amount;
 
 	public ItemCustomSpecialFood(int amount, float saturation, boolean isWolfFood, int stacksize, int useTime,
-			boolean enchanted, boolean directHeal, String unlocalizedName, String registryName) {
+			boolean enchanted, boolean directHeal, boolean cureEffects, String unlocalizedName, String registryName) {
 		super(amount, saturation, isWolfFood, stacksize, useTime, unlocalizedName, registryName);
 		
 		this.directheal = directHeal;
 		this.amount = amount;
 		this.enchanted = enchanted;
+		this.cure = cureEffects;
 	}
 
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
+        if (!worldIn.isRemote && cure) entityLiving.curePotionEffects(stack);
         if (entityLiving instanceof EntityPlayer)
         {
             EntityPlayer entityplayer = (EntityPlayer)entityLiving;

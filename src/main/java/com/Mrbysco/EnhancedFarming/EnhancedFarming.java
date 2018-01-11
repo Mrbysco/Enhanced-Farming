@@ -51,9 +51,6 @@ public class EnhancedFarming {
 		logger.debug("Registering Scarecrow TileEntity");
 		GameRegistry.registerTileEntity(TileEntityScarecrow.class, Reference.MOD_ID + "_scarecrow");
 		
-		logger.debug("Initializing Furnace Recipe");
-		FarmingRecipes.init();
-		
 		if(FarmingConfigGen.general.othersettings.enableRake == false)
 		{
 			logger.debug("Initializing Grass Seeds");
@@ -83,6 +80,8 @@ public class EnhancedFarming {
 			GameRegistry.registerWorldGenerator(new NetherWorldGen(), 0);
 	    }
 		
+		logger.debug("Initializing Furnace Recipe");
+		FarmingRecipes.init();
 		FarmingRecipes.initOredict();
 		
 		proxy.Init();
