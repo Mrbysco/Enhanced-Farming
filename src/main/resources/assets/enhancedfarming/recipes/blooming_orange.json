@@ -7,8 +7,5 @@
 	],
 	"result": {
 		"item": "enhancedfarming:blooming_orange_leaves"
-	},
-	"conditions": [{
-		"type": "enhancedfarming:leafDecay"
-	}]
+	}
 }

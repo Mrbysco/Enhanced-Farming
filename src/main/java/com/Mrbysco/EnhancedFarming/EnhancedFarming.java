@@ -83,6 +83,8 @@ public class EnhancedFarming {
 			GameRegistry.registerWorldGenerator(new NetherWorldGen(), 0);
 	    }
 		
+		FarmingRecipes.initOredict();
+		
 		proxy.Init();
 	}
 	

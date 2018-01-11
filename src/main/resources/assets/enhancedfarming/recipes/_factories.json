@@ -1,7 +1,6 @@
 {
     "conditions" : {
         "rakeRecipes": "com.Mrbysco.EnhancedFarming.init.conditions.RakeRecipeCondition",
-        "leafDecay": "com.Mrbysco.EnhancedFarming.init.conditions.LeafDecayCondition",
         "fruitToSeeds": "com.Mrbysco.EnhancedFarming.init.conditions.FruitToSeedCondition"
     }
 }
