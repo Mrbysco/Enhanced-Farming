@@ -53,7 +53,7 @@ public class FarmingBlocks {
 		lemon_leaves = registerBlock(new BlockFruitLeaves("lemonleaves", "lemon_leaves", EnumSaplingType.Lemon));
 		blooming_lemon_leaves = registerBlock(new BlockNonFruitLeaves("bloominglemonleaves", "blooming_lemon_leaves", EnumSaplingType.Lemon));
 		orange_leaves = registerBlock(new BlockFruitLeaves("orangeleaves", "orange_leaves", EnumSaplingType.Orange));
-		blooming_orange_leaves = registerBlock(new BlockNonFruitLeaves("bloomingrorangeleaves", "blooming_orange_leaves", EnumSaplingType.Orange));
+		blooming_orange_leaves = registerBlock(new BlockNonFruitLeaves("bloomingorangeleaves", "blooming_orange_leaves", EnumSaplingType.Orange));
 		
 		scarecrow = registerBlock(new BlockScarecrow("scarecrow", "scarecrow"));
 		

@@ -47,7 +47,7 @@ public class BlockFruitLeaves extends BlockLeaves implements ILeafColor{
 
         this.fruitType = type;
 
-        this.setDefaultState(this.blockState.getBaseState().withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(CHECK_DECAY, Boolean.valueOf(false)).withProperty(DECAYABLE, Boolean.valueOf(false)));
 		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
 		this.setRegistryName(registryName);
 	}
@@ -134,7 +134,7 @@ public class BlockFruitLeaves extends BlockLeaves implements ILeafColor{
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
 			EntityPlayer player) {
-    	return new ItemStack(this, 1, this.getMetaFromState(this.getDefaultState()));
+    	return new ItemStack(this, 1, this.getMetaFromState(this.getDefaultState().withProperty(DECAYABLE, Boolean.valueOf(false))));
 	}
 	
 	@Override

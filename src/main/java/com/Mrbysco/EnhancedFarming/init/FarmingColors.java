@@ -1,6 +1,6 @@
 package com.Mrbysco.EnhancedFarming.init;
 
-import com.Mrbysco.EnhancedFarming.block.BlockFruitLeaves;
+import com.Mrbysco.EnhancedFarming.block.ILeafColor;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -27,7 +27,7 @@ public class FarmingColors{
 
     public static final IItemColor ITEM_RENDER = (stack, tintIndex) -> {
         IBlockState state = ((ItemBlock)stack.getItem()).getBlock().getStateFromMeta(stack.getMetadata());
-        IBlockColor blockColor = ((BlockFruitLeaves)state.getBlock()).getBlockColor();
+        IBlockColor blockColor = ((ILeafColor)state.getBlock()).getBlockColor();
         return blockColor == null ? 0xFFFFFF : blockColor.colorMultiplier(state, null, null, tintIndex);
     };
 

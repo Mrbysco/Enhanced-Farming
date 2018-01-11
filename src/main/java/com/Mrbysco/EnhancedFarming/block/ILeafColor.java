@@ -11,5 +11,4 @@ public interface ILeafColor {
     public IBlockColor getBlockColor();
 	@SideOnly(Side.CLIENT)
 	public IItemColor getItemColor();
-	
 }
