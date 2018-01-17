@@ -1,0 +1,46 @@
+#config
+enhancedfarming.config.title=Конфигурация Enhanced Farming
+
+#creativetab
+itemGroup.enhancedfarming=Enhanced Farming
+
+#blocks
+tile.enhancedfarming:appleleaves.name=Листва яблони
+tile.enhancedfarming:bloomingappleleaves.name=Цветущая листва яблони
+tile.enhancedfarming:lemonleaves.name=Листва лимона
+tile.enhancedfarming:bloominglemonleaves.name=Цветущая листва лимона
+tile.enhancedfarming:orangeleaves.name=Листва апельсина
+tile.enhancedfarming:bloomingorangeleaves.name=Цветущая листва апельсина
+
+tile.enhancedfarming:applesapling.name=Семена яблока
+tile.enhancedfarming:lemonsapling.name=Семена лимона
+tile.enhancedfarming:orangesapling.name=Семена апельсина
+
+tile.enhancedfarming:mintcrop.name=Мята
+tile.enhancedfarming:netherflowercrop.name=Цветок Нижнего мира
+tile.enhancedfarming:scarecrow.name=Пугало
+
+#items
+item.enhancedfarming:applejuice.name=Яблочный сок
+item.enhancedfarming:chocolatebar.name=Плитка шоколада
+item.enhancedfarming:chocolatecandy.name=Шоколадная конфета
+item.enhancedfarming:lemon.name=Лимон
+item.enhancedfarming:lemonade.name=Лимонад
+item.enhancedfarming:mintchocolatebar.name=Плитка мятного шоколада
+item.enhancedfarming:minttea.name=Мятный чай
+item.enhancedfarming:orange.name=Апельсин
+item.enhancedfarming:orangejuice.name=Апельсиновый сок
+item.enhancedfarming:milkbottle.name=Бутылка молока
+item.enhancedfarming:woodenrake.name=Деревянные грабли
+item.enhancedfarming:stonerake.name=Каменные грабли
+item.enhancedfarming:ironrake.name=Железные грабли
+item.enhancedfarming:goldrake.name=Золотые грабли
+item.enhancedfarming:diamondrake.name=Алмазные грабли
+item.enhancedfarming:mintseeds.name=Семена мяты
+item.enhancedfarming:mint.name=Мята
+item.enhancedfarming:netherflowerseeds.name=Семена цветка Нижнего мира
+item.enhancedfarming:coldchocolatebottle.name=Бутылка холодного шоколада
+item.enhancedfarming:hotchocolatebottle.name=Бутылка горячего шоколада
+item.enhancedfarming:hotwater.name=Кипячёная вода
+item.enhancedfarming:goldenlemon.name=Золотой лимон
+item.enhancedfarming:goldenorange.name=Золотой апельсин
