@@ -28,9 +28,6 @@ public class FarmingConfigGen {
 			public final Bottles drinks = new Bottles();
 			
 			public class Food{
-				@Config.Comment("Apple Juice Stats")
-				public int appleJuiceHealAmount = 4;
-				
 				@Config.Comment("Chocolate Bar Stats")
 				public int chocolateBarHealAmount = 4;
 				
@@ -43,9 +40,6 @@ public class FarmingConfigGen {
 				@Config.Comment("Golden Lemon Stats")
 				public int goldenLemonHealAmount = 2;
 				
-				@Config.Comment("Lemonade Stats")
-				public int lemonadeHealAmount = 6;
-				
 				@Config.Comment("Lemon Stats")
 				public int lemonHealAmount = 2;
 				
@@ -57,9 +51,21 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Orange Heal Stats")
 				public int orangeHealAmount = 2;
+
+				@Config.Comment("Cherry Stats")
+				public int cherryHealAmount = 2;
 				
-				@Config.Comment("Orange Juice Stats")
-				public int orangeJuiceHealAmount = 4;
+				@Config.Comment("Pear Stats")
+				public int pearHealAmount = 2;
+				
+				@Config.Comment("Banana Stats")
+				public int bananaHealAmount = 2;
+				
+				@Config.Comment("Chocolate Cherry Stats")
+				public int chocolateCherryHealAmount = 3;
+				
+				@Config.Comment("Chocolate Banana Stats")
+				public int chocolateBananaHealAmount = 4;
 			}
 			
 			public class Bottles{
@@ -71,6 +77,35 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Hot Chocolate Stats")
 				public int hotChocolateBottleHealAmount = 6;
+				
+				//Juices
+				@Config.Comment("Apple Juice Stats")
+				public int appleJuiceHealAmount = 4;
+				
+				@Config.Comment("Lemonade Stats")
+				public int lemonadeHealAmount = 6;
+				
+				@Config.Comment("Orange Juice Stats")
+				public int orangeJuiceHealAmount = 4;
+				
+				//Smoothies
+				@Config.Comment("Apple Smoothie Stats")
+				public int smoothieAppleHealAmount = 6;
+				
+				@Config.Comment("Lemon Smoothie Stats")
+				public int smoothieLemonHealAmount = 6;
+				
+				@Config.Comment("Orange Smoothie Stats")
+				public int smoothieOrangeHealAmount = 6;
+				
+				@Config.Comment("Cherry Smoothie Stats")
+				public int smoothieCherryHealAmount = 6;
+				
+				@Config.Comment("Pear Smoothie Stats")
+				public int smoothiePearHealAmount = 6;
+				
+				@Config.Comment("Banana Smoothie Stats")
+				public int smoothieBananaHealAmount = 6;
 			}
 		}
 		
@@ -88,7 +123,10 @@ public class FarmingConfigGen {
                 "enhancedfarming:lemon_sapling",
                 "enhancedfarming:orange_sapling",
                 "enhancedfarming:mint_seeds",
-                "enhancedfarming:nether_flower_seeds"
+                "enhancedfarming:nether_flower_seeds",
+                "enhancedfarming:cherry_sapling",
+                "enhancedfarming:pear_sapling",
+                "enhancedfarming:banana_sapling"
 			};
 			
 			@Config.Comment("Makes it so if you hold hot drinks for too long that you begin taking fire damage")

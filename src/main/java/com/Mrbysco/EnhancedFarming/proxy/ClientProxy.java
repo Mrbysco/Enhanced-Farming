@@ -34,6 +34,12 @@ public class ClientProxy extends CommonProxy{
 		coloredBlocks.add(FarmingBlocks.blooming_lemon_leaves);
 		coloredBlocks.add(FarmingBlocks.orange_leaves);
 		coloredBlocks.add(FarmingBlocks.blooming_orange_leaves);
+		coloredBlocks.add(FarmingBlocks.cherry_leaves);
+		coloredBlocks.add(FarmingBlocks.blooming_cherry_leaves);
+		coloredBlocks.add(FarmingBlocks.pear_leaves);
+		coloredBlocks.add(FarmingBlocks.blooming_pear_leaves);
+		coloredBlocks.add(FarmingBlocks.banana_leaves);
+		coloredBlocks.add(FarmingBlocks.blooming_banana_leaves);
 		
 		this.registerColouring();
 	}

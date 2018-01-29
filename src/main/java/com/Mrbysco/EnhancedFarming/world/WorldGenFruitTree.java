@@ -2,7 +2,6 @@ package com.Mrbysco.EnhancedFarming.world;
 
 import java.util.Random;
 
-import com.Mrbysco.EnhancedFarming.block.BlockFruitLeaves;
 import com.Mrbysco.EnhancedFarming.block.BlockGrowableSapling;
 import com.Mrbysco.EnhancedFarming.block.EnumSaplingType;
 import com.Mrbysco.EnhancedFarming.util.TreeHelper;
@@ -19,10 +18,12 @@ public class WorldGenFruitTree extends WorldGenAbstractTree {
 	private IBlockState woodType;
     private IBlockState leaveType;
     private BlockGrowableSapling saplingBlock;
-    
-	public WorldGenFruitTree(EnumSaplingType type) {
+    private final int minTreeHeight;
+
+	public WorldGenFruitTree(EnumSaplingType type, int minTreeHeightIn) {
 		super(true);
 		
+		this.minTreeHeight = minTreeHeightIn;
 		this.woodType = type.getWoodType();
 		this.leaveType = TreeHelper.getLeaveFromEnum(type).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
 		this.saplingBlock = TreeHelper.getSaplingFromEnum(type);
@@ -31,7 +32,7 @@ public class WorldGenFruitTree extends WorldGenAbstractTree {
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos position) {
 		
-		int treeSize = rand.nextInt(3) + 5;
+		int treeSize = rand.nextInt(3) + this.minTreeHeight;
 		treeSize += rand.nextInt(6);
 		
         boolean flag = true;

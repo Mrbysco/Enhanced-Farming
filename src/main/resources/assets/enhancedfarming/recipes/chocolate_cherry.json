@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "enhancedfarming:chocolate_cherry"
+  },
+  "pattern": [
+    " C",
+    "CF"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "minecraft:dye",
+      "data": 3
+    },
+    "F": {
+      "item": "enhancedfarming:cherry"
+    }
+  }
+}

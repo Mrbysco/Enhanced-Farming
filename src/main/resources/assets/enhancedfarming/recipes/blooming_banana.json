@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:banana_leaves"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:blooming_banana_leaves"
+	}
+}

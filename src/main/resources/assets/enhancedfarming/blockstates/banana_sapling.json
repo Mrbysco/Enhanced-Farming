@@ -1,0 +1,25 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+        "model": "enhancedfarming:saplings"
+    },
+    "variants": {
+        "stage": {
+			"0" : { "textures": {
+						"cross": "enhancedfarming:blocks/junglesapling0"
+					}},
+			"1" : { "textures": {
+						"cross": "enhancedfarming:blocks/junglesapling1"
+					}},
+			"2" : { "textures": {
+						"cross": "enhancedfarming:blocks/junglesapling2"
+					}},
+			"3" : { "textures": {
+						"cross": "enhancedfarming:blocks/junglesapling3"
+					}},
+			"4" : { "textures": {
+						"cross": "enhancedfarming:blocks/bananatree"
+					}}
+        }
+  }
+}

@@ -7,13 +7,13 @@
         "stage": {
 			"0" : { },
 			"1" : { "textures": {
-						"cross": "enhancedfarming:blocks/sappling1"
+						"cross": "enhancedfarming:blocks/oaksapling1"
 					}},
 			"2" : { "textures": {
-						"cross": "enhancedfarming:blocks/sappling2"
+						"cross": "enhancedfarming:blocks/oaksapling2"
 					}},
 			"3" : { "textures": {
-						"cross": "enhancedfarming:blocks/sappling3"
+						"cross": "enhancedfarming:blocks/oaksapling3"
 					}},
 			"4" : { "textures": {
 						"cross": "enhancedfarming:blocks/lemontree"

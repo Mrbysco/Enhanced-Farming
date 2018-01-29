@@ -111,7 +111,7 @@ public class BlockGrowableSapling extends BlockBush implements IGrowable, IPlant
     {
     	if(FarmingConfigGen.general.othersettings.bonemealGrow)
     	{
-    		return (double)worldIn.rand.nextFloat() < 0.45D;
+            return (double)worldIn.rand.nextFloat() < 0.45D;
     	}
     	else
     	{
@@ -125,12 +125,35 @@ public class BlockGrowableSapling extends BlockBush implements IGrowable, IPlant
     }
 
 	private void growTree(Random rand, World worldIn, BlockPos pos) {
-		if (!TerrainGen.saplingGrowTree(worldIn, rand, pos)) {
-            return;
-        }
+		if (!TerrainGen.saplingGrowTree(worldIn, rand, pos)) return;
+
         worldIn.setBlockToAir(pos);
-		
-		new WorldGenFruitTree(this.TYPE).generate(worldIn, rand, pos);
+        
+        switch (this.TYPE)
+        {
+		case APPLE:
+			new WorldGenFruitTree(this.TYPE, 5).generate(worldIn, rand, pos);
+			break;
+		case BANANA:
+			new WorldGenFruitTree(this.TYPE, 3 + rand.nextInt(7)).generate(worldIn, rand, pos);
+			break;
+		case CHERRY:
+			new WorldGenFruitTree(this.TYPE, 5).generate(worldIn, rand, pos);
+			break;
+		case LEMON:
+			new WorldGenFruitTree(this.TYPE, 5).generate(worldIn, rand, pos);
+			break;
+		case ORANGE:
+			new WorldGenFruitTree(this.TYPE, 5).generate(worldIn, rand, pos);
+			break;
+		case PEAR:
+			new WorldGenFruitTree(this.TYPE, 5).generate(worldIn, rand, pos);
+			break;
+		default:
+			new WorldGenFruitTree(this.TYPE, 5).generate(worldIn, rand, pos);
+			break;
+        	
+        }
 	}
 	
 	@Override

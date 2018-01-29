@@ -21,5 +21,13 @@ public class FarmingRecipes {
         OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.lemon_leaves, 1));
         OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_orange_leaves, 1));
         OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.orange_leaves, 1));
+        
+        //New Content
+        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_cherry_leaves, 1));
+        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.cherry_leaves, 1));
+        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_pear_leaves, 1));
+        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.pear_leaves, 1));
+        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_banana_leaves, 1));
+        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.banana_leaves, 1));
 	}
 }

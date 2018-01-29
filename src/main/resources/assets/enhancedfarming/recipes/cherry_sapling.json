@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:cherry"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:cherry_sapling"
+	},
+	"conditions": [{
+		"type": "enhancedfarming:fruitToSeeds"
+	}]
+}

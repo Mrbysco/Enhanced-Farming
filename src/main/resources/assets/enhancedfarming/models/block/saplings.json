@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "enhancedfarming:blocks/sappling0"
+        "cross": "enhancedfarming:blocks/oaksapling0"
     }
 }

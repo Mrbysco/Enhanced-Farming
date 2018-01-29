@@ -15,15 +15,27 @@ public class TreeHelper {
 		BlockGrowableSapling sapling = null;
 		
 		switch (type) {
-        case Apple:
+        case APPLE:
         	sapling = FarmingBlocks.apple_sapling;
         	break;
-        case Lemon:
+        case LEMON:
         	sapling = FarmingBlocks.lemon_sapling;
         	break;
-        case Orange:
+        case ORANGE:
         	sapling = FarmingBlocks.orange_sapling;
         	break;
+		case CHERRY:
+        	sapling = FarmingBlocks.cherry_sapling;
+			break;
+		case PEAR:
+			sapling = FarmingBlocks.pear_sapling;
+			break;
+		case BANANA:
+			sapling = FarmingBlocks.banana_sapling;
+			break;
+		default:
+			sapling = FarmingBlocks.apple_sapling;
+			break;
 		}
 		
 		return sapling; 
@@ -33,14 +45,26 @@ public class TreeHelper {
 		IBlockState leave = null;	
 		
 		switch (type) {
-		case Apple:
+		case APPLE:
 			leave = FarmingBlocks.blooming_apple_leaves.getDefaultState();
 			break;
-		case Lemon:
+		case LEMON:
 			leave = FarmingBlocks.blooming_lemon_leaves.getDefaultState();
 			break;
-		case Orange:
+		case ORANGE:
 			leave = FarmingBlocks.blooming_orange_leaves.getDefaultState();
+			break;
+		case CHERRY:
+			leave = FarmingBlocks.blooming_cherry_leaves.getDefaultState();
+			break;
+		case PEAR:
+			leave = FarmingBlocks.blooming_pear_leaves.getDefaultState();
+			break;
+		case BANANA:
+			leave = FarmingBlocks.blooming_banana_leaves.getDefaultState();
+			break;
+		default:
+			leave = FarmingBlocks.blooming_apple_leaves.getDefaultState();
 			break;
 		}
 		
@@ -51,14 +75,26 @@ public class TreeHelper {
 		IBlockState leave = null;
 		
 		switch (type) {
-		case Apple:
+		case APPLE:
 			leave = FarmingBlocks.apple_leaves.getDefaultState();
 			break;
-		case Lemon:
+		case LEMON:
 			leave = FarmingBlocks.lemon_leaves.getDefaultState();
 			break;
-		case Orange:
+		case ORANGE:
 			leave = FarmingBlocks.orange_leaves.getDefaultState();
+			break;
+		case CHERRY:
+			leave = FarmingBlocks.cherry_leaves.getDefaultState();
+			break;
+		case PEAR:
+			leave = FarmingBlocks.pear_leaves.getDefaultState();
+			break;
+		case BANANA:
+			leave = FarmingBlocks.banana_leaves.getDefaultState();
+			break;
+		default:
+			leave = FarmingBlocks.apple_leaves.getDefaultState();
 			break;
 		}
 		
@@ -69,15 +105,27 @@ public class TreeHelper {
 		Item fruit = null;
 		
 		switch (type) {
-        case Apple:
+        case APPLE:
         	fruit = Items.APPLE;
         	break;
-        case Lemon:
+        case LEMON:
         	fruit = FarmingItems.lemon;
         	break;
-        case Orange:
+        case ORANGE:
         	fruit = FarmingItems.orange;
         	break;
+		case CHERRY:
+			fruit = FarmingItems.cherry;
+			break;
+		case PEAR:
+			fruit = FarmingItems.pear;
+			break;
+		case BANANA:
+			fruit = FarmingItems.banana;
+			break;
+		default:
+			fruit = Items.APPLE;
+			break;
 		}
 		
 		return fruit; 

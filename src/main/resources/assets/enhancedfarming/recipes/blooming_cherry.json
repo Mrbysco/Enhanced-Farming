@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:cherry_leaves"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:blooming_cherry_leaves"
+	}
+}

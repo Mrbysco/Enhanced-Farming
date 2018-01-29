@@ -29,28 +29,52 @@ public class TreeWorldGen implements IWorldGenerator {
         if (BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.DEAD)) {
             return;
         }
-
-        if (BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.FOREST) && 
-        		!BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.COLD))
+        
+        boolean coldFlag = !BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.COLD);
+        boolean spookyFlag = !BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.SPOOKY);
+        
+        if (BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.FOREST) && coldFlag && spookyFlag)
 		{
-        	int randomValue = random.nextInt(6);
+        	int randomValue = random.nextInt(8);
         	
         	switch (randomValue) {
         	default:
         		break;
             case 0:
-            	fruitTree = new WorldGenFruitTree(EnumSaplingType.Apple);
+            	fruitTree = new WorldGenFruitTree(EnumSaplingType.APPLE, 5);
             	fruitTree.generate(world, random, new BlockPos(x, y, z));
             	break;
             case 1:
-            	fruitTree = new WorldGenFruitTree(EnumSaplingType.Lemon);
+            	fruitTree = new WorldGenFruitTree(EnumSaplingType.LEMON, 5);
             	fruitTree.generate(world, random, new BlockPos(x, y, z));
             	break;
             case 2:
-            	fruitTree = new WorldGenFruitTree(EnumSaplingType.Orange);
+            	fruitTree = new WorldGenFruitTree(EnumSaplingType.ORANGE, 5);
+            	fruitTree.generate(world, random, new BlockPos(x, y, z));
+            	break;
+            case 3:
+            	fruitTree = new WorldGenFruitTree(EnumSaplingType.CHERRY, 5);
+            	fruitTree.generate(world, random, new BlockPos(x, y, z));
+            	break;
+            case 4:
+            	fruitTree = new WorldGenFruitTree(EnumSaplingType.PEAR, 5);
             	fruitTree.generate(world, random, new BlockPos(x, y, z));
             	break;
             }
 		}
+        
+        if (BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.JUNGLE) && coldFlag && spookyFlag)
+        {
+        	int randomValue = random.nextInt(4);
+        	
+        	switch (randomValue) {
+        	default:
+        		break;
+        	case 0:
+            	fruitTree = new WorldGenFruitTree(EnumSaplingType.BANANA, 3 + random.nextInt(7));
+            	fruitTree.generate(world, random, new BlockPos(x, y, z));
+            	break;
+        	}
+        }
 	}
 }

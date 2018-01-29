@@ -50,10 +50,9 @@
 	},
 	{
 		"ingredient": {
-		  "nbt": {
-			"Potion": "minecraft:water"
-		  },
-		  "item": "minecraft:potion"
+		  "nbt": "{Potion:\"minecraft:water\"}",
+		  "item": "minecraft:potion",
+		  "type": "minecraft:item_nbt"
 		},
 		"name": "water_bottle"
 	}
