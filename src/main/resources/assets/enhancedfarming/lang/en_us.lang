@@ -20,10 +20,13 @@ tile.enhancedfarming:netherflowercrop.name=Nether Flower Crop
 tile.enhancedfarming:scarecrow.name=Scarecrow
 
 #new blocks
+tile.enhancedfarming:cropstick.name=Crop Sticks
+
 tile.enhancedfarming:cherrysapling.name=Cherry Seeds
 tile.enhancedfarming:pearsapling.name=Pear Seeds
 tile.enhancedfarming:bananasapling.name=Banana Seeds
 tile.enhancedfarming:avocadosapling.name=Avocado Seed
+tile.enhancedfarming:mangosapling.name=Mango Seed
 
 tile.enhancedfarming:cherryleaves.name=Cherry Leaves
 tile.enhancedfarming:bloomingcherryleaves.name=Blooming Cherry Leaves
@@ -33,10 +36,13 @@ tile.enhancedfarming:bananaleaves.name=Banana Leaves
 tile.enhancedfarming:bloomingbananaleaves.name=Blooming Banana Leaves
 tile.enhancedfarming:avocadoleaves.name=Avocado Leaves
 tile.enhancedfarming:bloomingavocadoleaves.name=Blooming Avocado Leaves
+tile.enhancedfarming:mangoleaves.name=Mango Leaves
+tile.enhancedfarming:bloomingmangoleaves.name=Blooming Mango Leaves
 
 tile.enhancedfarming:tomatocrop.name=Tomato Crop
 tile.enhancedfarming:cucumbercrop.name=Cucumber Crop
 tile.enhancedfarming:auberginecrop.name=Aubergine Crop
+tile.enhancedfarming:grapecrop.name=Grape Crop
 
 #items
 item.enhancedfarming:applejuice.name=Apple Juice
@@ -78,7 +84,12 @@ item.enhancedfarming:avocado.name=Avocado
 item.enhancedfarming:tomato.name=Tomato
 item.enhancedfarming:cucumber.name=Cucumber
 item.enhancedfarming:aubergine.name=Aubergine
+item.enhancedfarming:grapes.name=Grapes
+item.enhancedfarming:mango.name=Mango
+item.enhancedfarming:pineapple.name=Pineapple
 
 item.enhancedfarming:tomatoseeds.name=Tomato Seeds
 item.enhancedfarming:cucumberseeds.name=Cucumber Seeds
 item.enhancedfarming:aubergineseeds.name=Aubergine Seeds
+item.enhancedfarming:grapeseeds.name=Grape Seeds
+item.enhancedfarming:pineappleseeds.name=Pineapple Seeds

@@ -1,0 +1,19 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+		"model": "enhancedfarming:mango_leaves"
+    },
+    "variants": {
+		"check_decay": {
+			"true": { },
+            "false": { }
+		},
+		"decayable": {
+			"true": { },
+            "false": { }
+		},
+    "inventory": [{
+        "model": "enhancedfarming:mango_leaves"
+    }]
+  }
+}

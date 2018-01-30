@@ -18,12 +18,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
-public class ItemCustomSeeds extends ItemSeeds{
+public class ItemRegularSeeds extends ItemSeeds{
     
     private final Block crops;
     private final Block soilBlock;
     
-	public ItemCustomSeeds(Block crops, Block soil, String unlocalizedName, String registryName) {
+	public ItemRegularSeeds(Block crops, Block soil, String unlocalizedName, String registryName) {
 		super(crops, soil);
         
 		setCreativeTab(EnhancedFarming.tabFarming);

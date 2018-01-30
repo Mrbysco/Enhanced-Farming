@@ -149,6 +149,12 @@ public class BlockGrowableSapling extends BlockBush implements IGrowable, IPlant
 		case PEAR:
 			new WorldGenFruitTree(this.TYPE, 5).generate(worldIn, rand, pos);
 			break;
+		case AVOCADO:
+			new WorldGenFruitTree(this.TYPE, 5).generate(worldIn, rand, pos);
+			break;
+		case MANGO:
+			new WorldGenFruitTree(this.TYPE, 5 + rand.nextInt(3)).generate(worldIn, rand, pos);
+			break;
 		default:
 			new WorldGenFruitTree(this.TYPE, 5).generate(worldIn, rand, pos);
 			break;

@@ -24,6 +24,12 @@ public class FarmingConfigGen {
 			@Config.Comment({"Food Stats"})
 			public final Food food = new Food();
 			
+			@Config.Comment({"Food Stats"})
+			public final Fruits fruits = new Fruits();
+			
+			@Config.Comment({"Food Stats"})
+			public final Vegetables vegetables = new Vegetables();
+			
 			@Config.Comment({"Drinks Stats"})
 			public final Bottles drinks = new Bottles();
 			
@@ -40,14 +46,22 @@ public class FarmingConfigGen {
 				@Config.Comment("Golden Lemon Stats")
 				public int goldenLemonHealAmount = 2;
 				
-				@Config.Comment("Lemon Stats")
-				public int lemonHealAmount = 2;
-				
 				@Config.Comment("Mint Chocolate Bar Stats")
 				public int mintChocolateBarHealAmount = 4;
 				
 				@Config.Comment("Mint Tea Stats")
 				public int mintTeaHealAmount = 8;
+
+				@Config.Comment("Chocolate Cherry Stats")
+				public int chocolateCherryHealAmount = 3;
+				
+				@Config.Comment("Chocolate Banana Stats")
+				public int chocolateBananaHealAmount = 4;
+			}
+			
+			public class Fruits{
+				@Config.Comment("Lemon Stats")
+				public int lemonHealAmount = 2;
 				
 				@Config.Comment("Orange Heal Stats")
 				public int orangeHealAmount = 2;
@@ -55,24 +69,29 @@ public class FarmingConfigGen {
 				@Config.Comment("Cherry Stats")
 				public int cherryHealAmount = 1;
 				
+				@Config.Comment("Avocado Stats")
+				public int avocadoHealAmount = 3;
+				
 				@Config.Comment("Pear Stats")
 				public int pearHealAmount = 2;
 				
 				@Config.Comment("Banana Stats")
 				public int bananaHealAmount = 2;
 				
-				@Config.Comment("Chocolate Cherry Stats")
-				public int chocolateCherryHealAmount = 3;
-				
-				@Config.Comment("Chocolate Banana Stats")
-				public int chocolateBananaHealAmount = 4;
-				
-				@Config.Comment("Avocado Stats")
-				public int avocadoHealAmount = 2;
-				
 				@Config.Comment("Tomato Stats")
 				public int tomatoHealAmount = 2;
 				
+				@Config.Comment("Grape Stats")
+				public int grapesHealAmount = 1;
+				
+				@Config.Comment("Pineapple Stats")
+				public int pineappleHealAmount = 2;
+				
+				@Config.Comment("Mango Stats")
+				public int mangoHealAmount = 2;
+			}
+			
+			public class Vegetables{
 				@Config.Comment("Cucumber Stats")
 				public int cucumberHealAmount = 2;
 				

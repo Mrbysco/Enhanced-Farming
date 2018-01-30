@@ -2,7 +2,6 @@ package com.Mrbysco.EnhancedFarming.proxy;
 
 import java.util.List;
 
-import com.Mrbysco.EnhancedFarming.block.BlockFruitLeaves;
 import com.Mrbysco.EnhancedFarming.block.ILeafColor;
 import com.Mrbysco.EnhancedFarming.init.FarmingBlocks;
 import com.Mrbysco.EnhancedFarming.render.ScarecrowRenderer;
@@ -28,20 +27,13 @@ public class ClientProxy extends CommonProxy{
 	private static List<Block> coloredBlocks = Lists.newArrayList();
 	
 	public void addLeaves() {
-		coloredBlocks.add(FarmingBlocks.apple_leaves);
-		coloredBlocks.add(FarmingBlocks.blooming_apple_leaves);
-		coloredBlocks.add(FarmingBlocks.lemon_leaves);
-		coloredBlocks.add(FarmingBlocks.blooming_lemon_leaves);
-		coloredBlocks.add(FarmingBlocks.orange_leaves);
-		coloredBlocks.add(FarmingBlocks.blooming_orange_leaves);
-		coloredBlocks.add(FarmingBlocks.cherry_leaves);
-		coloredBlocks.add(FarmingBlocks.blooming_cherry_leaves);
-		coloredBlocks.add(FarmingBlocks.pear_leaves);
-		coloredBlocks.add(FarmingBlocks.blooming_pear_leaves);
-		coloredBlocks.add(FarmingBlocks.banana_leaves);
-		coloredBlocks.add(FarmingBlocks.blooming_banana_leaves);
-		coloredBlocks.add(FarmingBlocks.avocado_leaves);
-		coloredBlocks.add(FarmingBlocks.blooming_avocado_leaves);
+		for(Block block : FarmingBlocks.BLOCKS)
+		{
+			if (block instanceof ILeafColor)
+			{
+				coloredBlocks.add(block);
+			}
+		}
 		
 		this.registerColouring();
 	}

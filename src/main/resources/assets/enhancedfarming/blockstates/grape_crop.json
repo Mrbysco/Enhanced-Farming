@@ -1,0 +1,33 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "enhancedfarming:stick_crops",
+		"textures": {
+						"crop": "enhancedfarming:blocks/mintplant0"
+					}
+    },
+    "variants": {
+        "normal": [{}],
+	   	"age" : {
+   			"0" : { },
+			"1" : { "textures": {
+						"crop": "enhancedfarming:blocks/mintplant1"
+					}},
+			"2" : { "textures": {
+						"crop": "enhancedfarming:blocks/mintplant2"
+					}},
+			"3" : { "textures": {
+						"crop": "enhancedfarming:blocks/mintplant3"
+					}},
+			"4" : { "textures": {
+						"crop": "enhancedfarming:blocks/mintplant4"
+					}},
+			"5" : { "textures": {
+						"crop": "enhancedfarming:blocks/mintplant5"
+					}}
+		},
+		"inventory": [{
+			"model": "enhancedfarming:stick_crops"
+		}]
+    }
+}

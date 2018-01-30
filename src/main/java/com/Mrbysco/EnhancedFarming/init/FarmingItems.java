@@ -3,11 +3,12 @@ package com.Mrbysco.EnhancedFarming.init;
 import java.util.ArrayList;
 
 import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
+import com.Mrbysco.EnhancedFarming.item.ItemCropstickSeeds;
 import com.Mrbysco.EnhancedFarming.item.ItemCustom;
 import com.Mrbysco.EnhancedFarming.item.ItemCustomFood;
-import com.Mrbysco.EnhancedFarming.item.ItemCustomSeeds;
 import com.Mrbysco.EnhancedFarming.item.ItemCustomSpecialFood;
 import com.Mrbysco.EnhancedFarming.item.ItemRakeTool;
+import com.Mrbysco.EnhancedFarming.item.ItemRegularSeeds;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -25,8 +26,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 @EventBusSubscriber
 public class FarmingItems {
 	
-	public static ItemCustomSeeds mint_seeds;
-	public static ItemCustomSeeds nether_flower_seeds;
+	public static ItemRegularSeeds mint_seeds;
+	public static ItemRegularSeeds nether_flower_seeds;
 
 	public static ItemFood milk_bottle;
 	public static ItemFood cold_chocolate_bottle;
@@ -73,10 +74,15 @@ public class FarmingItems {
 	public static ItemFood tomato;
 	public static ItemFood cucumber;
 	public static ItemFood aubergine;
+	public static ItemFood grapes;
+	public static ItemFood mango;
+	public static ItemFood pineapple;
 	
-	public static ItemCustomSeeds tomato_seeds;
-	public static ItemCustomSeeds cucumber_seeds;
-	public static ItemCustomSeeds aubergine_seeds;
+	public static ItemRegularSeeds tomato_seeds;
+	public static ItemRegularSeeds cucumber_seeds;
+	public static ItemRegularSeeds aubergine_seeds;
+	public static ItemRegularSeeds pineapple_seeds;
+	public static ItemCropstickSeeds grape_seeds;
 	
 	//HealAmounts
 	private static int appleJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.appleJuiceHealAmount;
@@ -86,10 +92,10 @@ public class FarmingItems {
 	
 	private static int chocolateAmount = FarmingConfigGen.general.foodsettings.food.chocolateBarHealAmount;
 	private static int chocolateCandyAmount = FarmingConfigGen.general.foodsettings.food.chocolateCandyHealAmount;
-	private static int lemonAmount = FarmingConfigGen.general.foodsettings.food.lemonHealAmount;
+	private static int lemonAmount = FarmingConfigGen.general.foodsettings.fruits.lemonHealAmount;
 	private static int chocolateBarAmount = FarmingConfigGen.general.foodsettings.food.mintChocolateBarHealAmount;
 	private static int mintteaAmount = FarmingConfigGen.general.foodsettings.food.mintTeaHealAmount;
-	private static int orangeAmount = FarmingConfigGen.general.foodsettings.food.orangeHealAmount;
+	private static int orangeAmount = FarmingConfigGen.general.foodsettings.fruits.orangeHealAmount;
 	
 	private static int goldenLemon = FarmingConfigGen.general.foodsettings.food.goldenLemonHealAmount;
 	private static int goldenOrange = FarmingConfigGen.general.foodsettings.food.goldenOrangeHealAmount;
@@ -98,10 +104,10 @@ public class FarmingItems {
 	private static int coldchocolateAmount = FarmingConfigGen.general.foodsettings.drinks.coldChocolateBottleHealAmount;
 	private static int hotchocolateAmount = FarmingConfigGen.general.foodsettings.drinks.hotChocolateBottleHealAmount;
 
-	//New Content
-	private static int cherryAmount = FarmingConfigGen.general.foodsettings.food.cherryHealAmount;
-	private static int pearAmount = FarmingConfigGen.general.foodsettings.food.pearHealAmount;
-	private static int bananaAmount = FarmingConfigGen.general.foodsettings.food.bananaHealAmount;
+	//New Content HealAmounts
+	private static int cherryAmount = FarmingConfigGen.general.foodsettings.fruits.cherryHealAmount;
+	private static int pearAmount = FarmingConfigGen.general.foodsettings.fruits.pearHealAmount;
+	private static int bananaAmount = FarmingConfigGen.general.foodsettings.fruits.bananaHealAmount;
 	
 	private static int chocolateCherryAmount = FarmingConfigGen.general.foodsettings.food.chocolateCherryHealAmount;
 	private static int chocolateBananaAmount = FarmingConfigGen.general.foodsettings.food.chocolateBananaHealAmount;
@@ -113,10 +119,13 @@ public class FarmingItems {
 	private static int pearSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.lemonadeHealAmount;
 	private static int bananaSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.orangeJuiceHealAmount;
 	
-	private static int avocadoAmount = FarmingConfigGen.general.foodsettings.food.avocadoHealAmount;
-	private static int tomatoAmount = FarmingConfigGen.general.foodsettings.food.tomatoHealAmount;
-	private static int cucumberAmount = FarmingConfigGen.general.foodsettings.food.cucumberHealAmount;
-	private static int aubergineAmount = FarmingConfigGen.general.foodsettings.food.aubergineHealAmount;
+	private static int avocadoAmount = FarmingConfigGen.general.foodsettings.fruits.avocadoHealAmount;
+	private static int tomatoAmount = FarmingConfigGen.general.foodsettings.fruits.tomatoHealAmount;
+	private static int cucumberAmount = FarmingConfigGen.general.foodsettings.vegetables.cucumberHealAmount;
+	private static int aubergineAmount = FarmingConfigGen.general.foodsettings.vegetables.aubergineHealAmount;
+	private static int grapesAmount = FarmingConfigGen.general.foodsettings.fruits.grapesHealAmount;
+	private static int mangoAmount = FarmingConfigGen.general.foodsettings.fruits.mangoHealAmount;
+	private static int pineappleAmount = FarmingConfigGen.general.foodsettings.fruits.pineappleHealAmount;
 
 	public static ArrayList<Item> ITEMS = new ArrayList<>();
     
@@ -125,8 +134,8 @@ public class FarmingItems {
     {
         IForgeRegistry<Item> registry = event.getRegistry();
         
-        mint_seeds = registerItem(new ItemCustomSeeds(FarmingBlocks.mint_crop, Blocks.FARMLAND, "mintseeds", "mint_seeds"));
-		nether_flower_seeds = registerItem(new ItemCustomSeeds(FarmingBlocks.nether_flower_crop, Blocks.SOUL_SAND, "netherflowerseeds", "nether_flower_seeds"));
+        mint_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.mint_crop, Blocks.FARMLAND, "mintseeds", "mint_seeds"));
+		nether_flower_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.nether_flower_crop, Blocks.SOUL_SAND, "netherflowerseeds", "nether_flower_seeds"));
 		
 		apple_juice = registerItem(new ItemCustomFood(appleJuiceAmount, 0.3F, false, 64, 32, "applejuice", "apple_juice").setDrinkable().setContaining(Items.GLASS_BOTTLE));
 		chocolate_bar = registerItem(new ItemCustomFood(chocolateAmount, 0.7F, false, 64, 32, "chocolatebar", "chocolate_bar"));
@@ -158,7 +167,7 @@ public class FarmingItems {
 		}
 
 		//New Content
-		cherry = registerItem(new ItemCustomFood(cherryAmount, 0.5F, false, 64, 32, "cherry", "cherry"));
+		cherry = registerItem(new ItemCustomFood(cherryAmount, 0.3F, false, 64, 32, "cherry", "cherry"));
 		pear = registerItem(new ItemCustomFood(pearAmount, 0.5F, false, 64, 32, "pear", "pear"));
 		banana = registerItem(new ItemCustomFood(lemonAmount, 0.5F, false, 64, 32, "banana", "banana"));
 		
@@ -177,10 +186,18 @@ public class FarmingItems {
 		tomato = registerItem(new ItemCustomFood(tomatoAmount, 0.5F, false, 64, 32, "tomato", "tomato"));
 		cucumber = registerItem(new ItemCustomFood(cucumberAmount, 0.5F, false, 64, 32, "cucumber", "cucumber"));
 		aubergine = registerItem(new ItemCustomFood(aubergineAmount, 0.5F, false, 64, 32, "aubergine", "aubergine"));
+		grapes = registerItem(new ItemCustomFood(grapesAmount, 0.5F, false, 64, 32, "grapes", "grapes"));
+		mango = registerItem(new ItemCustomFood(mangoAmount, 0.5F, false, 64, 32, "mango", "mango"));
+		pineapple = registerItem(new ItemCustomFood(pineappleAmount, 0.5F, false, 64, 32, "pineapple", "pineapple"));
 		
-		tomato_seeds = registerItem(new ItemCustomSeeds(FarmingBlocks.tomato_crop, Blocks.FARMLAND, "tomatoseeds", "tomato_seeds"));
-		cucumber_seeds = registerItem(new ItemCustomSeeds(FarmingBlocks.cucumber_crop, Blocks.FARMLAND, "cucumberseeds", "cucumber_seeds"));
-		aubergine_seeds = registerItem(new ItemCustomSeeds(FarmingBlocks.aubergine_crop, Blocks.FARMLAND, "aubergineseeds", "aubergine_seeds"));
+		tomato_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.tomato_crop, Blocks.FARMLAND, "tomatoseeds", "tomato_seeds"));
+		cucumber_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.cucumber_crop, Blocks.FARMLAND, "cucumberseeds", "cucumber_seeds"));
+		aubergine_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.aubergine_crop, Blocks.FARMLAND, "aubergineseeds", "aubergine_seeds"));
+		pineapple_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.pineapple_crop, Blocks.FARMLAND, "pineappleseeds", "pineapple_seeds"));
+		
+		//cropstick crops
+		grape_seeds = registerItem(new ItemCropstickSeeds(FarmingBlocks.grape_crop, "grapeseeds", "grape_seeds"));
+		
 		//End new content
 
         registry.registerAll(ITEMS.toArray(new Item[0]));

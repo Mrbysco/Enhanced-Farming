@@ -25,6 +25,12 @@ public class CropHelper {
 		case TOMATO:
 			seed = FarmingItems.tomato_seeds;
 			break;
+		case GRAPE:
+			seed = FarmingItems.grape_seeds;
+			break;
+		case PINEAPPLE:
+			seed = FarmingItems.pineapple;
+			break;
 		default:
 			seed = FarmingItems.mint_seeds;
 			break;
@@ -48,6 +54,12 @@ public class CropHelper {
 			break;
 		case TOMATO:
 			crop = FarmingItems.tomato;
+			break;
+		case GRAPE:
+			crop = FarmingItems.grapes;
+			break;
+		case PINEAPPLE:
+			crop = FarmingItems.pineapple;
 			break;
 		default:
 			crop = FarmingItems.mint;

@@ -1,8 +1,9 @@
-package com.Mrbysco.EnhancedFarming.block;
+package com.Mrbysco.EnhancedFarming.block.crops;
 
 import java.util.Random;
 
 import com.Mrbysco.EnhancedFarming.Reference;
+import com.Mrbysco.EnhancedFarming.block.INetherCrop;
 import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.init.FarmingItems;
 

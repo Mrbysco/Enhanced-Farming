@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:avocado"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:avocado_sapling"
+	},
+	"conditions": [{
+		"type": "enhancedfarming:fruitToSeeds"
+	}]
+}

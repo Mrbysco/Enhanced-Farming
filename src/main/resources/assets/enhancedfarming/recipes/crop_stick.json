@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "enhancedfarming:crop_stick"
+  },
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    }
+  }
+}
