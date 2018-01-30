@@ -35,7 +35,7 @@ public class TreeWorldGen implements IWorldGenerator {
         
         if (BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.FOREST) && coldFlag && spookyFlag)
 		{
-        	int randomValue = random.nextInt(8);
+        	int randomValue = random.nextInt(10);
         	
         	switch (randomValue) {
         	default:
@@ -58,6 +58,10 @@ public class TreeWorldGen implements IWorldGenerator {
             	break;
             case 4:
             	fruitTree = new WorldGenFruitTree(EnumSaplingType.PEAR, 5);
+            	fruitTree.generate(world, random, new BlockPos(x, y, z));
+            	break;
+            case 5:
+            	fruitTree = new WorldGenFruitTree(EnumSaplingType.AVOCADO, 5);
             	fruitTree.generate(world, random, new BlockPos(x, y, z));
             	break;
             }

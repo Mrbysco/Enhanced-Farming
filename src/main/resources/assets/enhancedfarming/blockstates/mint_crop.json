@@ -1,34 +1,33 @@
-
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "enhancedfarming:mint_crop"
+        "model": "crop",
+		"textures": {
+						"crop": "enhancedfarming:blocks/mintplant0"
+					}
     },
     "variants": {
-        "normal": [{
-
-        }],
-		
+        "normal": [{}],
 	   	"age" : {
    			"0" : { },
 			"1" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintPlant1"
+						"crop": "enhancedfarming:blocks/mintplant1"
 					}},
 			"2" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintPlant2"
+						"crop": "enhancedfarming:blocks/mintplant2"
 					}},
 			"3" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintPlant3"
+						"crop": "enhancedfarming:blocks/mintplant3"
 					}},
 			"4" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintPlant4"
+						"crop": "enhancedfarming:blocks/mintplant4"
 					}},
 			"5" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintPlant5"
+						"crop": "enhancedfarming:blocks/mintplant5"
 					}}
 		},
 		"inventory": [{
-			"model": "enhancedfarming:mint_crop"
+			"model": "crop"
 		}]
     }
 }

@@ -53,7 +53,7 @@ public class FarmingConfigGen {
 				public int orangeHealAmount = 2;
 
 				@Config.Comment("Cherry Stats")
-				public int cherryHealAmount = 2;
+				public int cherryHealAmount = 1;
 				
 				@Config.Comment("Pear Stats")
 				public int pearHealAmount = 2;
@@ -66,6 +66,18 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Chocolate Banana Stats")
 				public int chocolateBananaHealAmount = 4;
+				
+				@Config.Comment("Avocado Stats")
+				public int avocadoHealAmount = 2;
+				
+				@Config.Comment("Tomato Stats")
+				public int tomatoHealAmount = 2;
+				
+				@Config.Comment("Cucumber Stats")
+				public int cucumberHealAmount = 2;
+				
+				@Config.Comment("Aubergine Stats")
+				public int aubergineHealAmount = 2;
 			}
 			
 			public class Bottles{

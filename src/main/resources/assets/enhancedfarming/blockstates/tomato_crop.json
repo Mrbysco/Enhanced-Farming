@@ -1,0 +1,38 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "crop",
+		"textures": {
+						"crop": "enhancedfarming:blocks/tomatoplant0"
+					}
+    },
+    "variants": {
+        "normal": [{}],
+	   	"age" : {
+   			"0" : { "textures": {
+						"crop": "enhancedfarming:blocks/tomatoplant0"
+					}},
+			"1" : { "textures": {
+						"crop": "enhancedfarming:blocks/tomatoplant1"
+					}},
+			"2" : { "textures": {
+						"crop": "enhancedfarming:blocks/tomatoplant2"
+					}},
+			"3" : { "textures": {
+						"crop": "enhancedfarming:blocks/tomatoplant3"
+					}},
+			"4" : { "textures": {
+						"crop": "enhancedfarming:blocks/tomatoplant4"
+					}},
+			"5" : { "textures": {
+						"crop": "enhancedfarming:blocks/tomatoplant5"
+					}},
+			"6" : { "textures": {
+						"crop": "enhancedfarming:blocks/tomatoplant6"
+					}}
+		},
+		"inventory": [{
+			"model": "crop"
+		}]
+    }
+}

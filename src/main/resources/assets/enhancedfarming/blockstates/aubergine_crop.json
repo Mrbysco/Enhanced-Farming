@@ -3,29 +3,29 @@
     "defaults": {
         "model": "crop",
 		"textures": {
-						"crop": "enhancedfarming:blocks/netherflower0"
+						"crop": "enhancedfarming:blocks/aubergineplant0"
 					}
     },
     "variants": {
         "normal": [{}],
 	   	"age" : {
    			"0" : { "textures": {
-						"crop": "enhancedfarming:blocks/netherflower0"
+						"crop": "enhancedfarming:blocks/aubergineplant0"
 					}},
 			"1" : { "textures": {
-						"crop": "enhancedfarming:blocks/netherflower1"
+						"crop": "enhancedfarming:blocks/aubergineplant1"
 					}},
 			"2" : { "textures": {
-						"crop": "enhancedfarming:blocks/netherflower2"
+						"crop": "enhancedfarming:blocks/aubergineplant2"
 					}},
 			"3" : { "textures": {
-						"crop": "enhancedfarming:blocks/netherflower3"
+						"crop": "enhancedfarming:blocks/aubergineplant3"
 					}},
 			"4" : { "textures": {
-						"crop": "enhancedfarming:blocks/netherflower4"
+						"crop": "enhancedfarming:blocks/aubergineplant4"
 					}},
 			"5" : { "textures": {
-						"crop": "enhancedfarming:blocks/netherflower5"
+						"crop": "enhancedfarming:blocks/aubergineplant5"
 					}}
 		},
 		"inventory": [{

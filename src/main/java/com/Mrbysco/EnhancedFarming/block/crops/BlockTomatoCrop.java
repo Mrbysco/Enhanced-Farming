@@ -1,10 +1,11 @@
-package com.Mrbysco.EnhancedFarming.block;
+package com.Mrbysco.EnhancedFarming.block.crops;
 
 import java.util.Random;
 
 import com.Mrbysco.EnhancedFarming.Reference;
+import com.Mrbysco.EnhancedFarming.block.EnumCropType;
 import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
-import com.Mrbysco.EnhancedFarming.init.FarmingItems;
+import com.Mrbysco.EnhancedFarming.util.CropHelper;
 
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.properties.IProperty;
@@ -20,20 +21,31 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
-@Deprecated
-public class BlockMint extends BlockCrops{
-    
-    public static final PropertyInteger MINT_AGE = PropertyInteger.create("age", 0, 5);
-    private static final AxisAlignedBB[] MINT_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.1875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.4375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5625D, 1.0D)};
+public class BlockTomatoCrop extends BlockCrops{
 	
-    public BlockMint(String unlocalizedName, String registryName) {
-    	super();
-    	this.setDefaultState(this.blockState.getBaseState().withProperty(MINT_AGE, Integer.valueOf(0)));
-        this.setCreativeTab((CreativeTabs)null);
+    public static final PropertyInteger TOMATO_AGE = PropertyInteger.create("age", 0, 6);
+    private static final AxisAlignedBB[] TOMATO_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.1875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.4375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5625D, 1.0D)};
 
+	public BlockTomatoCrop(String unlocalizedName, String registryName) {
+    	super();
+    	this.setDefaultState(this.blockState.getBaseState().withProperty(TOMATO_AGE, Integer.valueOf(0)));
+        this.setCreativeTab((CreativeTabs)null);
+        
 		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
 		this.setRegistryName(registryName);
 	}
+	
+	@Override
+    protected Item getSeed()
+    {
+        return CropHelper.getCropSeed(EnumCropType.TOMATO);
+    }
+    
+    @Override
+    protected Item getCrop()
+    {
+        return CropHelper.getCrop(EnumCropType.TOMATO);
+    }
     
     @Override
     public void grow(World worldIn, BlockPos pos, IBlockState state) {
@@ -59,19 +71,7 @@ public class BlockMint extends BlockCrops{
     
     protected PropertyInteger getAgeProperty()
     {
-        return MINT_AGE;
-    }
-    
-    @Override
-    protected Item getSeed()
-    {
-        return FarmingItems.mint_seeds;
-    }
-    
-    @Override
-    protected Item getCrop()
-    {
-        return FarmingItems.mint;
+        return TOMATO_AGE;
     }
     
     @Override
@@ -82,7 +82,7 @@ public class BlockMint extends BlockCrops{
     
 	@Override
 	public int getMaxAge() {
-		return 5;
+		return 6;
 	}
     
     @Override
@@ -111,25 +111,25 @@ public class BlockMint extends BlockCrops{
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(MINT_AGE, Integer.valueOf(meta));
+        return this.getDefaultState().withProperty(TOMATO_AGE, Integer.valueOf(meta));
     }
     
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(MINT_AGE)).intValue();
+        return ((Integer)state.getValue(TOMATO_AGE)).intValue();
     }
     
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {MINT_AGE});
+        return new BlockStateContainer(this, new IProperty[] {TOMATO_AGE});
     }
     
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
-        return MINT_AABB[((Integer)state.getValue(this.getAgeProperty())).intValue()];
+        return TOMATO_AABB[((Integer)state.getValue(this.getAgeProperty())).intValue()];
     }
     
     @Override

@@ -11,6 +11,19 @@ tile.enhancedfarming:lemonleaves.name=Lemon Leaves
 tile.enhancedfarming:bloominglemonleaves.name=Blooming Lemon Leaves
 tile.enhancedfarming:orangeleaves.name=Orange Leaves
 tile.enhancedfarming:bloomingorangeleaves.name=Blooming Orange Leaves
+tile.enhancedfarming:applesapling.name=Apple Seeds
+tile.enhancedfarming:lemonsapling.name=Lemon Seeds
+tile.enhancedfarming:orangesapling.name=Orange Seeds
+
+tile.enhancedfarming:mintcrop.name=Mint Crop
+tile.enhancedfarming:netherflowercrop.name=Nether Flower Crop
+tile.enhancedfarming:scarecrow.name=Scarecrow
+
+#new blocks
+tile.enhancedfarming:cherrysapling.name=Cherry Seeds
+tile.enhancedfarming:pearsapling.name=Pear Seeds
+tile.enhancedfarming:bananasapling.name=Banana Seeds
+tile.enhancedfarming:avocadosapling.name=Avocado Seed
 
 tile.enhancedfarming:cherryleaves.name=Cherry Leaves
 tile.enhancedfarming:bloomingcherryleaves.name=Blooming Cherry Leaves
@@ -18,18 +31,12 @@ tile.enhancedfarming:pearleaves.name=Pear Leaves
 tile.enhancedfarming:bloomingpearleaves.name=Blooming Pear Leaves
 tile.enhancedfarming:bananaleaves.name=Banana Leaves
 tile.enhancedfarming:bloomingbananaleaves.name=Blooming Banana Leaves
+tile.enhancedfarming:avocadoleaves.name=Avocado Leaves
+tile.enhancedfarming:bloomingavocadoleaves.name=Blooming Avocado Leaves
 
-tile.enhancedfarming:applesapling.name=Apple Seeds
-tile.enhancedfarming:lemonsapling.name=Lemon Seeds
-tile.enhancedfarming:orangesapling.name=Orange Seeds
-
-tile.enhancedfarming:cherrysapling.name=Cherry Seeds
-tile.enhancedfarming:pearsapling.name=Pear Seeds
-tile.enhancedfarming:bananasapling.name=Banana Seeds
-
-tile.enhancedfarming:mintcrop.name=Mint Crop
-tile.enhancedfarming:netherflowercrop.name=Nether Flower Crop
-tile.enhancedfarming:scarecrow.name=Scarecrow
+tile.enhancedfarming:tomatocrop.name=Tomato Crop
+tile.enhancedfarming:cucumbercrop.name=Cucumber Crop
+tile.enhancedfarming:auberginecrop.name=Aubergine Crop
 
 #items
 item.enhancedfarming:applejuice.name=Apple Juice
@@ -56,17 +63,22 @@ item.enhancedfarming:hotwater.name=Boiled Water
 item.enhancedfarming:goldenlemon.name=Golden lemon
 item.enhancedfarming:goldenorange.name=Golden Orange
 
+#new items
 item.enhancedfarming:cherry.name=Cherry
 item.enhancedfarming:pear.name=Pear
 item.enhancedfarming:banana.name=Banana
-
 item.enhancedfarming:chocolatecherry.name=Chocolate Cherry
 item.enhancedfarming:chocolatebanana.name=Chocolate Banana
-
 item.enhancedfarming:smoothieapple.name=Apple Smoothie
 item.enhancedfarming:smoothielemon.name=Lemon Smoothie
 item.enhancedfarming:smoothieorange.name=Orange Smoothie
-
 item.enhancedfarming:smoothiecherry.name=Cherry Smoothie
 item.enhancedfarming:smoothiepear.name=Pear Smoothie
-item.enhancedfarming:smoothiebanana.name=Banana Smoothie
+item.enhancedfarming:avocado.name=Avocado
+item.enhancedfarming:tomato.name=Tomato
+item.enhancedfarming:cucumber.name=Cucumber
+item.enhancedfarming:aubergine.name=Aubergine
+
+item.enhancedfarming:tomatoseeds.name=Tomato Seeds
+item.enhancedfarming:cucumberseeds.name=Cucumber Seeds
+item.enhancedfarming:aubergineseeds.name=Aubergine Seeds

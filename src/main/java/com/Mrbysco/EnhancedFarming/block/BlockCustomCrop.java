@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.Mrbysco.EnhancedFarming.Reference;
 import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
-import com.Mrbysco.EnhancedFarming.init.FarmingItems;
+import com.Mrbysco.EnhancedFarming.util.CropHelper;
 
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.properties.IProperty;
@@ -22,19 +22,31 @@ import net.minecraftforge.common.EnumPlantType;
 
 public class BlockCustomCrop extends BlockCrops{
 	
-	public static int MAX_AGE = 5;
-    public static final PropertyInteger CROP_AGE = PropertyInteger.create("age", 0, MAX_AGE);
+	private EnumCropType TYPE;
+    public static final PropertyInteger CROP_AGE = PropertyInteger.create("age", 0, 5);
     private static final AxisAlignedBB[] CROP_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.1875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.4375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5625D, 1.0D)};
 	
-    public BlockCustomCrop(String unlocalizedName, String registryName, int maxAge) {
+    public BlockCustomCrop(String unlocalizedName, String registryName, EnumCropType cropType) {
     	super();
     	this.setDefaultState(this.blockState.getBaseState().withProperty(CROP_AGE, Integer.valueOf(0)));
         this.setCreativeTab((CreativeTabs)null);
-
-        this.MAX_AGE = maxAge;
+        
+        this.TYPE = cropType;
 		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
 		this.setRegistryName(registryName);
 	}
+
+    @Override
+    protected Item getSeed()
+    {
+        return CropHelper.getCropSeed(this.TYPE);
+    }
+    
+    @Override
+    protected Item getCrop()
+    {
+        return CropHelper.getCrop(this.TYPE);
+    }
     
     @Override
     public void grow(World worldIn, BlockPos pos, IBlockState state) {
@@ -61,18 +73,6 @@ public class BlockCustomCrop extends BlockCrops{
     protected PropertyInteger getAgeProperty()
     {
         return CROP_AGE;
-    }
-    
-    @Override
-    protected Item getSeed()
-    {
-        return FarmingItems.mint_seeds;
-    }
-    
-    @Override
-    protected Item getCrop()
-    {
-        return FarmingItems.mint;
     }
     
     @Override

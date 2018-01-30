@@ -33,6 +33,9 @@ public class TreeHelper {
 		case BANANA:
 			sapling = FarmingBlocks.banana_sapling;
 			break;
+		case AVOCADO:
+			sapling = FarmingBlocks.avocado_sapling;
+			break;
 		default:
 			sapling = FarmingBlocks.apple_sapling;
 			break;
@@ -62,6 +65,9 @@ public class TreeHelper {
 			break;
 		case BANANA:
 			leave = FarmingBlocks.blooming_banana_leaves.getDefaultState();
+			break;
+		case AVOCADO:
+			leave = FarmingBlocks.blooming_avocado_leaves.getDefaultState();
 			break;
 		default:
 			leave = FarmingBlocks.blooming_apple_leaves.getDefaultState();
@@ -93,6 +99,9 @@ public class TreeHelper {
 		case BANANA:
 			leave = FarmingBlocks.banana_leaves.getDefaultState();
 			break;
+		case AVOCADO:
+			leave = FarmingBlocks.avocado_leaves.getDefaultState();
+			break;
 		default:
 			leave = FarmingBlocks.apple_leaves.getDefaultState();
 			break;
@@ -122,6 +131,9 @@ public class TreeHelper {
 			break;
 		case BANANA:
 			fruit = FarmingItems.banana;
+			break;
+		case AVOCADO:
+			fruit = FarmingItems.avocado;
 			break;
 		default:
 			fruit = Items.APPLE;
