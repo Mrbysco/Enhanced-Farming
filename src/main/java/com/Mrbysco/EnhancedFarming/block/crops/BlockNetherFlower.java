@@ -28,13 +28,13 @@ import net.minecraftforge.common.EnumPlantType;
 public class BlockNetherFlower extends BlockBush implements INetherCrop, IGrowable{
 
     private static final AxisAlignedBB[] NETHERFLOWER_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D)};
-    public static final PropertyInteger WART_AGE = PropertyInteger.create("age", 0, 5);
+    public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 5);
 
     public BlockNetherFlower(String unlocalizedName, String registryName) {
     	super();
-    	this.setDefaultState(this.blockState.getBaseState().withProperty(WART_AGE, Integer.valueOf(0)));
+    	this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
+        this.setTickRandomly(true);
         this.setCreativeTab((CreativeTabs)null);
-        
         this.blockSoundType = blockSoundType.PLANT;
 
 		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
@@ -43,7 +43,7 @@ public class BlockNetherFlower extends BlockBush implements INetherCrop, IGrowab
     
     protected PropertyInteger getAgeProperty()
     {
-        return WART_AGE;
+        return AGE;
     }
     
     protected Item getSeed()
@@ -85,11 +85,11 @@ public class BlockNetherFlower extends BlockBush implements INetherCrop, IGrowab
     @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
-        int i = ((Integer)state.getValue(WART_AGE)).intValue();
+        int i = ((Integer)state.getValue(AGE)).intValue();
 
-        if (i < 3 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt(10) == 0))
+        if (i < 5 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt(10) == 0))
         {
-            IBlockState newState = state.withProperty(WART_AGE, Integer.valueOf(i + 1));
+            IBlockState newState = state.withProperty(AGE, Integer.valueOf(i + 1));
             worldIn.setBlockState(pos, newState, 2);
             net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state, newState);
         }
@@ -110,7 +110,7 @@ public class BlockNetherFlower extends BlockBush implements INetherCrop, IGrowab
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
-        return NETHERFLOWER_AABB[((Integer)state.getValue(WART_AGE)).intValue()];
+        return NETHERFLOWER_AABB[((Integer)state.getValue(AGE)).intValue()];
     }
 
     @Override
@@ -126,19 +126,22 @@ public class BlockNetherFlower extends BlockBush implements INetherCrop, IGrowab
         }
     }
     
+    @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(WART_AGE, Integer.valueOf(meta));
-    }
-
-    public int getMetaFromState(IBlockState state)
-    {
-        return ((Integer)state.getValue(WART_AGE)).intValue();
+        return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
     }
     
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((Integer)state.getValue(AGE)).intValue();
+    }
+    
+    @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {WART_AGE});
+        return new BlockStateContainer(this, new IProperty[] {AGE});
     }
     
     @Override
@@ -171,7 +174,7 @@ public class BlockNetherFlower extends BlockBush implements INetherCrop, IGrowab
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 		int i;
-        int j = this.getMaxAge();;
+        int j = this.getMaxAge();
         
     	if (FarmingConfigGen.general.othersettings.instantGrow)
     	{

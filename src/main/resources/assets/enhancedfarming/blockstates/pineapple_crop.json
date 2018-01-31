@@ -3,7 +3,7 @@
     "defaults": {
         "model": "crop",
 		"textures": {
-						"crop": "enhancedfarming:blocks/mintplant0"
+						"crop": "enhancedfarming:blocks/pineappleplant0"
 					}
     },
     "variants": {
@@ -11,19 +11,19 @@
 	   	"age" : {
    			"0" : { },
 			"1" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant1"
+						"crop": "enhancedfarming:blocks/pineappleplant1"
 					}},
 			"2" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant2"
+						"crop": "enhancedfarming:blocks/pineappleplant2"
 					}},
 			"3" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant3"
+						"crop": "enhancedfarming:blocks/pineappleplant3"
 					}},
 			"4" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant4"
+						"crop": "enhancedfarming:blocks/pineappleplant4"
 					}},
 			"5" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant5"
+						"crop": "enhancedfarming:blocks/pineappleplant5"
 					}}
 		},
 		"inventory": [{

@@ -29,13 +29,13 @@ import net.minecraftforge.common.EnumPlantType;
 public class BlockCropstickCrop extends BlockCrops{
 	
 	private EnumCropType TYPE;
-    public static final PropertyInteger CROP_AGE = PropertyInteger.create("age", 0, 5);
+    public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 5);
     protected static final AxisAlignedBB CROPSTICK_AABB = new AxisAlignedBB(0.30000001192092896D, 0.0D, 0.30000001192092896D, 0.699999988079071D, 0.6000000238418579D, 0.699999988079071D);
 	
     public BlockCropstickCrop(String unlocalizedName, String registryName, EnumCropType cropType) {
     	super();
         this.setHardness(0.5F);
-    	this.setDefaultState(this.blockState.getBaseState().withProperty(CROP_AGE, Integer.valueOf(0)));
+    	this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
         this.setCreativeTab((CreativeTabs)null);
         
         this.TYPE = cropType;
@@ -79,7 +79,7 @@ public class BlockCropstickCrop extends BlockCrops{
     
     protected PropertyInteger getAgeProperty()
     {
-        return CROP_AGE;
+        return AGE;
     }
     
     @Override
@@ -129,19 +129,19 @@ public class BlockCropstickCrop extends BlockCrops{
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(CROP_AGE, Integer.valueOf(meta));
+        return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
     }
     
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(CROP_AGE)).intValue();
+        return ((Integer)state.getValue(AGE)).intValue();
     }
     
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {CROP_AGE});
+        return new BlockStateContainer(this, new IProperty[] {AGE});
     }
     
     @Override
