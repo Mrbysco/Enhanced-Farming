@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.Mrbysco.EnhancedFarming.block.crops.BlockCropstickCrop;
 import com.Mrbysco.EnhancedFarming.block.crops.BlockNetherFlower;
-import com.Mrbysco.EnhancedFarming.block.crops.BlockRegularCrop;
+import com.Mrbysco.EnhancedFarming.block.crops.BlockFiveAgeCrop;
 import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.init.FarmingItems;
 

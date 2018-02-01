@@ -1,0 +1,41 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "crop",
+		"textures": {
+						"crop": "enhancedfarming:blocks/cornplant0"
+					}
+    },
+    "variants": {
+        "normal": [{}],
+	   	"age" : {
+   			"0" : { "textures": {
+						"crop": "enhancedfarming:blocks/cornplant0"
+					}},
+			"1" : { "textures": {
+						"crop": "enhancedfarming:blocks/cornplant1"
+					}},
+			"2" : { "textures": {
+						"crop": "enhancedfarming:blocks/cornplant2"
+					}},
+			"3" : { "textures": {
+						"crop": "enhancedfarming:blocks/cornplant3"
+					}},
+			"4" : { "textures": {
+						"crop": "enhancedfarming:blocks/cornplant4"
+					}},
+			"5" : { "textures": {
+						"crop": "enhancedfarming:blocks/cornplant5"
+					}},
+			"6" : { "textures": {
+						"crop": "enhancedfarming:blocks/cornplant6"
+					}},
+			"7" : { "textures": {
+						"crop": "enhancedfarming:blocks/cornplant7"
+					}}
+		},
+		"inventory": [{
+			"model": "crop"
+		}]
+    }
+}

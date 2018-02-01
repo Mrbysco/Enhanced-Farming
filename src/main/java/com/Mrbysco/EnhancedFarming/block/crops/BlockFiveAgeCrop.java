@@ -23,13 +23,13 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
-public class BlockRegularCrop extends BlockCrops{
+public class BlockFiveAgeCrop extends BlockCrops{
 	
 	private EnumCropType TYPE;
     public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 5);
     private static final AxisAlignedBB[] CROP_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.1875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.4375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5625D, 1.0D)};
 	
-    public BlockRegularCrop(String unlocalizedName, String registryName, EnumCropType cropType) {
+    public BlockFiveAgeCrop(String unlocalizedName, String registryName, EnumCropType cropType) {
     	super();
     	this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
         this.setCreativeTab((CreativeTabs)null);
@@ -157,14 +157,5 @@ public class BlockRegularCrop extends BlockCrops{
     protected int getBonemealAgeIncrease(World worldIn)
     {
         return super.getBonemealAgeIncrease(worldIn) / 2;
-    }
-    
-    @Override
-    public void getDrops(NonNullList<ItemStack> drops, net.minecraft.world.IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
-    {
-    	boolean flag = this.TYPE.CanDropMultiple();
-        super.getDrops(drops, world, pos, state, fortune);
-        if (this.isMaxAge(state) && RANDOM.nextInt(50) == 0 && flag)
-            drops.add(new ItemStack(CropHelper.getCrop(this.TYPE)));
     }
 }

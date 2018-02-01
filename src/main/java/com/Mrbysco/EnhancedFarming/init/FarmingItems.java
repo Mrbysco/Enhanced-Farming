@@ -62,6 +62,13 @@ public class FarmingItems {
 	
 	public static ItemFood chocolate_cherry;
 	public static ItemFood chocolate_banana;
+
+	public static ItemFood cherry_juice;
+	public static ItemFood pear_juice;
+	public static ItemFood banana_juice;
+	public static ItemFood grape_juice;
+	public static ItemFood mango_juice;
+	public static ItemFood pineapple_juice;
 	
 	public static ItemFood smoothie_apple;
 	public static ItemFood smoothie_lemon;
@@ -69,6 +76,10 @@ public class FarmingItems {
 	public static ItemFood smoothie_cherry;
 	public static ItemFood smoothie_pear;
 	public static ItemFood smoothie_banana;
+	public static ItemFood smoothie_grape;
+	public static ItemFood smoothie_mango;
+	public static ItemFood smoothie_pineapple;
+	public static ItemFood smoothie_cucumber;
 	
 	public static ItemFood avocado;
 	public static ItemFood tomato;
@@ -77,18 +88,19 @@ public class FarmingItems {
 	public static ItemFood grapes;
 	public static ItemFood mango;
 	public static ItemFood pineapple;
+	public static ItemFood corn;
 	
 	public static ItemRegularSeeds tomato_seeds;
 	public static ItemRegularSeeds cucumber_seeds;
 	public static ItemRegularSeeds aubergine_seeds;
 	public static ItemRegularSeeds pineapple_seeds;
+	public static ItemRegularSeeds corn_seeds;
 	public static ItemCropstickSeeds grape_seeds;
 	
 	//HealAmounts
 	private static int appleJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.appleJuiceHealAmount;
 	private static int lemonadeAmount = FarmingConfigGen.general.foodsettings.drinks.lemonadeHealAmount;
 	private static int orangeJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.orangeJuiceHealAmount;
-
 	
 	private static int chocolateAmount = FarmingConfigGen.general.foodsettings.food.chocolateBarHealAmount;
 	private static int chocolateCandyAmount = FarmingConfigGen.general.foodsettings.food.chocolateCandyHealAmount;
@@ -112,12 +124,23 @@ public class FarmingItems {
 	private static int chocolateCherryAmount = FarmingConfigGen.general.foodsettings.food.chocolateCherryHealAmount;
 	private static int chocolateBananaAmount = FarmingConfigGen.general.foodsettings.food.chocolateBananaHealAmount;
 	
-	private static int appleSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.appleJuiceHealAmount;
-	private static int lemonSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.lemonadeHealAmount;
-	private static int orangeSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.orangeJuiceHealAmount;
-	private static int cherrySmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.appleJuiceHealAmount;
-	private static int pearSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.lemonadeHealAmount;
-	private static int bananaSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.orangeJuiceHealAmount;
+	private static int cherryJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.cherryJuiceHealAmount;
+	private static int pearJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.pearJuiceHealAmount;
+	private static int bananaJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.bananaJuiceHealAmount;
+	private static int grapeJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.grapeJuiceHealAmount;
+	private static int mangoJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.mangoJuiceHealAmount;
+	private static int pineappleJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.pineappleJuiceHealAmount;
+	
+	private static int appleSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothieAppleHealAmount;
+	private static int lemonSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothieLemonHealAmount;
+	private static int orangeSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothieOrangeHealAmount;
+	private static int cherrySmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothieCherryHealAmount;
+	private static int pearSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothiePearHealAmount;
+	private static int bananaSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothieBananaHealAmount;
+	private static int grapeSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothieGrapeHealAmount;
+	private static int mangoSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothieMangoHealAmount;
+	private static int pineappleSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothiePineappleHealAmount;
+	private static int cucumberSmoothieAmount = FarmingConfigGen.general.foodsettings.drinks.smoothieCucumberHealAmount;
 	
 	private static int avocadoAmount = FarmingConfigGen.general.foodsettings.fruits.avocadoHealAmount;
 	private static int tomatoAmount = FarmingConfigGen.general.foodsettings.fruits.tomatoHealAmount;
@@ -126,7 +149,8 @@ public class FarmingItems {
 	private static int grapesAmount = FarmingConfigGen.general.foodsettings.fruits.grapesHealAmount;
 	private static int mangoAmount = FarmingConfigGen.general.foodsettings.fruits.mangoHealAmount;
 	private static int pineappleAmount = FarmingConfigGen.general.foodsettings.fruits.pineappleHealAmount;
-
+	private static int cornAmount = FarmingConfigGen.general.foodsettings.vegetables.cornHealAmount;
+	
 	public static ArrayList<Item> ITEMS = new ArrayList<>();
     
     @SubscribeEvent
@@ -174,29 +198,45 @@ public class FarmingItems {
 		chocolate_cherry = registerItem(new ItemCustomFood(chocolateCherryAmount, 0.5F, false, 64, 32, "chocolatecherry", "chocolate_cherry"));
 		chocolate_banana = registerItem(new ItemCustomFood(chocolateBananaAmount, 0.7F, false, 64, 32, "chocolatebanana", "chocolate_banana"));
 		
+		cherry_juice = registerItem(new ItemCustomFood(cherryJuiceAmount, 0.3F, false, 64, 32, "cherryjuice", "cherry_juice"));
+		pear_juice = registerItem(new ItemCustomFood(pearJuiceAmount, 0.3F, false, 64, 32, "pearjuice", "pear_juice"));
+		banana_juice = registerItem(new ItemCustomFood(bananaJuiceAmount, 0.3F, false, 64, 32, "bananajuice", "banana_juice"));
+		grape_juice = registerItem(new ItemCustomFood(grapeJuiceAmount, 0.3F, false, 64, 32, "grapejuice", "grape_juice"));
+		mango_juice = registerItem(new ItemCustomFood(mangoJuiceAmount, 0.3F, false, 64, 32, "mangojuice", "mango_juice"));
+		pineapple_juice = registerItem(new ItemCustomFood(pineappleJuiceAmount, 0.3F, false, 64, 32, "pineapplejuice", "pineapple_juice"));
+
 		smoothie_apple = registerItem(new ItemCustomFood(appleSmoothieAmount, 0.5F, false, 16, 32, "smoothieapple", "smoothie_apple").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
 		smoothie_lemon = registerItem(new ItemCustomFood(lemonSmoothieAmount, 0.5F, false, 16, 32, "smoothielemon", "smoothie_lemon").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
 		smoothie_orange = registerItem(new ItemCustomFood(orangeSmoothieAmount, 0.5F, false, 16, 32, "smoothieorange", "smoothie_orange").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		
-		smoothie_cherry = registerItem(new ItemCustomFood(cherrySmoothieAmount, 0.5F, false, 16, 32, "smoothiecherry", "smoothie_cherry").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
+		smoothie_cherry = registerItem(new ItemCustomFood(cherrySmoothieAmount, 0.4F, false, 16, 32, "smoothiecherry", "smoothie_cherry").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
 		smoothie_pear = registerItem(new ItemCustomFood(pearSmoothieAmount, 0.5F, false, 16, 32, "smoothiepear", "smoothie_pear").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
 		smoothie_banana = registerItem(new ItemCustomFood(bananaSmoothieAmount, 0.5F, false, 16, 32, "smoothiebanana", "smoothie_banana").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
 		
+		smoothie_grape = registerItem(new ItemCustomFood(grapeSmoothieAmount, 0.4F, false, 16, 32, "smoothiegrape", "smoothie_grape").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
+		smoothie_mango = registerItem(new ItemCustomFood(mangoSmoothieAmount, 0.5F, false, 16, 32, "smoothiemango", "smoothie_mango").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
+		smoothie_pineapple = registerItem(new ItemCustomFood(pineappleSmoothieAmount, 0.5F, false, 16, 32, "smoothiepineapple", "smoothie_pineapple").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
+		smoothie_cucumber = registerItem(new ItemCustomFood(cucumberSmoothieAmount, 0.5F, false, 16, 32, "smoothiecucumber", "smoothie_cucumber").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
+
 		avocado = registerItem(new ItemCustomFood(avocadoAmount, 0.5F, false, 64, 32, "avocado", "avocado"));
-		tomato = registerItem(new ItemCustomFood(tomatoAmount, 0.5F, false, 64, 32, "tomato", "tomato"));
-		cucumber = registerItem(new ItemCustomFood(cucumberAmount, 0.5F, false, 64, 32, "cucumber", "cucumber"));
-		aubergine = registerItem(new ItemCustomFood(aubergineAmount, 0.5F, false, 64, 32, "aubergine", "aubergine"));
-		grapes = registerItem(new ItemCustomFood(grapesAmount, 0.5F, false, 64, 32, "grapes", "grapes"));
 		mango = registerItem(new ItemCustomFood(mangoAmount, 0.5F, false, 64, 32, "mango", "mango"));
-		pineapple = registerItem(new ItemCustomFood(pineappleAmount, 0.5F, false, 64, 32, "pineapple", "pineapple"));
 		
+		tomato = registerItem(new ItemCustomFood(tomatoAmount, 0.5F, false, 64, 32, "tomato", "tomato"));
 		tomato_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.tomato_crop, Blocks.FARMLAND, "tomatoseeds", "tomato_seeds"));
+
+		cucumber = registerItem(new ItemCustomFood(cucumberAmount, 0.5F, false, 64, 32, "cucumber", "cucumber"));
 		cucumber_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.cucumber_crop, Blocks.FARMLAND, "cucumberseeds", "cucumber_seeds"));
+
+		aubergine = registerItem(new ItemCustomFood(aubergineAmount, 0.5F, false, 64, 32, "aubergine", "aubergine"));
 		aubergine_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.aubergine_crop, Blocks.FARMLAND, "aubergineseeds", "aubergine_seeds"));
+
+		grapes = registerItem(new ItemCustomFood(grapesAmount, 0.5F, false, 64, 32, "grapes", "grapes"));
+		grape_seeds = registerItem(new ItemCropstickSeeds(FarmingBlocks.grape_crop, "grapeseeds", "grape_seeds"));
+
+		pineapple = registerItem(new ItemCustomFood(pineappleAmount, 0.5F, false, 64, 32, "pineapple", "pineapple"));
 		pineapple_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.pineapple_crop, Blocks.FARMLAND, "pineappleseeds", "pineapple_seeds"));
 		
-		//cropstick crops
-		grape_seeds = registerItem(new ItemCropstickSeeds(FarmingBlocks.grape_crop, "grapeseeds", "grape_seeds"));
+		corn = registerItem(new ItemCustomFood(cornAmount, 0.5F, false, 64, 32, "corn", "corn"));
+		corn_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.corn_crop, Blocks.FARMLAND, "cornseeds", "corn_seeds"));
 		
 		//End new content
 

@@ -15,22 +15,26 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
-public class BlockTomatoCrop extends BlockCrops{
+public class BlockSixAgeCrop extends BlockCrops{
 	
-    public static final PropertyInteger TOMATO_AGE = PropertyInteger.create("age", 0, 6);
-    private static final AxisAlignedBB[] TOMATO_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.1875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.4375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5625D, 1.0D)};
+	private EnumCropType TYPE;
+    public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 6);
+    private static final AxisAlignedBB[] CROP_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.1875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.3125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.4375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5625D, 1.0D)};
 
-	public BlockTomatoCrop(String unlocalizedName, String registryName) {
+	public BlockSixAgeCrop(String unlocalizedName, String registryName, EnumCropType cropType) {
     	super();
-    	this.setDefaultState(this.blockState.getBaseState().withProperty(TOMATO_AGE, Integer.valueOf(0)));
+    	this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
         this.setCreativeTab((CreativeTabs)null);
         
+        this.TYPE = cropType;
 		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
 		this.setRegistryName(registryName);
 	}
@@ -38,13 +42,13 @@ public class BlockTomatoCrop extends BlockCrops{
 	@Override
     protected Item getSeed()
     {
-        return CropHelper.getCropSeed(EnumCropType.TOMATO);
+        return CropHelper.getCropSeed(this.TYPE);
     }
     
     @Override
     protected Item getCrop()
     {
-        return CropHelper.getCrop(EnumCropType.TOMATO);
+        return CropHelper.getCrop(this.TYPE);
     }
     
     @Override
@@ -71,7 +75,7 @@ public class BlockTomatoCrop extends BlockCrops{
     
     protected PropertyInteger getAgeProperty()
     {
-        return TOMATO_AGE;
+        return AGE;
     }
     
     @Override
@@ -111,25 +115,25 @@ public class BlockTomatoCrop extends BlockCrops{
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(TOMATO_AGE, Integer.valueOf(meta));
+        return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
     }
     
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(TOMATO_AGE)).intValue();
+        return ((Integer)state.getValue(AGE)).intValue();
     }
     
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {TOMATO_AGE});
+        return new BlockStateContainer(this, new IProperty[] {AGE});
     }
     
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
-        return TOMATO_AABB[((Integer)state.getValue(this.getAgeProperty())).intValue()];
+        return CROP_AABB[((Integer)state.getValue(this.getAgeProperty())).intValue()];
     }
     
     @Override

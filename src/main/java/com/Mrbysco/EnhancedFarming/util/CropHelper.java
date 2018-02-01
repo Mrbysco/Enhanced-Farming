@@ -31,6 +31,9 @@ public class CropHelper {
 		case PINEAPPLE:
 			seed = FarmingItems.pineapple;
 			break;
+		case CORN:
+			seed = FarmingItems.corn_seeds;
+			break;
 		default:
 			seed = FarmingItems.mint_seeds;
 			break;
@@ -60,6 +63,9 @@ public class CropHelper {
 			break;
 		case PINEAPPLE:
 			crop = FarmingItems.pineapple;
+			break;
+		case CORN:
+			crop = FarmingItems.corn;
 			break;
 		default:
 			crop = FarmingItems.mint;

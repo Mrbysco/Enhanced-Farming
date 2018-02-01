@@ -10,9 +10,10 @@ import com.Mrbysco.EnhancedFarming.block.BlockScarecrow;
 import com.Mrbysco.EnhancedFarming.block.EnumCropType;
 import com.Mrbysco.EnhancedFarming.block.EnumSaplingType;
 import com.Mrbysco.EnhancedFarming.block.crops.BlockCropstickCrop;
+import com.Mrbysco.EnhancedFarming.block.crops.BlockFiveAgeCrop;
 import com.Mrbysco.EnhancedFarming.block.crops.BlockNetherFlower;
-import com.Mrbysco.EnhancedFarming.block.crops.BlockRegularCrop;
-import com.Mrbysco.EnhancedFarming.block.crops.BlockTomatoCrop;
+import com.Mrbysco.EnhancedFarming.block.crops.BlockSevenAgeCrop;
+import com.Mrbysco.EnhancedFarming.block.crops.BlockSixAgeCrop;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -49,6 +50,7 @@ public class FarmingBlocks {
 	public static BlockCrops cucumber_crop;
 	public static BlockCrops aubergine_crop;
 	public static BlockCrops pineapple_crop;
+	public static BlockCrops corn_crop;
 	
 	//cropstick crops
 	public static BlockCrops grape_crop;
@@ -77,7 +79,7 @@ public class FarmingBlocks {
     {
         IForgeRegistry<Block> registry = event.getRegistry();
         
-        mint_crop = registerBlock(new BlockRegularCrop("mintcrop", "mint_crop", EnumCropType.MINT));
+        mint_crop = registerBlock(new BlockFiveAgeCrop("mintcrop", "mint_crop", EnumCropType.MINT));
 		nether_flower_crop = registerBlock(new BlockNetherFlower("netherflowercrop", "nether_flower_crop"));
 		
 		apple_leaves = registerBlock(new BlockFruitLeaves("appleleaves", "apple_leaves", EnumSaplingType.APPLE));
@@ -89,17 +91,9 @@ public class FarmingBlocks {
 		orange_leaves = registerBlock(new BlockFruitLeaves("orangeleaves", "orange_leaves", EnumSaplingType.ORANGE));
 		blooming_orange_leaves = registerBlock(new BlockNonFruitLeaves("bloomingorangeleaves", "blooming_orange_leaves", EnumSaplingType.ORANGE));
 		
-		//New Content
-		crop_stick = registerBlock(new BlockCropStick("cropstick", "crop_stick"));
-		
-		tomato_crop = registerBlock(new BlockTomatoCrop("tomatocrop", "tomato_crop"));
-		cucumber_crop = registerBlock(new BlockRegularCrop("cucumbercrop", "cucumber_crop", EnumCropType.CUCUMBER));
-		aubergine_crop = registerBlock(new BlockRegularCrop("auberginecrop", "aubergine_crop",  EnumCropType.AUBERGINE));
-		pineapple_crop = registerBlock(new BlockRegularCrop("pineapplecrop", "pineapple_crop",  EnumCropType.PINEAPPLE));
+		scarecrow = registerBlock(new BlockScarecrow("scarecrow", "scarecrow"));
 
-		//cropstick crops
-		grape_crop = registerBlock(new BlockCropstickCrop("grapecrop", "grape_crop", EnumCropType.GRAPE));
-		
+		//New Content
 		cherry_leaves = registerBlock(new BlockFruitLeaves("cherryleaves", "cherry_leaves", EnumSaplingType.CHERRY));
 		blooming_cherry_leaves = registerBlock(new BlockNonFruitLeaves("bloomingcherryleaves", "blooming_cherry_leaves", EnumSaplingType.CHERRY));
 		
@@ -124,10 +118,17 @@ public class FarmingBlocks {
 		banana_sapling = registerBlock(new BlockGrowableSapling("bananasapling", "banana_sapling", EnumSaplingType.BANANA));
 		avocado_sapling = registerBlock(new BlockGrowableSapling("avocadosapling", "avocado_sapling", EnumSaplingType.AVOCADO));
 		mango_sapling = registerBlock(new BlockGrowableSapling("mangosapling", "mango_sapling", EnumSaplingType.MANGO));
+		
+		crop_stick = registerBlock(new BlockCropStick("cropstick", "crop_stick"));
+		
+		tomato_crop = registerBlock(new BlockSixAgeCrop("tomatocrop", "tomato_crop", EnumCropType.TOMATO));
+		cucumber_crop = registerBlock(new BlockFiveAgeCrop("cucumbercrop", "cucumber_crop", EnumCropType.CUCUMBER));
+		aubergine_crop = registerBlock(new BlockFiveAgeCrop("auberginecrop", "aubergine_crop",  EnumCropType.AUBERGINE));
+		grape_crop = registerBlock(new BlockCropstickCrop("grapecrop", "grape_crop", EnumCropType.GRAPE)); //cropstick
+		pineapple_crop = registerBlock(new BlockFiveAgeCrop("pineapplecrop", "pineapple_crop",  EnumCropType.PINEAPPLE));
+		corn_crop = registerBlock(new BlockSevenAgeCrop("corncrop", "corn_crop",  EnumCropType.CORN));
 		//End new content
-		
-		scarecrow = registerBlock(new BlockScarecrow("scarecrow", "scarecrow"));
-		
+				
 		registry.registerAll(BLOCKS.toArray(new Block[0]));
     }
     

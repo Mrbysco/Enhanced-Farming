@@ -43,6 +43,7 @@ tile.enhancedfarming:tomatocrop.name=Tomato Crop
 tile.enhancedfarming:cucumbercrop.name=Cucumber Crop
 tile.enhancedfarming:auberginecrop.name=Aubergine Crop
 tile.enhancedfarming:grapecrop.name=Grape Crop
+tile.enhancedfarming:corncrop.name=Corn Crop
 
 #items
 item.enhancedfarming:applejuice.name=Apple Juice
@@ -75,11 +76,24 @@ item.enhancedfarming:pear.name=Pear
 item.enhancedfarming:banana.name=Banana
 item.enhancedfarming:chocolatecherry.name=Chocolate Cherry
 item.enhancedfarming:chocolatebanana.name=Chocolate Banana
+
+item.enhancedfarming:cherryjuice.name=Cherry Juice
+item.enhancedfarming:pearjuice.name=Pear Juice
+item.enhancedfarming:bananajuice.name=Banana Juice
+item.enhancedfarming:grapejuice.name=Grape Juice
+item.enhancedfarming:mangojuice.name=Mango Juice
+item.enhancedfarming:pineapplejuice.name=Pineapple Juice
+
 item.enhancedfarming:smoothieapple.name=Apple Smoothie
 item.enhancedfarming:smoothielemon.name=Lemon Smoothie
 item.enhancedfarming:smoothieorange.name=Orange Smoothie
 item.enhancedfarming:smoothiecherry.name=Cherry Smoothie
 item.enhancedfarming:smoothiepear.name=Pear Smoothie
+item.enhancedfarming:smoothiecucumber.name=Cucumber Smoothie
+item.enhancedfarming:smoothiegrape.name=Grape Smoothie
+item.enhancedfarming:smoothiemango.name=Mango Smoothie
+item.enhancedfarming:smoothiepineapple.name=Pineapple Smoothie
+
 item.enhancedfarming:avocado.name=Avocado
 item.enhancedfarming:tomato.name=Tomato
 item.enhancedfarming:cucumber.name=Cucumber
@@ -87,9 +101,11 @@ item.enhancedfarming:aubergine.name=Aubergine
 item.enhancedfarming:grapes.name=Grapes
 item.enhancedfarming:mango.name=Mango
 item.enhancedfarming:pineapple.name=Pineapple
+item.enhancedfarming:corn.name=Corn
 
 item.enhancedfarming:tomatoseeds.name=Tomato Seeds
 item.enhancedfarming:cucumberseeds.name=Cucumber Seeds
 item.enhancedfarming:aubergineseeds.name=Aubergine Seeds
 item.enhancedfarming:grapeseeds.name=Grape Seeds
-item.enhancedfarming:pineappleseeds.name=Pineapple Seeds
+item.enhancedfarming:cornseeds.name=Pineapple Seeds
+item.enhancedfarming:pineappleseeds.name=Corn Seeds

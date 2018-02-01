@@ -3,7 +3,7 @@
     "defaults": {
         "model": "enhancedfarming:stick_crops",
 		"textures": {
-						"crop": "enhancedfarming:blocks/mintplant0"
+						"crop": "enhancedfarming:blocks/grapeplant0"
 					}
     },
     "variants": {
@@ -11,19 +11,19 @@
 	   	"age" : {
    			"0" : { },
 			"1" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant1"
+						"crop": "enhancedfarming:blocks/grapeplant1"
 					}},
 			"2" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant2"
+						"crop": "enhancedfarming:blocks/grapeplant2"
 					}},
 			"3" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant3"
+						"crop": "enhancedfarming:blocks/grapeplant3"
 					}},
 			"4" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant4"
+						"crop": "enhancedfarming:blocks/grapeplant4"
 					}},
 			"5" : { "textures": {
-						"crop": "enhancedfarming:blocks/mintplant5"
+						"crop": "enhancedfarming:blocks/grapeplant5"
 					}}
 		},
 		"inventory": [{

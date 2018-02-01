@@ -97,6 +97,9 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Aubergine Stats")
 				public int aubergineHealAmount = 2;
+				
+				@Config.Comment("Corn Stats")
+				public int cornHealAmount = 2;
 			}
 			
 			public class Bottles{
@@ -119,6 +122,24 @@ public class FarmingConfigGen {
 				@Config.Comment("Orange Juice Stats")
 				public int orangeJuiceHealAmount = 4;
 				
+				@Config.Comment("Cherry Juice Stats")
+				public int cherryJuiceHealAmount = 4;
+				
+				@Config.Comment("Pear Juice Stats")
+				public int pearJuiceHealAmount = 4;
+				
+				@Config.Comment("Banana Juice Stats")
+				public int bananaJuiceHealAmount = 4;
+				
+				@Config.Comment("Grape Juice Stats")
+				public int grapeJuiceHealAmount = 4;
+				
+				@Config.Comment("Mango Juice Stats")
+				public int mangoJuiceHealAmount = 4;
+
+				@Config.Comment("Pineapple Juice Stats")
+				public int pineappleJuiceHealAmount = 4;
+				
 				//Smoothies
 				@Config.Comment("Apple Smoothie Stats")
 				public int smoothieAppleHealAmount = 6;
@@ -130,13 +151,25 @@ public class FarmingConfigGen {
 				public int smoothieOrangeHealAmount = 6;
 				
 				@Config.Comment("Cherry Smoothie Stats")
-				public int smoothieCherryHealAmount = 6;
+				public int smoothieCherryHealAmount = 4;
 				
 				@Config.Comment("Pear Smoothie Stats")
 				public int smoothiePearHealAmount = 6;
 				
 				@Config.Comment("Banana Smoothie Stats")
 				public int smoothieBananaHealAmount = 6;
+				
+				@Config.Comment("Grape Smoothie Stats")
+				public int smoothieGrapeHealAmount = 4;
+				
+				@Config.Comment("Cherry Smoothie Stats")
+				public int smoothieMangoHealAmount = 6;
+				
+				@Config.Comment("Pear Smoothie Stats")
+				public int smoothiePineappleHealAmount = 6;
+				
+				@Config.Comment("Banana Smoothie Stats")
+				public int smoothieCucumberHealAmount = 5;
 			}
 		}
 		
@@ -157,7 +190,15 @@ public class FarmingConfigGen {
                 "enhancedfarming:nether_flower_seeds",
                 "enhancedfarming:cherry_sapling",
                 "enhancedfarming:pear_sapling",
-                "enhancedfarming:banana_sapling"
+                "enhancedfarming:banana_sapling",
+                "enhancedfarming:avocado_sapling",
+                "enhancedfarming:mango_sapling",
+                "enhancedfarming:tomato_seeds",
+                "enhancedfarming:cucumber_seeds",
+                "enhancedfarming:aubergine_seeds",
+                "enhancedfarming:pineapple_seeds",
+                "enhancedfarming:grape_seeds",
+                "enhancedfarming:corn_seeds"
 			};
 			
 			@Config.Comment("Makes it so if you hold hot drinks for too long that you begin taking fire damage")
