@@ -1,7 +1,5 @@
 package com.Mrbysco.EnhancedFarming.item;
 
-import javax.annotation.Nullable;
-
 import com.Mrbysco.EnhancedFarming.EnhancedFarming;
 import com.Mrbysco.EnhancedFarming.Reference;
 
@@ -9,10 +7,8 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
@@ -43,7 +39,6 @@ public class ItemCustomFood extends ItemFood{
         {
             EntityPlayer entityplayer = (EntityPlayer)entityLiving;
             entityplayer.getFoodStats().addStats(this, stack);
-        	InventoryPlayer playerInv = entityplayer.inventory;
             worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
             this.onFoodEaten(stack, worldIn, entityplayer);
             entityplayer.addStat(StatList.getObjectUseStats(this));
