@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:avocado_leaves"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:blooming_avocado_leaves"
+	}
+}

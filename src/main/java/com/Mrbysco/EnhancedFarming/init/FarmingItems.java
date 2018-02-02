@@ -3,10 +3,13 @@ package com.Mrbysco.EnhancedFarming.init;
 import java.util.ArrayList;
 
 import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
+import com.Mrbysco.EnhancedFarming.item.ItemBowledFood;
 import com.Mrbysco.EnhancedFarming.item.ItemCropstickSeeds;
 import com.Mrbysco.EnhancedFarming.item.ItemCustom;
 import com.Mrbysco.EnhancedFarming.item.ItemCustomFood;
 import com.Mrbysco.EnhancedFarming.item.ItemCustomSpecialFood;
+import com.Mrbysco.EnhancedFarming.item.ItemCustomUtensil;
+import com.Mrbysco.EnhancedFarming.item.ItemDrink;
 import com.Mrbysco.EnhancedFarming.item.ItemRakeTool;
 import com.Mrbysco.EnhancedFarming.item.ItemRegularSeeds;
 
@@ -49,6 +52,10 @@ public class FarmingItems {
 	public static Item mint;
 	public static Item hot_water;
 	
+	public static ItemCustomUtensil pot;
+	public static ItemCustomUtensil cutting_board;
+	public static ItemCustomUtensil mortal_and_pestle;
+	
 	public static ItemTool wooden_rake;
 	public static ItemTool stone_rake;
 	public static ItemTool iron_rake;
@@ -89,13 +96,31 @@ public class FarmingItems {
 	public static ItemFood mango;
 	public static ItemFood pineapple;
 	public static ItemFood corn;
-	
+	public static ItemFood onion;
+	public static ItemFood garlic;
+	public static ItemFood olive;
+		
 	public static ItemRegularSeeds tomato_seeds;
 	public static ItemRegularSeeds cucumber_seeds;
 	public static ItemRegularSeeds aubergine_seeds;
 	public static ItemRegularSeeds pineapple_seeds;
 	public static ItemRegularSeeds corn_seeds;
+	public static ItemRegularSeeds onion_seeds;
+	public static ItemRegularSeeds garlic_seeds;
 	public static ItemCropstickSeeds grape_seeds;
+	
+	public static Item stock;
+	public static Item salt;
+	public static Item flour;
+	public static Item dough;
+	//Actual food
+	
+	public static ItemFood corn_soup;
+	public static ItemFood cucumber_soup;
+	public static ItemFood tomato_soup;
+	public static ItemFood potato_soup;
+	public static ItemFood carrot_soup;
+	public static ItemFood onion_soup;
 	
 	//HealAmounts
 	private static int appleJuiceAmount = FarmingConfigGen.general.foodsettings.drinks.appleJuiceHealAmount;
@@ -150,6 +175,16 @@ public class FarmingItems {
 	private static int mangoAmount = FarmingConfigGen.general.foodsettings.fruits.mangoHealAmount;
 	private static int pineappleAmount = FarmingConfigGen.general.foodsettings.fruits.pineappleHealAmount;
 	private static int cornAmount = FarmingConfigGen.general.foodsettings.vegetables.cornHealAmount;
+	private static int oliveAmount = FarmingConfigGen.general.foodsettings.vegetables.oliveHealAmount;
+	private static int garlicAmount = FarmingConfigGen.general.foodsettings.food.garlicHealAmount;
+	private static int onionAmount = FarmingConfigGen.general.foodsettings.vegetables.onionHealAmount;
+	
+	public static int cornSoup = FarmingConfigGen.general.foodsettings.soups.cornSoupHealAmount;
+	public static int cucumberSoup = FarmingConfigGen.general.foodsettings.soups.cucumberSoupHealAmount;
+	public static int tomatoSoup = FarmingConfigGen.general.foodsettings.soups.tomatoSoupHealAmount;
+	public static int potatoSoup = FarmingConfigGen.general.foodsettings.soups.potatoSoupHealAmount;
+	public static int carrotSoup = FarmingConfigGen.general.foodsettings.soups.carrotSoupHealAmount;
+	public static int onionSoup = FarmingConfigGen.general.foodsettings.soups.onionSoupHealAmount;
 	
 	public static ArrayList<Item> ITEMS = new ArrayList<>();
     
@@ -161,22 +196,22 @@ public class FarmingItems {
         mint_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.mint_crop, Blocks.FARMLAND, "mintseeds", "mint_seeds"));
 		nether_flower_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.nether_flower_crop, Blocks.SOUL_SAND, "netherflowerseeds", "nether_flower_seeds"));
 		
-		apple_juice = registerItem(new ItemCustomFood(appleJuiceAmount, 0.3F, false, 64, 32, "applejuice", "apple_juice").setDrinkable().setContaining(Items.GLASS_BOTTLE));
-		chocolate_bar = registerItem(new ItemCustomFood(chocolateAmount, 0.7F, false, 64, 32, "chocolatebar", "chocolate_bar"));
-		chocolate_candy = registerItem(new ItemCustomFood(chocolateCandyAmount, 0.7F, false, 64, 1, "chocolatecandy", "chocolate_candy"));
-		lemon = registerItem(new ItemCustomFood(lemonAmount, 0.5F, false, 64, 32, "lemon", "lemon"));
-		lemonade = registerItem(new ItemCustomFood(lemonadeAmount, 0.4F, false, 64, 32, "lemonade", "lemonade").setDrinkable().setContaining(Items.GLASS_BOTTLE));
-		mint_chocolate_bar = registerItem(new ItemCustomSpecialFood(chocolateBarAmount, 0.7F, false, 16, 32, false, true, false, "mintchocolatebar", "mint_chocolate_bar"));
-		mint_tea = registerItem(new ItemCustomSpecialFood(mintteaAmount, 0.3F, false, 16, 32, false, true, false, "minttea", "mint_tea").setDrinkable().setContaining(Items.GLASS_BOTTLE));
-		orange = registerItem(new ItemCustomFood(orangeAmount, 0.5F, false, 64, 32, "orange", "orange"));
-		orange_juice = registerItem(new ItemCustomFood(orangeJuiceAmount, 0.3F, false, 64, 32, "orangejuice", "orange_juice").setDrinkable().setContaining(Items.GLASS_BOTTLE));
+		apple_juice = registerItem(new ItemDrink(appleJuiceAmount, 0.3F, 64, 32, false, false, "applejuice", "apple_juice"));
+		chocolate_bar = registerItem(new ItemCustomFood(chocolateAmount, 0.7F, 64, 32, "chocolatebar", "chocolate_bar"));
+		chocolate_candy = registerItem(new ItemCustomFood(chocolateCandyAmount, 0.7F, 64, 1, "chocolatecandy", "chocolate_candy"));
+		lemon = registerItem(new ItemCustomFood(lemonAmount, 0.5F, 64, 32, "lemon", "lemon"));
+		lemonade = registerItem(new ItemDrink(lemonadeAmount, 0.4F, 64, 32, false, false, "lemonade", "lemonade"));
+		mint_chocolate_bar = registerItem(new ItemDrink(chocolateBarAmount, 0.7F, 16, 32, true, false, "mintchocolatebar", "mint_chocolate_bar"));
+		mint_tea = registerItem(new ItemDrink(mintteaAmount, 0.3F, 16, 32, true, false, "minttea", "mint_tea"));
+		orange = registerItem(new ItemCustomFood(orangeAmount, 0.5F, 64, 32, "orange", "orange"));
+		orange_juice = registerItem(new ItemDrink(orangeJuiceAmount, 0.3F, 64, 32, false, false, "orangejuice", "orange_juice"));
 
-		golden_lemon = registerItem(new ItemCustomSpecialFood(goldenLemon, 0.5F, false, 64, 32, true, false, false, "goldenlemon", "golden_lemon").setAlwaysEdible().setPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 30*20, 0), 1F));
-		golden_orange = registerItem(new ItemCustomSpecialFood(goldenOrange, 0.5F, false, 64, 32, true, false, false, "goldenorange", "golden_orange").setAlwaysEdible().setPotionEffect(new PotionEffect(MobEffects.STRENGTH, 30*20, 0), 1F));
+		golden_lemon = registerItem(new ItemCustomSpecialFood(goldenLemon, 0.5F, 64, 32, true, false, false, "goldenlemon", "golden_lemon").setAlwaysEdible().setPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 30*20, 0), 1F));
+		golden_orange = registerItem(new ItemCustomSpecialFood(goldenOrange, 0.5F, 64, 32, true, false, false, "goldenorange", "golden_orange").setAlwaysEdible().setPotionEffect(new PotionEffect(MobEffects.STRENGTH, 30*20, 0), 1F));
 		
-		milk_bottle = registerItem(new ItemCustomSpecialFood(milkBottleAmount, 0.5f, false, 64, 32, false, false, true, "milkbottle", "milk_bottle").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		cold_chocolate_bottle = registerItem(new ItemCustomFood(coldchocolateAmount, 0.4f, false, 64, 32, "coldchocolatebottle", "cold_chocolate_bottle").setDrinkable().setContaining(Items.GLASS_BOTTLE));
-		hot_chocolate_bottle = registerItem(new ItemCustomFood(hotchocolateAmount, 0.4f, false, 64, 32, "hotchocolatebottle", "hot_chocolate_bottle").setDrinkable().setContaining(Items.GLASS_BOTTLE));
+		milk_bottle = registerItem(new ItemDrink(milkBottleAmount, 0.5F, 64, 32, false, true, "milkbottle", "milk_bottle").setAlwaysEdible());
+		cold_chocolate_bottle = registerItem(new ItemDrink(coldchocolateAmount, 0.4F, 64, 32, false, false, "coldchocolatebottle", "cold_chocolate_bottle"));
+		hot_chocolate_bottle = registerItem(new ItemDrink(hotchocolateAmount, 0.4F, 64, 32, false, false, "hotchocolatebottle", "hot_chocolate_bottle"));
 
 		mint = registerItem(new ItemCustom("mint", "mint"));
 		hot_water = registerItem(new ItemCustom("hotwater", "hot_water"));
@@ -191,53 +226,77 @@ public class FarmingItems {
 		}
 
 		//New Content
-		cherry = registerItem(new ItemCustomFood(cherryAmount, 0.3F, false, 64, 32, "cherry", "cherry"));
-		pear = registerItem(new ItemCustomFood(pearAmount, 0.5F, false, 64, 32, "pear", "pear"));
-		banana = registerItem(new ItemCustomFood(lemonAmount, 0.5F, false, 64, 32, "banana", "banana"));
+		pot = registerItem(new ItemCustomUtensil("pot", "pot"));
+		cutting_board = registerItem(new ItemCustomUtensil("cuttingboard", "cutting_board"));
+		mortal_and_pestle = registerItem(new ItemCustomUtensil("mortalandpestle", "mortal_and_pestle"));
 		
-		chocolate_cherry = registerItem(new ItemCustomFood(chocolateCherryAmount, 0.5F, false, 64, 32, "chocolatecherry", "chocolate_cherry"));
-		chocolate_banana = registerItem(new ItemCustomFood(chocolateBananaAmount, 0.7F, false, 64, 32, "chocolatebanana", "chocolate_banana"));
+		cherry = registerItem(new ItemCustomFood(cherryAmount, 0.3F, 64, 32, "cherry", "cherry"));
+		pear = registerItem(new ItemCustomFood(pearAmount, 0.5F, 64, 32, "pear", "pear"));
+		banana = registerItem(new ItemCustomFood(lemonAmount, 0.5F, 64, 32, "banana", "banana"));
 		
-		cherry_juice = registerItem(new ItemCustomFood(cherryJuiceAmount, 0.3F, false, 64, 32, "cherryjuice", "cherry_juice"));
-		pear_juice = registerItem(new ItemCustomFood(pearJuiceAmount, 0.3F, false, 64, 32, "pearjuice", "pear_juice"));
-		banana_juice = registerItem(new ItemCustomFood(bananaJuiceAmount, 0.3F, false, 64, 32, "bananajuice", "banana_juice"));
-		grape_juice = registerItem(new ItemCustomFood(grapeJuiceAmount, 0.3F, false, 64, 32, "grapejuice", "grape_juice"));
-		mango_juice = registerItem(new ItemCustomFood(mangoJuiceAmount, 0.3F, false, 64, 32, "mangojuice", "mango_juice"));
-		pineapple_juice = registerItem(new ItemCustomFood(pineappleJuiceAmount, 0.3F, false, 64, 32, "pineapplejuice", "pineapple_juice"));
+		chocolate_cherry = registerItem(new ItemCustomFood(chocolateCherryAmount, 0.5F, 64, 32, "chocolatecherry", "chocolate_cherry"));
+		chocolate_banana = registerItem(new ItemCustomFood(chocolateBananaAmount, 0.7F, 64, 32, "chocolatebanana", "chocolate_banana"));
+		
+		cherry_juice = registerItem(new ItemDrink(cherryJuiceAmount, 0.3F, 64, 32, false, false, "cherryjuice", "cherry_juice"));
+		pear_juice = registerItem(new ItemDrink(pearJuiceAmount, 0.3F, 64, 32, false, false, "pearjuice", "pear_juice"));
+		banana_juice = registerItem(new ItemDrink(bananaJuiceAmount, 0.3F, 64, 32, false, false, "bananajuice", "banana_juice"));
+		grape_juice = registerItem(new ItemDrink(grapeJuiceAmount, 0.3F, 64, 32, false, false, "grapejuice", "grape_juice"));
+		mango_juice = registerItem(new ItemDrink(mangoJuiceAmount, 0.3F, 64, 32, false, false, "mangojuice", "mango_juice"));
+		pineapple_juice = registerItem(new ItemDrink(pineappleJuiceAmount, 0.3F, 64, 32, false, false, "pineapplejuice", "pineapple_juice"));
 
-		smoothie_apple = registerItem(new ItemCustomFood(appleSmoothieAmount, 0.5F, false, 16, 32, "smoothieapple", "smoothie_apple").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		smoothie_lemon = registerItem(new ItemCustomFood(lemonSmoothieAmount, 0.5F, false, 16, 32, "smoothielemon", "smoothie_lemon").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		smoothie_orange = registerItem(new ItemCustomFood(orangeSmoothieAmount, 0.5F, false, 16, 32, "smoothieorange", "smoothie_orange").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		smoothie_cherry = registerItem(new ItemCustomFood(cherrySmoothieAmount, 0.4F, false, 16, 32, "smoothiecherry", "smoothie_cherry").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		smoothie_pear = registerItem(new ItemCustomFood(pearSmoothieAmount, 0.5F, false, 16, 32, "smoothiepear", "smoothie_pear").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		smoothie_banana = registerItem(new ItemCustomFood(bananaSmoothieAmount, 0.5F, false, 16, 32, "smoothiebanana", "smoothie_banana").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
+		smoothie_apple = registerItem(new ItemDrink(appleSmoothieAmount, 0.5F, 16, 32, false, false, "smoothieapple", "smoothie_apple"));
+		smoothie_lemon = registerItem(new ItemDrink(lemonSmoothieAmount, 0.5F, 16, 32, false, false, "smoothielemon", "smoothie_lemon"));
+		smoothie_orange = registerItem(new ItemDrink(orangeSmoothieAmount, 0.5F, 16, 32, false, false, "smoothieorange", "smoothie_orange"));
+		smoothie_cherry = registerItem(new ItemDrink(cherrySmoothieAmount, 0.4F, 16, 32, false, false, "smoothiecherry", "smoothie_cherry"));
+		smoothie_pear = registerItem(new ItemDrink(pearSmoothieAmount, 0.5F, 16, 32, false, false, "smoothiepear", "smoothie_pear"));
+		smoothie_banana = registerItem(new ItemDrink(bananaSmoothieAmount, 0.5F, 16, 32, false, false, "smoothiebanana", "smoothie_banana"));
 		
-		smoothie_grape = registerItem(new ItemCustomFood(grapeSmoothieAmount, 0.4F, false, 16, 32, "smoothiegrape", "smoothie_grape").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		smoothie_mango = registerItem(new ItemCustomFood(mangoSmoothieAmount, 0.5F, false, 16, 32, "smoothiemango", "smoothie_mango").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		smoothie_pineapple = registerItem(new ItemCustomFood(pineappleSmoothieAmount, 0.5F, false, 16, 32, "smoothiepineapple", "smoothie_pineapple").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
-		smoothie_cucumber = registerItem(new ItemCustomFood(cucumberSmoothieAmount, 0.5F, false, 16, 32, "smoothiecucumber", "smoothie_cucumber").setDrinkable().setContaining(Items.GLASS_BOTTLE).setAlwaysEdible());
+		smoothie_grape = registerItem(new ItemDrink(grapeSmoothieAmount, 0.4F, 16, 32, false, false, "smoothiegrape", "smoothie_grape"));
+		smoothie_mango = registerItem(new ItemDrink(mangoSmoothieAmount, 0.5F, 16, 32, false, false, "smoothiemango", "smoothie_mango"));
+		smoothie_pineapple = registerItem(new ItemDrink(pineappleSmoothieAmount, 0.5F, 16, 32, false, false, "smoothiepineapple", "smoothie_pineapple"));
+		smoothie_cucumber = registerItem(new ItemDrink(cucumberSmoothieAmount, 0.5F, 16, 32, false, false, "smoothiecucumber", "smoothie_cucumber"));
 
-		avocado = registerItem(new ItemCustomFood(avocadoAmount, 0.5F, false, 64, 32, "avocado", "avocado"));
-		mango = registerItem(new ItemCustomFood(mangoAmount, 0.5F, false, 64, 32, "mango", "mango"));
+		avocado = registerItem(new ItemCustomFood(avocadoAmount, 0.5F, 64, 32, "avocado", "avocado"));
+		mango = registerItem(new ItemCustomFood(mangoAmount, 0.5F, 64, 32, "mango", "mango"));
 		
-		tomato = registerItem(new ItemCustomFood(tomatoAmount, 0.5F, false, 64, 32, "tomato", "tomato"));
+		tomato = registerItem(new ItemCustomFood(tomatoAmount, 0.5F, 64, 32, "tomato", "tomato"));
 		tomato_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.tomato_crop, Blocks.FARMLAND, "tomatoseeds", "tomato_seeds"));
 
-		cucumber = registerItem(new ItemCustomFood(cucumberAmount, 0.5F, false, 64, 32, "cucumber", "cucumber"));
+		cucumber = registerItem(new ItemCustomFood(cucumberAmount, 0.5F, 64, 32, "cucumber", "cucumber"));
 		cucumber_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.cucumber_crop, Blocks.FARMLAND, "cucumberseeds", "cucumber_seeds"));
 
-		aubergine = registerItem(new ItemCustomFood(aubergineAmount, 0.5F, false, 64, 32, "aubergine", "aubergine"));
+		aubergine = registerItem(new ItemCustomFood(aubergineAmount, 0.5F, 64, 32, "aubergine", "aubergine"));
 		aubergine_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.aubergine_crop, Blocks.FARMLAND, "aubergineseeds", "aubergine_seeds"));
 
-		grapes = registerItem(new ItemCustomFood(grapesAmount, 0.5F, false, 64, 32, "grapes", "grapes"));
+		grapes = registerItem(new ItemCustomFood(grapesAmount, 0.5F, 64, 32, "grapes", "grapes"));
 		grape_seeds = registerItem(new ItemCropstickSeeds(FarmingBlocks.grape_crop, "grapeseeds", "grape_seeds"));
 
-		pineapple = registerItem(new ItemCustomFood(pineappleAmount, 0.5F, false, 64, 32, "pineapple", "pineapple"));
+		pineapple = registerItem(new ItemCustomFood(pineappleAmount, 0.5F, 64, 32, "pineapple", "pineapple"));
 		pineapple_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.pineapple_crop, Blocks.FARMLAND, "pineappleseeds", "pineapple_seeds"));
 		
-		corn = registerItem(new ItemCustomFood(cornAmount, 0.5F, false, 64, 32, "corn", "corn"));
+		corn = registerItem(new ItemCustomFood(cornAmount, 0.5F, 64, 32, "corn", "corn"));
 		corn_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.corn_crop, Blocks.FARMLAND, "cornseeds", "corn_seeds"));
 		
+		onion = registerItem(new ItemCustomFood(onionAmount, 0.5F, 64, 32, "onion", "onion"));
+		onion_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.corn_crop, Blocks.FARMLAND, "onionseeds", "onion_seeds"));
+		
+		garlic = registerItem(new ItemCustomFood(garlicAmount, 0.5F, 64, 32, "garlic", "garlic"));
+		garlic_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.corn_crop, Blocks.FARMLAND, "garlicseeds", "garlic_seeds"));
+		
+		olive = registerItem(new ItemCustomFood(oliveAmount, 0.5F, 64, 32, "olive", "olive"));
+
+		//Actual food stuff
+		stock = registerItem(new ItemCustom("stock", "stock"));
+		salt = registerItem(new ItemCustom("salt", "salt"));
+		flour = registerItem(new ItemCustom("flour", "flour"));
+		dough = registerItem(new ItemCustom("dough", "dough"));
+		
+		corn_soup = registerItem(new ItemBowledFood(cornSoup, 0.8F, 16, 32, false, false, "cornsoup", "corn_soup"));
+		cucumber_soup = registerItem(new ItemBowledFood(cucumberSoup, 0.6F, 16, 32, false, false, "cucumbersoup", "cucumber_soup"));
+		tomato_soup = registerItem(new ItemBowledFood(tomatoSoup, 0.7F, 16, 32, false, false, "tomatosoup", "tomato_soup"));
+		potato_soup = registerItem(new ItemBowledFood(potatoSoup, 0.8F, 16, 32, false, false, "potatosoup", "potato_soup"));
+		carrot_soup = registerItem(new ItemBowledFood(carrotSoup, 0.8F, 16, 32, false, false, "carrotsoup", "carrot_soup"));
+		onion_soup = registerItem(new ItemBowledFood(onionSoup, 0.7F, 16, 32, false, false, "onionsoup", "onion_soup"));
 		//End new content
 
         registry.registerAll(ITEMS.toArray(new Item[0]));

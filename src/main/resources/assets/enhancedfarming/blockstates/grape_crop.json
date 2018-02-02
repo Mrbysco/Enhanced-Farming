@@ -3,7 +3,7 @@
     "defaults": {
         "model": "enhancedfarming:stick_crops",
 		"textures": {
-						"crop": "enhancedfarming:blocks/grapeplant0"
+						"crop": "enhancedfarming:blocks/grapeplant5"
 					}
     },
     "variants": {

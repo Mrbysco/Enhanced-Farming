@@ -3,7 +3,7 @@
     "defaults": {
         "model": "crop",
 		"textures": {
-						"crop": "enhancedfarming:blocks/cornplant0"
+						"crop": "enhancedfarming:blocks/cornplant7"
 					}
     },
     "variants": {

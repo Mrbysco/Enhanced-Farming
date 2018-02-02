@@ -1,0 +1,25 @@
+{
+    "forge_marker": 1,
+	"defaults": {
+        "model": "enhancedfarming:saplings"
+    },
+    "variants": {
+        "stage": {
+			"0" : { "textures": {
+						"cross": "enhancedfarming:blocks/acaciasapling0"
+					}},
+			"1" : { "textures": {
+						"cross": "enhancedfarming:blocks/acaciasapling1"
+					}},
+			"2" : { "textures": {
+						"cross": "enhancedfarming:blocks/acaciasapling2"
+					}},
+			"3" : { "textures": {
+						"cross": "enhancedfarming:blocks/acaciasapling3"
+					}},
+			"4" : { "textures": {
+						"cross": "enhancedfarming:blocks/olivetree"
+					}}
+        }
+  }
+}

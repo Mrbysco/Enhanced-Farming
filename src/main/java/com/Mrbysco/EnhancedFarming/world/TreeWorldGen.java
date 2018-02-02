@@ -71,6 +71,20 @@ public class TreeWorldGen implements IWorldGenerator {
             }
 		}
         
+        if (BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.SAVANNA) && coldFlag && spookyFlag)
+        {
+        	int randomValue = random.nextInt(4);
+        	
+        	switch (randomValue) {
+        	default:
+        		break;
+        	case 0:
+        		fruitTree = new WorldGenFruitTree(EnumSaplingType.OLIVE, 5);
+        		fruitTree.generate(world, random, new BlockPos(x, y, z));
+        		break;
+        	}
+        }
+        
         if (BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.JUNGLE) && coldFlag && spookyFlag)
         {
         	int randomValue = random.nextInt(4);

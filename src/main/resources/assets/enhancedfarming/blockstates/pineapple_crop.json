@@ -3,7 +3,7 @@
     "defaults": {
         "model": "crop",
 		"textures": {
-						"crop": "enhancedfarming:blocks/pineappleplant0"
+						"crop": "enhancedfarming:blocks/pineappleplant5"
 					}
     },
     "variants": {

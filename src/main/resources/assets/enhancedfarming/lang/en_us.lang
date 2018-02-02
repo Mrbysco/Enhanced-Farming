@@ -27,6 +27,7 @@ tile.enhancedfarming:pearsapling.name=Pear Seeds
 tile.enhancedfarming:bananasapling.name=Banana Seeds
 tile.enhancedfarming:avocadosapling.name=Avocado Seed
 tile.enhancedfarming:mangosapling.name=Mango Seed
+tile.enhancedfarming:olivesapling.name=Olive Seeds
 
 tile.enhancedfarming:cherryleaves.name=Cherry Leaves
 tile.enhancedfarming:bloomingcherryleaves.name=Blooming Cherry Leaves
@@ -38,12 +39,16 @@ tile.enhancedfarming:avocadoleaves.name=Avocado Leaves
 tile.enhancedfarming:bloomingavocadoleaves.name=Blooming Avocado Leaves
 tile.enhancedfarming:mangoleaves.name=Mango Leaves
 tile.enhancedfarming:bloomingmangoleaves.name=Blooming Mango Leaves
+tile.enhancedfarming:oliveleaves.name=Olive Leaves
+tile.enhancedfarming:bloomingoliveleaves.name=Blooming Olive Leaves
 
 tile.enhancedfarming:tomatocrop.name=Tomato Crop
 tile.enhancedfarming:cucumbercrop.name=Cucumber Crop
 tile.enhancedfarming:auberginecrop.name=Aubergine Crop
 tile.enhancedfarming:grapecrop.name=Grape Crop
 tile.enhancedfarming:corncrop.name=Corn Crop
+tile.enhancedfarming:onioncrop.name=Onion Crop
+tile.enhancedfarming:garliccrop.name=Garlic Crop
 
 #items
 item.enhancedfarming:applejuice.name=Apple Juice
@@ -71,6 +76,10 @@ item.enhancedfarming:goldenlemon.name=Golden lemon
 item.enhancedfarming:goldenorange.name=Golden Orange
 
 #new items
+item.enhancedfarming:pot.name=Pot
+item.enhancedfarming:cuttingboard.name=Cutting Board
+item.enhancedfarming:mortalandpestle.name=Mortal And Pestle
+
 item.enhancedfarming:cherry.name=Cherry
 item.enhancedfarming:pear.name=Pear
 item.enhancedfarming:banana.name=Banana
@@ -85,6 +94,7 @@ item.enhancedfarming:mangojuice.name=Mango Juice
 item.enhancedfarming:pineapplejuice.name=Pineapple Juice
 
 item.enhancedfarming:smoothieapple.name=Apple Smoothie
+item.enhancedfarming:smoothiebanana.name=Banana Smoothie
 item.enhancedfarming:smoothielemon.name=Lemon Smoothie
 item.enhancedfarming:smoothieorange.name=Orange Smoothie
 item.enhancedfarming:smoothiecherry.name=Cherry Smoothie
@@ -102,6 +112,9 @@ item.enhancedfarming:grapes.name=Grapes
 item.enhancedfarming:mango.name=Mango
 item.enhancedfarming:pineapple.name=Pineapple
 item.enhancedfarming:corn.name=Corn
+item.enhancedfarming:onion.name=Onion
+item.enhancedfarming:garlic.name=Garlic
+item.enhancedfarming:olive.name=Olive
 
 item.enhancedfarming:tomatoseeds.name=Tomato Seeds
 item.enhancedfarming:cucumberseeds.name=Cucumber Seeds
@@ -109,3 +122,17 @@ item.enhancedfarming:aubergineseeds.name=Aubergine Seeds
 item.enhancedfarming:grapeseeds.name=Grape Seeds
 item.enhancedfarming:cornseeds.name=Pineapple Seeds
 item.enhancedfarming:pineappleseeds.name=Corn Seeds
+item.enhancedfarming:onionseeds.name=Onion Seeds
+item.enhancedfarming:garlicseeds.name=Garlic Seeds
+
+item.enhancedfarming:stock.name=Stock
+item.enhancedfarming:salt.name=Salt
+item.enhancedfarming:flour.name=Flour
+item.enhancedfarming:dough.name=Dough
+
+item.enhancedfarming:cornsoup.name=Corn Soup
+item.enhancedfarming:cucumbersoup.name=Cucumber Soup
+item.enhancedfarming:tomatosoup.name=Tomato Soup
+item.enhancedfarming:potatosoup.name=Potato Soup
+item.enhancedfarming:carrotsoup.name=Carrot Soup
+item.enhancedfarming:onionsoup.name=Onion Soup

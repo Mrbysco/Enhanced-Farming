@@ -3,7 +3,7 @@
     "defaults": {
         "model": "crop",
 		"textures": {
-						"crop": "enhancedfarming:blocks/cucumberplant0"
+						"crop": "enhancedfarming:blocks/cucumberplant5"
 					}
     },
     "variants": {

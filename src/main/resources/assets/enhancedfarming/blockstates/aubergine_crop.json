@@ -3,7 +3,7 @@
     "defaults": {
         "model": "crop",
 		"textures": {
-						"crop": "enhancedfarming:blocks/aubergineplant0"
+						"crop": "enhancedfarming:blocks/aubergineplant5"
 					}
     },
     "variants": {

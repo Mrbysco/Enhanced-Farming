@@ -3,7 +3,7 @@
     "defaults": {
         "model": "crop",
 		"textures": {
-						"crop": "enhancedfarming:blocks/netherflower0"
+						"crop": "enhancedfarming:blocks/netherflower5"
 					}
     },
     "variants": {

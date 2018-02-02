@@ -3,7 +3,7 @@
     "defaults": {
         "model": "crop",
 		"textures": {
-						"crop": "enhancedfarming:blocks/tomatoplant0"
+						"crop": "enhancedfarming:blocks/tomatoplant6"
 					}
     },
     "variants": {

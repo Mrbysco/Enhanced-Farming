@@ -50,10 +50,45 @@
 	},
 	{
 		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "stone"
+		},
+		"name": "stone"
+	},
+	{
+		"ingredient": {
 		  "nbt": "{Potion:\"minecraft:water\"}",
 		  "item": "minecraft:potion",
 		  "type": "minecraft:item_nbt"
 		},
 		"name": "water_bottle"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "rawMeat"
+		},
+		"name": "rawMeat"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "cookedMeat"
+		},
+		"name": "cookedMeat"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "fruitList"
+		},
+		"name": "fruitList"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "vegetableList"
+		},
+		"name": "vegetableList"
 	}
 ]

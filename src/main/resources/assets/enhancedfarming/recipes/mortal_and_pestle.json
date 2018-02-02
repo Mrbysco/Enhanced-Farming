@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "enhancedfarming:mortal_and_pestle"
+  },
+  "pattern": [
+    " S",
+    "B "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "#stickWood"
+    },
+    "B": {
+      "item": "minecraft:bowl"
+    }
+  }
+}

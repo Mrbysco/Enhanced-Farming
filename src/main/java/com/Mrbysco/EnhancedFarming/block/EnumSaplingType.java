@@ -1,5 +1,6 @@
 package com.Mrbysco.EnhancedFarming.block;
 
+import net.minecraft.block.BlockNewLog;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.IBlockState;
@@ -14,7 +15,8 @@ public enum EnumSaplingType
 	PEAR(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK)),
 	BANANA(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.JUNGLE)),
 	AVOCADO(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK)),
-	MANGO(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK));
+	MANGO(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK)),
+	OLIVE(Blocks.LOG2.getDefaultState().withProperty(BlockNewLog.VARIANT, BlockPlanks.EnumType.ACACIA));
 	
 	private final IBlockState woodType;
     

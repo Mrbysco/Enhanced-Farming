@@ -1,5 +1,10 @@
 package com.Mrbysco.EnhancedFarming.init;
 
+import com.Mrbysco.EnhancedFarming.EnhancedFarming;
+import com.Mrbysco.EnhancedFarming.block.ILeafColor;
+
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -11,23 +16,50 @@ public class FarmingRecipes {
 	{
 		GameRegistry.addSmelting(new ItemStack(FarmingItems.cold_chocolate_bottle), new ItemStack(FarmingItems.hot_chocolate_bottle), 0.1F);
 		GameRegistry.addSmelting(Items.POTIONITEM.getDefaultInstance(), new ItemStack(FarmingItems.hot_water), 0.1F);
+		GameRegistry.addSmelting(FarmingItems.dough, new ItemStack(Items.BREAD), 0.1F);
 	}
 	
 	public static void initOredict()
 	{
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_apple_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.apple_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_lemon_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.lemon_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_orange_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.orange_leaves, 1));
+		for(Block block : FarmingBlocks.BLOCKS)
+		{
+			if (block instanceof ILeafColor)
+			{
+				OreDictionary.registerOre("treeLeaves",  new ItemStack(block, 1));
+			}
+		}
         
-        //New Content
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_cherry_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.cherry_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_pear_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.pear_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.blooming_banana_leaves, 1));
-        OreDictionary.registerOre("treeLeaves",  new ItemStack(FarmingBlocks.banana_leaves, 1));
+    	OreDictionary.registerOre("rawMeat", Items.BEEF);
+    	OreDictionary.registerOre("rawMeat", Items.CHICKEN);
+    	OreDictionary.registerOre("rawMeat", Items.MUTTON);
+        OreDictionary.registerOre("rawMeat", Items.PORKCHOP);
+        OreDictionary.registerOre("rawMeat", Items.RABBIT);
+
+    	OreDictionary.registerOre("cookedMeat", Items.COOKED_BEEF);
+    	OreDictionary.registerOre("cookedMeat", Items.COOKED_CHICKEN);
+    	OreDictionary.registerOre("cookedMeat", Items.COOKED_MUTTON);
+    	OreDictionary.registerOre("cookedMeat", Items.COOKED_PORKCHOP);
+    	OreDictionary.registerOre("cookedMeat", Items.COOKED_RABBIT);
+
+    	OreDictionary.registerOre("fruitList", Items.APPLE);
+    	OreDictionary.registerOre("fruitList", Items.MELON);
+    	OreDictionary.registerOre("fruitList", FarmingItems.banana);
+    	OreDictionary.registerOre("fruitList", FarmingItems.cherry);
+    	OreDictionary.registerOre("fruitList", FarmingItems.grapes);
+    	OreDictionary.registerOre("fruitList", FarmingItems.lemon);
+    	OreDictionary.registerOre("fruitList", FarmingItems.mango);
+    	OreDictionary.registerOre("fruitList", FarmingItems.orange);
+    	OreDictionary.registerOre("fruitList", FarmingItems.pear);
+    	OreDictionary.registerOre("fruitList", FarmingItems.pineapple);
+    	//OreDictionary.registerOre("fruitList", FarmingItems.tomato); Million dollar question right here xD
+
+    	OreDictionary.registerOre("vegetableList", Blocks.PUMPKIN);
+    	OreDictionary.registerOre("vegetableList", Items.POTATO);
+    	OreDictionary.registerOre("vegetableList", Items.CARROT);
+    	OreDictionary.registerOre("vegetableList", Items.BEETROOT);
+    	OreDictionary.registerOre("vegetableList", FarmingItems.aubergine);
+    	OreDictionary.registerOre("vegetableList", FarmingItems.tomato);
+    	OreDictionary.registerOre("vegetableList", FarmingItems.cucumber);
+    	OreDictionary.registerOre("vegetableList", FarmingItems.onion);
 	}
 }

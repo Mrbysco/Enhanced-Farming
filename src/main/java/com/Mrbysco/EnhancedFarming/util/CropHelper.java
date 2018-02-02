@@ -34,6 +34,12 @@ public class CropHelper {
 		case CORN:
 			seed = FarmingItems.corn_seeds;
 			break;
+		case ONION:
+			seed = FarmingItems.onion_seeds;
+			break;
+		case GARLIC:
+			seed = FarmingItems.garlic_seeds;
+			break;
 		default:
 			seed = FarmingItems.mint_seeds;
 			break;
@@ -66,6 +72,12 @@ public class CropHelper {
 			break;
 		case CORN:
 			crop = FarmingItems.corn;
+			break;
+		case ONION:
+			crop = FarmingItems.onion;
+			break;
+		case GARLIC:
+			crop = FarmingItems.garlic;
 			break;
 		default:
 			crop = FarmingItems.mint;

@@ -1,6 +1,7 @@
 package com.Mrbysco.EnhancedFarming.config;
 
 import com.Mrbysco.EnhancedFarming.Reference;
+import com.Mrbysco.EnhancedFarming.item.ItemBowledFood;
 
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -33,6 +34,9 @@ public class FarmingConfigGen {
 			@Config.Comment({"Drinks Stats"})
 			public final Bottles drinks = new Bottles();
 			
+			@Config.Comment({"Soup Stats"})
+			public final Soups soups = new Soups();
+			
 			public class Food{
 				@Config.Comment("Chocolate Bar Stats")
 				public int chocolateBarHealAmount = 4;
@@ -57,6 +61,9 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Chocolate Banana Stats")
 				public int chocolateBananaHealAmount = 4;
+				
+				@Config.Comment("Chocolate Banana Stats")
+				public int garlicHealAmount = 1;
 			}
 			
 			public class Fruits{
@@ -100,6 +107,12 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Corn Stats")
 				public int cornHealAmount = 2;
+				
+				@Config.Comment("Aubergine Stats")
+				public int onionHealAmount = 2;
+				
+				@Config.Comment("Corn Stats")
+				public int oliveHealAmount = 2;
 			}
 			
 			public class Bottles{
@@ -170,6 +183,26 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Banana Smoothie Stats")
 				public int smoothieCucumberHealAmount = 5;
+			}
+			
+			public class Soups{
+				@Config.Comment("Banana Smoothie Stats")
+				public int cornSoupHealAmount = 6;
+				
+				@Config.Comment("Grape Smoothie Stats")
+				public int cucumberSoupHealAmount = 7;
+				
+				@Config.Comment("Cherry Smoothie Stats")
+				public int tomatoSoupHealAmount = 6;
+				
+				@Config.Comment("Pear Smoothie Stats")
+				public int potatoSoupHealAmount = 6;
+				
+				@Config.Comment("Banana Smoothie Stats")
+				public int carrotSoupHealAmount = 7;
+				
+				@Config.Comment("Banana Smoothie Stats")
+				public int onionSoupHealAmount = 6;
 			}
 		}
 		

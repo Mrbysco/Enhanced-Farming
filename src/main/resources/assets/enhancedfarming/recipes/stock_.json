@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "item": "#water_bottle"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "#rawMeat"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:stock",
+	"count": 2
+  }
+}

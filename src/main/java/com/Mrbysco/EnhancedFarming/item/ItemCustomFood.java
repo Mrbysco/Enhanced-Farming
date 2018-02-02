@@ -1,5 +1,7 @@
 package com.Mrbysco.EnhancedFarming.item;
 
+import javax.annotation.Nullable;
+
 import com.Mrbysco.EnhancedFarming.EnhancedFarming;
 import com.Mrbysco.EnhancedFarming.Reference;
 
@@ -7,6 +9,7 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -22,8 +25,8 @@ public class ItemCustomFood extends ItemFood{
 	//private boolean enchanted; 
 	private int useTime;
 	
-	public ItemCustomFood(int amount, float saturation, boolean isWolfFood, int stacksize, int useTime, String unlocalizedName, String registryName) {
-		super(amount, saturation, isWolfFood);
+	public ItemCustomFood(int amount, float saturation, int stacksize, int useTime, String unlocalizedName, String registryName) {
+		super(amount, saturation, false);
 		this.maxStackSize=stacksize;
 		setCreativeTab(EnhancedFarming.tabFarming);
 		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
@@ -40,6 +43,7 @@ public class ItemCustomFood extends ItemFood{
         {
             EntityPlayer entityplayer = (EntityPlayer)entityLiving;
             entityplayer.getFoodStats().addStats(this, stack);
+        	InventoryPlayer playerInv = entityplayer.inventory;
             worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, worldIn.rand.nextFloat() * 0.1F + 0.9F);
             this.onFoodEaten(stack, worldIn, entityplayer);
             entityplayer.addStat(StatList.getObjectUseStats(this));
@@ -49,7 +53,7 @@ public class ItemCustomFood extends ItemFood{
                 CriteriaTriggers.CONSUME_ITEM.trigger((EntityPlayerMP)entityplayer, stack);
             }
         }
-
+        
         stack.shrink(1);
         return stack;
     }
@@ -77,7 +81,8 @@ public class ItemCustomFood extends ItemFood{
 		}
     }
 	
-	public ItemCustomFood setContaining(Item item) {
-		return (ItemCustomFood) this.setContainerItem(item);
-    }
+	@Override
+	public ItemFood setAlwaysEdible() {
+		return super.setAlwaysEdible();
+	}
 }
