@@ -14,7 +14,6 @@ import com.Mrbysco.EnhancedFarming.item.ItemRakeTool;
 import com.Mrbysco.EnhancedFarming.item.ItemRegularSeeds;
 
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -113,6 +112,7 @@ public class FarmingItems {
 	public static Item salt;
 	public static Item flour;
 	public static Item dough;
+	public static Item olive_oil;
 	//Actual food
 	
 	public static ItemFood corn_soup;
@@ -233,6 +233,7 @@ public class FarmingItems {
 		cherry = registerItem(new ItemCustomFood(cherryAmount, 0.3F, 64, 32, "cherry", "cherry"));
 		pear = registerItem(new ItemCustomFood(pearAmount, 0.5F, 64, 32, "pear", "pear"));
 		banana = registerItem(new ItemCustomFood(lemonAmount, 0.5F, 64, 32, "banana", "banana"));
+		olive = registerItem(new ItemCustomFood(oliveAmount, 0.5F, 64, 32, "olive", "olive"));
 		
 		chocolate_cherry = registerItem(new ItemCustomFood(chocolateCherryAmount, 0.5F, 64, 32, "chocolatecherry", "chocolate_cherry"));
 		chocolate_banana = registerItem(new ItemCustomFood(chocolateBananaAmount, 0.7F, 64, 32, "chocolatebanana", "chocolate_banana"));
@@ -278,18 +279,17 @@ public class FarmingItems {
 		corn_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.corn_crop, Blocks.FARMLAND, "cornseeds", "corn_seeds"));
 		
 		onion = registerItem(new ItemCustomFood(onionAmount, 0.5F, 64, 32, "onion", "onion"));
-		onion_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.corn_crop, Blocks.FARMLAND, "onionseeds", "onion_seeds"));
+		onion_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.onion_crop, Blocks.FARMLAND, "onionseeds", "onion_seeds"));
 		
 		garlic = registerItem(new ItemCustomFood(garlicAmount, 0.5F, 64, 32, "garlic", "garlic"));
-		garlic_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.corn_crop, Blocks.FARMLAND, "garlicseeds", "garlic_seeds"));
-		
-		olive = registerItem(new ItemCustomFood(oliveAmount, 0.5F, 64, 32, "olive", "olive"));
+		garlic_seeds = registerItem(new ItemRegularSeeds(FarmingBlocks.garlic_crop, Blocks.FARMLAND, "garlicseeds", "garlic_seeds"));
 
 		//Actual food stuff
 		stock = registerItem(new ItemCustom("stock", "stock"));
 		salt = registerItem(new ItemCustom("salt", "salt"));
 		flour = registerItem(new ItemCustom("flour", "flour"));
 		dough = registerItem(new ItemCustom("dough", "dough"));
+		olive_oil = registerItem(new ItemCustom("oliveoil", "olive_oil"));
 		
 		corn_soup = registerItem(new ItemBowledFood(cornSoup, 0.8F, 16, 32, false, false, "cornsoup", "corn_soup"));
 		cucumber_soup = registerItem(new ItemBowledFood(cucumberSoup, 0.6F, 16, 32, false, false, "cucumbersoup", "cucumber_soup"));
