@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:banana"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "#allMilk"
+    },
+    {
+      "item": "#egg"
+    },
+    {
+      "item": "enhancedfarming:flour"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:banana_pie"
+  }
+}

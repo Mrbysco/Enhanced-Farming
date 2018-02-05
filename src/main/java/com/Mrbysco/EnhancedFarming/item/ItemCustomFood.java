@@ -4,6 +4,7 @@ import com.Mrbysco.EnhancedFarming.EnhancedFarming;
 import com.Mrbysco.EnhancedFarming.Reference;
 
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -21,11 +22,13 @@ public class ItemCustomFood extends ItemFood{
 	//private boolean enchanted; 
 	private int useTime;
 	
-	public ItemCustomFood(int amount, float saturation, int stacksize, int useTime, String unlocalizedName, String registryName) {
+	public ItemCustomFood(int amount, float saturation, int stacksize, int useTime, String registryName) {
 		super(amount, saturation, false);
 		this.maxStackSize=stacksize;
 		setCreativeTab(EnhancedFarming.tabFarming);
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+        this.setCreativeTab(CreativeTabs.FOOD);
+        
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 		
 		this.useTime = useTime;

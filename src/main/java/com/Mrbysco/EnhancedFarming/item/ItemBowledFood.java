@@ -4,6 +4,7 @@ import com.Mrbysco.EnhancedFarming.EnhancedFarming;
 import com.Mrbysco.EnhancedFarming.Reference;
 
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -18,23 +19,28 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public class ItemBowledFood extends ItemFood{
-
+	
+	public boolean eatAction;
+	
 	private int useTime;
 	private boolean directheal; 
 	private boolean cure;
 	private int amount;
 	
-	public ItemBowledFood(int amount, float saturation, int stacksize, int useTime, boolean directHeal, boolean cureEffects, String unlocalizedName, String registryName) {
+	public ItemBowledFood(int amount, float saturation, int stacksize, int useTime, boolean directHeal, boolean cureEffects, String registryName) {
 		super(amount, saturation, false);
 		this.maxStackSize=stacksize;
 		setCreativeTab(EnhancedFarming.tabFarming);
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+        this.setCreativeTab(CreativeTabs.FOOD);
+
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 		
 		this.amount = amount;
 		this.useTime = useTime;
 		this.directheal = directHeal;
 		this.cure = cureEffects;
+		this.eatAction = false;
 	}
 	
 	@Override
@@ -80,17 +86,23 @@ public class ItemBowledFood extends ItemFood{
         return stack;
     }
 	
-	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-		return this.useTime;
+	public ItemBowledFood setEatAction(){
+		this.eatAction = true;
+		return this;
 	}
 	
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack)
     {
-		return EnumAction.DRINK;
+		if(this.eatAction = true)
+		{
+			return EnumAction.EAT;
+		}
+		else
+		{
+			return EnumAction.DRINK;
+		}
     }
-	
 	@Override
 	public ItemFood setAlwaysEdible() {
 		return super.setAlwaysEdible();

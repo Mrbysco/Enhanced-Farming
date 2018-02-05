@@ -18,8 +18,8 @@ public class ItemCustomSpecialFood extends ItemCustomFood{
 	private int amount;
 
 	public ItemCustomSpecialFood(int amount, float saturation, int stacksize, int useTime,
-			boolean enchanted, boolean directHeal, boolean cureEffects, String unlocalizedName, String registryName) {
-		super(amount, saturation, stacksize, useTime, unlocalizedName, registryName);
+			boolean enchanted, boolean directHeal, boolean cureEffects, String registryName) {
+		super(amount, saturation, stacksize, useTime, registryName);
 		
 		this.directheal = directHeal;
 		this.amount = amount;

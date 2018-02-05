@@ -1,6 +1,5 @@
 package com.Mrbysco.EnhancedFarming.init;
 
-import com.Mrbysco.EnhancedFarming.EnhancedFarming;
 import com.Mrbysco.EnhancedFarming.block.ILeafColor;
 
 import net.minecraft.block.Block;
@@ -17,6 +16,7 @@ public class FarmingRecipes {
 		GameRegistry.addSmelting(new ItemStack(FarmingItems.cold_chocolate_bottle), new ItemStack(FarmingItems.hot_chocolate_bottle), 0.1F);
 		GameRegistry.addSmelting(Items.POTIONITEM.getDefaultInstance(), new ItemStack(FarmingItems.hot_water), 0.1F);
 		GameRegistry.addSmelting(FarmingItems.dough, new ItemStack(Items.BREAD), 0.1F);
+		GameRegistry.addSmelting(Items.EGG, new ItemStack(FarmingItems.baked_egg), 0.1F);
 	}
 	
 	public static void initOredict()
@@ -61,5 +61,15 @@ public class FarmingRecipes {
     	OreDictionary.registerOre("vegetableList", FarmingItems.tomato);
     	OreDictionary.registerOre("vegetableList", FarmingItems.cucumber);
     	OreDictionary.registerOre("vegetableList", FarmingItems.onion);
+    	OreDictionary.registerOre("vegetableList", FarmingItems.lettuce);
+    	
+    	OreDictionary.registerOre("allMilk", FarmingItems.milk_bottle);
+    	OreDictionary.registerOre("allMilk", Items.MILK_BUCKET);
+    	
+    	OreDictionary.registerOre("allWater", Items.POTIONITEM.getDefaultInstance());
+    	OreDictionary.registerOre("allWater", Items.WATER_BUCKET);
+    	
+    	OreDictionary.registerOre("allWater", Items.POTIONITEM.getDefaultInstance());
+    	OreDictionary.registerOre("allWater", Items.WATER_BUCKET);
 	}
 }

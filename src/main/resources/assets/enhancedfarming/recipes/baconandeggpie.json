@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "#egg"
+    },
+    {
+      "item": "enhancedfarming:dough"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:bacon_and_egg_pie"
+  }
+}

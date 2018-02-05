@@ -23,7 +23,7 @@ public class BlockCropStick extends BlockBush
 {
     protected static final AxisAlignedBB CROPSTICK_AABB = new AxisAlignedBB(0.30000001192092896D, 0.0D, 0.30000001192092896D, 0.699999988079071D, 0.6000000238418579D, 0.699999988079071D);
 
-    public BlockCropStick(String unlocalizedName, String registryName) {
+    public BlockCropStick(String registryName) {
     	super();
         this.setHardness(1.0F);
         this.disableStats();
@@ -31,7 +31,7 @@ public class BlockCropStick extends BlockBush
         this.setSoundType(SoundType.WOOD);
         this.setCreativeTab(EnhancedFarming.tabFarming);
 
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 	}
     

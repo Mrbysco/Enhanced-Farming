@@ -32,11 +32,11 @@ public class BlockGrowableSapling extends BlockBush implements IGrowable, IPlant
     
     protected static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.09999999403953552D, 0.0D, 0.09999999403953552D, 0.8999999761581421D, 0.800000011920929D, 0.8999999761581421D);
 
-	public BlockGrowableSapling(String unlocalizedName, String registryName, EnumSaplingType type) {
+	public BlockGrowableSapling(String registryName, EnumSaplingType type) {
 		super();
         this.setDefaultState(this.blockState.getBaseState().withProperty(STAGE, Integer.valueOf(0)));
 
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);	
         this.setCreativeTab(EnhancedFarming.tabFarming);
         

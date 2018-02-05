@@ -1,7 +1,6 @@
 package com.Mrbysco.EnhancedFarming.config;
 
 import com.Mrbysco.EnhancedFarming.Reference;
-import com.Mrbysco.EnhancedFarming.item.ItemBowledFood;
 
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -25,10 +24,19 @@ public class FarmingConfigGen {
 			@Config.Comment({"Food Stats"})
 			public final Food food = new Food();
 			
-			@Config.Comment({"Food Stats"})
+			@Config.Comment({"Pizza Stats"})
+			public final Pizza pizza = new Pizza();
+			
+			@Config.Comment({"Pie Stats"})
+			public final Pies pies = new Pies();
+			
+			@Config.Comment({"Sandwich Stats"})
+			public final Sandwich sandwiches = new Sandwich();
+			
+			@Config.Comment({"Fruit Stats"})
 			public final Fruits fruits = new Fruits();
 			
-			@Config.Comment({"Food Stats"})
+			@Config.Comment({"Vegetable Stats"})
 			public final Vegetables vegetables = new Vegetables();
 			
 			@Config.Comment({"Drinks Stats"})
@@ -64,6 +72,77 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Chocolate Banana Stats")
 				public int garlicHealAmount = 1;
+				
+				@Config.Comment("Fruit Salad Stats")
+				public int fruitSaladHealAmount = 5;
+				
+				@Config.Comment("Hamburger Stats")
+				public int hamburgerHealAmount = 15;
+				
+				@Config.Comment("Chicken Burger Stats")
+				public int chickenburgerHealAmount = 13;
+				
+				@Config.Comment("Chicken Burger Stats")
+				public int cheeseburgerHealAmount = 9;
+				
+				@Config.Comment("Boiled Egg Stats")
+				public int boiledEggHealAmount = 3;
+				
+				@Config.Comment("Omelet Stats")
+				public int omeletHealAmount = 3;
+				
+				@Config.Comment("Sliced Bread Stats")
+				public int slicedBreadHealAmount = 3;
+				
+				@Config.Comment("Cheese Stats")
+				public int cheeseHealAmount = 4;
+				
+				@Config.Comment("Cheese Stats")
+				public int spaghetti = 9;
+			}
+			
+			public class Pizza{
+				@Config.Comment("Cheese Stats")
+				public int pineapplePizzaHealAmount = 7;
+				
+				@Config.Comment("Cheese Stats")
+				public int cheesePizzaHealAmount = 9;
+				
+				@Config.Comment("Cheese Stats")
+				public int baconPizzaHealAmount = 11;
+			}
+			public class Sandwich{
+				@Config.Comment("Egg Sandwich Stats")
+				public int eggSandwichHealAmount = 8;
+				
+				@Config.Comment("Bacon Sandwich Stats")
+				public int baconSandwichHealAmount = 13;
+				
+				@Config.Comment("Sandwich Sandwich Stats")
+				public int chickenSandwichHealAmount = 13;
+			}
+			
+			public class Pies{
+				@Config.Comment("Apple Pie Stats")
+				public int applePieHealAmount = 8;
+				
+				@Config.Comment("Apple Pie Stats")
+				public int bananaPieHealAmount = 8;
+				
+				@Config.Comment("Apple Pie Stats")
+				public int baconAndEggPieHealAmount = 11;
+				
+				@Config.Comment("Apple Pie Stats")
+				public int cherryPieHealAmount = 6;
+				
+				@Config.Comment("Apple Pie Stats")
+				public int grapePieHealAmount = 6;
+				
+				@Config.Comment("Apple Pie Stats")
+				public int lemonPieHealAmount = 8;
+				
+				@Config.Comment("Apple Pie Stats")
+				public int pearPieHealAmount = 8;
 			}
 			
 			public class Fruits{
@@ -113,6 +192,9 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Corn Stats")
 				public int oliveHealAmount = 2;
+				
+				@Config.Comment("Lettuce Stats")
+				public int lettuceHealAmount = 2;
 			}
 			
 			public class Bottles{
@@ -136,7 +218,7 @@ public class FarmingConfigGen {
 				public int orangeJuiceHealAmount = 4;
 				
 				@Config.Comment("Cherry Juice Stats")
-				public int cherryJuiceHealAmount = 4;
+				public int cherryJuiceHealAmount = 3;
 				
 				@Config.Comment("Pear Juice Stats")
 				public int pearJuiceHealAmount = 4;
@@ -145,7 +227,7 @@ public class FarmingConfigGen {
 				public int bananaJuiceHealAmount = 4;
 				
 				@Config.Comment("Grape Juice Stats")
-				public int grapeJuiceHealAmount = 4;
+				public int grapeJuiceHealAmount = 3;
 				
 				@Config.Comment("Mango Juice Stats")
 				public int mangoJuiceHealAmount = 4;
@@ -155,33 +237,33 @@ public class FarmingConfigGen {
 				
 				//Smoothies
 				@Config.Comment("Apple Smoothie Stats")
-				public int smoothieAppleHealAmount = 6;
+				public int smoothieAppleHealAmount = 5;
 				
 				@Config.Comment("Lemon Smoothie Stats")
-				public int smoothieLemonHealAmount = 6;
+				public int smoothieLemonHealAmount = 5;
 				
 				@Config.Comment("Orange Smoothie Stats")
-				public int smoothieOrangeHealAmount = 6;
+				public int smoothieOrangeHealAmount = 5;
 				
 				@Config.Comment("Cherry Smoothie Stats")
 				public int smoothieCherryHealAmount = 4;
 				
 				@Config.Comment("Pear Smoothie Stats")
-				public int smoothiePearHealAmount = 6;
+				public int smoothiePearHealAmount = 5;
 				
 				@Config.Comment("Banana Smoothie Stats")
-				public int smoothieBananaHealAmount = 6;
+				public int smoothieBananaHealAmount = 5;
 				
 				@Config.Comment("Grape Smoothie Stats")
 				public int smoothieGrapeHealAmount = 4;
 				
 				@Config.Comment("Cherry Smoothie Stats")
-				public int smoothieMangoHealAmount = 6;
+				public int smoothieMangoHealAmount = 5;
 				
 				@Config.Comment("Pear Smoothie Stats")
-				public int smoothiePineappleHealAmount = 6;
+				public int smoothiePineappleHealAmount = 5;
 				
-				@Config.Comment("Banana Smoothie Stats")
+				@Config.Comment("Cucumber Smoothie Stats")
 				public int smoothieCucumberHealAmount = 5;
 			}
 			
@@ -231,7 +313,10 @@ public class FarmingConfigGen {
                 "enhancedfarming:aubergine_seeds",
                 "enhancedfarming:pineapple_seeds",
                 "enhancedfarming:grape_seeds",
-                "enhancedfarming:corn_seeds"
+                "enhancedfarming:corn_seeds",
+                "enhancedfarming:onion_seeds",
+                "enhancedfarming:garlic_seeds",
+                "enhancedfarming:olive_sapling"
 			};
 			
 			@Config.Comment("Makes it so if you hold hot drinks for too long that you begin taking fire damage")

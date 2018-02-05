@@ -32,14 +32,14 @@ public class BlockCropstickCrop extends BlockCrops{
     public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 5);
     protected static final AxisAlignedBB CROPSTICK_AABB = new AxisAlignedBB(0.30000001192092896D, 0.0D, 0.30000001192092896D, 0.699999988079071D, 0.6000000238418579D, 0.699999988079071D);
 	
-    public BlockCropstickCrop(String unlocalizedName, String registryName, EnumCropType cropType) {
+    public BlockCropstickCrop(String registryName, EnumCropType cropType) {
     	super();
         this.setHardness(0.5F);
     	this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
         this.setCreativeTab((CreativeTabs)null);
         
         this.TYPE = cropType;
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 	}
 

@@ -53,6 +53,7 @@ public class FarmingBlocks {
 	public static BlockCrops corn_crop;
 	public static BlockCrops onion_crop;
 	public static BlockCrops garlic_crop;
+	public static BlockCrops lettuce_crop;
 	
 	//cropstick crops
 	public static BlockCrops grape_crop;
@@ -84,62 +85,58 @@ public class FarmingBlocks {
     {
         IForgeRegistry<Block> registry = event.getRegistry();
         
-        mint_crop = registerBlock(new BlockFiveAgeCrop("mintcrop", "mint_crop", EnumCropType.MINT));
-		nether_flower_crop = registerBlock(new BlockNetherFlower("netherflowercrop", "nether_flower_crop"));
+        mint_crop = registerBlock(new BlockFiveAgeCrop("mint_crop", EnumCropType.MINT));
+		nether_flower_crop = registerBlock(new BlockNetherFlower("nether_flower_crop"));
+		tomato_crop = registerBlock(new BlockSixAgeCrop("tomato_crop", EnumCropType.TOMATO));
+		cucumber_crop = registerBlock(new BlockFiveAgeCrop("cucumber_crop", EnumCropType.CUCUMBER));
+		aubergine_crop = registerBlock(new BlockFiveAgeCrop("aubergine_crop",  EnumCropType.AUBERGINE));
+		grape_crop = registerBlock(new BlockCropstickCrop("grape_crop", EnumCropType.GRAPE)); //cropstick
+		pineapple_crop = registerBlock(new BlockFiveAgeCrop("pineapple_crop",  EnumCropType.PINEAPPLE));
+		corn_crop = registerBlock(new BlockSevenAgeCrop("corn_crop",  EnumCropType.CORN));
+		onion_crop = registerBlock(new BlockFiveAgeCrop("onion_crop",  EnumCropType.ONION));
+		garlic_crop = registerBlock(new BlockFiveAgeCrop("garlic_crop",  EnumCropType.GARLIC));
+		lettuce_crop = registerBlock(new BlockFiveAgeCrop("lettuce_crop",  EnumCropType.LETTUCE));
 		
-		apple_leaves = registerBlock(new BlockFruitLeaves("appleleaves", "apple_leaves", EnumSaplingType.APPLE));
-		blooming_apple_leaves = registerBlock(new BlockNonFruitLeaves("bloomingappleleaves", "blooming_apple_leaves", EnumSaplingType.APPLE));
+		apple_leaves = registerBlock(new BlockFruitLeaves("apple_leaves", EnumSaplingType.APPLE));
+		blooming_apple_leaves = registerBlock(new BlockNonFruitLeaves("blooming_apple_leaves", EnumSaplingType.APPLE));
 		
-		lemon_leaves = registerBlock(new BlockFruitLeaves("lemonleaves", "lemon_leaves", EnumSaplingType.LEMON));
-		blooming_lemon_leaves = registerBlock(new BlockNonFruitLeaves("bloominglemonleaves", "blooming_lemon_leaves", EnumSaplingType.LEMON));
+		lemon_leaves = registerBlock(new BlockFruitLeaves("lemon_leaves", EnumSaplingType.LEMON));
+		blooming_lemon_leaves = registerBlock(new BlockNonFruitLeaves("blooming_lemon_leaves", EnumSaplingType.LEMON));
 		
-		orange_leaves = registerBlock(new BlockFruitLeaves("orangeleaves", "orange_leaves", EnumSaplingType.ORANGE));
-		blooming_orange_leaves = registerBlock(new BlockNonFruitLeaves("bloomingorangeleaves", "blooming_orange_leaves", EnumSaplingType.ORANGE));
-		
-		scarecrow = registerBlock(new BlockScarecrow("scarecrow", "scarecrow"));
+		orange_leaves = registerBlock(new BlockFruitLeaves("orange_leaves", EnumSaplingType.ORANGE));
+		blooming_orange_leaves = registerBlock(new BlockNonFruitLeaves("blooming_orange_leaves", EnumSaplingType.ORANGE));
 
-		//New Content
-		cherry_leaves = registerBlock(new BlockFruitLeaves("cherryleaves", "cherry_leaves", EnumSaplingType.CHERRY));
-		blooming_cherry_leaves = registerBlock(new BlockNonFruitLeaves("bloomingcherryleaves", "blooming_cherry_leaves", EnumSaplingType.CHERRY));
+		cherry_leaves = registerBlock(new BlockFruitLeaves("cherry_leaves", EnumSaplingType.CHERRY));
+		blooming_cherry_leaves = registerBlock(new BlockNonFruitLeaves("blooming_cherry_leaves", EnumSaplingType.CHERRY));
 		
-		pear_leaves = registerBlock(new BlockFruitLeaves("pearleaves", "pear_leaves", EnumSaplingType.PEAR));
-		blooming_pear_leaves = registerBlock(new BlockNonFruitLeaves("bloomingpearleaves", "blooming_pear_leaves", EnumSaplingType.PEAR));
+		pear_leaves = registerBlock(new BlockFruitLeaves("pear_leaves", EnumSaplingType.PEAR));
+		blooming_pear_leaves = registerBlock(new BlockNonFruitLeaves("blooming_pear_leaves", EnumSaplingType.PEAR));
 		
-		banana_leaves = registerBlock(new BlockFruitLeaves("bananaleaves", "banana_leaves", EnumSaplingType.BANANA));
-		blooming_banana_leaves = registerBlock(new BlockNonFruitLeaves("bloomingbananaleaves", "blooming_banana_leaves", EnumSaplingType.BANANA));
+		banana_leaves = registerBlock(new BlockFruitLeaves("banana_leaves", EnumSaplingType.BANANA));
+		blooming_banana_leaves = registerBlock(new BlockNonFruitLeaves("blooming_banana_leaves", EnumSaplingType.BANANA));
 		
-		avocado_leaves = registerBlock(new BlockFruitLeaves("avocadoleaves", "avocado_leaves", EnumSaplingType.AVOCADO));
-		blooming_avocado_leaves = registerBlock(new BlockNonFruitLeaves("bloomingavocadoleaves", "blooming_avocado_leaves", EnumSaplingType.AVOCADO));
+		avocado_leaves = registerBlock(new BlockFruitLeaves("avocado_leaves", EnumSaplingType.AVOCADO));
+		blooming_avocado_leaves = registerBlock(new BlockNonFruitLeaves("blooming_avocado_leaves", EnumSaplingType.AVOCADO));
 		
-		mango_leaves = registerBlock(new BlockFruitLeaves("mangoleaves", "mango_leaves", EnumSaplingType.MANGO));
-		blooming_mango_leaves = registerBlock(new BlockNonFruitLeaves("bloomingmangoleaves", "blooming_mango_leaves", EnumSaplingType.MANGO));
+		mango_leaves = registerBlock(new BlockFruitLeaves("mango_leaves", EnumSaplingType.MANGO));
+		blooming_mango_leaves = registerBlock(new BlockNonFruitLeaves("blooming_mango_leaves", EnumSaplingType.MANGO));
 		
-		olive_leaves = registerBlock(new BlockFruitLeaves("oliveleaves", "olive_leaves", EnumSaplingType.OLIVE));
-		blooming_olive_leaves = registerBlock(new BlockNonFruitLeaves("bloomingoliveleaves", "blooming_olive_leaves", EnumSaplingType.OLIVE));
+		olive_leaves = registerBlock(new BlockFruitLeaves("olive_leaves", EnumSaplingType.OLIVE));
+		blooming_olive_leaves = registerBlock(new BlockNonFruitLeaves("blooming_olive_leaves", EnumSaplingType.OLIVE));
 		
-		apple_sapling = registerBlock(new BlockGrowableSapling("applesapling", "apple_sapling", EnumSaplingType.APPLE));
-		lemon_sapling = registerBlock(new BlockGrowableSapling("lemonsapling", "lemon_sapling", EnumSaplingType.LEMON));
-		orange_sapling = registerBlock(new BlockGrowableSapling("orangesapling", "orange_sapling", EnumSaplingType.ORANGE));
-
-		cherry_sapling = registerBlock(new BlockGrowableSapling("cherrysapling", "cherry_sapling", EnumSaplingType.CHERRY));
-		pear_sapling = registerBlock(new BlockGrowableSapling("pearsapling", "pear_sapling", EnumSaplingType.PEAR));
-		banana_sapling = registerBlock(new BlockGrowableSapling("bananasapling", "banana_sapling", EnumSaplingType.BANANA));
-		avocado_sapling = registerBlock(new BlockGrowableSapling("avocadosapling", "avocado_sapling", EnumSaplingType.AVOCADO));
-		mango_sapling = registerBlock(new BlockGrowableSapling("mangosapling", "mango_sapling", EnumSaplingType.MANGO));
-		olive_sapling = registerBlock(new BlockGrowableSapling("olivesapling", "olive_sapling", EnumSaplingType.OLIVE));
+		apple_sapling = registerBlock(new BlockGrowableSapling("apple_sapling", EnumSaplingType.APPLE));
+		lemon_sapling = registerBlock(new BlockGrowableSapling("lemon_sapling", EnumSaplingType.LEMON));
+		orange_sapling = registerBlock(new BlockGrowableSapling("orange_sapling", EnumSaplingType.ORANGE));
+		cherry_sapling = registerBlock(new BlockGrowableSapling("cherry_sapling", EnumSaplingType.CHERRY));
+		pear_sapling = registerBlock(new BlockGrowableSapling("pear_sapling", EnumSaplingType.PEAR));
+		banana_sapling = registerBlock(new BlockGrowableSapling("banana_sapling", EnumSaplingType.BANANA));
+		avocado_sapling = registerBlock(new BlockGrowableSapling("avocado_sapling", EnumSaplingType.AVOCADO));
+		mango_sapling = registerBlock(new BlockGrowableSapling("mango_sapling", EnumSaplingType.MANGO));
+		olive_sapling = registerBlock(new BlockGrowableSapling("olive_sapling", EnumSaplingType.OLIVE));
 		
-		crop_stick = registerBlock(new BlockCropStick("cropstick", "crop_stick"));
+		crop_stick = registerBlock(new BlockCropStick("crop_stick"));
+		scarecrow = registerBlock(new BlockScarecrow("scarecrow"));
 		
-		tomato_crop = registerBlock(new BlockSixAgeCrop("tomatocrop", "tomato_crop", EnumCropType.TOMATO));
-		cucumber_crop = registerBlock(new BlockFiveAgeCrop("cucumbercrop", "cucumber_crop", EnumCropType.CUCUMBER));
-		aubergine_crop = registerBlock(new BlockFiveAgeCrop("auberginecrop", "aubergine_crop",  EnumCropType.AUBERGINE));
-		grape_crop = registerBlock(new BlockCropstickCrop("grapecrop", "grape_crop", EnumCropType.GRAPE)); //cropstick
-		pineapple_crop = registerBlock(new BlockFiveAgeCrop("pineapplecrop", "pineapple_crop",  EnumCropType.PINEAPPLE));
-		corn_crop = registerBlock(new BlockSevenAgeCrop("corncrop", "corn_crop",  EnumCropType.CORN));
-		onion_crop = registerBlock(new BlockFiveAgeCrop("onioncrop", "onion_crop",  EnumCropType.ONION));
-		garlic_crop = registerBlock(new BlockFiveAgeCrop("garliccrop", "garlic_crop",  EnumCropType.GARLIC));
-		//End new content
-				
 		registry.registerAll(BLOCKS.toArray(new Block[0]));
     }
     

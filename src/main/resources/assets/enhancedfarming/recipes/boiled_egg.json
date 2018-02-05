@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "item": "#allWater"
+    },
+    {
+      "item": "#egg"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:boiled_egg"
+  }
+}

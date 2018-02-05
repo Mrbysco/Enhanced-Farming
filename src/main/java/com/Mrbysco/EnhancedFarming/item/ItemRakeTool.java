@@ -33,7 +33,7 @@ public class ItemRakeTool extends ItemTool{
     private static final float[] ATTACK_DAMAGES = new float[] {5.0F, 7.0F, 7.0F, 7.0F, 5.0F};
     private static final float[] ATTACK_SPEEDS = new float[] { -3.2F, -3.2F, -3.1F, -3.0F, -3.0F};
     
-    public ItemRakeTool(Item.ToolMaterial material, int dropModifier, String unlocalizedName, String registryName)
+    public ItemRakeTool(Item.ToolMaterial material, int dropModifier, String registryName)
     {
         super(material, EFFECTIVE_ON);
         this.dropModifier = dropModifier;
@@ -42,7 +42,7 @@ public class ItemRakeTool extends ItemTool{
         this.attackSpeed = ATTACK_SPEEDS[material.ordinal()];
         
         setCreativeTab(EnhancedFarming.tabFarming);
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
     }
     

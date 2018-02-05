@@ -32,14 +32,14 @@ public class BlockNetherFlower extends BlockBush implements INetherCrop, IGrowab
     private static final AxisAlignedBB[] NETHERFLOWER_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.125D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.25D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D)};
     public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 5);
 
-    public BlockNetherFlower(String unlocalizedName, String registryName) {
+    public BlockNetherFlower(String registryName) {
     	super();
     	this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
         this.setTickRandomly(true);
         this.setCreativeTab((CreativeTabs)null);
         this.blockSoundType = blockSoundType.PLANT;
 
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 	}
     

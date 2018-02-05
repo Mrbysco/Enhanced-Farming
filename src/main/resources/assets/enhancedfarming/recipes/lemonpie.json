@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:lemon"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "#egg"
+    },
+    {
+      "item": "enhancedfarming:flour"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:lemon_pie"
+  }
+}

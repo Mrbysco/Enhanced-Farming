@@ -7,9 +7,9 @@ import net.minecraft.item.Item;
 
 public class ItemCustom extends Item{
 	
-	public ItemCustom(String unlocalizedName, String registryName) {
+	public ItemCustom(String registryName) {
 		setCreativeTab(EnhancedFarming.tabFarming);
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 	}
 

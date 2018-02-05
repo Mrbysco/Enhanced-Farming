@@ -9,7 +9,8 @@ public enum EnumCropType {
 	PINEAPPLE(),
 	CORN(),
 	ONION(),
-	GARLIC();
+	GARLIC(),
+	LETTUCE();
 		
 	private EnumCropType() {
 	}

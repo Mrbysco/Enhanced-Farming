@@ -13,6 +13,6 @@ public class FarmingTab extends CreativeTabs{
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(FarmingItems.lemon);
+		return new ItemStack(FarmingItems.cutting_board);
 	}
 }

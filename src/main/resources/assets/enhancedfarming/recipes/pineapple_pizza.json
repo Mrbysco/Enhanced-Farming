@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "enhancedfarming:dough"
+    },
+    {     
+	  "item": "enhancedfarming:tomato"
+    },
+    {
+      "item": "enhancedfarming:pineapple"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:pineapple_pizza"
+  }
+}

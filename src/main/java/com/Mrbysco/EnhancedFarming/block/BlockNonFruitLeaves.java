@@ -34,7 +34,7 @@ public class BlockNonFruitLeaves extends BlockLeaves implements ILeafColor{
 
 	public EnumSaplingType fruitType;
 
-	public BlockNonFruitLeaves(String unlocalizedName, String registryName, EnumSaplingType type) {
+	public BlockNonFruitLeaves(String registryName, EnumSaplingType type) {
 		super();
         this.setTickRandomly(true);
         this.setHardness(0.2F);
@@ -44,7 +44,7 @@ public class BlockNonFruitLeaves extends BlockLeaves implements ILeafColor{
         this.fruitType = type;
 
         this.setDefaultState(this.blockState.getBaseState().withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
-        this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 	}
 	

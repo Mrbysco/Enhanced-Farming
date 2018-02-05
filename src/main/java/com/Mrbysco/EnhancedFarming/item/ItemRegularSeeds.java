@@ -23,7 +23,7 @@ public class ItemRegularSeeds extends ItemSeeds{
     private final Block crops;
     private final Block soilBlock;
     
-	public ItemRegularSeeds(Block crops, Block soil, String unlocalizedName, String registryName) {
+	public ItemRegularSeeds(Block crops, Block soil, String registryName) {
 		super(crops, soil);
         
 		setCreativeTab(EnhancedFarming.tabFarming);
@@ -31,7 +31,7 @@ public class ItemRegularSeeds extends ItemSeeds{
 		this.crops = crops;
         this.soilBlock = soil;
         
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 	}
 	

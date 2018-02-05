@@ -1,0 +1,35 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "crop",
+		"textures": {
+						"crop": "enhancedfarming:blocks/lettuceplant3"
+					}
+    },
+    "variants": {
+        "normal": [{}],
+	   	"age" : {
+   			"0" : { "textures": {
+						"crop": "enhancedfarming:blocks/lettuceplant0"
+					}},
+			"1" : { "textures": {
+						"crop": "enhancedfarming:blocks/lettuceplant0"
+					}},
+			"2" : { "textures": {
+						"crop": "enhancedfarming:blocks/lettuceplant1"
+					}},
+			"3" : { "textures": {
+						"crop": "enhancedfarming:blocks/lettuceplant2"
+					}},
+			"4" : { "textures": {
+						"crop": "enhancedfarming:blocks/lettuceplant2"
+					}},
+			"5" : { "textures": {
+						"crop": "enhancedfarming:blocks/lettuceplant3"
+					}}
+		},
+		"inventory": [{
+			"model": "crop"
+		}]
+    }
+}

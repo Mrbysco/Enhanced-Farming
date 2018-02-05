@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "enhancedfarming:sliced_bread"
+    },
+    {
+      "item": "enhancedfarming:sliced_bread"
+    },
+    {
+      "item": "enhancedfarming:boiled_egg"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:egg_sandwich"
+  }
+}

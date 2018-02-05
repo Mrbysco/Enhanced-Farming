@@ -8,9 +8,9 @@ import net.minecraft.item.ItemStack;
 
 public class ItemCustomUtensil extends Item{
 	
-	public ItemCustomUtensil(String unlocalizedName, String registryName) {
+	public ItemCustomUtensil(String registryName) {
 		setCreativeTab(EnhancedFarming.tabFarming);
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 		this.setMaxStackSize(1);
 	}

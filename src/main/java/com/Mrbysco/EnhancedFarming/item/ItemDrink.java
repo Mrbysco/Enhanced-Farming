@@ -4,6 +4,7 @@ import com.Mrbysco.EnhancedFarming.EnhancedFarming;
 import com.Mrbysco.EnhancedFarming.Reference;
 
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -24,11 +25,13 @@ public class ItemDrink extends ItemFood{
 	private boolean cure;
 	private int amount;
 	
-	public ItemDrink(int amount, float saturation, int stacksize, int useTime, boolean directHeal, boolean cureEffects, String unlocalizedName, String registryName) {
+	public ItemDrink(int amount, float saturation, int stacksize, int useTime, boolean directHeal, boolean cureEffects, String registryName) {
 		super(amount, saturation, false);
 		this.maxStackSize=stacksize;
 		setCreativeTab(EnhancedFarming.tabFarming);
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+        this.setCreativeTab(CreativeTabs.FOOD);
+
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 		
 		this.amount = amount;

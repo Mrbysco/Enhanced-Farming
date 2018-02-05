@@ -22,14 +22,14 @@ public class ItemCropstickSeeds extends ItemSeeds{
     
     private final Block crops;
     
-	public ItemCropstickSeeds(Block crops, String unlocalizedName, String registryName) {
+	public ItemCropstickSeeds(Block crops, String registryName) {
 		super(crops, FarmingBlocks.crop_stick);
         
 		setCreativeTab(EnhancedFarming.tabFarming);
 		
 		this.crops = crops;
         
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 	}
 	

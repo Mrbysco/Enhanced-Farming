@@ -90,5 +90,26 @@
 		  "ore": "vegetableList"
 		},
 		"name": "vegetableList"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "allMilk"
+		},
+		"name": "allMilk"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "egg"
+		},
+		"name": "egg"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "allWater"
+		},
+		"name": "allWater"
 	}
 ]

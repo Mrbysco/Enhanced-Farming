@@ -28,11 +28,11 @@ public class BlockScarecrow extends BlockHorizontal implements ITileEntityProvid
 
     private static final AxisAlignedBB SCARECROW_BOX = new AxisAlignedBB(0.0D, 0.0D, 0D, 1.0D, 2.0D, 1.0D);
 
-	public BlockScarecrow(String unlocalizedName, String registryName) {
+	public BlockScarecrow(String registryName) {
 		super(Material.CLOTH);
 		this.blockSoundType = blockSoundType.CLOTH;
 		
-		this.setUnlocalizedName(Reference.MOD_PREFIX + unlocalizedName);
+		this.setUnlocalizedName(Reference.MOD_PREFIX + registryName.replaceAll("_", ""));
 		this.setRegistryName(registryName);
 		this.setCreativeTab(EnhancedFarming.tabFarming);
 	}
