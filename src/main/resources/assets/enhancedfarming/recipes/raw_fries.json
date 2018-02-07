@@ -5,16 +5,13 @@
       "item": "enhancedfarming:cutting_board"
     },
     {
-      "item": "enhancedfarming:dough"
-    },
-    {     
-	  "item": "enhancedfarming:tomato"
+      "item": "minecraft:potato"
     },
     {
-      "item": "minecraft:beef"
+      "item": "minecraft:potato"
     }
   ],
   "result": {
-    "item": "enhancedfarming:bacon_pizza"
+    "item": "enhancedfarming:raw_fries"
   }
 }

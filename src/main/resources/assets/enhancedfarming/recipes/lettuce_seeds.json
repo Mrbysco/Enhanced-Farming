@@ -9,6 +9,6 @@
 		"item": "enhancedfarming:lettuce_seeds"
 	},
 	"conditions": [{
-		"type": "enhancedfarming:fruitToSeeds"
+		"type": "enhancedfarming:cropToSeeds"
 	}]
 }

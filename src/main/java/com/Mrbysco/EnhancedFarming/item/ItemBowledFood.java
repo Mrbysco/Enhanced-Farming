@@ -103,6 +103,7 @@ public class ItemBowledFood extends ItemFood{
 			return EnumAction.DRINK;
 		}
     }
+	
 	@Override
 	public ItemFood setAlwaysEdible() {
 		return super.setAlwaysEdible();

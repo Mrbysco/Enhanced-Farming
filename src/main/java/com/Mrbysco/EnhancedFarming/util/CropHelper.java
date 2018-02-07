@@ -1,10 +1,8 @@
 package com.Mrbysco.EnhancedFarming.util;
 
 import com.Mrbysco.EnhancedFarming.block.EnumCropType;
-import com.Mrbysco.EnhancedFarming.init.FarmingBlocks;
 import com.Mrbysco.EnhancedFarming.init.FarmingItems;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 
 public class CropHelper {

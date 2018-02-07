@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "item": "enhancedfarming:olive_oil"
+    },
+    {
+      "item": "enhancedfarming:raw_fries"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:fries"
+  }
+}

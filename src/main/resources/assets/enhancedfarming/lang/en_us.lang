@@ -129,6 +129,7 @@ item.enhancedfarming:flour.name=Flour
 item.enhancedfarming:dough.name=Dough
 item.enhancedfarming:oliveoil.name=Olive Oil
 item.enhancedfarming:pasta.name=Pasta
+item.enhancedfarming:rawfries.name=Raw Fries
 
 item.enhancedfarming:fruitsalad.name=Fruit Salad
 item.enhancedfarming:cornsoup.name=Corn Soup
@@ -146,10 +147,14 @@ item.enhancedfarming:bakedegg.name=Baked Egg
 item.enhancedfarming:slicedbread.name=Sliced Bread
 item.enhancedfarming:cheese.name=Cheese
 item.enhancedfarming:spaghetti.name=Spaghetti
+item.enhancedfarming:jam.name=Fruit Jam
+item.enhancedfarming:fries.name=Fries
+item.enhancedfarming:fishandchips.name=Fish And Chips
 
 item.enhancedfarming:eggsandwich.name=Egg Sandwich
 item.enhancedfarming:baconsandwich.name=Bacon Sandwich
 item.enhancedfarming:chickensandwich.name=Chicken Sandwich
+item.enhancedfarming:jcsandwich.name=Jam And Cheese Sandwich
 
 item.enhancedfarming:pineapplepizza.name=Pineapple Pizza
 item.enhancedfarming:cheesepizza.name=Cheese Pizza

@@ -111,5 +111,12 @@
 		  "ore": "allWater"
 		},
 		"name": "allWater"
+	},
+	{
+		"ingredient": {
+		  "type": "forge:ore_dict",
+		  "ore": "cookedFish"
+		},
+		"name": "cookedFish"
 	}
 ]

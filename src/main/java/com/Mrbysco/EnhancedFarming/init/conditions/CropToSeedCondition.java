@@ -8,10 +8,10 @@ import com.google.gson.JsonObject;
 import net.minecraftforge.common.crafting.IConditionFactory;
 import net.minecraftforge.common.crafting.JsonContext;
 
-public class FruitToSeedCondition implements IConditionFactory{
+public class CropToSeedCondition implements IConditionFactory{
 
 	@Override
 	public BooleanSupplier parse(JsonContext context, JsonObject json) {
-		return () -> FarmingConfigGen.general.othersettings.fruitToSeeds;
+		return () -> FarmingConfigGen.general.othersettings.cropToSeeds;
 	}
 }

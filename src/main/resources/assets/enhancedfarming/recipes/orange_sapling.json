@@ -9,6 +9,6 @@
 		"item": "enhancedfarming:orange_sapling"
 	},
 	"conditions": [{
-		"type": "enhancedfarming:fruitToSeeds"
+		"type": "enhancedfarming:cropToSeeds"
 	}]
 }

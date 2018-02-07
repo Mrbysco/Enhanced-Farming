@@ -99,6 +99,15 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Cheese Stats")
 				public int spaghetti = 9;
+				
+				@Config.Comment("Fruit Jam Stats")
+				public int jam = 6;
+				
+				@Config.Comment("Fries Stats")
+				public int fries = 8;
+				
+				@Config.Comment("Fish And Chips Stats")
+				public int fishAndChips = 14;
 			}
 			
 			public class Pizza{
@@ -120,6 +129,9 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Sandwich Sandwich Stats")
 				public int chickenSandwichHealAmount = 13;
+				
+				@Config.Comment("Jam And Cheese Sandwich Stats")
+				public int jcSandwichHealAmount = 8;
 			}
 			
 			public class Pies{
@@ -316,7 +328,8 @@ public class FarmingConfigGen {
                 "enhancedfarming:corn_seeds",
                 "enhancedfarming:onion_seeds",
                 "enhancedfarming:garlic_seeds",
-                "enhancedfarming:olive_sapling"
+                "enhancedfarming:olive_sapling",
+                "enhancedfarming:lettuce_seeds"
 			};
 			
 			@Config.Comment("Makes it so if you hold hot drinks for too long that you begin taking fire damage")
@@ -331,8 +344,8 @@ public class FarmingConfigGen {
 			@Config.Comment("Instant grow from bonemeal")
 			public boolean instantGrow = false;
 			
-			@Config.Comment("Enables fruit to seed recipe")
-			public boolean fruitToSeeds = true;
+			@Config.Comment("Enables crops to seed recipe")
+			public boolean cropToSeeds = true;
 			
 			@Config.Comment("Enables Fruit Tree Generation")
 			public boolean treeGen = true;

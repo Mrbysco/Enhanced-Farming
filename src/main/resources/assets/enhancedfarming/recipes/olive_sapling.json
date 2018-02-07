@@ -9,6 +9,6 @@
 		"item": "enhancedfarming:olive_sapling"
 	},
 	"conditions": [{
-		"type": "enhancedfarming:fruitToSeeds"
+		"type": "enhancedfarming:cropToSeeds"
 	}]
 }

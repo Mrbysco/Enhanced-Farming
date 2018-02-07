@@ -18,14 +18,16 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class ItemDrink extends ItemFood{
+public class ItemBottledFood extends ItemFood{
+	
+	public boolean eatAction;
 
 	private int useTime;
 	private boolean directheal; 
 	private boolean cure;
 	private int amount;
 	
-	public ItemDrink(int amount, float saturation, int stacksize, int useTime, boolean directHeal, boolean cureEffects, String registryName) {
+	public ItemBottledFood(int amount, float saturation, int stacksize, int useTime, boolean directHeal, boolean cureEffects, String registryName) {
 		super(amount, saturation, false);
 		this.maxStackSize=stacksize;
 		setCreativeTab(EnhancedFarming.tabFarming);
@@ -38,6 +40,7 @@ public class ItemDrink extends ItemFood{
 		this.useTime = useTime;
 		this.directheal = directHeal;
 		this.cure = cureEffects;
+		this.eatAction = false;
 	}
 	
 	@Override
@@ -88,10 +91,22 @@ public class ItemDrink extends ItemFood{
 		return this.useTime;
 	}
 	
+	public ItemBottledFood setEatAction(){
+		this.eatAction = true;
+		return this;
+	}
+	
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack)
     {
-		return EnumAction.DRINK;
+		if(this.eatAction = true)
+		{
+			return EnumAction.EAT;
+		}
+		else
+		{
+			return EnumAction.DRINK;
+		}
     }
 	
 	@Override
