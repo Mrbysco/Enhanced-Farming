@@ -138,6 +138,7 @@ item.enhancedfarming:tomatosoup.name=Tomato Soup
 item.enhancedfarming:potatosoup.name=Potato Soup
 item.enhancedfarming:carrotsoup.name=Carrot Soup
 item.enhancedfarming:onionsoup.name=Onion Soup
+item.enhancedfarming:chickennoodlesoup.name=Chicken Noodle Soup
 
 item.enhancedfarming:hamburger.name=Hamburger
 item.enhancedfarming:chickenburger.name=Chicken Burger
@@ -150,6 +151,9 @@ item.enhancedfarming:spaghetti.name=Spaghetti
 item.enhancedfarming:jam.name=Fruit Jam
 item.enhancedfarming:fries.name=Fries
 item.enhancedfarming:fishandchips.name=Fish And Chips
+item.enhancedfarming:potatochips.name=Potato Chips
+item.enhancedfarming:guacamole.name=Guacamole
+item.enhancedfarming:guacandchips.name=Guac and Chips
 
 item.enhancedfarming:eggsandwich.name=Egg Sandwich
 item.enhancedfarming:baconsandwich.name=Bacon Sandwich

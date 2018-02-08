@@ -60,9 +60,6 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Mint Chocolate Bar Stats")
 				public int mintChocolateBarHealAmount = 4;
-				
-				@Config.Comment("Mint Tea Stats")
-				public int mintTeaHealAmount = 8;
 
 				@Config.Comment("Chocolate Cherry Stats")
 				public int chocolateCherryHealAmount = 3;
@@ -70,7 +67,7 @@ public class FarmingConfigGen {
 				@Config.Comment("Chocolate Banana Stats")
 				public int chocolateBananaHealAmount = 4;
 				
-				@Config.Comment("Chocolate Banana Stats")
+				@Config.Comment("Garlic Stats")
 				public int garlicHealAmount = 1;
 				
 				@Config.Comment("Fruit Salad Stats")
@@ -82,7 +79,7 @@ public class FarmingConfigGen {
 				@Config.Comment("Chicken Burger Stats")
 				public int chickenburgerHealAmount = 13;
 				
-				@Config.Comment("Chicken Burger Stats")
+				@Config.Comment("Cheese Burger Stats")
 				public int cheeseburgerHealAmount = 9;
 				
 				@Config.Comment("Boiled Egg Stats")
@@ -97,27 +94,36 @@ public class FarmingConfigGen {
 				@Config.Comment("Cheese Stats")
 				public int cheeseHealAmount = 4;
 				
-				@Config.Comment("Cheese Stats")
-				public int spaghetti = 9;
+				@Config.Comment("Spaghetti Stats")
+				public int spaghettiHealAmount = 9;
 				
 				@Config.Comment("Fruit Jam Stats")
-				public int jam = 6;
+				public int jamHealAmount = 6;
 				
 				@Config.Comment("Fries Stats")
-				public int fries = 8;
+				public int friesHealAmount = 8;
 				
 				@Config.Comment("Fish And Chips Stats")
-				public int fishAndChips = 14;
+				public int fishAndChipsHealAmount = 14;
+				
+				@Config.Comment("Potato Chips Stats")
+				public int potatoChipsHealAmount = 6;
+				
+				@Config.Comment("Guacamole Stats")
+				public int guacamoleHealAmount = 3;
+				
+				@Config.Comment("Guac And Chips Stats")
+				public int guacAndChipsHealAmount = 9;
 			}
 			
 			public class Pizza{
-				@Config.Comment("Cheese Stats")
+				@Config.Comment("Pineapple Pizza Stats")
 				public int pineapplePizzaHealAmount = 7;
 				
-				@Config.Comment("Cheese Stats")
+				@Config.Comment("Cheese Pizza Stats")
 				public int cheesePizzaHealAmount = 9;
 				
-				@Config.Comment("Cheese Stats")
+				@Config.Comment("Bacon Pizza Stats")
 				public int baconPizzaHealAmount = 11;
 			}
 			public class Sandwich{
@@ -138,22 +144,22 @@ public class FarmingConfigGen {
 				@Config.Comment("Apple Pie Stats")
 				public int applePieHealAmount = 8;
 				
-				@Config.Comment("Apple Pie Stats")
+				@Config.Comment("Banana Cream Pie Stats")
 				public int bananaPieHealAmount = 8;
 				
-				@Config.Comment("Apple Pie Stats")
+				@Config.Comment("Bacon And Egg Pie Stats")
 				public int baconAndEggPieHealAmount = 11;
 				
-				@Config.Comment("Apple Pie Stats")
+				@Config.Comment("Cherry Pie Stats")
 				public int cherryPieHealAmount = 6;
 				
-				@Config.Comment("Apple Pie Stats")
+				@Config.Comment("Grape Pie Stats")
 				public int grapePieHealAmount = 6;
 				
-				@Config.Comment("Apple Pie Stats")
+				@Config.Comment("Lemon Meringue Pie Stats")
 				public int lemonPieHealAmount = 8;
 				
-				@Config.Comment("Apple Pie Stats")
+				@Config.Comment("Pear Pie Stats")
 				public int pearPieHealAmount = 8;
 			}
 			
@@ -199,10 +205,10 @@ public class FarmingConfigGen {
 				@Config.Comment("Corn Stats")
 				public int cornHealAmount = 2;
 				
-				@Config.Comment("Aubergine Stats")
+				@Config.Comment("Onion Stats")
 				public int onionHealAmount = 2;
 				
-				@Config.Comment("Corn Stats")
+				@Config.Comment("Olive Stats")
 				public int oliveHealAmount = 2;
 				
 				@Config.Comment("Lettuce Stats")
@@ -218,6 +224,9 @@ public class FarmingConfigGen {
 				
 				@Config.Comment("Hot Chocolate Stats")
 				public int hotChocolateBottleHealAmount = 6;
+				
+				@Config.Comment("Mint Tea Stats")
+				public int mintTeaHealAmount = 8;
 				
 				//Juices
 				@Config.Comment("Apple Juice Stats")
@@ -269,10 +278,10 @@ public class FarmingConfigGen {
 				@Config.Comment("Grape Smoothie Stats")
 				public int smoothieGrapeHealAmount = 4;
 				
-				@Config.Comment("Cherry Smoothie Stats")
+				@Config.Comment("Mango Smoothie Stats")
 				public int smoothieMangoHealAmount = 5;
 				
-				@Config.Comment("Pear Smoothie Stats")
+				@Config.Comment("Pineapple Smoothie Stats")
 				public int smoothiePineappleHealAmount = 5;
 				
 				@Config.Comment("Cucumber Smoothie Stats")
@@ -280,23 +289,26 @@ public class FarmingConfigGen {
 			}
 			
 			public class Soups{
-				@Config.Comment("Banana Smoothie Stats")
+				@Config.Comment("Corn Soup Stats")
 				public int cornSoupHealAmount = 6;
 				
-				@Config.Comment("Grape Smoothie Stats")
+				@Config.Comment("Cucumber Soup Stats")
 				public int cucumberSoupHealAmount = 7;
 				
-				@Config.Comment("Cherry Smoothie Stats")
+				@Config.Comment("Tomato Soup Stats")
 				public int tomatoSoupHealAmount = 6;
 				
-				@Config.Comment("Pear Smoothie Stats")
+				@Config.Comment("Potato Soup Stats")
 				public int potatoSoupHealAmount = 6;
 				
-				@Config.Comment("Banana Smoothie Stats")
+				@Config.Comment("Carrot Soup Stats")
 				public int carrotSoupHealAmount = 7;
 				
-				@Config.Comment("Banana Smoothie Stats")
+				@Config.Comment("Onion Soup Stats")
 				public int onionSoupHealAmount = 6;
+				
+				@Config.Comment("Chicken Noodle Soup Stats")
+				public int chickenNoodleSoupHealAmount = 11;
 			}
 		}
 		

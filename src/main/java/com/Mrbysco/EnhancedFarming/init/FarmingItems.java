@@ -126,6 +126,7 @@ public class FarmingItems {
 	public static ItemFood potato_soup;
 	public static ItemFood carrot_soup;
 	public static ItemFood onion_soup;
+	public static ItemFood chicken_noodle_soup;
 
 	public static ItemFood hamburger;
 	public static ItemFood chickenburger;
@@ -139,6 +140,9 @@ public class FarmingItems {
 	public static ItemFood jam;
 	public static ItemFood fries;
 	public static ItemFood fish_and_chips;
+	public static ItemFood potato_chips;
+	public static ItemFood guacamole;
+	public static ItemFood guac_and_chips;
 	
 	public static ItemFood egg_sandwich;
 	public static ItemFood bacon_sandwich;
@@ -167,7 +171,7 @@ public class FarmingItems {
 	private static int chocolateCandyAmount = FarmingConfigGen.general.foodsettings.food.chocolateCandyHealAmount;
 	private static int lemonAmount = FarmingConfigGen.general.foodsettings.fruits.lemonHealAmount;
 	private static int chocolateBarAmount = FarmingConfigGen.general.foodsettings.food.mintChocolateBarHealAmount;
-	private static int mintteaAmount = FarmingConfigGen.general.foodsettings.food.mintTeaHealAmount;
+	private static int mintteaAmount = FarmingConfigGen.general.foodsettings.drinks.mintTeaHealAmount;
 	private static int orangeAmount = FarmingConfigGen.general.foodsettings.fruits.orangeHealAmount;
 	
 	private static int goldenLemon = FarmingConfigGen.general.foodsettings.food.goldenLemonHealAmount;
@@ -224,10 +228,13 @@ public class FarmingItems {
 	private static int omeletAmount = FarmingConfigGen.general.foodsettings.food.omeletHealAmount;
 	private static int slicedBreadAmount = FarmingConfigGen.general.foodsettings.food.slicedBreadHealAmount;
 	private static int cheeseAmount = FarmingConfigGen.general.foodsettings.food.cheeseHealAmount;
-	private static int spaghettiAmount = FarmingConfigGen.general.foodsettings.food.spaghetti;
-	private static int jamAmount = FarmingConfigGen.general.foodsettings.food.jam;
-	private static int friesAmount = FarmingConfigGen.general.foodsettings.food.fries;
-	private static int fishAndChipsAmount = FarmingConfigGen.general.foodsettings.food.fishAndChips;
+	private static int spaghettiAmount = FarmingConfigGen.general.foodsettings.food.spaghettiHealAmount;
+	private static int jamAmount = FarmingConfigGen.general.foodsettings.food.jamHealAmount;
+	private static int friesAmount = FarmingConfigGen.general.foodsettings.food.friesHealAmount;
+	private static int fishAndChipsAmount = FarmingConfigGen.general.foodsettings.food.fishAndChipsHealAmount;
+	private static int potatoChipsAmount = FarmingConfigGen.general.foodsettings.food.potatoChipsHealAmount;
+	private static int guacamoleAmount = FarmingConfigGen.general.foodsettings.food.guacamoleHealAmount;
+	private static int guacAndChipsAmount = FarmingConfigGen.general.foodsettings.food.guacAndChipsHealAmount;
 	
 	private static int eggSandwichAmount = FarmingConfigGen.general.foodsettings.sandwiches.eggSandwichHealAmount;
 	private static int baconSandwichAmount = FarmingConfigGen.general.foodsettings.sandwiches.baconSandwichHealAmount;
@@ -253,6 +260,7 @@ public class FarmingItems {
 	public static int potatoSoupAmount = FarmingConfigGen.general.foodsettings.soups.potatoSoupHealAmount;
 	public static int carrotSoupAmount = FarmingConfigGen.general.foodsettings.soups.carrotSoupHealAmount;
 	public static int onionSoupAmount = FarmingConfigGen.general.foodsettings.soups.onionSoupHealAmount;
+	public static int chickenNoodleSoupAmount = FarmingConfigGen.general.foodsettings.soups.chickenNoodleSoupHealAmount;
 	
 	public static ArrayList<Item> ITEMS = new ArrayList<>();
     
@@ -352,6 +360,7 @@ public class FarmingItems {
 		potato_soup = registerItem(new ItemBowledFood(potatoSoupAmount, 0.8F, 16, 32, false, false, "potato_soup"));
 		carrot_soup = registerItem(new ItemBowledFood(carrotSoupAmount, 0.8F, 16, 32, false, false, "carrot_soup"));
 		onion_soup = registerItem(new ItemBowledFood(onionSoupAmount, 0.7F, 16, 32, false, false, "onion_soup"));
+		chicken_noodle_soup = registerItem(new ItemBowledFood(chickenNoodleSoupAmount, 0.5F, 16, 32, false, false, "chicken_noodle_soup"));
 		
 		hamburger = registerItem(new ItemCustomFood(hamburgerAmount, 0.6F, 64, 32, "hamburger"));
 		chickenburger = registerItem(new ItemCustomFood(chickenburgerAmount, 0.6F, 64, 32, "chickenburger"));
@@ -364,6 +373,9 @@ public class FarmingItems {
 		jam = registerItem(new ItemBottledFood(jamAmount, 0.1F, 16, 32, false, false, "jam").setEatAction());
 		fries = registerItem(new ItemCustomFood(friesAmount, 0.4F, 64, 32, "fries"));
 		fish_and_chips = registerItem(new ItemCustomFood(fishAndChipsAmount, 0.6F, 64, 32, "fish_and_chips"));
+		potato_chips = registerItem(new ItemBowledFood(potatoChipsAmount, 0.2F, 64, 24, false, false, "potato_chips").setEatAction());
+		guacamole = registerItem(new ItemBowledFood(guacamoleAmount, 0.1F, 64, 32, false, false, "guacamole").setEatAction());
+		guac_and_chips = registerItem(new ItemCustomFood(guacAndChipsAmount, 0.4F, 64, 28, "guac_and_chips"));
 
 		//sandwiches
 		egg_sandwich = registerItem(new ItemCustomFood(eggSandwichAmount, 0.5F, 64, 32, "egg_sandwich"));

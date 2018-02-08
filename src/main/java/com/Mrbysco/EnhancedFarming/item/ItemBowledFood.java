@@ -108,4 +108,15 @@ public class ItemBowledFood extends ItemFood{
 	public ItemFood setAlwaysEdible() {
 		return super.setAlwaysEdible();
 	}
+	
+	@Override
+	public ItemStack getContainerItem(ItemStack itemStack) {
+		ItemStack stack = new ItemStack(Items.BOWL);
+		return stack;
+	}
+	
+	@Override
+	public boolean hasContainerItem() {
+		return true;
+	}
 }

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "enhancedfarming:olive_oil"
+    },
+    {
+      "item": "enhancedfarming:salt"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:potato_chips"
+  }
+}
