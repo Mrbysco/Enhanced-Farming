@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "enhancedfarming:lettuce"
+    },
+    {
+      "item": "enhancedfarming:tomato"
+    },
+    {
+      "item": "enhancedfarming:onion"
+    },
+    {
+      "item": "enhancedfarming:cutting_board"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:salad"
+  }
+}

@@ -73,6 +73,9 @@ public class FarmingConfigGen {
 				@Config.Comment("Fruit Salad Stats")
 				public int fruitSaladHealAmount = 5;
 				
+				@Config.Comment("Salad Stats")
+				public int saladHealAmount = 6;
+				
 				@Config.Comment("Hamburger Stats")
 				public int hamburgerHealAmount = 15;
 				

@@ -87,7 +87,7 @@ public class TreeWorldGen implements IWorldGenerator {
         
         if (BiomeDictionary.hasType(currentBiome, BiomeDictionary.Type.JUNGLE) && coldFlag && spookyFlag)
         {
-        	int randomValue = random.nextInt(4);
+        	int randomValue = random.nextInt(3);
         	
         	switch (randomValue) {
         	default:

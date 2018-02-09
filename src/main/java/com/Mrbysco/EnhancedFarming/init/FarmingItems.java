@@ -120,6 +120,7 @@ public class FarmingItems {
 	//Actual food
 	
 	public static ItemFood fruit_salad;
+	public static ItemFood salad;
 	public static ItemFood corn_soup;
 	public static ItemFood cucumber_soup;
 	public static ItemFood tomato_soup;
@@ -254,6 +255,7 @@ public class FarmingItems {
 	private static int pearPieAmount = FarmingConfigGen.general.foodsettings.pies.pearPieHealAmount;
 	
 	public static int fruitSaladAmount = FarmingConfigGen.general.foodsettings.food.fruitSaladHealAmount;
+	public static int saladAmount = FarmingConfigGen.general.foodsettings.food.saladHealAmount;
 	public static int cornSoupAmount = FarmingConfigGen.general.foodsettings.soups.cornSoupHealAmount;
 	public static int cucumberSoupAmount = FarmingConfigGen.general.foodsettings.soups.cucumberSoupHealAmount;
 	public static int tomatoSoupAmount = FarmingConfigGen.general.foodsettings.soups.tomatoSoupHealAmount;
@@ -353,7 +355,8 @@ public class FarmingItems {
 		pasta = registerItem(new ItemCustom("pasta"));
 		raw_fries = registerItem(new ItemCustom("raw_fries"));
 		
-		fruit_salad = registerItem(new ItemBowledFood(fruitSaladAmount, 0.7F, 16, 24, false, false, "fruit_salad").setEatAction());
+		fruit_salad = registerItem(new ItemBowledFood(fruitSaladAmount, 0.4F, 16, 24, false, false, "fruit_salad").setEatAction());
+		salad = registerItem(new ItemBowledFood(saladAmount, 0.2F, 16, 24, false, false, "salad").setEatAction());
 		corn_soup = registerItem(new ItemBowledFood(cornSoupAmount, 0.8F, 16, 32, false, false, "corn_soup"));
 		cucumber_soup = registerItem(new ItemBowledFood(cucumberSoupAmount, 0.6F, 16, 32, false, false, "cucumber_soup"));
 		tomato_soup = registerItem(new ItemBowledFood(tomatoSoupAmount, 0.7F, 16, 32, false, false, "tomato_soup"));
