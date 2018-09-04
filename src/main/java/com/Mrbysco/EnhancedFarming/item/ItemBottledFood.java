@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 
 public class ItemBottledFood extends ItemFood{
 	
-	public boolean eatAction;
-
 	private int useTime;
 	private boolean directheal; 
 	private boolean cure;
@@ -40,7 +38,6 @@ public class ItemBottledFood extends ItemFood{
 		this.useTime = useTime;
 		this.directheal = directHeal;
 		this.cure = cureEffects;
-		this.eatAction = false;
 	}
 	
 	@Override
@@ -91,22 +88,10 @@ public class ItemBottledFood extends ItemFood{
 		return this.useTime;
 	}
 	
-	public ItemBottledFood setEatAction(){
-		this.eatAction = true;
-		return this;
-	}
-	
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack)
     {
-		if(this.eatAction = true)
-		{
-			return EnumAction.EAT;
-		}
-		else
-		{
-			return EnumAction.DRINK;
-		}
+		return EnumAction.DRINK;
     }
 	
 	@Override

@@ -56,8 +56,8 @@ item.enhancedfarming:tomatoseeds.name=Tomato Seeds
 item.enhancedfarming:cucumberseeds.name=Cucumber Seeds
 item.enhancedfarming:aubergineseeds.name=Aubergine Seeds
 item.enhancedfarming:grapeseeds.name=Grape Seeds
-item.enhancedfarming:cornseeds.name=Pineapple Seeds
-item.enhancedfarming:pineappleseeds.name=Corn Seeds
+item.enhancedfarming:cornseeds.name=Corn Seeds
+item.enhancedfarming:pineappleseeds.name=Pineapple Seeds
 item.enhancedfarming:onionseeds.name=Onion Seeds
 item.enhancedfarming:garlicseeds.name=Garlic Seeds
 item.enhancedfarming:lettuceseeds.name=Lettuce Seeds
@@ -178,3 +178,6 @@ item.enhancedfarming:stonerake.name=Stone Rake
 item.enhancedfarming:ironrake.name=Iron Rake
 item.enhancedfarming:goldrake.name=Gold Rake
 item.enhancedfarming:diamondrake.name=Diamond Rake
+
+#JEI
+gui.farming.piston=Piston crafting

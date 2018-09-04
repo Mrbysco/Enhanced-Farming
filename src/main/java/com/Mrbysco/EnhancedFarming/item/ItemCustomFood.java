@@ -18,7 +18,6 @@ import net.minecraft.world.World;
 
 public class ItemCustomFood extends ItemFood{
 
-	public boolean drinkable;
 	//private boolean enchanted; 
 	private int useTime;
 	
@@ -32,7 +31,6 @@ public class ItemCustomFood extends ItemFood{
 		this.setRegistryName(registryName);
 		
 		this.useTime = useTime;
-		this.drinkable = false;		
 	}
 	
 	@Override
@@ -60,23 +58,11 @@ public class ItemCustomFood extends ItemFood{
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return this.useTime;
 	}
-	
-	public ItemCustomFood setDrinkable(){
-		this.drinkable = true;
-		return this;
-	}
-	
+
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack)
     {
-		if(this.drinkable = true)
-		{
-			return EnumAction.DRINK;
-		}
-		else
-		{
-			return EnumAction.EAT;
-		}
+		return EnumAction.EAT;
     }
 	
 	@Override

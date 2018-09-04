@@ -34,19 +34,23 @@ public class FarmingHandlers {
 		
 		Entity entity = event.getTarget();
 
-		if(entity instanceof EntityCow && itemstack.getItem() == Items.GLASS_BOTTLE)
+		if(entity instanceof EntityCow && itemstack.getItem() == Items.GLASS_BOTTLE && !player.capabilities.isCreativeMode)
 		{
-			player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
-            itemstack.shrink(1);
+			EntityCow cow = (EntityCow)entity;
+			if(!cow.isChild())
+			{
+				player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
+	            itemstack.shrink(1);
 
-            if (itemstack.isEmpty())
-            {
-                player.setHeldItem(hand, new ItemStack(FarmingItems.milk_bottle));
-            }
-            else if (!player.inventory.addItemStackToInventory(new ItemStack(FarmingItems.milk_bottle)))
-            {
-                player.dropItem(new ItemStack(FarmingItems.milk_bottle), false);
-            }
+	            if (itemstack.isEmpty() && hand != null)
+	            {
+	                player.setHeldItem(hand, new ItemStack(FarmingItems.milk_bottle));
+	            }
+	            else if (!player.inventory.addItemStackToInventory(new ItemStack(FarmingItems.milk_bottle)))
+	            {
+	                player.dropItem(new ItemStack(FarmingItems.milk_bottle), false);
+	            }
+			}
 		}
 	}
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.Mrbysco.EnhancedFarming.config.FarmingConfigGen;
 import com.Mrbysco.EnhancedFarming.item.ItemBottledFood;
+import com.Mrbysco.EnhancedFarming.item.ItemBottledFoodEat;
 import com.Mrbysco.EnhancedFarming.item.ItemBowledFood;
 import com.Mrbysco.EnhancedFarming.item.ItemCropstickSeeds;
 import com.Mrbysco.EnhancedFarming.item.ItemCustom;
@@ -355,8 +356,8 @@ public class FarmingItems {
 		pasta = registerItem(new ItemCustom("pasta"));
 		raw_fries = registerItem(new ItemCustom("raw_fries"));
 		
-		fruit_salad = registerItem(new ItemBowledFood(fruitSaladAmount, 0.4F, 16, 24, false, false, "fruit_salad").setEatAction());
-		salad = registerItem(new ItemBowledFood(saladAmount, 0.2F, 16, 24, false, false, "salad").setEatAction());
+		fruit_salad = registerItem(new ItemBottledFoodEat(fruitSaladAmount, 0.4F, 16, 24, false, false, "fruit_salad"));
+		salad = registerItem(new ItemBottledFoodEat(saladAmount, 0.2F, 16, 24, false, false, "salad"));
 		corn_soup = registerItem(new ItemBowledFood(cornSoupAmount, 0.8F, 16, 32, false, false, "corn_soup"));
 		cucumber_soup = registerItem(new ItemBowledFood(cucumberSoupAmount, 0.6F, 16, 32, false, false, "cucumber_soup"));
 		tomato_soup = registerItem(new ItemBowledFood(tomatoSoupAmount, 0.7F, 16, 32, false, false, "tomato_soup"));
@@ -372,12 +373,12 @@ public class FarmingItems {
 		baked_egg = registerItem(new ItemCustomFood(omeletAmount, 0.2F, 64, 32, "baked_egg"));
 		sliced_bread = registerItem(new ItemCustomFood(slicedBreadAmount, 0.3F, 64, 32, "sliced_bread"));
 		cheese = registerItem(new ItemCustomFood(cheeseAmount, 0.2F, 64, 32, "cheese"));
-		spaghetti = registerItem(new ItemBowledFood(spaghettiAmount, 0.2F, 64, 40, false, false, "spaghetti").setEatAction());
-		jam = registerItem(new ItemBottledFood(jamAmount, 0.1F, 16, 32, false, false, "jam").setEatAction());
+		spaghetti = registerItem(new ItemBottledFoodEat(spaghettiAmount, 0.2F, 64, 40, false, false, "spaghetti"));
+		jam = registerItem(new ItemBottledFoodEat(jamAmount, 0.1F, 16, 32, false, false, "jam"));
 		fries = registerItem(new ItemCustomFood(friesAmount, 0.4F, 64, 32, "fries"));
 		fish_and_chips = registerItem(new ItemCustomFood(fishAndChipsAmount, 0.6F, 64, 32, "fish_and_chips"));
-		potato_chips = registerItem(new ItemBowledFood(potatoChipsAmount, 0.2F, 64, 24, false, false, "potato_chips").setEatAction());
-		guacamole = registerItem(new ItemBowledFood(guacamoleAmount, 0.1F, 64, 32, false, false, "guacamole").setEatAction());
+		potato_chips = registerItem(new ItemBottledFoodEat(potatoChipsAmount, 0.2F, 64, 24, false, false, "potato_chips"));
+		guacamole = registerItem(new ItemBottledFoodEat(guacamoleAmount, 0.1F, 64, 32, false, false, "guacamole"));
 		guac_and_chips = registerItem(new ItemCustomFood(guacAndChipsAmount, 0.4F, 64, 28, "guac_and_chips"));
 
 		//sandwiches

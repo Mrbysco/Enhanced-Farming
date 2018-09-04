@@ -2,6 +2,6 @@
     "parent": "enhancedfarming:block/leave_overlay",
     "textures": {
         "layer0": "blocks/leaves_oak",
-        "layer1": "enhancedfarming:blocks/pear_flower_overlay"
+        "layer1": "enhancedfarming:blocks/leaves/pear_flower_overlay"
     }
 }

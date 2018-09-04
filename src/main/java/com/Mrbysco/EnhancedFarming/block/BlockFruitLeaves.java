@@ -151,23 +151,6 @@ public class BlockFruitLeaves extends BlockLeaves implements ILeafColor{
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return TreeHelper.getFruitfromEnum(this.fruitType);
 	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
-		return Blocks.LEAVES.getBlockLayer();
-	}
-	
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return Blocks.LEAVES.isOpaqueCube(state);
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-		return Blocks.LEAVES.shouldSideBeRendered(state, world, pos, side);
-	}
     
     @SideOnly(Side.CLIENT)
     public IBlockColor getBlockColor()
@@ -214,5 +197,14 @@ public class BlockFruitLeaves extends BlockLeaves implements ILeafColor{
 			float hitZ, int meta, EntityLivingBase placer) {
 		 return this.getStateFromMeta(meta).withProperty(CHECK_DECAY, Boolean.valueOf(false)).withProperty(DECAYABLE, Boolean.valueOf(false));	
 	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return true;
+	}
 	
+	@Override
+	public BlockRenderLayer getBlockLayer() {
+        return BlockRenderLayer.CUTOUT_MIPPED;
+	}
 }

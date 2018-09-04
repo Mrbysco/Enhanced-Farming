@@ -5,7 +5,9 @@ import com.Mrbysco.EnhancedFarming.block.ILeafColor;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionUtils;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -14,10 +16,15 @@ public class FarmingRecipes {
 	public static void init()
 	{
 		GameRegistry.addSmelting(new ItemStack(FarmingItems.cold_chocolate_bottle), new ItemStack(FarmingItems.hot_chocolate_bottle), 0.1F);
-		GameRegistry.addSmelting(Items.POTIONITEM.getDefaultInstance(), new ItemStack(FarmingItems.hot_water), 0.1F);
+		GameRegistry.addSmelting(getWaterBottle(), new ItemStack(FarmingItems.hot_water), 0.1F);
 		GameRegistry.addSmelting(FarmingItems.dough, new ItemStack(Items.BREAD), 0.1F);
 		GameRegistry.addSmelting(Items.EGG, new ItemStack(FarmingItems.baked_egg), 0.1F);
 	}
+	
+	public static ItemStack getWaterBottle()
+    {
+        return PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.WATER);
+    }
 	
 	public static void initOredict()
 	{
@@ -66,10 +73,7 @@ public class FarmingRecipes {
     	OreDictionary.registerOre("allMilk", FarmingItems.milk_bottle);
     	OreDictionary.registerOre("allMilk", Items.MILK_BUCKET);
     	
-    	OreDictionary.registerOre("allWater", Items.POTIONITEM.getDefaultInstance());
-    	OreDictionary.registerOre("allWater", Items.WATER_BUCKET);
-    	
-    	OreDictionary.registerOre("allWater", Items.POTIONITEM.getDefaultInstance());
+    	OreDictionary.registerOre("allWater", getWaterBottle());
     	OreDictionary.registerOre("allWater", Items.WATER_BUCKET);
 	}
 }
