@@ -1,3 +1,5 @@
+[![build](https://github.com/Mrbysco/Enhanced-Farming/actions/workflows/build.yml/badge.svg)](https://github.com/Mrbysco/Enhanced-Farming/actions/workflows/build.yml)
+
 # Enhanced Farming #
 
 ## About ##
