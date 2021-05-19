@@ -11,4 +11,4 @@ Enhanced Farming is a revival of the old 1.6.2 mod "Better Farming" by iBlackSha
   - [![License](https://img.shields.io/badge/License-MIT-red.svg?style=flat)](http://opensource.org/licenses/MIT)
   
 ## Downloads ##
-Downloads are available at https://minecraft.curseforge.com/projects/enhanced-farming
+Downloads can be found on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/enhanced-farming)
