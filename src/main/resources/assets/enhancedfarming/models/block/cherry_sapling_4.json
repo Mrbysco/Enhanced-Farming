@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "enhancedfarming:block/saplings/cherry_sapling"
+  }
+}

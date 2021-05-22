@@ -1,6 +1,0 @@
-{
-    "conditions" : {
-        "rakeRecipes": "com.Mrbysco.EnhancedFarming.init.conditions.RakeRecipeCondition",
-        "cropToSeeds": "com.Mrbysco.EnhancedFarming.init.conditions.CropToSeedCondition"
-    }
-}

@@ -1,33 +1,22 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "model": "enhancedfarming:stick_crops",
-		"textures": {
-						"crop": "enhancedfarming:blocks/grapeplant5"
-					}
+  "variants": {
+    "age=0": {
+      "model": "enhancedfarming:block/grape_crop_0"
     },
-    "variants": {
-        "normal": [{}],
-	   	"age" : {
-   			"0" : { },
-			"1" : { "textures": {
-						"crop": "enhancedfarming:blocks/grapeplant1"
-					}},
-			"2" : { "textures": {
-						"crop": "enhancedfarming:blocks/grapeplant2"
-					}},
-			"3" : { "textures": {
-						"crop": "enhancedfarming:blocks/grapeplant3"
-					}},
-			"4" : { "textures": {
-						"crop": "enhancedfarming:blocks/grapeplant4"
-					}},
-			"5" : { "textures": {
-						"crop": "enhancedfarming:blocks/grapeplant5"
-					}}
-		},
-		"inventory": [{
-			"model": "enhancedfarming:stick_crops"
-		}]
+    "age=1": {
+      "model": "enhancedfarming:block/grape_crop_1"
+    },
+    "age=2": {
+      "model": "enhancedfarming:block/grape_crop_2"
+    },
+    "age=3": {
+      "model": "enhancedfarming:block/grape_crop_3"
+    },
+    "age=4": {
+      "model": "enhancedfarming:block/grape_crop_4"
+    },
+    "age=5": {
+      "model": "enhancedfarming:block/grape_crop_5"
     }
+  }
 }

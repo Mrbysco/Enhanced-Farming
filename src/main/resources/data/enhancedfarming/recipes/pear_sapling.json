@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:pear"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:pear_sapling"
+	},
+	"conditions": [{
+		"type": "enhancedfarming:crop_to_seeds"
+	}]
+}

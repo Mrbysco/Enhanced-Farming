@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "enhancedfarming:items/baconandeggpie"
-    }
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "enhancedfarming:item/bacon_and_egg_pie"
+  }
 }

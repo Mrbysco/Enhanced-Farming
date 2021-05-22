@@ -1,25 +1,19 @@
 {
-    "forge_marker": 1,
-	"defaults": {
-        "model": "enhancedfarming:saplings"
+  "variants": {
+    "stage=0": {
+      "model": "enhancedfarming:block/banana_sapling_0"
     },
-    "variants": {
-        "stage": {
-			"0" : { "textures": {
-						"cross": "enhancedfarming:blocks/junglesapling0"
-					}},
-			"1" : { "textures": {
-						"cross": "enhancedfarming:blocks/junglesapling1"
-					}},
-			"2" : { "textures": {
-						"cross": "enhancedfarming:blocks/junglesapling2"
-					}},
-			"3" : { "textures": {
-						"cross": "enhancedfarming:blocks/junglesapling3"
-					}},
-			"4" : { "textures": {
-						"cross": "enhancedfarming:blocks/bananatree"
-					}}
-        }
+    "stage=1": {
+      "model": "enhancedfarming:block/banana_sapling_1"
+    },
+    "stage=2": {
+      "model": "enhancedfarming:block/banana_sapling_2"
+    },
+    "stage=3": {
+      "model": "enhancedfarming:block/banana_sapling_3"
+    },
+    "stage=4": {
+      "model": "enhancedfarming:block/banana_sapling_4"
+    }
   }
 }

@@ -2,8 +2,8 @@
 	"__comment": "Designed by Mrbysco",
 	"ambientocclusion": false,
 	"textures": {
-		"particle": "blocks/planks_oak",
-		"wood": "blocks/planks_oak"
+		"particle": "block/oak_planks",
+		"wood": "block/oak_planks"
 	},
 	"elements": [ 	 
 		{

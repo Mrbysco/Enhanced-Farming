@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "enhancedfarming:items/oliveseeds"
-    }
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "enhancedfarming:block/saplings/olive_sapling"
+  }
 }

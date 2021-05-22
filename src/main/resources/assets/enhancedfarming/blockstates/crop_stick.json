@@ -1,6 +1,7 @@
 {
-    "forge_marker": 1,
-    "variants": {
-		"normal": { "model": "enhancedfarming:crop_stick" }
+  "variants": {
+    "": {
+      "model": "enhancedfarming:block/crop_stick"
+    }
   }
 }

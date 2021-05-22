@@ -1,33 +1,22 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "model": "crop",
-		"textures": {
-						"crop": "enhancedfarming:blocks/pineappleplant5"
-					}
+  "variants": {
+    "age=0": {
+      "model": "enhancedfarming:block/pineapple_crop_0"
     },
-    "variants": {
-        "normal": [{}],
-	   	"age" : {
-   			"0" : { },
-			"1" : { "textures": {
-						"crop": "enhancedfarming:blocks/pineappleplant1"
-					}},
-			"2" : { "textures": {
-						"crop": "enhancedfarming:blocks/pineappleplant2"
-					}},
-			"3" : { "textures": {
-						"crop": "enhancedfarming:blocks/pineappleplant3"
-					}},
-			"4" : { "textures": {
-						"crop": "enhancedfarming:blocks/pineappleplant4"
-					}},
-			"5" : { "textures": {
-						"crop": "enhancedfarming:blocks/pineappleplant5"
-					}}
-		},
-		"inventory": [{
-			"model": "crop"
-		}]
+    "age=1": {
+      "model": "enhancedfarming:block/pineapple_crop_1"
+    },
+    "age=2": {
+      "model": "enhancedfarming:block/pineapple_crop_2"
+    },
+    "age=3": {
+      "model": "enhancedfarming:block/pineapple_crop_3"
+    },
+    "age=4": {
+      "model": "enhancedfarming:block/pineapple_crop_4"
+    },
+    "age=5": {
+      "model": "enhancedfarming:block/pineapple_crop_5"
     }
+  }
 }

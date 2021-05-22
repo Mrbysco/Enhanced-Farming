@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "enhancedfarming:items/grapeseeds"
-    }
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "enhancedfarming:item/grape_seeds"
+  }
 }

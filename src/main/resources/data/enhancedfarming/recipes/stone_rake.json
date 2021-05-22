@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "enhancedfarming:stone_rake"
+  },
+  "pattern": [
+    "X X",
+    "XSX",
+    " S "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "forge:cobblestone"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "conditions": [{
+    "type": "enhancedfarming:rake_enabled"
+  }]
+}

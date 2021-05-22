@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:lemon"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:lemon_sapling"
+	},
+	"conditions": [{
+		"type": "enhancedfarming:crop_to_seeds"
+	}]
+}

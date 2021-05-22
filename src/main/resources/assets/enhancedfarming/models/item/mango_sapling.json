@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "enhancedfarming:items/mangoseed"
-    }
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "enhancedfarming:block/saplings/mango_sapling"
+  }
 }

@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:nbt",
+			"item": "minecraft:potion",
+			"nbt": "{Potion:'minecraft:water'}"
+		},
+		{
+			"item": "enhancedfarming:lemon"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:lemonade"
+	}
+}

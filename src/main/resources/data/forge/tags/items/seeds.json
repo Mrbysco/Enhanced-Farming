@@ -1,0 +1,16 @@
+{
+   "replace":false,
+   "values":[
+	 "#forge:seeds/mint",
+	 "#forge:seeds/nether_flower",
+	 "#forge:seeds/tomato",
+	 "#forge:seeds/cucumber",
+	 "#forge:seeds/aubergine",
+	 "#forge:seeds/grape",
+	 "#forge:seeds/pineapple",
+	 "#forge:seeds/corn",
+	 "#forge:seeds/onion",
+	 "#forge:seeds/garlic",
+	 "#forge:seeds/lettuce"
+   ]
+}

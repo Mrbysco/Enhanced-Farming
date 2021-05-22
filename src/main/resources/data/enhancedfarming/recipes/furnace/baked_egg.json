@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "forge:eggs"
+  },
+  "result": "enhancedfarming:baked_egg",
+  "experience": 0.35,
+  "cookingtime": 200
+}

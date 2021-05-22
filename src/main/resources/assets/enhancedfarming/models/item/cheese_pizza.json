@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "enhancedfarming:items/cheesepizza"
-    }
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "enhancedfarming:item/cheese_pizza"
+  }
 }

@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[35,)"
+issueTrackerURL="https://github.com/Mrbysco/enhanced-farming/issues"
+license="MIT"
+
+[[mods]]
+modId="enhancedfarming"
+version="${file.jarVersion}"
+displayName="Enhanced Farming"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/enhanced-farming"
+authors="Mrbysco"
+description='''
+A rewritten version of the Better Farming mod
+'''
+credits="iBlackShadow for the original idea"
+[[dependencies.enhancedfarming]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.16.4,1.17)"
+ordering="NONE"
+side="BOTH"

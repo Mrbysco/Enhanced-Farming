@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "enhancedfarming:cold_chocolate_bottle"
+  },
+  "result": "enhancedfarming:hot_chocolate_bottle",
+  "experience": 0.25,
+  "cookingtime": 200
+}

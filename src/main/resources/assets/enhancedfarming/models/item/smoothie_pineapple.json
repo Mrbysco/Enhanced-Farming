@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "enhancedfarming:items/pineapplesmoothie"
-    }
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "enhancedfarming:item/smoothie_pineapple"
+  }
 }

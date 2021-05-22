@@ -1,23 +1,19 @@
 {
-    "forge_marker": 1,
-	"defaults": {
-        "model": "enhancedfarming:saplings"
+  "variants": {
+    "stage=0": {
+      "model": "enhancedfarming:block/orange_sapling_0"
     },
-    "variants": {
-        "stage": {
-			"0" : { },
-			"1" : { "textures": {
-						"cross": "enhancedfarming:blocks/oaksapling1"
-					}},
-			"2" : { "textures": {
-						"cross": "enhancedfarming:blocks/oaksapling2"
-					}},
-			"3" : { "textures": {
-						"cross": "enhancedfarming:blocks/oaksapling3"
-					}},
-			"4" : { "textures": {
-						"cross": "enhancedfarming:blocks/orangetree"
-					}}
-        }
+    "stage=1": {
+      "model": "enhancedfarming:block/orange_sapling_1"
+    },
+    "stage=2": {
+      "model": "enhancedfarming:block/orange_sapling_2"
+    },
+    "stage=3": {
+      "model": "enhancedfarming:block/orange_sapling_3"
+    },
+    "stage=4": {
+      "model": "enhancedfarming:block/orange_sapling_4"
+    }
   }
 }

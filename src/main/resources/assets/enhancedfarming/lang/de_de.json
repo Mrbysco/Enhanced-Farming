@@ -1,0 +1,51 @@
+{
+    "_comment": "config",
+    "enhancedfarming.config.title": "Enhanced Farming Konfiguration",
+
+    "_comment": "creativetab",
+    "itemGroup.enhancedfarming": "Enhanced Farming",
+
+    "_comment": "blocks",
+    "block.enhancedfarming:appleleaves": "Apfelbaumblätter",
+    "block.enhancedfarming:bloomingappleleaves": "Blühende Apfelbaumblätter",
+    "block.enhancedfarming:lemonleaves": "Zitronenbaumblätter",
+    "block.enhancedfarming:bloominglemonleaves": "Blühende Zitronenbaumblätter",
+    "block.enhancedfarming:orangeleaves": "Orangenbaumblätter",
+    "block.enhancedfarming:bloomingorangeleaves": "Blühende Orangenbaumblätter",
+
+    "block.enhancedfarming:applesapling": "Apfelsamen",
+    "block.enhancedfarming:lemonsapling": "Zitronensamen",
+    "block.enhancedfarming:orangesapling": "Orangensamen",
+
+    "block.enhancedfarming:mintcrop": "Minzpflanze",
+    "block.enhancedfarming:netherflowercrop": "Netherblume",
+    "block.enhancedfarming:scarecrow": "Vogelscheuche",
+
+    "_comment": "items",
+    "item.enhancedfarming:applejuice": "Apfelsaft",
+    "item.enhancedfarming:chocolatebar": "Schokoladentafel",
+    "item.enhancedfarming:chocolatecandy": "Praline",
+    "item.enhancedfarming:lemon": "Zitrone",
+    "item.enhancedfarming:lemonade": "Limonade",
+    "item.enhancedfarming:mintchocolatebar": "Minzschokoladentafel",
+    "item.enhancedfarming:minttea": "Minztee",
+    "item.enhancedfarming:orange": "Orange",
+    "item.enhancedfarming:orangejuice": "Orangensaft",
+    "item.enhancedfarming:milkbottle": "Milchflasche",
+    "item.enhancedfarming:woodenrake": "Holzrechen",
+    "item.enhancedfarming:stonerake": "Steinrechen",
+    "item.enhancedfarming:ironrake": "Eisenrechen",
+    "item.enhancedfarming:goldrake": "Goldrechen",
+    "item.enhancedfarming:diamondrake": "Diamantrechen",
+    "item.enhancedfarming:mintseeds": "Minzsamen",
+    "item.enhancedfarming:mint": "Minze",
+    "item.enhancedfarming:netherflowerseeds": "Netherblumensamen",
+    "item.enhancedfarming:coldchocolatebottle": "Flasche mit kaltem Kakao",
+    "item.enhancedfarming:hotchocolatebottle": "Flasche mit heißem Kakao",
+    "item.enhancedfarming:hotwater": "Gekochtes Wasser",
+    "item.enhancedfarming:goldenlemon": "Goldene Zitrone",
+    "item.enhancedfarming:goldenorange": "Goldene Orange",
+
+    "_comment": "JEI",
+    "enhancedfarming.gui.jei.category.piston": "Piston crafting"
+}

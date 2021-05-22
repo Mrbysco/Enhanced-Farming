@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "enhancedfarming:chocolate_banana"
+  },
+  "pattern": [
+    " C",
+    "CF"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "F": {
+      "item": "enhancedfarming:banana"
+    }
+  }
+}

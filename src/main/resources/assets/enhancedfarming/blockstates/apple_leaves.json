@@ -1,19 +1,16 @@
 {
-    "forge_marker": 1,
-	"defaults": {
-		"model": "enhancedfarming:apple_leaves"
+  "variants": {
+    "age=0": {
+      "model": "enhancedfarming:block/apple_leaves_blooming"
     },
-    "variants": {
-		"check_decay": {
-			"true": { },
-            "false": { }
-		},
-		"decayable": {
-			"true": { },
-            "false": { }
-		},
-    "inventory": [{
-        "model": "enhancedfarming:apple_leaves"
-    }]
+    "age=1": {
+      "model": "enhancedfarming:block/apple_leaves_blooming"
+    },
+    "age=2": {
+      "model": "enhancedfarming:block/apple_leaves_blooming"
+    },
+    "age=3": {
+      "model": "enhancedfarming:block/apple_leaves_fruity"
+    }
   }
 }

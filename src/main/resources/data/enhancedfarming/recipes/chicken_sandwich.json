@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "enhancedfarming:sliced_bread"
+    },
+    {
+      "item": "enhancedfarming:sliced_bread"
+    },
+    {
+      "item": "minecraft:cooked_chicken"
+    },
+    {
+      "tag": "forge:vegetables/tomato"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:chicken_sandwich"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "enhancedfarming:block/stick_crops",
+  "textures": {
+    "crop": "enhancedfarming:block/crops/grape_crop_5"
+  }
+}

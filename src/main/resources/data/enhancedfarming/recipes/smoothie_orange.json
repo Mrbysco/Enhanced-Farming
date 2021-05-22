@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:milk_bottle"
+		},
+		{
+			"tag": "forge:fruits/orange"
+		},
+		{
+			"item": "minecraft:snowball"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:smoothie_orange"
+	}
+}

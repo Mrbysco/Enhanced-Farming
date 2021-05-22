@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "enhancedfarming:dough"
+  },
+  "result": "minecraft:bread",
+  "experience": 0.35,
+  "cookingtime": 600
+}

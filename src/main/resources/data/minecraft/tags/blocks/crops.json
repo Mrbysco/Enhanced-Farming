@@ -1,0 +1,16 @@
+{
+   "replace":false,
+   "values":[
+      "enhancedfarming:mint_crop",
+	  "enhancedfarming:nether_flower_crop",
+	  "enhancedfarming:tomato_crop",
+	  "enhancedfarming:cucumber_crop",
+	  "enhancedfarming:aubergine_crop",
+	  "enhancedfarming:grape_crop",
+	  "enhancedfarming:pineapple_crop",
+	  "enhancedfarming:corn_crop",
+	  "enhancedfarming:onion_crop",
+	  "enhancedfarming:garlic_crop",
+	  "enhancedfarming:lettuce_crop"
+   ]
+}

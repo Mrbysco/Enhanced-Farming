@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:mango"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:mango_sapling"
+	},
+	"conditions": [{
+		"type": "enhancedfarming:crop_to_seeds"
+	}]
+}

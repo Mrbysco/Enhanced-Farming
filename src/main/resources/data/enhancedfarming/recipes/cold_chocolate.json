@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "minecraft:cocoa_beans"
+		},
+		{
+			"item": "enhancedfarming:milk_bottle"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:cold_chocolate_bottle"
+	}
+}

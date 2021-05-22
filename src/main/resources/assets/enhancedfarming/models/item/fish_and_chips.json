@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "enhancedfarming:items/fishandchips"
-    }
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "enhancedfarming:item/fish_and_chips"
+  }
 }

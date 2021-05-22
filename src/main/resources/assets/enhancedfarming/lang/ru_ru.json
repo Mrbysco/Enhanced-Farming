@@ -1,0 +1,51 @@
+{
+    "_comment": "config",
+    "enhancedfarming.config.title": "Конфигурация Enhanced Farming",
+
+    "_comment": "creativetab",
+    "itemGroup.enhancedfarming": "Enhanced Farming",
+
+    "_comment": "blocks",
+    "block.enhancedfarming:appleleaves": "Листва яблони",
+    "block.enhancedfarming:bloomingappleleaves": "Цветущая листва яблони",
+    "block.enhancedfarming:lemonleaves": "Листва лимона",
+    "block.enhancedfarming:bloominglemonleaves": "Цветущая листва лимона",
+    "block.enhancedfarming:orangeleaves": "Листва апельсина",
+    "block.enhancedfarming:bloomingorangeleaves": "Цветущая листва апельсина",
+
+    "block.enhancedfarming:applesapling": "Семена яблока",
+    "block.enhancedfarming:lemonsapling": "Семена лимона",
+    "block.enhancedfarming:orangesapling": "Семена апельсина",
+
+    "block.enhancedfarming:mintcrop": "Мята",
+    "block.enhancedfarming:netherflowercrop": "Цветок Нижнего мира",
+    "block.enhancedfarming:scarecrow": "Пугало",
+
+    "_comment": "items",
+    "item.enhancedfarming:applejuice": "Яблочный сок",
+    "item.enhancedfarming:chocolatebar": "Плитка шоколада",
+    "item.enhancedfarming:chocolatecandy": "Шоколадная конфета",
+    "item.enhancedfarming:lemon": "Лимон",
+    "item.enhancedfarming:lemonade": "Лимонад",
+    "item.enhancedfarming:mintchocolatebar": "Плитка мятного шоколада",
+    "item.enhancedfarming:minttea": "Мятный чай",
+    "item.enhancedfarming:orange": "Апельсин",
+    "item.enhancedfarming:orangejuice": "Апельсиновый сок",
+    "item.enhancedfarming:milkbottle": "Бутылка молока",
+    "item.enhancedfarming:woodenrake": "Деревянные грабли",
+    "item.enhancedfarming:stonerake": "Каменные грабли",
+    "item.enhancedfarming:ironrake": "Железные грабли",
+    "item.enhancedfarming:goldrake": "Золотые грабли",
+    "item.enhancedfarming:diamondrake": "Алмазные грабли",
+    "item.enhancedfarming:mintseeds": "Семена мяты",
+    "item.enhancedfarming:mint": "Мята",
+    "item.enhancedfarming:netherflowerseeds": "Семена цветка Нижнего мира",
+    "item.enhancedfarming:coldchocolatebottle": "Бутылка холодного шоколада",
+    "item.enhancedfarming:hotchocolatebottle": "Бутылка горячего шоколада",
+    "item.enhancedfarming:hotwater": "Кипячёная вода",
+    "item.enhancedfarming:goldenlemon": "Золотой лимон",
+    "item.enhancedfarming:goldenorange": "Золотой апельсин",
+
+    "_comment": "JEI",
+    "enhancedfarming.gui.jei.category.piston": "Piston crafting"
+}

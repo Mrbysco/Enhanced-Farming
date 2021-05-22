@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "enhancedfarming:block/crops/mint_crop_5"
+  }
+}

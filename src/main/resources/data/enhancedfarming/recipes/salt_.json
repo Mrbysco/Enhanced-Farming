@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enhancedfarming:pot"
+		},
+		{
+			"item": "minecraft:water_bucket"
+		}
+	],
+	"result": {
+		"item": "enhancedfarming:salt",
+		"count": 2
+	}
+}

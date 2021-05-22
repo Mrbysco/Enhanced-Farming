@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "enhancedfarming:dough"
+    },
+    {
+      "tag": "forge:vegetables/tomato"
+    },
+    {
+      "item": "minecraft:beef"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:bacon_pizza"
+  }
+}
