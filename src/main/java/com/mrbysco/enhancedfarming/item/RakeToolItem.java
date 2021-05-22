@@ -2,6 +2,7 @@ package com.mrbysco.enhancedfarming.item;
 
 import com.google.common.collect.Sets;
 import com.mrbysco.enhancedfarming.init.FarmingLootTables;
+import com.mrbysco.enhancedfarming.init.FarmingTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -28,8 +29,8 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Set;
 
 public class RakeToolItem extends ToolItem {
-	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.GRASS);
-	private int dropModifier;
+	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.MYCELIUM, Blocks.PODZOL, Blocks.COARSE_DIRT);
+	private final int dropModifier;
 
 	public RakeToolItem(IItemTier itemTier, int attackDamage, float attackSpeed, int dropModifier, Item.Properties properties) {
 		super((float)attackDamage, attackSpeed, itemTier, EFFECTIVE_ON, properties.addToolType(net.minecraftforge.common.ToolType.get("rake"), itemTier.getLevel()));
@@ -50,22 +51,19 @@ public class RakeToolItem extends ToolItem {
 		World world = context.getLevel();
 		BlockPos blockpos = context.getClickedPos();
 		if (context.getClickedFace() != Direction.DOWN && world.isEmptyBlock(blockpos.above())) {
-			BlockState blockstate = Blocks.DIRT.defaultBlockState();
-			if (blockstate != null) {
+			if(world.getBlockState(blockpos).is(FarmingTags.RAKE_BLOCKS)) {
+				BlockState dirtState = Blocks.DIRT.defaultBlockState();
 				PlayerEntity playerentity = context.getPlayer();
 				world.playSound(playerentity, blockpos, SoundEvents.HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
 				if (!world.isClientSide) {
-					world.setBlock(blockpos, blockstate, 11);
+					world.setBlock(blockpos, dirtState, 11);
 					if (playerentity != null) {
-						context.getItemInHand().hurtAndBreak(1, playerentity, (playerEntity) -> {
-							playerEntity.broadcastBreakEvent(context.getHand());
-						});
+						context.getItemInHand().hurtAndBreak(1, playerentity, (playerEntity) -> playerEntity.broadcastBreakEvent(context.getHand()));
 						this.dropSeedsWithChance(context.getItemInHand(), world, blockpos);
 					}
 				}
-
-				return ActionResultType.sidedSuccess(world.isClientSide);
 			}
+			return ActionResultType.sidedSuccess(world.isClientSide);
 		}
 
 		return ActionResultType.PASS;
