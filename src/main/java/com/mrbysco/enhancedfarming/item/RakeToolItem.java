@@ -37,13 +37,11 @@ public class RakeToolItem extends ToolItem {
 	}
 
     public void dropSeedsWithChance(ItemStack itemstack, World worldIn, BlockPos pos) {
-		if(!worldIn.isClientSide) {
-			if (worldIn.random.nextInt(30 / this.dropModifier) == 0) {
-				LootTable table = worldIn.getServer().getLootTables().get(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
-				LootContext.Builder context = (new LootContext.Builder((ServerWorld)worldIn)).withParameter(LootParameters.ORIGIN, new Vector3d(pos.getX(), pos.getY(), pos.getZ()))
-						.withParameter(LootParameters.TOOL, itemstack).withRandom(worldIn.random);
-				table.getRandomItems(context.create(LootParameterSets.EMPTY)).forEach(stack -> worldIn.addFreshEntity(new ItemEntity(worldIn, pos.getX(), pos.getY() + 0.2, pos.getZ(),stack)));
-			}
+		if (!worldIn.isClientSide && worldIn.random.nextInt(30 / this.dropModifier) == 0) {
+			LootTable table = worldIn.getServer().getLootTables().get(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
+			LootContext.Builder context = (new LootContext.Builder((ServerWorld)worldIn)).withParameter(LootParameters.ORIGIN, new Vector3d(pos.getX(), pos.getY(), pos.getZ()))
+					.withParameter(LootParameters.TOOL, itemstack).withRandom(worldIn.random);
+			table.getRandomItems(context.create(LootParameterSets.EMPTY)).forEach(stack -> worldIn.addFreshEntity(new ItemEntity(worldIn, pos.getX(), pos.getY() + 0.2, pos.getZ(),stack)));
 		}
     }
 
