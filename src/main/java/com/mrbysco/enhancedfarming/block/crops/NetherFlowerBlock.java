@@ -5,6 +5,7 @@ import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
@@ -35,6 +36,11 @@ public class NetherFlowerBlock extends BushBlock implements IGrowable{
 
 	public ItemStack getCloneItemStack(IBlockReader reader, BlockPos pos, BlockState state) {
 		return new ItemStack(FarmingRegistry.NETHER_FLOWER_SEEDS.get());
+	}
+
+	@Override
+	protected boolean mayPlaceOn(BlockState state, IBlockReader reader, BlockPos pos) {
+		return state.is(Blocks.SOUL_SAND);
 	}
 
 	public IntegerProperty getAgeProperty() {
