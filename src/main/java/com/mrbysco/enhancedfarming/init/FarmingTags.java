@@ -1,11 +1,11 @@
 package com.mrbysco.enhancedfarming.init;
 
 import com.mrbysco.enhancedfarming.Reference;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags.IOptionalNamedTag;
 
 public class FarmingTags {

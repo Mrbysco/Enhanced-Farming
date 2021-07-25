@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[35,)"
+loaderVersion="[37,)"
 issueTrackerURL="https://github.com/Mrbysco/enhanced-farming/issues"
 license="MIT"
 
@@ -16,6 +16,6 @@ credits="iBlackShadow for the original idea"
 [[dependencies.enhancedfarming]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.16.4,1.17)"
+versionRange="[1.17.1,1.18)"
 ordering="NONE"
 side="BOTH"

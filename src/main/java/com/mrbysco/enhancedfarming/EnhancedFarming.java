@@ -32,7 +32,7 @@ public class EnhancedFarming {
 
 		FarmingRegistry.BLOCKS.register(eventBus);
 		FarmingRegistry.ITEMS.register(eventBus);
-		FarmingRegistry.TILES.register(eventBus);
+		FarmingRegistry.BLOCK_ENTITIES.register(eventBus);
 		FarmingFeatures.FEATURES.register(eventBus);
 		FarmingRecipes.RECIPE_SERIALIZERS.register(eventBus);
 

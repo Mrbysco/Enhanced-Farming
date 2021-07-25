@@ -1,60 +1,56 @@
 package com.mrbysco.enhancedfarming.item;
 
-import com.google.common.collect.Sets;
 import com.mrbysco.enhancedfarming.init.FarmingLootTables;
 import com.mrbysco.enhancedfarming.init.FarmingTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.ToolItem;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameterSets;
-import net.minecraft.loot.LootParameters;
-import net.minecraft.loot.LootTable;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DiggerItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
 
-import java.util.Set;
-
-public class RakeToolItem extends ToolItem {
-	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.MYCELIUM, Blocks.PODZOL, Blocks.COARSE_DIRT);
+public class RakeToolItem extends DiggerItem {
 	private final int dropModifier;
 
-	public RakeToolItem(IItemTier itemTier, int attackDamage, float attackSpeed, int dropModifier, Item.Properties properties) {
-		super((float)attackDamage, attackSpeed, itemTier, EFFECTIVE_ON, properties.addToolType(net.minecraftforge.common.ToolType.get("rake"), itemTier.getLevel()));
+	public RakeToolItem(Tier itemTier, int attackDamage, float attackSpeed, int dropModifier, Item.Properties properties) {
+		super((float)attackDamage, attackSpeed, itemTier, BlockTags.MINEABLE_WITH_SHOVEL, properties.addToolType(net.minecraftforge.common.ToolType.get("rake"), itemTier.getLevel()));
 		this.dropModifier = dropModifier;
 	}
 
-    public void dropSeedsWithChance(ItemStack itemstack, World worldIn, BlockPos pos) {
-		if (!worldIn.isClientSide && worldIn.random.nextInt(30 / this.dropModifier) == 0) {
+    public void dropSeedsWithChance(ItemStack itemstack, Level worldIn, BlockPos pos) {
+		if (!worldIn.isClientSide && worldIn.random.nextInt(30 / this.dropModifier) == 0 && worldIn.getServer() != null) {
 			LootTable table = worldIn.getServer().getLootTables().get(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
-			LootContext.Builder context = (new LootContext.Builder((ServerWorld)worldIn)).withParameter(LootParameters.ORIGIN, new Vector3d(pos.getX(), pos.getY(), pos.getZ()))
-					.withParameter(LootParameters.TOOL, itemstack).withRandom(worldIn.random);
-			table.getRandomItems(context.create(LootParameterSets.EMPTY)).forEach(stack -> worldIn.addFreshEntity(new ItemEntity(worldIn, pos.getX(), pos.getY() + 0.2, pos.getZ(),stack)));
+			LootContext.Builder context = (new LootContext.Builder((ServerLevel)worldIn)).withParameter(LootContextParams.ORIGIN, new Vec3(pos.getX(), pos.getY(), pos.getZ()))
+					.withParameter(LootContextParams.TOOL, itemstack).withRandom(worldIn.random);
+			table.getRandomItems(context.create(LootContextParamSets.EMPTY)).forEach(stack -> worldIn.addFreshEntity(new ItemEntity(worldIn, pos.getX(), pos.getY() + 0.2, pos.getZ(),stack)));
 		}
     }
 
 	@Override
-	public ActionResultType useOn(ItemUseContext context) {
-		World world = context.getLevel();
+	public InteractionResult useOn(UseOnContext context) {
+		Level world = context.getLevel();
 		BlockPos blockpos = context.getClickedPos();
 		if (context.getClickedFace() != Direction.DOWN && world.isEmptyBlock(blockpos.above())) {
 			if(world.getBlockState(blockpos).is(FarmingTags.RAKE_BLOCKS)) {
 				BlockState dirtState = Blocks.DIRT.defaultBlockState();
-				PlayerEntity playerentity = context.getPlayer();
-				world.playSound(playerentity, blockpos, SoundEvents.HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				Player playerentity = context.getPlayer();
+				world.playSound(playerentity, blockpos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
 				if (!world.isClientSide) {
 					world.setBlock(blockpos, dirtState, 11);
 					if (playerentity != null) {
@@ -63,9 +59,9 @@ public class RakeToolItem extends ToolItem {
 					}
 				}
 			}
-			return ActionResultType.sidedSuccess(world.isClientSide);
+			return InteractionResult.sidedSuccess(world.isClientSide);
 		}
 
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 }

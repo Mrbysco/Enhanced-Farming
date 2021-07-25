@@ -1,60 +1,100 @@
 package com.mrbysco.enhancedfarming.block;
 
-import com.mrbysco.enhancedfarming.tiles.ScarecrowTile;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalBlock;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
+import com.mrbysco.enhancedfarming.init.FarmingRegistry;
+import com.mrbysco.enhancedfarming.tiles.ScarecrowBlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
-public class ScarecrowBlock extends HorizontalBlock{
+public class ScarecrowBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	private static final VoxelShape SCARECROW_SHAPE = Block.box(5, 0, 5, 11, 16, 11);
 
-	public ScarecrowBlock(AbstractBlock.Properties properties) {
+	public ScarecrowBlock(BlockBehaviour.Properties properties) {
 		super(properties);
+		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext selectionContext) {
+	public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext selectionContext) {
 		return SCARECROW_SHAPE;
 	}
 
 	@Override
-	public boolean hasTileEntity(BlockState state) {
-		return true;
+	public RenderShape getRenderShape(BlockState p_49232_) {
+		return RenderShape.MODEL;
 	}
 
 	@Nullable
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new ScarecrowTile();
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new ScarecrowBlockEntity(pos, state);
 	}
 
-	public BlockState getStateForPlacement(BlockItemUseContext itemUseContext) {
-		return this.defaultBlockState().setValue(FACING, itemUseContext.getHorizontalDirection().getOpposite());
+	@Nullable
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+		return createScarecrowTicker(level, blockEntityType, FarmingRegistry.SCARECROW_TILE.get());
 	}
 
-	public BlockState rotate(BlockState state, Rotation rotation) {
-		return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
+	@Nullable
+	protected static <T extends BlockEntity> BlockEntityTicker<T> createScarecrowTicker(Level level, BlockEntityType<T> blockEntityType, BlockEntityType<? extends ScarecrowBlockEntity> blockEntityType1) {
+		return level.isClientSide ? null : createTickerHelper(blockEntityType, blockEntityType1, ScarecrowBlockEntity::serverTick);
 	}
 
-	public BlockState mirror(BlockState state, Mirror mirror) {
-		return state.rotate(mirror.getRotation(state.getValue(FACING)));
+	@SuppressWarnings("deprecation")
+	@Override
+	public FluidState getFluidState(BlockState state) {
+		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public BlockState rotate(BlockState state, Rotation rot) {
+		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public BlockState mirror(BlockState state, Mirror mirrorIn) {
+		return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
 	}
 
 	@Override
-	protected void createBlockStateDefinition(Builder<Block, BlockState> blockStateBuilder) {
-		blockStateBuilder.add(FACING);
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
+		blockStateBuilder.add(FACING, WATERLOGGED);
+	}
+
+	@Nullable
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockPos blockpos = context.getClickedPos();
+		FluidState fluidstate = context.getLevel().getFluidState(blockpos);
+		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 }

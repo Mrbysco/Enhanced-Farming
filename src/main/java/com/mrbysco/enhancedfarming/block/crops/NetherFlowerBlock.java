@@ -2,44 +2,44 @@ package com.mrbysco.enhancedfarming.block.crops;
 
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.BushBlock;
-import net.minecraft.block.IGrowable;
-import net.minecraft.block.SoundType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.common.PlantType;
 
 import java.util.Random;
 
-public class NetherFlowerBlock extends BushBlock implements IGrowable{
+public class NetherFlowerBlock extends BushBlock implements BonemealableBlock{
 
 	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.box(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D)};
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
 
-    public NetherFlowerBlock(AbstractBlock.Properties properties) {
+    public NetherFlowerBlock(BlockBehaviour.Properties properties) {
 		super(properties.randomTicks().sound(SoundType.CROP));
 		this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
 	}
 
-	public ItemStack getCloneItemStack(IBlockReader reader, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(BlockGetter reader, BlockPos pos, BlockState state) {
 		return new ItemStack(FarmingRegistry.NETHER_FLOWER_SEEDS.get());
 	}
 
 	@Override
-	protected boolean mayPlaceOn(BlockState state, IBlockReader reader, BlockPos pos) {
+	protected boolean mayPlaceOn(BlockState state, BlockGetter reader, BlockPos pos) {
 		return state.is(Blocks.SOUL_SAND);
 	}
 
@@ -64,7 +64,7 @@ public class NetherFlowerBlock extends BushBlock implements IGrowable{
 	}
 
 	@Override
-	public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+	public PlantType getPlantType(BlockGetter world, BlockPos pos) {
 		return PlantType.NETHER;
 	}
 
@@ -72,7 +72,7 @@ public class NetherFlowerBlock extends BushBlock implements IGrowable{
 		return p_149653_1_.getValue(AGE) < 5;
 	}
 
-	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
 		int i = state.getValue(AGE);
 		if (i < 3 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt(10) == 0)) {
 			state = state.setValue(AGE, Integer.valueOf(i + 1));
@@ -81,12 +81,12 @@ public class NetherFlowerBlock extends BushBlock implements IGrowable{
 		}
 	}
 
-	public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
+	public VoxelShape getShape(BlockState p_220053_1_, BlockGetter p_220053_2_, BlockPos p_220053_3_, CollisionContext p_220053_4_) {
 		return SHAPE_BY_AGE[p_220053_1_.getValue(AGE)];
 	}
 
 	@Override
-    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
     	if(FarmingConfig.COMMON.bonemealGrow.get()) {
     		return getAge(state) < getMaxAge();
     	} else {
@@ -94,17 +94,17 @@ public class NetherFlowerBlock extends BushBlock implements IGrowable{
     	}
     }
 
-	protected int getBonemealAgeIncrease(World worldIn) {
-		return MathHelper.nextInt(worldIn.getRandom(), 2, 5) / 2;
+	protected int getBonemealAgeIncrease(Level worldIn) {
+		return Mth.nextInt(worldIn.getRandom(), 2, 5) / 2;
     }
 
 	@Override
-	public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState state, boolean isClient) {
 		return !this.isMaxAge(state);
 	}
 
 	@Override
-	public void performBonemeal(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+	public void performBonemeal(ServerLevel world, Random random, BlockPos pos, BlockState state) {
 		int i;
 		int j = this.getMaxAge();
 
@@ -121,7 +121,7 @@ public class NetherFlowerBlock extends BushBlock implements IGrowable{
 		world.setBlock(pos, this.getStateForAge(i), 2);
 	}
 
-	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_206840_1_) {
 		p_206840_1_.add(AGE);
 	}
 }

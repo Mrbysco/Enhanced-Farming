@@ -1,32 +1,32 @@
 package com.mrbysco.enhancedfarming.item;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
 
 public class ContainerFoodItem extends SpecialCustomFoodItem{
 
-	public ContainerFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects, UseAction action) {
+	public ContainerFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects, UseAnim action) {
 		super(properties, useTime, enchanted, directHeal, cureEffects, action);
 	}
 
-	public ContainerFoodItem(Item.Properties properties, int useTime, UseAction action) {
+	public ContainerFoodItem(Item.Properties properties, int useTime, UseAnim action) {
 		this(properties, useTime, false, false, false, action);
 	}
 
 	public ContainerFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects) {
-		this(properties, useTime, enchanted, directHeal, cureEffects, UseAction.EAT);
+		this(properties, useTime, enchanted, directHeal, cureEffects, UseAnim.EAT);
 	}
 
 	public ContainerFoodItem(Item.Properties properties, int useTime) {
-		this(properties, useTime, false, false, false, UseAction.EAT);
+		this(properties, useTime, false, false, false, UseAnim.EAT);
 	}
 
-	public ItemStack finishUsingItem(ItemStack stack, World worldIn, LivingEntity livingEntity) {
+	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity) {
 		if (!worldIn.isClientSide && cure) livingEntity.curePotionEffects(stack);
 		if(this.isEdible()) {
 			if(directheal) {
@@ -42,9 +42,8 @@ public class ContainerFoodItem extends SpecialCustomFoodItem{
 
 	@Override
 	public ItemStack shrinkStack(LivingEntity livingEntity, ItemStack stack) {
-		if(livingEntity instanceof PlayerEntity) {
-			PlayerEntity player = (PlayerEntity) livingEntity;
-			PlayerInventory inventory = player.inventory;
+		if(livingEntity instanceof Player player) {
+			Inventory inventory = player.getInventory();
 			ItemStack bowl = stack.getContainerItem().copy();
 
 			if(!inventory.add(bowl)) {

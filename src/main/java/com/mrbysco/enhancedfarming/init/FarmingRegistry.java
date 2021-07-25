@@ -17,7 +17,7 @@ import com.mrbysco.enhancedfarming.item.CustomFoodItem;
 import com.mrbysco.enhancedfarming.item.CustomUtensilItem;
 import com.mrbysco.enhancedfarming.item.RakeToolItem;
 import com.mrbysco.enhancedfarming.item.SpecialCustomFoodItem;
-import com.mrbysco.enhancedfarming.tiles.ScarecrowTile;
+import com.mrbysco.enhancedfarming.tiles.ScarecrowBlockEntity;
 import com.mrbysco.enhancedfarming.world.tree.AppleTree;
 import com.mrbysco.enhancedfarming.world.tree.AvocadoTree;
 import com.mrbysco.enhancedfarming.world.tree.BananaTree;
@@ -27,60 +27,60 @@ import com.mrbysco.enhancedfarming.world.tree.MangoTree;
 import com.mrbysco.enhancedfarming.world.tree.OliveTree;
 import com.mrbysco.enhancedfarming.world.tree.OrangeTree;
 import com.mrbysco.enhancedfarming.world.tree.PearTree;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemTier;
-import net.minecraft.item.Items;
-import net.minecraft.item.UseAction;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class FarmingRegistry {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MOD_ID);
-	public static final DeferredRegister<TileEntityType<?>> TILES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Reference.MOD_ID);
+	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, Reference.MOD_ID);
 
 	//Blocks
-	public static final RegistryObject<Block> APPLE_SAPLING = BLOCKS.register("apple_sapling", () -> new GrowableSaplingBlock(new AppleTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> LEMON_SAPLING = BLOCKS.register("lemon_sapling", () -> new GrowableSaplingBlock(new LemonTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> ORANGE_SAPLING = BLOCKS.register("orange_sapling", () -> new GrowableSaplingBlock(new OrangeTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> CHERRY_SAPLING = BLOCKS.register("cherry_sapling", () -> new GrowableSaplingBlock(new CherryTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> PEAR_SAPLING = BLOCKS.register("pear_sapling", () -> new GrowableSaplingBlock(new PearTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> BANANA_SAPLING = BLOCKS.register("banana_sapling", () -> new GrowableSaplingBlock(new BananaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> AVOCADO_SAPLING = BLOCKS.register("avocado_sapling", () -> new GrowableSaplingBlock(new AvocadoTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> MANGO_SAPLING = BLOCKS.register("mango_sapling", () -> new GrowableSaplingBlock(new MangoTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final RegistryObject<Block> OLIVE_SAPLING = BLOCKS.register("olive_sapling", () -> new GrowableSaplingBlock(new OliveTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> APPLE_SAPLING = BLOCKS.register("apple_sapling", () -> new GrowableSaplingBlock(new AppleTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> LEMON_SAPLING = BLOCKS.register("lemon_sapling", () -> new GrowableSaplingBlock(new LemonTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> ORANGE_SAPLING = BLOCKS.register("orange_sapling", () -> new GrowableSaplingBlock(new OrangeTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> CHERRY_SAPLING = BLOCKS.register("cherry_sapling", () -> new GrowableSaplingBlock(new CherryTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> PEAR_SAPLING = BLOCKS.register("pear_sapling", () -> new GrowableSaplingBlock(new PearTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> BANANA_SAPLING = BLOCKS.register("banana_sapling", () -> new GrowableSaplingBlock(new BananaTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> AVOCADO_SAPLING = BLOCKS.register("avocado_sapling", () -> new GrowableSaplingBlock(new AvocadoTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> MANGO_SAPLING = BLOCKS.register("mango_sapling", () -> new GrowableSaplingBlock(new MangoTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final RegistryObject<Block> OLIVE_SAPLING = BLOCKS.register("olive_sapling", () -> new GrowableSaplingBlock(new OliveTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 
-	public static final RegistryObject<Block> APPLE_LEAVES = BLOCKS.register("apple_leaves", () -> new FruitLeavesBlock(AbstractBlock.Properties.of(Material.LEAVES), () -> Items.APPLE));
-	public static final RegistryObject<Block> LEMON_LEAVES = BLOCKS.register("lemon_leaves", () -> new FruitLeavesBlock(AbstractBlock.Properties.of(Material.LEAVES), FarmingRegistry.LEMON));
-	public static final RegistryObject<Block> ORANGE_LEAVES = BLOCKS.register("orange_leaves", () -> new FruitLeavesBlock(AbstractBlock.Properties.of(Material.LEAVES), FarmingRegistry.ORANGE));
-	public static final RegistryObject<Block> CHERRY_LEAVES = BLOCKS.register("cherry_leaves", () -> new FruitLeavesBlock(AbstractBlock.Properties.of(Material.LEAVES), FarmingRegistry.CHERRY));
-	public static final RegistryObject<Block> PEAR_LEAVES = BLOCKS.register("pear_leaves", () -> new FruitLeavesBlock(AbstractBlock.Properties.of(Material.LEAVES), FarmingRegistry.PEAR));
-	public static final RegistryObject<Block> BANANA_LEAVES = BLOCKS.register("banana_leaves", () -> new FruitLeavesBlock(AbstractBlock.Properties.of(Material.LEAVES), FarmingRegistry.BANANA));
-	public static final RegistryObject<Block> AVOCADO_LEAVES = BLOCKS.register("avocado_leaves", () -> new FruitLeavesBlock(AbstractBlock.Properties.of(Material.LEAVES), FarmingRegistry.AVOCADO));
-	public static final RegistryObject<Block> MANGO_LEAVES = BLOCKS.register("mango_leaves", () -> new FruitLeavesBlock(AbstractBlock.Properties.of(Material.LEAVES), FarmingRegistry.MANGO));
-	public static final RegistryObject<Block> OLIVE_LEAVES = BLOCKS.register("olive_leaves", () -> new FruitLeavesBlock(AbstractBlock.Properties.of(Material.LEAVES), FarmingRegistry.OLIVE));
+	public static final RegistryObject<Block> APPLE_LEAVES = BLOCKS.register("apple_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES), () -> Items.APPLE));
+	public static final RegistryObject<Block> LEMON_LEAVES = BLOCKS.register("lemon_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES), FarmingRegistry.LEMON));
+	public static final RegistryObject<Block> ORANGE_LEAVES = BLOCKS.register("orange_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES), FarmingRegistry.ORANGE));
+	public static final RegistryObject<Block> CHERRY_LEAVES = BLOCKS.register("cherry_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES), FarmingRegistry.CHERRY));
+	public static final RegistryObject<Block> PEAR_LEAVES = BLOCKS.register("pear_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES), FarmingRegistry.PEAR));
+	public static final RegistryObject<Block> BANANA_LEAVES = BLOCKS.register("banana_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES), FarmingRegistry.BANANA));
+	public static final RegistryObject<Block> AVOCADO_LEAVES = BLOCKS.register("avocado_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES), FarmingRegistry.AVOCADO));
+	public static final RegistryObject<Block> MANGO_LEAVES = BLOCKS.register("mango_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES), FarmingRegistry.MANGO));
+	public static final RegistryObject<Block> OLIVE_LEAVES = BLOCKS.register("olive_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES), FarmingRegistry.OLIVE));
 
-	public static final RegistryObject<Block> MINT_CROP = BLOCKS.register("mint_crop", () -> new FiveAgeCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.MINT));
-	public static final RegistryObject<Block> NETHER_FLOWER_CROP = BLOCKS.register("nether_flower_crop", () -> new NetherFlowerBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
-	public static final RegistryObject<Block> TOMATO_CROP = BLOCKS.register("tomato_crop", () -> new SixAgeCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.TOMATO));
-	public static final RegistryObject<Block> CUCUMBER_CROP = BLOCKS.register("cucumber_crop", () -> new FiveAgeCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.CUCUMBER));
-	public static final RegistryObject<Block> AUBERGINE_CROP = BLOCKS.register("aubergine_crop", () -> new FiveAgeCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.AUBERGINE));
-	public static final RegistryObject<Block> GRAPE_CROP = BLOCKS.register("grape_crop", () -> new CropstickCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.GRAPES));
-	public static final RegistryObject<Block> PINEAPPLE_CROP = BLOCKS.register("pineapple_crop", () -> new FiveAgeCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.PINEAPPLE));
-	public static final RegistryObject<Block> CORN_CROP = BLOCKS.register("corn_crop", () -> new SevenAgeCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.CORN));
-	public static final RegistryObject<Block> ONION_CROP = BLOCKS.register("onion_crop", () -> new FiveAgeCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.ONION));
-	public static final RegistryObject<Block> GARLIC_CROP = BLOCKS.register("garlic_crop", () -> new FiveAgeCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.GARLIC));
-	public static final RegistryObject<Block> LETTUCE_CROP = BLOCKS.register("lettuce_crop", () -> new FiveAgeCropBlock(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.LETTUCE));
+	public static final RegistryObject<Block> MINT_CROP = BLOCKS.register("mint_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.MINT));
+	public static final RegistryObject<Block> NETHER_FLOWER_CROP = BLOCKS.register("nether_flower_crop", () -> new NetherFlowerBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
+	public static final RegistryObject<Block> TOMATO_CROP = BLOCKS.register("tomato_crop", () -> new SixAgeCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.TOMATO));
+	public static final RegistryObject<Block> CUCUMBER_CROP = BLOCKS.register("cucumber_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.CUCUMBER));
+	public static final RegistryObject<Block> AUBERGINE_CROP = BLOCKS.register("aubergine_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.AUBERGINE));
+	public static final RegistryObject<Block> GRAPE_CROP = BLOCKS.register("grape_crop", () -> new CropstickCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.GRAPES));
+	public static final RegistryObject<Block> PINEAPPLE_CROP = BLOCKS.register("pineapple_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.PINEAPPLE));
+	public static final RegistryObject<Block> CORN_CROP = BLOCKS.register("corn_crop", () -> new SevenAgeCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.CORN));
+	public static final RegistryObject<Block> ONION_CROP = BLOCKS.register("onion_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.ONION));
+	public static final RegistryObject<Block> GARLIC_CROP = BLOCKS.register("garlic_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.GARLIC));
+	public static final RegistryObject<Block> LETTUCE_CROP = BLOCKS.register("lettuce_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.LETTUCE));
 
-	public static final RegistryObject<Block> CROP_STICK = BLOCKS.register("crop_stick", () -> new CropStickBlock(AbstractBlock.Properties.of(Material.WOOD)));
-	public static final RegistryObject<Block> SCARECROW = BLOCKS.register("scarecrow", () -> new ScarecrowBlock(AbstractBlock.Properties.of(Material.CLOTH_DECORATION).sound(SoundType.WOOL)));
+	public static final RegistryObject<Block> CROP_STICK = BLOCKS.register("crop_stick", () -> new CropStickBlock(BlockBehaviour.Properties.of(Material.WOOD)));
+	public static final RegistryObject<Block> SCARECROW = BLOCKS.register("scarecrow", () -> new ScarecrowBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).sound(SoundType.WOOL)));
 
 	//Items
 	public static final RegistryObject<Item> POT = ITEMS.register("pot", () -> new CustomUtensilItem(new Item.Properties().stacksTo(1).tab(FarmingTabs.TAB_MAIN)));
@@ -108,7 +108,7 @@ public class FarmingRegistry {
 	public static final RegistryObject<Item> ONION = ITEMS.register("onion", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.ONION), 32));
 
 	public static final RegistryObject<Item> GOLDEN_LEMON = ITEMS.register("golden_lemon", () -> new SpecialCustomFoodItem(new Item.Properties().food(FarmingFoods.GOLD_LEMON), 32, true));
-	public static final RegistryObject<Item> GOLDEN_ORANGE = ITEMS.register("golden_orange", () -> new SpecialCustomFoodItem(new Item.Properties().food(FarmingFoods.GOLD_LEMON), 32, true));
+	public static final RegistryObject<Item> GOLDEN_ORANGE = ITEMS.register("golden_orange", () -> new SpecialCustomFoodItem(new Item.Properties().food(FarmingFoods.GOLD_ORANGE), 32, true));
 
 	public static final RegistryObject<Item> CHOCOLATE_BAR = ITEMS.register("chocolate_bar", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_BAR), 32));
 	public static final RegistryObject<Item> CHOCOLATE_BANANA = ITEMS.register("chocolate_banana", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_BANANA), 32));
@@ -116,34 +116,34 @@ public class FarmingRegistry {
 	public static final RegistryObject<Item> CHOCOLATE_CHERRY = ITEMS.register("chocolate_cherry", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_CHERRY), 32));
 
 	public static final RegistryObject<Item> MINT_CHOCOLATE_BAR = ITEMS.register("mint_chocolate_bar", () -> new SpecialCustomFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_BAR_MINT).stacksTo(16), 32, false, true, false));
-	public static final RegistryObject<Item> MINT_TEA = ITEMS.register("mint_tea", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_BAR_MINT).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, false, true, false, UseAction.DRINK));
-	public static final RegistryObject<Item> MILK_BOTTLE = ITEMS.register("milk_bottle", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MILK_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, false, false, true, UseAction.DRINK));
-	public static final RegistryObject<Item> COLD_CHOCOLATE_BOTTLE = ITEMS.register("cold_chocolate_bottle", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.COLD_CHOCOLATE_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> HOT_CHOCOLATE_BOTTLE = ITEMS.register("hot_chocolate_bottle", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.HOT_CHOCOLATE_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
+	public static final RegistryObject<Item> MINT_TEA = ITEMS.register("mint_tea", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MINT_TEA).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, false, true, false, UseAnim.DRINK));
+	public static final RegistryObject<Item> MILK_BOTTLE = ITEMS.register("milk_bottle", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MILK_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, false, false, true, UseAnim.DRINK));
+	public static final RegistryObject<Item> COLD_CHOCOLATE_BOTTLE = ITEMS.register("cold_chocolate_bottle", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.COLD_CHOCOLATE_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> HOT_CHOCOLATE_BOTTLE = ITEMS.register("hot_chocolate_bottle", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.HOT_CHOCOLATE_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
 	public static final RegistryObject<Item> HOT_WATER = ITEMS.register("hot_water", () -> new Item(new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 
 	//Juices
-	public static final RegistryObject<Item> APPLE_JUICE = ITEMS.register("apple_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.APPLE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> LEMONADE = ITEMS.register("lemonade", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.LEMONADE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> ORANGE_JUICE = ITEMS.register("orange_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.ORANGE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> CHERRY_JUICE = ITEMS.register("cherry_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHERRY_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> PEAR_JUICE = ITEMS.register("pear_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PEAR_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> BANANA_JUICE = ITEMS.register("banana_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.BANANA_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> GRAPE_JUICE = ITEMS.register("grape_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.GRAPE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> MANGO_JUICE = ITEMS.register("mango_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MANGO_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> PINEAPPLE_JUICE = ITEMS.register("pineapple_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PINEAPPLE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
+	public static final RegistryObject<Item> APPLE_JUICE = ITEMS.register("apple_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.APPLE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> LEMONADE = ITEMS.register("lemonade", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.LEMONADE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> ORANGE_JUICE = ITEMS.register("orange_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.ORANGE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> CHERRY_JUICE = ITEMS.register("cherry_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHERRY_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> PEAR_JUICE = ITEMS.register("pear_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PEAR_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> BANANA_JUICE = ITEMS.register("banana_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.BANANA_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> GRAPE_JUICE = ITEMS.register("grape_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.GRAPE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> MANGO_JUICE = ITEMS.register("mango_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MANGO_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> PINEAPPLE_JUICE = ITEMS.register("pineapple_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PINEAPPLE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
 
 	//Smoothies
-	public static final RegistryObject<Item> SMOOTHIE_APPLE = ITEMS.register("smoothie_apple", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.APPLE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> SMOOTHIE_BANANA = ITEMS.register("smoothie_banana", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.BANANA_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> SMOOTHIE_CHERRY = ITEMS.register("smoothie_cherry", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHERRY_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> SMOOTHIE_CUCUMBER = ITEMS.register("smoothie_cucumber", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CUCUMBER_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> SMOOTHIE_GRAPE = ITEMS.register("smoothie_grape", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.GRAPE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> SMOOTHIE_LEMON = ITEMS.register("smoothie_lemon", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.LEMON_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> SMOOTHIE_MANGO = ITEMS.register("smoothie_mango", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MANGO_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> SMOOTHIE_ORANGE = ITEMS.register("smoothie_orange", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.ORANGE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> SMOOTHIE_PEAR = ITEMS.register("smoothie_pear", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PEAR_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> SMOOTHIE_PINEAPPLE = ITEMS.register("smoothie_pineapple", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PINEAPPLE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAction.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_APPLE = ITEMS.register("smoothie_apple", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.APPLE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_BANANA = ITEMS.register("smoothie_banana", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.BANANA_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_CHERRY = ITEMS.register("smoothie_cherry", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHERRY_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_CUCUMBER = ITEMS.register("smoothie_cucumber", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CUCUMBER_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_GRAPE = ITEMS.register("smoothie_grape", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.GRAPE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_LEMON = ITEMS.register("smoothie_lemon", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.LEMON_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_MANGO = ITEMS.register("smoothie_mango", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MANGO_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_ORANGE = ITEMS.register("smoothie_orange", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.ORANGE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_PEAR = ITEMS.register("smoothie_pear", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PEAR_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> SMOOTHIE_PINEAPPLE = ITEMS.register("smoothie_pineapple", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PINEAPPLE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
 
 	//Actual food
 	public static final RegistryObject<Item> DOUGH = ITEMS.register("dough", () -> new Item(new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
@@ -154,15 +154,15 @@ public class FarmingRegistry {
 	public static final RegistryObject<Item> SALT = ITEMS.register("salt", () -> new Item(new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 	public static final RegistryObject<Item> STOCK = ITEMS.register("stock", () -> new Item(new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 
-	public static final RegistryObject<Item> FRUIT_SALAD = ITEMS.register("fruit_salad", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.FRUIT_SALAD).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 24, UseAction.DRINK));
-	public static final RegistryObject<Item> SALAD = ITEMS.register("salad", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.SALAD).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 24, UseAction.DRINK));
-	public static final RegistryObject<Item> CARROT_SOUP = ITEMS.register("carrot_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CARROT_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> CHICKEN_NOODLE_SOUP = ITEMS.register("chicken_noodle_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHICKEN_NOODLE_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> CORN_SOUP = ITEMS.register("corn_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CORN_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> CUCUMBER_SOUP = ITEMS.register("cucumber_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CUCUMBER_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> ONION_SOUP = ITEMS.register("onion_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.ONION_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.POTATO_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAction.DRINK));
-	public static final RegistryObject<Item> TOMATO_SOUP = ITEMS.register("tomato_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.TOMATO_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAction.DRINK));
+	public static final RegistryObject<Item> FRUIT_SALAD = ITEMS.register("fruit_salad", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.FRUIT_SALAD).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 24, UseAnim.DRINK));
+	public static final RegistryObject<Item> SALAD = ITEMS.register("salad", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.SALAD).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 24, UseAnim.DRINK));
+	public static final RegistryObject<Item> CARROT_SOUP = ITEMS.register("carrot_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CARROT_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> CHICKEN_NOODLE_SOUP = ITEMS.register("chicken_noodle_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHICKEN_NOODLE_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> CORN_SOUP = ITEMS.register("corn_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CORN_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> CUCUMBER_SOUP = ITEMS.register("cucumber_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CUCUMBER_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> ONION_SOUP = ITEMS.register("onion_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.ONION_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> POTATO_SOUP = ITEMS.register("potato_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.POTATO_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
+	public static final RegistryObject<Item> TOMATO_SOUP = ITEMS.register("tomato_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.TOMATO_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
 
 	public static final RegistryObject<Item> BAKED_EGG = ITEMS.register("baked_egg", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.OMELET), 32));
 	public static final RegistryObject<Item> BOILED_EGG = ITEMS.register("boiled_egg", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.BOILED_EGG), 32));
@@ -200,11 +200,11 @@ public class FarmingRegistry {
 	public static final RegistryObject<Item> PEAR_PIE = ITEMS.register("pear_pie", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.PEAR_PIE), 32));
 
 	//Rakes
-	public static final RegistryObject<Item> WOODEN_RAKE = ITEMS.register("wooden_rake", () -> new RakeToolItem(ItemTier.WOOD, 0, -3.0F, 1, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
-	public static final RegistryObject<Item> STONE_RAKE = ITEMS.register("stone_rake", () -> new RakeToolItem(ItemTier.STONE, -1, -2.0F, 2, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
-	public static final RegistryObject<Item> IRON_RAKE = ITEMS.register("iron_rake", () -> new RakeToolItem(ItemTier.IRON, -2, -1.0F, 3, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
-	public static final RegistryObject<Item> GOLD_RAKE = ITEMS.register("gold_rake", () -> new RakeToolItem(ItemTier.GOLD, 0, -3.0F, 6, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
-	public static final RegistryObject<Item> DIAMOND_RAKE = ITEMS.register("diamond_rake", () -> new RakeToolItem(ItemTier.DIAMOND, -3, 0.0F, 5, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
+	public static final RegistryObject<Item> WOODEN_RAKE = ITEMS.register("wooden_rake", () -> new RakeToolItem(Tiers.WOOD, 0, -3.0F, 1, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
+	public static final RegistryObject<Item> STONE_RAKE = ITEMS.register("stone_rake", () -> new RakeToolItem(Tiers.STONE, -1, -2.0F, 2, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
+	public static final RegistryObject<Item> IRON_RAKE = ITEMS.register("iron_rake", () -> new RakeToolItem(Tiers.IRON, -2, -1.0F, 3, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
+	public static final RegistryObject<Item> GOLD_RAKE = ITEMS.register("gold_rake", () -> new RakeToolItem(Tiers.GOLD, 0, -3.0F, 6, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
+	public static final RegistryObject<Item> DIAMOND_RAKE = ITEMS.register("diamond_rake", () -> new RakeToolItem(Tiers.DIAMOND, -3, 0.0F, 5, new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 
 	//Seeds
 	public static final RegistryObject<Item> MINT_SEEDS = ITEMS.register("mint_seeds", () -> new CustomBlockNamedItem(FarmingRegistry.MINT_CROP.get(), new Item.Properties()));
@@ -242,6 +242,6 @@ public class FarmingRegistry {
 	public static final RegistryObject<Item> CROP_STICK_ITEM = ITEMS.register("crop_stick", () -> new BlockItem(FarmingRegistry.CROP_STICK.get(), new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 	public static final RegistryObject<Item> SCARECROW_ITEM = ITEMS.register("scarecrow", () -> new BlockItem(FarmingRegistry.SCARECROW.get(), new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 
-	public static final RegistryObject<TileEntityType<ScarecrowTile>> SCARECROW_TILE = TILES.register("scarecrow", () ->
-			TileEntityType.Builder.of(() -> new ScarecrowTile(), FarmingRegistry.SCARECROW.get()).build(null));
+	public static final RegistryObject<BlockEntityType<ScarecrowBlockEntity>> SCARECROW_TILE = BLOCK_ENTITIES.register("scarecrow", () ->
+			BlockEntityType.Builder.of(ScarecrowBlockEntity::new, FarmingRegistry.SCARECROW.get()).build(null));
 }

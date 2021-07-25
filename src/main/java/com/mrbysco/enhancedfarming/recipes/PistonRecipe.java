@@ -2,24 +2,24 @@ package com.mrbysco.enhancedfarming.recipes;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.ShapedRecipe;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.Registry;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
-public class PistonRecipe implements IRecipe<IInventory> {
+public class PistonRecipe implements Recipe<Container> {
 	protected final ResourceLocation id;
 	protected final String group;
 	protected final Ingredient ingredient;
@@ -33,16 +33,16 @@ public class PistonRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public IRecipeType<?> getType() {
+	public RecipeType<?> getType() {
 		return FarmingRecipes.PISTON_CRAFTING_TYPE;
 	}
 
 	@Override
-	public boolean matches(IInventory inv, World worldIn) {
+	public boolean matches(Container inv, Level worldIn) {
 		return this.ingredient.test(inv.getItem(0));
 	}
 
-	public ItemStack assemble(IInventory inventory) {
+	public ItemStack assemble(Container inventory) {
 		return this.result.copy();
 	}
 
@@ -69,22 +69,22 @@ public class PistonRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<?> getSerializer() {
 		return FarmingRecipes.PISTON_CRAFTING_SERIALIZER.get();
 	}
 
-	public static class SerializerPistonRecipe extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<PistonRecipe> {
+	public static class SerializerPistonRecipe extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<PistonRecipe> {
 		@Override
 		public PistonRecipe fromJson(ResourceLocation recipeId, JsonObject jsonObject) {
-			String s = JSONUtils.getAsString(jsonObject, "group", "");
-			JsonElement jsonelement = (JsonElement)(JSONUtils.isArrayNode(jsonObject, "ingredient") ? JSONUtils.getAsJsonArray(jsonObject, "ingredient") : JSONUtils.getAsJsonObject(jsonObject, "ingredient"));
+			String s = GsonHelper.getAsString(jsonObject, "group", "");
+			JsonElement jsonelement = (JsonElement)(GsonHelper.isArrayNode(jsonObject, "ingredient") ? GsonHelper.getAsJsonArray(jsonObject, "ingredient") : GsonHelper.getAsJsonObject(jsonObject, "ingredient"));
 			Ingredient ingredient = Ingredient.fromJson(jsonelement);
 			//Forge: Check if primitive string to keep vanilla or a object which can contain a count field.
 			if (!jsonObject.has("result")) throw new com.google.gson.JsonSyntaxException("Missing result, expected to find a string or object");
 			ItemStack itemstack;
-			if (jsonObject.get("result").isJsonObject()) itemstack = ShapedRecipe.itemFromJson(JSONUtils.getAsJsonObject(jsonObject, "result"));
+			if (jsonObject.get("result").isJsonObject()) itemstack = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(jsonObject, "result"));
 			else {
-				String s1 = JSONUtils.getAsString(jsonObject, "result");
+				String s1 = GsonHelper.getAsString(jsonObject, "result");
 				ResourceLocation resourcelocation = new ResourceLocation(s1);
 				itemstack = new ItemStack(Registry.ITEM.getOptional(resourcelocation).orElseThrow(() -> {
 					return new IllegalStateException("Item: " + s1 + " does not exist");
@@ -95,15 +95,15 @@ public class PistonRecipe implements IRecipe<IInventory> {
 
 		@Nullable
 		@Override
-		public PistonRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
-			String s = buffer.readUtf(32767);
+		public PistonRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
+			String s = buffer.readUtf();
 			Ingredient ingredient = Ingredient.fromNetwork(buffer);
 			ItemStack itemstack = buffer.readItem();
 			return new PistonRecipe(recipeId, s, ingredient, itemstack);
 		}
 
 		@Override
-		public void toNetwork(PacketBuffer buffer, PistonRecipe recipe) {
+		public void toNetwork(FriendlyByteBuf buffer, PistonRecipe recipe) {
 			buffer.writeUtf(recipe.group);
 			recipe.ingredient.toNetwork(buffer);
 			buffer.writeItem(recipe.result);

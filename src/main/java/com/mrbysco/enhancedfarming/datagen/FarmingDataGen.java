@@ -9,27 +9,27 @@ import com.mrbysco.enhancedfarming.block.GrowableSaplingBlock;
 import com.mrbysco.enhancedfarming.block.crops.CropstickCropBlock;
 import com.mrbysco.enhancedfarming.block.crops.NetherFlowerBlock;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
-import net.minecraft.block.Block;
-import net.minecraft.block.CropsBlock;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DirectoryCache;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.data.LootTableProvider;
-import net.minecraft.data.RecipeProvider;
-import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.item.Items;
-import net.minecraft.loot.ConstantRange;
-import net.minecraft.loot.ItemLootEntry;
-import net.minecraft.loot.LootParameterSet;
-import net.minecraft.loot.LootParameterSets;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.LootTableManager;
-import net.minecraft.loot.ValidationTracker;
-import net.minecraft.loot.conditions.BlockStateProperty;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.loot.functions.SetCount;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.data.HashCache;
+import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.LootTables;
+import net.minecraft.world.level.storage.loot.ValidationContext;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -38,9 +38,9 @@ import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.fmllegacy.RegistryObject;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import javax.annotation.Nonnull;
 import java.nio.file.Path;
@@ -62,7 +62,7 @@ public class FarmingDataGen {
 
 		if (event.includeServer()) {
 			generator.addProvider(new FarmingLoot(generator));
-			generator.addProvider(new FarmingRecipes(generator));
+//			generator.addProvider(new FarmingRecipes(generator));
 		}
 		if (event.includeClient()) {
 //			generator.addProvider(new Language(generator));
@@ -77,11 +77,11 @@ public class FarmingDataGen {
 		}
 
 		@Override
-		protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables() {
-			return ImmutableList.of(Pair.of(FarmingBlocks::new, LootParameterSets.BLOCK));
+		protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
+			return ImmutableList.of(Pair.of(FarmingBlocks::new, LootContextParamSets.BLOCK));
 		}
 
-		private static class FarmingBlocks extends BlockLootTables {
+		private static class FarmingBlocks extends BlockLoot {
 			private final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
 			private final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
 
@@ -108,26 +108,26 @@ public class FarmingDataGen {
 				this.add(MANGO_LEAVES.get(), (block) -> createLeavesDrops(MANGO_LEAVES.get(), MANGO_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 				this.add(OLIVE_LEAVES.get(), (block) -> createLeavesDrops(OLIVE_LEAVES.get(), OLIVE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
-				this.add(CROP_STICK.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionCondition(block, ItemLootEntry.lootTableItem(Items.STICK).apply(SetCount.setCount(ConstantRange.exactly(3))))));
+				this.add(CROP_STICK.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3))))));
 
-				this.add(MINT_CROP.get(), (block) -> createCropDrops(MINT_CROP.get(), MINT.get(), MINT_SEEDS.get(), getBuilder((CropsBlock) MINT_CROP.get())));
-				ILootCondition.IBuilder netherBuilder = BlockStateProperty.hasBlockStateProperties(NETHER_FLOWER_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NetherFlowerBlock.AGE, 5));
+				this.add(MINT_CROP.get(), (block) -> createCropDrops(MINT_CROP.get(), MINT.get(), MINT_SEEDS.get(), getBuilder((CropBlock) MINT_CROP.get())));
+				LootItemCondition.Builder netherBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(NETHER_FLOWER_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NetherFlowerBlock.AGE, 5));
 				this.add(NETHER_FLOWER_CROP.get(), (block) -> createCropDrops(NETHER_FLOWER_CROP.get(), Items.BLAZE_ROD, NETHER_FLOWER_SEEDS.get(), netherBuilder));
-				this.add(TOMATO_CROP.get(), (block) -> createCropDrops(TOMATO_CROP.get(), TOMATO.get(), TOMATO_SEEDS.get(), getBuilder((CropsBlock) TOMATO_CROP.get())));
-				this.add(CUCUMBER_CROP.get(), (block) -> createCropDrops(CUCUMBER_CROP.get(), CUCUMBER.get(), CUCUMBER_SEEDS.get(), getBuilder((CropsBlock) CUCUMBER_CROP.get())));
-				this.add(AUBERGINE_CROP.get(), (block) -> createCropDrops(AUBERGINE_CROP.get(), AUBERGINE.get(), AUBERGINE_SEEDS.get(), getBuilder((CropsBlock) AUBERGINE_CROP.get())));
-				this.add(GRAPE_CROP.get(), (block) -> createCropDrops(GRAPE_CROP.get(), GRAPES.get(), GRAPE_SEEDS.get(), getBuilder((CropsBlock) GRAPE_CROP.get())));
-				this.add(PINEAPPLE_CROP.get(), (block) -> createCropDrops(PINEAPPLE_CROP.get(), PINEAPPLE.get(), PINEAPPLE_SEEDS.get(), getBuilder((CropsBlock) PINEAPPLE_CROP.get())));
-				this.add(CORN_CROP.get(), (block) -> createCropDrops(CORN_CROP.get(), CORN.get(), CORN_SEEDS.get(), getBuilder((CropsBlock) CORN_CROP.get())));
-				this.add(ONION_CROP.get(), (block) -> createCropDrops(ONION_CROP.get(), ONION.get(), ONION_SEEDS.get(), getBuilder((CropsBlock) ONION_CROP.get())));
-				this.add(GARLIC_CROP.get(), (block) -> createCropDrops(GARLIC_CROP.get(), GARLIC.get(), GARLIC_SEEDS.get(), getBuilder((CropsBlock) GARLIC_CROP.get())));
-				this.add(LETTUCE_CROP.get(), (block) -> createCropDrops(LETTUCE_CROP.get(), LETTUCE.get(), LETTUCE_SEEDS.get(), getBuilder((CropsBlock) LETTUCE_CROP.get())));
+				this.add(TOMATO_CROP.get(), (block) -> createCropDrops(TOMATO_CROP.get(), TOMATO.get(), TOMATO_SEEDS.get(), getBuilder((CropBlock) TOMATO_CROP.get())));
+				this.add(CUCUMBER_CROP.get(), (block) -> createCropDrops(CUCUMBER_CROP.get(), CUCUMBER.get(), CUCUMBER_SEEDS.get(), getBuilder((CropBlock) CUCUMBER_CROP.get())));
+				this.add(AUBERGINE_CROP.get(), (block) -> createCropDrops(AUBERGINE_CROP.get(), AUBERGINE.get(), AUBERGINE_SEEDS.get(), getBuilder((CropBlock) AUBERGINE_CROP.get())));
+				this.add(GRAPE_CROP.get(), (block) -> createCropDrops(GRAPE_CROP.get(), GRAPES.get(), GRAPE_SEEDS.get(), getBuilder((CropBlock) GRAPE_CROP.get())));
+				this.add(PINEAPPLE_CROP.get(), (block) -> createCropDrops(PINEAPPLE_CROP.get(), PINEAPPLE.get(), PINEAPPLE_SEEDS.get(), getBuilder((CropBlock) PINEAPPLE_CROP.get())));
+				this.add(CORN_CROP.get(), (block) -> createCropDrops(CORN_CROP.get(), CORN.get(), CORN_SEEDS.get(), getBuilder((CropBlock) CORN_CROP.get())));
+				this.add(ONION_CROP.get(), (block) -> createCropDrops(ONION_CROP.get(), ONION.get(), ONION_SEEDS.get(), getBuilder((CropBlock) ONION_CROP.get())));
+				this.add(GARLIC_CROP.get(), (block) -> createCropDrops(GARLIC_CROP.get(), GARLIC.get(), GARLIC_SEEDS.get(), getBuilder((CropBlock) GARLIC_CROP.get())));
+				this.add(LETTUCE_CROP.get(), (block) -> createCropDrops(LETTUCE_CROP.get(), LETTUCE.get(), LETTUCE_SEEDS.get(), getBuilder((CropBlock) LETTUCE_CROP.get())));
 
 				this.dropSelf(SCARECROW.get());
 			}
 
-			public ILootCondition.IBuilder getBuilder(CropsBlock block) {
-				return BlockStateProperty.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge()));
+			public LootItemCondition.Builder getBuilder(CropBlock block) {
+				return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge()));
 			}
 
 			@Override
@@ -137,8 +137,8 @@ public class FarmingDataGen {
 		}
 
 		@Override
-		protected void validate(Map<ResourceLocation, LootTable> map, @Nonnull ValidationTracker validationtracker) {
-			map.forEach((name, table) -> LootTableManager.validate(validationtracker, name, table));
+		protected void validate(Map<ResourceLocation, LootTable> map, @Nonnull ValidationContext validationtracker) {
+			map.forEach((name, table) -> LootTables.validate(validationtracker, name, table));
 		}
 	}
 
@@ -149,12 +149,12 @@ public class FarmingDataGen {
 		}
 
 		@Override
-		protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
+		protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
 		}
 
 		@Override
-		protected void saveAdvancement(DirectoryCache cache, JsonObject advancementJson, Path path) {
+		protected void saveAdvancement(HashCache cache, JsonObject advancementJson, Path path) {
 			// Nope
 		}
 	}
@@ -209,17 +209,17 @@ public class FarmingDataGen {
 
 		@Override
 		protected void registerStatesAndModels() {
-			buildCrops((CropsBlock) MINT_CROP.get());
+			buildCrops((CropBlock) MINT_CROP.get());
 			buildNetherCrops((NetherFlowerBlock) NETHER_FLOWER_CROP.get());
-			buildCrops((CropsBlock) TOMATO_CROP.get());
-			buildCrops((CropsBlock) CUCUMBER_CROP.get());
-			buildCrops((CropsBlock) AUBERGINE_CROP.get());
+			buildCrops((CropBlock) TOMATO_CROP.get());
+			buildCrops((CropBlock) CUCUMBER_CROP.get());
+			buildCrops((CropBlock) AUBERGINE_CROP.get());
 			buildStickCropCrops((CropstickCropBlock) GRAPE_CROP.get());
-			buildCrops((CropsBlock) PINEAPPLE_CROP.get());
-			buildCrops((CropsBlock) CORN_CROP.get());
-			buildCrops((CropsBlock) ONION_CROP.get());
-			buildCrops((CropsBlock) GARLIC_CROP.get());
-			buildCrops((CropsBlock) LETTUCE_CROP.get());
+			buildCrops((CropBlock) PINEAPPLE_CROP.get());
+			buildCrops((CropBlock) CORN_CROP.get());
+			buildCrops((CropBlock) ONION_CROP.get());
+			buildCrops((CropBlock) GARLIC_CROP.get());
+			buildCrops((CropBlock) LETTUCE_CROP.get());
 
 			buildSaplings((GrowableSaplingBlock) APPLE_SAPLING.get(), "oak_sapling");
 			buildSaplings((GrowableSaplingBlock) LEMON_SAPLING.get(), "oak_sapling");
@@ -260,7 +260,7 @@ public class FarmingDataGen {
 			}
 		}
 
-		protected void buildCrops(CropsBlock block) {
+		protected void buildCrops(CropBlock block) {
 			VariantBlockStateBuilder builder = getVariantBuilder(block);
 			for (int i = 0; i <= block.getMaxAge(); i++) {
 				ModelFile file = models().crop(block.getRegistryName().getPath() + "_" + (i),

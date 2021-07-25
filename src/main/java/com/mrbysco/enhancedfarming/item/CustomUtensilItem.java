@@ -1,7 +1,7 @@
 package com.mrbysco.enhancedfarming.item;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public class CustomUtensilItem extends Item {
 	
@@ -11,8 +11,7 @@ public class CustomUtensilItem extends Item {
 
 	@Override
 	public ItemStack getContainerItem(ItemStack itemStack) {
-		ItemStack stack = itemStack.copy();
-		return stack;
+		return itemStack.copy();
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package com.mrbysco.enhancedfarming.item;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 public class CropsticksSeedsBlock extends CustomBlockNamedItem {
     

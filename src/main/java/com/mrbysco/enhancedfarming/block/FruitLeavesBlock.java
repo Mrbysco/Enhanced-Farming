@@ -1,39 +1,39 @@
 package com.mrbysco.enhancedfarming.block;
 
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.IGrowable;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
+public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 	public final Supplier<Item> itemSupplier;
 
-	public FruitLeavesBlock(AbstractBlock.Properties properties, Supplier<Item> itemSupplier) {
+	public FruitLeavesBlock(BlockBehaviour.Properties properties, Supplier<Item> itemSupplier) {
 		super(properties.randomTicks().strength(0.2F).sound(SoundType.GRASS).noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never));
 		this.itemSupplier = itemSupplier;
 
@@ -41,12 +41,12 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	@Override
-	public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+	public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
 		return 60;
 	}
 
 	@Override
-	public int getFireSpreadSpeed(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+	public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
 		return 30;
 	}
 
@@ -71,7 +71,7 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	@Override
-	public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+	public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
 		super.tick(state, world, pos, random);
 
 		if(state.getValue(DISTANCE) <= 6) {
@@ -96,27 +96,27 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	@Override
-	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult traceResult) {
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult traceResult) {
 		if(FarmingConfig.COMMON.rightClickFruitHarvest.get() && isMaxAge(state)) {
 			ItemEntity fruitItem = new ItemEntity(world, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
 			world.addFreshEntity(fruitItem);
 			world.setBlock(pos, state.setValue(AGE, 0), 4);
 
-			return ActionResultType.SUCCESS;
+			return InteractionResult.SUCCESS;
 		}
 		return super.use(state, world, pos, player, hand, traceResult);
 	}
 
-	protected int getBonemealAgeIncrease(World worldIn) {
-		return MathHelper.nextInt(worldIn.random, 0, 2);
+	protected int getBonemealAgeIncrease(Level worldIn) {
+		return Mth.nextInt(worldIn.random, 0, 2);
 	}
 
 	@Override
-	public void performBonemeal(ServerWorld world, Random random, BlockPos pos, BlockState state) {
+	public void performBonemeal(ServerLevel world, Random random, BlockPos pos, BlockState state) {
 		this.grow(world, pos, state, this.getBonemealAgeIncrease(world));
 	}
 
-	public void grow(World worldIn, BlockPos pos, BlockState state, int increaseBy) {
+	public void grow(Level worldIn, BlockPos pos, BlockState state, int increaseBy) {
 		int i = this.getAge(state) + increaseBy;
 		int j = this.getMaxAge();
 		if (i > j) {
@@ -127,17 +127,17 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(IBlockReader blockReader, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(BlockGetter blockReader, BlockPos pos, BlockState state, boolean isClient) {
 		return !isMaxAge(state);
 	}
 
 	@Override
-	public boolean isBonemealSuccess(World world, Random random, BlockPos pos, BlockState state) {
+	public boolean isBonemealSuccess(Level world, Random random, BlockPos pos, BlockState state) {
 		return (double)world.random.nextFloat() < 0.45D;
 	}
 
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext useContext) {
+	public BlockState getStateForPlacement(BlockPlaceContext useContext) {
 		return super.getStateForPlacement(useContext).setValue(AGE, 3);
 	}
 

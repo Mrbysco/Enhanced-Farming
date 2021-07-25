@@ -1,16 +1,16 @@
 package com.mrbysco.enhancedfarming.world.tree;
 
 import com.mrbysco.enhancedfarming.world.feature.FarmingFeatureConfigs;
-import net.minecraft.block.trees.Tree;
-import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class MangoTree extends Tree {
+public class MangoTree extends AbstractTreeGrower {
 	@Nullable
-	protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random random, boolean withBees) {
+	protected ConfiguredFeature<TreeConfiguration, ?> getConfiguredFeature(Random random, boolean withBees) {
 		return FarmingFeatureConfigs.MANGO;
 	}
 }

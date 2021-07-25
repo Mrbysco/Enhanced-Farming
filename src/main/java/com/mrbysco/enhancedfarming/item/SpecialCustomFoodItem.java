@@ -1,16 +1,16 @@
 package com.mrbysco.enhancedfarming.item;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
 
 public class SpecialCustomFoodItem extends CustomFoodItem {
 	
@@ -18,7 +18,7 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
 	public boolean directheal;
 	public boolean cure;
 
-	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects, UseAction action) {
+	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects, UseAnim action) {
 		super(properties, useTime, action);
 
 		this.enchanted = enchanted;
@@ -26,19 +26,19 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
 		this.cure = cureEffects;
 	}
 
-	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, UseAction action) {
+	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, UseAnim action) {
 		this(properties, useTime, enchanted, false, false, action);
 	}
 
 	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects) {
-		this(properties, useTime, enchanted, directHeal, cureEffects, UseAction.EAT);
+		this(properties, useTime, enchanted, directHeal, cureEffects, UseAnim.EAT);
 	}
 
 	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted) {
-		this(properties, useTime, enchanted, false, false, UseAction.EAT);
+		this(properties, useTime, enchanted, false, false, UseAnim.EAT);
 	}
 
-	public ItemStack finishUsingItem(ItemStack stack, World worldIn, LivingEntity livingEntity) {
+	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity) {
 		if (!worldIn.isClientSide && cure) livingEntity.curePotionEffects(stack);
 		if(this.isEdible()) {
 			if(directheal) {
@@ -53,26 +53,25 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
     }
 
 	public ItemStack shrinkStack(LivingEntity livingEntity, ItemStack stack) {
-		if (!(livingEntity instanceof PlayerEntity) || !((PlayerEntity)livingEntity).abilities.instabuild) {
+		if (!(livingEntity instanceof Player) || !((Player)livingEntity).getAbilities().instabuild) {
 			stack.shrink(1);
 		}
 		return stack;
 	}
 
-    public ItemStack eatStack(LivingEntity livingEntity, World worldIn, ItemStack stack, boolean useFood) {
-		if(livingEntity instanceof PlayerEntity) {
-			PlayerEntity player = (PlayerEntity) livingEntity;
+    public ItemStack eatStack(LivingEntity livingEntity, Level level, ItemStack stack, boolean useFood) {
+		if(livingEntity instanceof Player player) {
 			if(useFood) {
 				player.getFoodData().eat(stack.getItem(), stack);
 			}
 			player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-			worldIn.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, random.nextFloat() * 0.1F + 0.9F);
-			if (player instanceof ServerPlayerEntity) {
-				CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayerEntity)player, stack);
+			level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
+			if (player instanceof ServerPlayer) {
+				CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, stack);
 			}
 		} else {
-			worldIn.playSound((PlayerEntity)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), livingEntity.getEatingSound(stack), SoundCategory.NEUTRAL, 1.0F, 1.0F + (random.nextFloat() - random.nextFloat()) * 0.4F);
-			livingEntity.addEatEffect(stack, worldIn, livingEntity);
+			level.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), livingEntity.getEatingSound(stack), SoundSource.NEUTRAL, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
+			livingEntity.addEatEffect(stack, level, livingEntity);
 		}
 		return stack;
 	}
