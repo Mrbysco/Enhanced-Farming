@@ -61,18 +61,18 @@ public class FarmingDataGen {
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		if (event.includeServer()) {
-			generator.addProvider(new Loots(generator));
-			generator.addProvider(new Recipes(generator));
+			generator.addProvider(new FarmingLoot(generator));
+			generator.addProvider(new FarmingRecipes(generator));
 		}
 		if (event.includeClient()) {
 //			generator.addProvider(new Language(generator));
-			generator.addProvider(new BlockStates(generator, helper));
-			generator.addProvider(new ItemModels(generator, helper));
+			generator.addProvider(new FarmingBlockStates(generator, helper));
+			generator.addProvider(new FarmingItemModels(generator, helper));
 		}
 	}
 
-	private static class Loots extends LootTableProvider {
-		public Loots(DataGenerator gen) {
+	private static class FarmingLoot extends LootTableProvider {
+		public FarmingLoot(DataGenerator gen) {
 			super(gen);
 		}
 
@@ -143,8 +143,8 @@ public class FarmingDataGen {
 	}
 
 
-	private static class Recipes extends RecipeProvider {
-		public Recipes(DataGenerator gen) {
+	private static class FarmingRecipes extends RecipeProvider {
+		public FarmingRecipes(DataGenerator gen) {
 			super(gen);
 		}
 
@@ -159,8 +159,8 @@ public class FarmingDataGen {
 		}
 	}
 
-	private static class Language extends LanguageProvider {
-		public Language(DataGenerator gen) {
+	private static class FarmingLanguage extends LanguageProvider {
+		public FarmingLanguage(DataGenerator gen) {
 			super(gen, Reference.MOD_ID, "en_us");
 		}
 
@@ -170,8 +170,8 @@ public class FarmingDataGen {
 		}
 	}
 
-	private static class ItemModels extends ItemModelProvider {
-		public ItemModels(DataGenerator gen, ExistingFileHelper helper) {
+	private static class FarmingItemModels extends ItemModelProvider {
+		public FarmingItemModels(DataGenerator gen, ExistingFileHelper helper) {
 			super(gen, Reference.MOD_ID, helper);
 		}
 
@@ -201,9 +201,9 @@ public class FarmingDataGen {
 		}
 	}
 
-	private static class BlockStates extends BlockStateProvider {
+	private static class FarmingBlockStates extends BlockStateProvider {
 
-		public BlockStates(DataGenerator gen, ExistingFileHelper helper) {
+		public FarmingBlockStates(DataGenerator gen, ExistingFileHelper helper) {
 			super(gen, Reference.MOD_ID, helper);
 		}
 
