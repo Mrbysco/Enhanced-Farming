@@ -22,6 +22,6 @@ side="BOTH"
 [[dependencies.enhancedfarming]]
 modId="forge"
 mandatory=true
-versionRange="[37.0.28,38)"
+versionRange="[37.0.31,38)"
 ordering="NONE"
 side="BOTH"
