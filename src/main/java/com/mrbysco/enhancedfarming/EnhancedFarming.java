@@ -5,6 +5,7 @@ import com.mrbysco.enhancedfarming.config.FarmingConfig;
 import com.mrbysco.enhancedfarming.handler.HotHandler;
 import com.mrbysco.enhancedfarming.handler.InteractionHandler;
 import com.mrbysco.enhancedfarming.handler.InWorldCraftingHandler;
+import com.mrbysco.enhancedfarming.handler.RakeHandler;
 import com.mrbysco.enhancedfarming.init.FarmingConditions;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
@@ -39,13 +40,14 @@ public class EnhancedFarming {
 		MinecraftForge.EVENT_BUS.register(new InteractionHandler());
 		MinecraftForge.EVENT_BUS.register(new InWorldCraftingHandler());
 		MinecraftForge.EVENT_BUS.register(new HotHandler());
+		MinecraftForge.EVENT_BUS.register(new RakeHandler());
 
 		MinecraftForge.EVENT_BUS.register(new WorldGenHandler());
 
 		eventBus.register(new FarmingConditions());
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-			FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientHandler::onClientSetup);
+			eventBus.addListener(ClientHandler::onClientSetup);
 			eventBus.addListener(ClientHandler::registerBlockColors);
 		});
 	}

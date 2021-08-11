@@ -97,19 +97,19 @@ dependencies {
 //    runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
 }
 
-// Example for how to get properties into the manifest for reading by the runtime..
+// Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
         attributes([
-            "Specification-Title": "enhancedfarming",
-            "Specification-Vendor": "Mrbysco",
-            "Specification-Version": "1", // We are version 1 of ourselves
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"Mrbysco",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Specification-Title"     : "enhancedfarming",
+                "Specification-Vendor"    : "Mrbysco",
+                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "Mrbysco",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
 
-jar.finalizedBy('reobfJar') 
+jar.finalizedBy('reobfJar')

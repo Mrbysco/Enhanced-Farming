@@ -1,4 +1,4 @@
-package com.mrbysco.enhancedfarming.tiles;
+package com.mrbysco.enhancedfarming.blockentities;
 
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.core.BlockPos;
