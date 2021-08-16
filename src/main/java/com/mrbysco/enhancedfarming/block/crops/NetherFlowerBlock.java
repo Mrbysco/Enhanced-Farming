@@ -26,7 +26,13 @@ import java.util.Random;
 
 public class NetherFlowerBlock extends BushBlock implements IGrowable{
 
-	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.box(0.0D, 0.0D, 0.0D, 16.0D, 5.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D)};
+	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
+			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
+			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D),
+			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
+			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
+			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
+			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D)};
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
 
     public NetherFlowerBlock(AbstractBlock.Properties properties) {
@@ -68,8 +74,8 @@ public class NetherFlowerBlock extends BushBlock implements IGrowable{
 		return PlantType.NETHER;
 	}
 
-	public boolean isRandomlyTicking(BlockState p_149653_1_) {
-		return p_149653_1_.getValue(AGE) < 5;
+	public boolean isRandomlyTicking(BlockState state) {
+		return state.getValue(AGE) < 5;
 	}
 
 	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -81,8 +87,8 @@ public class NetherFlowerBlock extends BushBlock implements IGrowable{
 		}
 	}
 
-	public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
-		return SHAPE_BY_AGE[p_220053_1_.getValue(AGE)];
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext p_220053_4_) {
+		return SHAPE_BY_AGE[state.getValue(AGE)];
 	}
 
 	@Override
@@ -121,7 +127,7 @@ public class NetherFlowerBlock extends BushBlock implements IGrowable{
 		world.setBlock(pos, this.getStateForAge(i), 2);
 	}
 
-	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
-		p_206840_1_.add(AGE);
+	protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> blockStateBuilder) {
+		blockStateBuilder.add(AGE);
 	}
 }
