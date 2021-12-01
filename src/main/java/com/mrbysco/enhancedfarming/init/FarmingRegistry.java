@@ -154,7 +154,7 @@ public class FarmingRegistry {
 	public static final RegistryObject<Item> SALT = ITEMS.register("salt", () -> new Item(new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 	public static final RegistryObject<Item> STOCK = ITEMS.register("stock", () -> new Item(new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 
-	public static final RegistryObject<Item> FRUIT_SALAD = ITEMS.register("fruit_salad", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.FRUIT_SALAD).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 24, UseAnim.DRINK));
+	public static final RegistryObject<Item> FRUIT_SALAD = ITEMS.register("fruit_salad", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.FRUIT_SALAD).stacksTo(16).craftRemainder(Items.BOWL), 24, UseAnim.EAT));
 	public static final RegistryObject<Item> SALAD = ITEMS.register("salad", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.SALAD).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 24, UseAnim.DRINK));
 	public static final RegistryObject<Item> CARROT_SOUP = ITEMS.register("carrot_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CARROT_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
 	public static final RegistryObject<Item> CHICKEN_NOODLE_SOUP = ITEMS.register("chicken_noodle_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHICKEN_NOODLE_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
