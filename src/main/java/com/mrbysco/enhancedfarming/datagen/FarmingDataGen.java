@@ -16,6 +16,7 @@ import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -39,10 +40,11 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +67,7 @@ public class FarmingDataGen {
 //			generator.addProvider(new FarmingRecipes(generator));
 		}
 		if (event.includeClient()) {
-//			generator.addProvider(new Language(generator));
+			generator.addProvider(new Language(generator));
 			generator.addProvider(new FarmingBlockStates(generator, helper));
 			generator.addProvider(new FarmingItemModels(generator, helper));
 		}
@@ -191,6 +193,8 @@ public class FarmingDataGen {
 							} else {
 								singleTexture(path, mcLoc("item/generated"), "layer0", modLoc("item/" + path));
 							}
+						} else {
+							withExistingParent(path, modLoc("block/scarecrow"));
 						}
 					});
 		}
@@ -198,6 +202,175 @@ public class FarmingDataGen {
 		@Override
 		public String getName() {
 			return "Item Models";
+		}
+	}
+
+	private static class Language extends LanguageProvider {
+		public Language(DataGenerator gen) {
+			super(gen, Reference.MOD_ID, "en_us");
+		}
+
+		@Override
+		protected void addTranslations() {
+			add("enhancedfarming.config.title", "Enhanced Farming Config");
+			add("itemGroup.enhancedfarming", "Enhanced Farming");
+
+			addBlocks();
+			addItems();
+
+			add("enhancedfarming.gui.jei.category.piston", "Piston crafting");
+		}
+
+		private void addBlocks() {
+			addBlock(MINT_CROP, "Mint Crop");
+			addBlock(NETHER_FLOWER_CROP, "Nether Flower Crop");
+			addBlock(TOMATO_CROP, "Tomato Crop");
+			addBlock(CUCUMBER_CROP, "Cucumber Crop");
+			addBlock(AUBERGINE_CROP, "Aubergine Crop");
+			addBlock(GRAPE_CROP, "Grape Crop");
+			addBlock(PINEAPPLE_CROP, "Pineapple Crop");
+			addBlock(CORN_CROP, "Corn Crop");
+			addBlock(ONION_CROP, "Onion Crop");
+			addBlock(GARLIC_CROP, "Garlic Crop");
+			addBlock(LETTUCE_CROP, "Lettuce Crop");
+
+			addBlock(APPLE_LEAVES, "Apple Leaves");
+			addBlock(LEMON_LEAVES, "Lemon Leaves");
+			addBlock(ORANGE_LEAVES, "Orange Leaves");
+			addBlock(CHERRY_LEAVES, "Cherry Leaves");
+			addBlock(PEAR_LEAVES, "Pear Leaves");
+			addBlock(BANANA_LEAVES, "Banana Leaves");
+			addBlock(AVOCADO_LEAVES, "Avocado Leaves");
+			addBlock(MANGO_LEAVES, "Mango Leaves");
+			addBlock(OLIVE_LEAVES, "Olive Leaves");
+
+			addBlock(APPLE_SAPLING, "Apple Seeds");
+			addBlock(LEMON_SAPLING, "Lemon Seeds");
+			addBlock(ORANGE_SAPLING, "Orange Seeds");
+			addBlock(CHERRY_SAPLING, "Cherry Seeds");
+			addBlock(PEAR_SAPLING, "Pear Seeds");
+			addBlock(BANANA_SAPLING, "Banana Seeds");
+			addBlock(AVOCADO_SAPLING, "Avocado Seed");
+			addBlock(MANGO_SAPLING, "Mango Seed");
+			addBlock(OLIVE_SAPLING, "Olive Seeds");
+
+			addBlock(CROP_STICK, "Crop Sticks");
+			addBlock(SCARECROW, "Scarecrow");
+		}
+
+		private void addItems() {
+			addItem(MINT_SEEDS, "Mint Seeds");
+			addItem(NETHER_FLOWER_SEEDS, "Nether Flower Seeds");
+			addItem(TOMATO_SEEDS, "Tomato Seeds");
+			addItem(CUCUMBER_SEEDS, "Cucumber Seeds");
+			addItem(AUBERGINE_SEEDS, "Aubergine Seeds");
+			addItem(GRAPE_SEEDS, "Grape Seeds");
+			addItem(CORN_SEEDS, "Corn Seeds");
+			addItem(PINEAPPLE_SEEDS, "Pineapple Seeds");
+			addItem(ONION_SEEDS, "Onion Seeds");
+			addItem(GARLIC_SEEDS, "Garlic Seeds");
+			addItem(LETTUCE_SEEDS, "Lettuce Seeds");
+			addItem(POT, "Pot");
+			addItem(CUTTING_BOARD, "Cutting Board");
+			addItem(MORTAR_AND_PESTLE, "Mortal And Pestle");
+			addItem(MINT, "Mint");
+			addItem(LEMON, "Lemon");
+			addItem(ORANGE, "Orange");
+			addItem(CHERRY, "Cherry");
+			addItem(PEAR, "Pear");
+			addItem(BANANA, "Banana");
+			addItem(OLIVE, "Olive");
+			addItem(AVOCADO, "Avocado");
+			addItem(MANGO, "Mango");
+			addItem(TOMATO, "Tomato");
+			addItem(CUCUMBER, "Cucumber");
+			addItem(AUBERGINE, "Aubergine");
+			addItem(GRAPES, "Grapes");
+			addItem(PINEAPPLE, "Pineapple");
+			addItem(CORN, "Corn");
+			addItem(ONION, "Onion");
+			addItem(GARLIC, "Garlic");
+			addItem(LETTUCE, "Lettuce");
+			addItem(GOLDEN_LEMON, "Golden lemon");
+			addItem(GOLDEN_ORANGE, "Golden Orange");
+			addItem(CHOCOLATE_BAR, "Chocolate Bar");
+			addItem(CHOCOLATE_CANDY, "Chocolate Candy");
+			addItem(CHOCOLATE_CHERRY, "Chocolate Cherry");
+			addItem(CHOCOLATE_BANANA, "Chocolate Banana");
+			addItem(MINT_CHOCOLATE_BAR, "Mint Chocolate Bar");
+			addItem(MINT_TEA, "Mint Tea");
+			addItem(APPLE_JUICE, "Apple Juice");
+			addItem(LEMONADE, "Lemonade");
+			addItem(ORANGE_JUICE, "Orange Juice");
+			addItem(CHERRY_JUICE, "Cherry Juice");
+			addItem(PEAR_JUICE, "Pear Juice");
+			addItem(BANANA_JUICE, "Banana Juice");
+			addItem(GRAPE_JUICE, "Grape Juice");
+			addItem(MANGO_JUICE, "Mango Juice");
+			addItem(PINEAPPLE_JUICE, "Pineapple Juice");
+			addItem(MILK_BOTTLE, "Milk Bottle");
+			addItem(COLD_CHOCOLATE_BOTTLE, "Cold Chocolate Bottle");
+			addItem(HOT_CHOCOLATE_BOTTLE, "Hot Chocolate Bottle");
+			addItem(HOT_WATER, "Boiled Water");
+			addItem(SMOOTHIE_APPLE, "Apple Smoothie");
+			addItem(SMOOTHIE_LEMON, "Lemon Smoothie");
+			addItem(SMOOTHIE_ORANGE, "Orange Smoothie");
+			addItem(SMOOTHIE_CHERRY, "Cherry Smoothie");
+			addItem(SMOOTHIE_PEAR, "Pear Smoothie");
+			addItem(SMOOTHIE_BANANA, "Banana Smoothie");
+			addItem(SMOOTHIE_GRAPE, "Grape Smoothie");
+			addItem(SMOOTHIE_MANGO, "Mango Smoothie");
+			addItem(SMOOTHIE_PINEAPPLE, "Pineapple Smoothie");
+			addItem(SMOOTHIE_CUCUMBER, "Cucumber Smoothie");
+			addItem(STOCK, "Stock");
+			addItem(SALT, "Salt");
+			addItem(FLOUR, "Flour");
+			addItem(DOUGH, "Dough");
+			addItem(OLIVE_OIL, "Olive Oil");
+			addItem(PASTA, "Pasta");
+			addItem(RAW_FRIES, "Raw Fries");
+			addItem(FRUIT_SALAD, "Fruit Salad");
+			addItem(SALAD, "Salad");
+			addItem(CORN_SOUP, "Corn Soup");
+			addItem(CUCUMBER_SOUP, "Cucumber Soup");
+			addItem(TOMATO_SOUP, "Tomato Soup");
+			addItem(POTATO_SOUP, "Potato Soup");
+			addItem(CARROT_SOUP, "Carrot Soup");
+			addItem(ONION_SOUP, "Onion Soup");
+			addItem(CHICKEN_NOODLE_SOUP, "Chicken Noodle Soup");
+			addItem(HAMBURGER, "Hamburger");
+			addItem(CHICKENBURGER, "Chicken Burger");
+			addItem(CHEESEBURGER, "Cheese Burger");
+			addItem(BOILED_EGG, "Boiled Egg");
+			addItem(BAKED_EGG, "Baked Egg");
+			addItem(SLICED_BREAD, "Sliced Bread");
+			addItem(CHEESE, "Cheese");
+			addItem(SPAGHETTI, "Spaghetti");
+			addItem(JAM, "Fruit Jam");
+			addItem(FRIES, "Fries");
+			addItem(FISH_AND_CHIPS, "Fish And Chips");
+			addItem(POTATO_CHIPS, "Potato Chips");
+			addItem(GUACAMOLE, "Guacamole");
+			addItem(GUAC_AND_CHIPS, "Guac and Chips");
+			addItem(EGG_SANDWICH, "Egg Sandwich");
+			addItem(BACON_SANDWICH, "Bacon Sandwich");
+			addItem(CHICKEN_SANDWICH, "Chicken Sandwich");
+			addItem(JC_SANDWICH, "Jam And Cheese Sandwich");
+			addItem(PINEAPPLE_PIZZA, "Pineapple Pizza");
+			addItem(CHEESE_PIZZA, "Cheese Pizza");
+			addItem(BACON_PIZZA, "Bacon Pizza");
+			addItem(APPLE_PIE, "Apple Pie");
+			addItem(BANANA_PIE, "Banana Cream Pie");
+			addItem(BACON_AND_EGG_PIE, "Bacon And Egg Pie");
+			addItem(CHERRY_PIE, "Cherry Pie");
+			addItem(GRAPE_PIE, "Grape Pie");
+			addItem(LEMON_PIE, "Lemon Meringue Pie");
+			addItem(PEAR_PIE, "Pear Pie");
+			addItem(WOODEN_RAKE, "Wooden Rake");
+			addItem(STONE_RAKE, "Stone Rake");
+			addItem(IRON_RAKE, "Iron Rake");
+			addItem(GOLD_RAKE, "Gold Rake");
+			addItem(DIAMOND_RAKE, "Diamond Rake");
 		}
 	}
 

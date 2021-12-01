@@ -1,102 +1,187 @@
 package com.mrbysco.enhancedfarming.world.feature;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.block.crops.NetherFlowerBlock;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
-import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
-import net.minecraft.data.worldgen.Features;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.blockplacers.SimpleBlockPlacer;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.FeatureDecorator;
-import net.minecraft.world.level.levelgen.placement.FrequencyWithExtraChanceDecoratorConfiguration;
 
+import java.util.List;
 import java.util.OptionalInt;
 
 public class FarmingFeatureConfigs {
-	public static final ConfiguredFeature<TreeConfiguration, ?> APPLE = register("apple", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), new SimpleStateProvider(States.APPLE_LEAVES), new SimpleStateProvider(States.APPLE_SAPLING), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> APPLE_BEES_0002 = register("apple_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(APPLE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> APPLE_BEES_002 = register("apple_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(APPLE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> APPLE_BEES_005 = register("apple_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(APPLE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_APPLE = register("fancy_apple", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new FancyTrunkPlacer(3, 11, 0), new SimpleStateProvider(States.APPLE_LEAVES), new SimpleStateProvider(States.APPLE_SAPLING), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_APPLE_BEES_0002 = register("fancy_apple_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_APPLE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_APPLE_BEES_002 = register("fancy_apple_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_APPLE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_APPLE_BEES_005 = register("fancy_apple_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_APPLE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
+	public static void initialize() {}
 
-	public static final ConfiguredFeature<TreeConfiguration, ?> LEMON = register("lemon", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), new SimpleStateProvider(States.LEMON_LEAVES), new SimpleStateProvider(States.LEMON_SAPLING), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> LEMON_BEES_0002 = register("lemon_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(LEMON.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> LEMON_BEES_002 = register("lemon_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(LEMON.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> LEMON_BEES_005 = register("lemon_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(LEMON.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_LEMON = register("fancy_lemon", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new FancyTrunkPlacer(3, 11, 0), new SimpleStateProvider(States.LEMON_LEAVES), new SimpleStateProvider(States.LEMON_SAPLING), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_LEMON_BEES_0002 = register("fancy_lemon_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_LEMON.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_LEMON_BEES_002 = register("fancy_lemon_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_LEMON.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_LEMON_BEES_005 = register("fancy_lemon_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_LEMON.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
+	public static final ConfiguredFeature<TreeConfiguration, ?> APPLE = FeatureUtils.register("apple", FarmingFeatures.FRUIT_TREE.get().configured(getApple().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> APPLE_BEES_0002 = FeatureUtils.register("apple_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getApple().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> APPLE_BEES_002 = FeatureUtils.register("apple_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getApple().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> APPLE_BEES_005 = FeatureUtils.register("apple_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getApple().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_APPLE = FeatureUtils.register("fancy_apple", FarmingFeatures.FRUIT_TREE.get().configured(getFancyApple().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_APPLE_BEES_0002 = FeatureUtils.register("fancy_apple_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyApple().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_APPLE_BEES_002 = FeatureUtils.register("fancy_apple_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyApple().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_APPLE_BEES_005 = FeatureUtils.register("fancy_apple_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getFancyApple().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
 
-	public static final ConfiguredFeature<TreeConfiguration, ?> ORANGE = register("orange", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), new SimpleStateProvider(States.ORANGE_LEAVES), new SimpleStateProvider(States.ORANGE_SAPLING), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> ORANGE_BEES_0002 = register("orange_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(ORANGE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> ORANGE_BEES_002 = register("orange_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(ORANGE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> ORANGE_BEES_005 = register("orange_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(ORANGE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_ORANGE = register("fancy_orange", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new FancyTrunkPlacer(3, 11, 0), new SimpleStateProvider(States.ORANGE_LEAVES), new SimpleStateProvider(States.ORANGE_SAPLING), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_ORANGE_BEES_0002 = register("fancy_orange_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_ORANGE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_ORANGE_BEES_002 = register("fancy_orange_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_ORANGE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_ORANGE_BEES_005 = register("fancy_orange_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_ORANGE.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
+	public static final ConfiguredFeature<TreeConfiguration, ?> LEMON = FeatureUtils.register("lemon", FarmingFeatures.FRUIT_TREE.get().configured(getLemon().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> LEMON_BEES_0002 = FeatureUtils.register("lemon_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getLemon().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> LEMON_BEES_002 = FeatureUtils.register("lemon_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getLemon().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> LEMON_BEES_005 = FeatureUtils.register("lemon_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getLemon().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_LEMON = FeatureUtils.register("fancy_lemon", FarmingFeatures.FRUIT_TREE.get().configured(getFancyLemon().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_LEMON_BEES_0002 = FeatureUtils.register("fancy_lemon_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyLemon().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_LEMON_BEES_002 = FeatureUtils.register("fancy_lemon_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyLemon().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_LEMON_BEES_005 = FeatureUtils.register("fancy_lemon_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getFancyLemon().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
 
-	public static final ConfiguredFeature<TreeConfiguration, ?> CHERRY = register("cherry", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), new SimpleStateProvider(States.CHERRY_LEAVES), new SimpleStateProvider(States.CHERRY_SAPLING), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> CHERRY_BEES_0002 = register("cherry_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(CHERRY.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> CHERRY_BEES_002 = register("cherry_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(CHERRY.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> CHERRY_BEES_005 = register("cherry_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(CHERRY.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_CHERRY = register("fancy_cherry", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new FancyTrunkPlacer(3, 11, 0), new SimpleStateProvider(States.CHERRY_LEAVES), new SimpleStateProvider(States.CHERRY_SAPLING), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_CHERRY_BEES_0002 = register("fancy_cherry_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_CHERRY.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_CHERRY_BEES_002 = register("fancy_cherry_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_CHERRY.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_CHERRY_BEES_005 = register("fancy_cherry_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_CHERRY.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
+	public static final ConfiguredFeature<TreeConfiguration, ?> ORANGE = FeatureUtils.register("orange", FarmingFeatures.FRUIT_TREE.get().configured(getOrange().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> ORANGE_BEES_0002 = FeatureUtils.register("orange_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getOrange().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> ORANGE_BEES_002 = FeatureUtils.register("orange_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getOrange().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> ORANGE_BEES_005 = FeatureUtils.register("orange_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getOrange().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_ORANGE = FeatureUtils.register("fancy_orange", FarmingFeatures.FRUIT_TREE.get().configured(getFancyOrange().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_ORANGE_BEES_0002 = FeatureUtils.register("fancy_orange_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyOrange().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_ORANGE_BEES_002 = FeatureUtils.register("fancy_orange_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyOrange().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_ORANGE_BEES_005 = FeatureUtils.register("fancy_orange_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getFancyOrange().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
 
-	public static final ConfiguredFeature<TreeConfiguration, ?> PEAR = register("pear", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), new SimpleStateProvider(States.PEAR_LEAVES), new SimpleStateProvider(States.PEAR_SAPLING), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> PEAR_BEES_0002 = register("pear_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(PEAR.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> PEAR_BEES_002 = register("pear_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(PEAR.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> PEAR_BEES_005 = register("pear_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(PEAR.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_PEAR = register("fancy_pear", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new FancyTrunkPlacer(3, 11, 0), new SimpleStateProvider(States.PEAR_LEAVES), new SimpleStateProvider(States.PEAR_SAPLING), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_PEAR_BEES_0002 = register("fancy_pear_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_PEAR.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_0002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_PEAR_BEES_002 = register("fancy_pear_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_PEAR.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_002))));
-	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_PEAR_BEES_005 = register("fancy_pear_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(FANCY_PEAR.config().withDecorators(ImmutableList.of(Features.Decorators.BEEHIVE_005))));
+	public static final ConfiguredFeature<TreeConfiguration, ?> CHERRY = FeatureUtils.register("cherry", FarmingFeatures.FRUIT_TREE.get().configured(getCherry().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> CHERRY_BEES_0002 = FeatureUtils.register("cherry_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getCherry().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> CHERRY_BEES_002 = FeatureUtils.register("cherry_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getCherry().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> CHERRY_BEES_005 = FeatureUtils.register("cherry_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getCherry().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_CHERRY = FeatureUtils.register("fancy_cherry", FarmingFeatures.FRUIT_TREE.get().configured(getFancyCherry().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_CHERRY_BEES_0002 = FeatureUtils.register("fancy_cherry_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyCherry().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_CHERRY_BEES_002 = FeatureUtils.register("fancy_cherry_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyCherry().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_CHERRY_BEES_005 = FeatureUtils.register("fancy_cherry_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getFancyCherry().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
 
-	public static final ConfiguredFeature<TreeConfiguration, ?> BANANA = register("banana", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.JUNGLE_LOG), new StraightTrunkPlacer(4, 8, 0), new SimpleStateProvider(States.BANANA_LEAVES), new SimpleStateProvider(States.BANANA_SAPLING), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> AVOCADO = register("avocado", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), new SimpleStateProvider(States.AVOCADO_LEAVES), new SimpleStateProvider(States.AVOCADO_SAPLING), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> MANGO = register("mango", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.OAK_LOG), new StraightTrunkPlacer(4, 2, 0), new SimpleStateProvider(States.MANGO_LEAVES), new SimpleStateProvider(States.MANGO_SAPLING), new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3), new TwoLayersFeatureSize(1, 0, 1))).ignoreVines().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> OLIVE = register("olive", FarmingFeatures.FRUIT_TREE.get().configured((new TreeConfiguration.TreeConfigurationBuilder(new SimpleStateProvider(States.ACACIA_LOG), new ForkingTrunkPlacer(5, 2, 2), new SimpleStateProvider(States.OLIVE_LEAVES), new SimpleStateProvider(States.OLIVE_SAPLING), new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)), new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> PEAR = FeatureUtils.register("pear", FarmingFeatures.FRUIT_TREE.get().configured(getPear().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> PEAR_BEES_0002 = FeatureUtils.register("pear_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getPear().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> PEAR_BEES_002 = FeatureUtils.register("pear_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getPear().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> PEAR_BEES_005 = FeatureUtils.register("pear_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getPear().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_PEAR = FeatureUtils.register("fancy_pear", FarmingFeatures.FRUIT_TREE.get().configured(getFancyPear().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_PEAR_BEES_0002 = FeatureUtils.register("fancy_pear_bees_0002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyPear().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_PEAR_BEES_002 = FeatureUtils.register("fancy_pear_bees_002", FarmingFeatures.FRUIT_TREE.get().configured(getFancyPear().decorators(List.of(TreeFeatures.BEEHIVE_002)).build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> FANCY_PEAR_BEES_005 = FeatureUtils.register("fancy_pear_bees_005", FarmingFeatures.FRUIT_TREE.get().configured(getFancyPear().decorators(List.of(TreeFeatures.BEEHIVE_005)).build()));
 
-	public static final ConfiguredFeature<?, ?> APPLE_FRUIT_VEGETATION = register("apple_fruit_vegetation", Feature.RANDOM_SELECTOR.configured(new RandomFeatureConfiguration(ImmutableList.of(APPLE_BEES_002.weighted(0.2F), FANCY_APPLE_BEES_002.weighted(0.1F)), APPLE_BEES_002)).decorated(Features.Decorators.HEIGHTMAP_SQUARE).decorated(FeatureDecorator.COUNT_EXTRA.configured(new FrequencyWithExtraChanceDecoratorConfiguration(1, 0.1F, 1))));
-	public static final ConfiguredFeature<?, ?> LEMON_FRUIT_VEGETATION = register("lemon_fruit_vegetation", Feature.RANDOM_SELECTOR.configured(new RandomFeatureConfiguration(ImmutableList.of(LEMON_BEES_002.weighted(0.2F), FANCY_LEMON_BEES_002.weighted(0.1F)), LEMON_BEES_002)).decorated(Features.Decorators.HEIGHTMAP_SQUARE).decorated(FeatureDecorator.COUNT_EXTRA.configured(new FrequencyWithExtraChanceDecoratorConfiguration(1, 0.1F, 1))));
-	public static final ConfiguredFeature<?, ?> ORANGE_FRUIT_VEGETATION = register("orange_fruit_vegetation", Feature.RANDOM_SELECTOR.configured(new RandomFeatureConfiguration(ImmutableList.of(ORANGE_BEES_002.weighted(0.2F), FANCY_ORANGE_BEES_002.weighted(0.1F)), ORANGE_BEES_002)).decorated(Features.Decorators.HEIGHTMAP_SQUARE).decorated(FeatureDecorator.COUNT_EXTRA.configured(new FrequencyWithExtraChanceDecoratorConfiguration(1, 0.1F, 1))));
-	public static final ConfiguredFeature<?, ?> CHERRY_FRUIT_VEGETATION = register("cherry_fruit_vegetation", Feature.RANDOM_SELECTOR.configured(new RandomFeatureConfiguration(ImmutableList.of(CHERRY_BEES_002.weighted(0.2F), FANCY_CHERRY_BEES_002.weighted(0.1F)), CHERRY_BEES_002)).decorated(Features.Decorators.HEIGHTMAP_SQUARE).decorated(FeatureDecorator.COUNT_EXTRA.configured(new FrequencyWithExtraChanceDecoratorConfiguration(1, 0.1F, 1))));
-	public static final ConfiguredFeature<?, ?> PEAR_FRUIT_VEGETATION = register("pear_fruit_vegetation", Feature.RANDOM_SELECTOR.configured(new RandomFeatureConfiguration(ImmutableList.of(PEAR_BEES_002.weighted(0.2F), FANCY_PEAR_BEES_002.weighted(0.1F)), PEAR_BEES_002)).decorated(Features.Decorators.HEIGHTMAP_SQUARE).decorated(FeatureDecorator.COUNT_EXTRA.configured(new FrequencyWithExtraChanceDecoratorConfiguration(1, 0.1F, 1))));
-	public static final ConfiguredFeature<?, ?> AVOCADO_FRUIT_VEGETATION = register("avocado_fruit_vegetation", AVOCADO.decorated(Features.Decorators.HEIGHTMAP_SQUARE).decorated(FeatureDecorator.COUNT_EXTRA.configured(new FrequencyWithExtraChanceDecoratorConfiguration(1, 0.1F, 1))));
-	public static final ConfiguredFeature<?, ?> MANGO_FRUIT_VEGETATION = register("mango_fruit_vegetation", MANGO.decorated(Features.Decorators.HEIGHTMAP_SQUARE).decorated(FeatureDecorator.COUNT_EXTRA.configured(new FrequencyWithExtraChanceDecoratorConfiguration(1, 0.1F, 1))));
-	public static final ConfiguredFeature<?, ?> BANANA_FRUIT_VEGETATION = register("banana_fruit_vegetation", BANANA.decorated(Features.Decorators.HEIGHTMAP_SQUARE).decorated(FeatureDecorator.COUNT_EXTRA.configured(new FrequencyWithExtraChanceDecoratorConfiguration(1, 0.1F, 1))));
-	public static final ConfiguredFeature<?, ?> OLIVE_FRUIT_VEGETATION = register("olive_fruit_vegetation", OLIVE.decorated(Features.Decorators.HEIGHTMAP_SQUARE).decorated(FeatureDecorator.COUNT_EXTRA.configured(new FrequencyWithExtraChanceDecoratorConfiguration(1, 0.1F, 1))));
+	public static final ConfiguredFeature<TreeConfiguration, ?> BANANA = FeatureUtils.register("banana", FarmingFeatures.FRUIT_TREE.get().configured(getBanana().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> AVOCADO = FeatureUtils.register("avocado", FarmingFeatures.FRUIT_TREE.get().configured(getAvocado().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> MANGO = FeatureUtils.register("mango", FarmingFeatures.FRUIT_TREE.get().configured(getMango().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> OLIVE = FeatureUtils.register("olive", FarmingFeatures.FRUIT_TREE.get().configured(getOlive().build()));
 
-	public static final ConfiguredFeature<?, ?> PATCH_NETHER_FLOWER = register("patch_nether_flower", Feature.RANDOM_PATCH.configured((new RandomPatchConfiguration.GrassConfigurationBuilder(new SimpleStateProvider(States.NETHER_FLOWER_CROP), new SimpleBlockPlacer())).tries(64).whitelist(ImmutableSet.of(States.SOUL_SAND.getBlock())).noProjection().build()).decorated(Features.Decorators.FIRE));
+	public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_NETHER_FLOWER = FeatureUtils.register("patch_nether_flower",
+			Feature.RANDOM_PATCH.configured(FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(States.NETHER_FLOWER_CROP))),
+					List.of(Blocks.SOUL_SAND), 64)));
 
-	private static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> register(String key, ConfiguredFeature<FC, ?> feature) {
-		return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(Reference.MOD_ID, key), feature);
+
+	private static TreeConfiguration.TreeConfigurationBuilder getApple() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(
+				SimpleStateProvider.simple(States.OAK_LOG), new StraightTrunkPlacer(4, 2, 0),
+				SimpleStateProvider.simple(States.APPLE_LEAVES),
+				new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+				new TwoLayersFeatureSize(1, 0, 1))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getFancyApple() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(
+				SimpleStateProvider.simple(States.OAK_LOG), new FancyTrunkPlacer(3, 11, 0), 
+				SimpleStateProvider.simple(States.APPLE_LEAVES), 
+				new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), 
+				new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getLemon() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(
+				SimpleStateProvider.simple(States.OAK_LOG), new StraightTrunkPlacer(4, 2, 0),
+				SimpleStateProvider.simple(States.LEMON_LEAVES),
+				new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+				new TwoLayersFeatureSize(1, 0, 1))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getFancyLemon() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.OAK_LOG),
+				new FancyTrunkPlacer(3, 11, 0), SimpleStateProvider.simple(States.LEMON_LEAVES),
+				new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+				new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getOrange() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.OAK_LOG),
+				new StraightTrunkPlacer(4, 2, 0), SimpleStateProvider.simple(States.ORANGE_LEAVES),
+				new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+				new TwoLayersFeatureSize(1, 0, 1))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getFancyOrange() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.OAK_LOG),
+				new FancyTrunkPlacer(3, 11, 0), SimpleStateProvider.simple(States.ORANGE_LEAVES),
+				new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+				new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getCherry() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.OAK_LOG),
+				new StraightTrunkPlacer(4, 2, 0), SimpleStateProvider.simple(States.CHERRY_LEAVES),
+				new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+				new TwoLayersFeatureSize(1, 0, 1))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getFancyCherry() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.OAK_LOG),
+				new FancyTrunkPlacer(3, 11, 0), SimpleStateProvider.simple(States.CHERRY_LEAVES),
+				new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+				new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getPear() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.OAK_LOG),
+				new StraightTrunkPlacer(4, 2, 0), SimpleStateProvider.simple(States.PEAR_LEAVES),
+				new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+				new TwoLayersFeatureSize(1, 0, 1))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getFancyPear() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.OAK_LOG),
+				new FancyTrunkPlacer(3, 11, 0), SimpleStateProvider.simple(States.PEAR_LEAVES),
+				new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
+				new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getBanana() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.JUNGLE_LOG),
+				new StraightTrunkPlacer(4, 8, 0), SimpleStateProvider.simple(States.BANANA_LEAVES),
+				new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+				new TwoLayersFeatureSize(1, 0, 1))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getAvocado() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.OAK_LOG),
+				new StraightTrunkPlacer(4, 2, 0), SimpleStateProvider.simple(States.AVOCADO_LEAVES),
+				new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+				new TwoLayersFeatureSize(1, 0, 1))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getMango() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.OAK_LOG),
+				new StraightTrunkPlacer(4, 2, 0), SimpleStateProvider.simple(States.MANGO_LEAVES),
+				new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+				new TwoLayersFeatureSize(1, 0, 1))).ignoreVines();
+	}
+
+	private static TreeConfiguration.TreeConfigurationBuilder getOlive() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(SimpleStateProvider.simple(States.ACACIA_LOG),
+				new ForkingTrunkPlacer(5, 2, 2), SimpleStateProvider.simple(States.OLIVE_LEAVES),
+				new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+				new TwoLayersFeatureSize(1, 0, 2))).ignoreVines();
 	}
 
 	public static final class States {

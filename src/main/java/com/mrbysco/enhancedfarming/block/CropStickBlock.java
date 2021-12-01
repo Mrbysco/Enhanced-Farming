@@ -1,7 +1,6 @@
 package com.mrbysco.enhancedfarming.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -55,12 +54,13 @@ public class CropStickBlock extends BushBlock {
 		return state;
 	}
 
+	@Override
 	protected boolean mayPlaceOn(BlockState state, BlockGetter reader, BlockPos pos) {
 		return state.is(Blocks.FARMLAND);
 	}
 
-	public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
-        BlockState soil = worldIn.getBlockState(pos.below());
-        return (worldIn.getLightEmission(pos) >= 8 || worldIn.canSeeSky(pos)) && soil.getBlock().canSustainPlant(soil, worldIn, pos.below(), Direction.UP, this);
-    }
+	@Override
+	public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+		return (reader.getRawBrightness(pos, 0) >= 8 || reader.canSeeSky(pos)) && super.canSurvive(state, reader, pos);
+	}
 }
