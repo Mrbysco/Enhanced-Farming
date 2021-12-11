@@ -8,20 +8,23 @@ import com.mrbysco.enhancedfarming.block.FruitLeavesBlock;
 import com.mrbysco.enhancedfarming.block.GrowableSaplingBlock;
 import com.mrbysco.enhancedfarming.block.crops.CropstickCropBlock;
 import com.mrbysco.enhancedfarming.block.crops.NetherFlowerBlock;
+import com.mrbysco.enhancedfarming.init.FarmingLootTables;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.HashCache;
 import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.loot.GiftLoot;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.LootTable.Builder;
 import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -44,7 +47,6 @@ import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
@@ -80,7 +82,7 @@ public class FarmingDataGen {
 
 		@Override
 		protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
-			return ImmutableList.of(Pair.of(FarmingBlocks::new, LootContextParamSets.BLOCK));
+			return ImmutableList.of(Pair.of(FarmingBlocks::new, LootContextParamSets.BLOCK), Pair.of(FarmingRakeDrops::new, LootContextParamSets.GIFT));
 		}
 
 		private static class FarmingBlocks extends BlockLoot {
@@ -135,6 +137,37 @@ public class FarmingDataGen {
 			@Override
 			protected Iterable<Block> getKnownBlocks() {
 				return (Iterable<Block>) FarmingRegistry.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+			}
+		}
+
+
+		private static class FarmingRakeDrops extends GiftLoot {
+			@Override
+			public void accept(BiConsumer<ResourceLocation, Builder> consumer) {
+				consumer.accept(FarmingLootTables.GAMEPLAY_RAKE_DROPS,
+						LootTable.lootTable()
+								.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+										.add(LootItem.lootTableItem(APPLE_SAPLING.get()))
+										.add(LootItem.lootTableItem(LEMON_SAPLING.get()))
+										.add(LootItem.lootTableItem(ORANGE_SAPLING.get()))
+										.add(LootItem.lootTableItem(MINT_SEEDS.get()))
+										.add(LootItem.lootTableItem(NETHER_FLOWER_SEEDS.get()))
+										.add(LootItem.lootTableItem(CHERRY_SAPLING.get()))
+										.add(LootItem.lootTableItem(PEAR_SAPLING.get()))
+										.add(LootItem.lootTableItem(BANANA_SAPLING.get()))
+										.add(LootItem.lootTableItem(AVOCADO_SAPLING.get()))
+										.add(LootItem.lootTableItem(MANGO_SAPLING.get()))
+										.add(LootItem.lootTableItem(TOMATO_SEEDS.get()))
+										.add(LootItem.lootTableItem(CUCUMBER_SEEDS.get()))
+										.add(LootItem.lootTableItem(AUBERGINE_SEEDS.get()))
+										.add(LootItem.lootTableItem(PINEAPPLE_SEEDS.get()))
+										.add(LootItem.lootTableItem(GRAPE_SEEDS.get()))
+										.add(LootItem.lootTableItem(CORN_SEEDS.get()))
+										.add(LootItem.lootTableItem(ONION_SEEDS.get()))
+										.add(LootItem.lootTableItem(GARLIC_SEEDS.get()))
+										.add(LootItem.lootTableItem(OLIVE_SAPLING.get()))
+										.add(LootItem.lootTableItem(LETTUCE_SEEDS.get()))
+								));
 			}
 		}
 

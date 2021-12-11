@@ -1,0 +1,91 @@
+{
+  "type": "minecraft:gift",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:apple_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:lemon_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:orange_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:mint_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:nether_flower_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:cherry_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:pear_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:banana_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:avocado_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:mango_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:tomato_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:cucumber_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:aubergine_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:pineapple_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:grape_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:corn_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:onion_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:garlic_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:olive_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "enhancedfarming:lettuce_seeds"
+        }
+      ]
+    }
+  ]
+}

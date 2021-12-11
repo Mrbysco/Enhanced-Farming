@@ -33,7 +33,8 @@ public class RakeToolItem extends DiggerItem {
 	}
 
     public void dropSeedsWithChance(ItemStack itemstack, Level worldIn, BlockPos pos) {
-		if (!worldIn.isClientSide && worldIn.random.nextInt(30 / this.dropModifier) == 0 && worldIn.getServer() != null) {
+		final int rand = worldIn.random.nextInt(30 / this.dropModifier);
+		if (!worldIn.isClientSide && rand == 0 && worldIn.getServer() != null) {
 			LootTable table = worldIn.getServer().getLootTables().get(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
 			LootContext.Builder context = (new LootContext.Builder((ServerLevel)worldIn)).withParameter(LootContextParams.ORIGIN, new Vec3(pos.getX(), pos.getY(), pos.getZ()))
 					.withParameter(LootContextParams.TOOL, itemstack).withRandom(worldIn.random);
