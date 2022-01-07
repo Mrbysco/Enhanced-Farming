@@ -305,7 +305,7 @@ public class FarmingDataGen {
 			addItem(LETTUCE_SEEDS, "Lettuce Seeds");
 			addItem(POT, "Pot");
 			addItem(CUTTING_BOARD, "Cutting Board");
-			addItem(MORTAR_AND_PESTLE, "Mortal And Pestle");
+			addItem(MORTAR_AND_PESTLE, "Mortar And Pestle");
 			addItem(MINT, "Mint");
 			addItem(LEMON, "Lemon");
 			addItem(ORANGE, "Orange");
