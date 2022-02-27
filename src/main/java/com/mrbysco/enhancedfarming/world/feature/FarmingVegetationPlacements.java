@@ -42,6 +42,7 @@ public class FarmingVegetationPlacements {
 	}
 
 	public static List<PlacementModifier> fruitTreePlacement(Supplier<Integer> rarity, PlacementModifier modifier, Block block) {
-		return treePlacementBase(modifier).add(RarityFilter.onAverageOnceEvery(rarity.get())).add(BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(block.defaultBlockState(), BlockPos.ZERO))).add(RarityFilter.onAverageOnceEvery(2)).add(CountPlacement.of(1)).build();
+		return treePlacementBase(modifier).add(RarityFilter.onAverageOnceEvery(rarity.get()))
+				.add(BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(block.defaultBlockState(), BlockPos.ZERO))).add(CountPlacement.of(1)).build();
 	}
 }
