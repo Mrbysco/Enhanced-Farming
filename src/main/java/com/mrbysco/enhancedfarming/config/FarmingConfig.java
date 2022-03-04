@@ -135,40 +135,40 @@ public class FarmingConfig {
 					.push("rarity");
 
 			appleTreeRarity = builder
-					.comment("Rarity of Apple Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 1]")
-					.defineInRange("appleTreeRarity", 1, 1, Integer.MAX_VALUE);
+					.comment("Rarity of Apple Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
+					.defineInRange("appleTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			avocadoTreeRarity = builder
-					.comment("Rarity of Avocado Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 1]")
-					.defineInRange("avocadoTreeRarity", 1, 1, Integer.MAX_VALUE);
+					.comment("Rarity of Avocado Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
+					.defineInRange("avocadoTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			bananaTreeRarity = builder
-					.comment("Rarity of Banana Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 1]")
-					.defineInRange("bananaTreeRarity", 1, 1, Integer.MAX_VALUE);
+					.comment("Rarity of Banana Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
+					.defineInRange("bananaTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			cherryTreeRarity = builder
-					.comment("Rarity of Cherry Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 1]")
-					.defineInRange("cherryTreeRarity", 1, 1, Integer.MAX_VALUE);
+					.comment("Rarity of Cherry Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
+					.defineInRange("cherryTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			lemonTreeRarity = builder
-					.comment("Rarity of Lemon Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 1]")
-					.defineInRange("lemonTreeRarity", 1, 1, Integer.MAX_VALUE);
+					.comment("Rarity of Lemon Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
+					.defineInRange("lemonTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			mangoTreeRarity = builder
-					.comment("Rarity of Mango Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 1]")
-					.defineInRange("mangoTreeRarity", 1, 1, Integer.MAX_VALUE);
+					.comment("Rarity of Mango Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
+					.defineInRange("mangoTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			oliveTreeRarity = builder
-					.comment("Rarity of Olive Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 1]")
-					.defineInRange("oliveTreeRarity", 1, 1, Integer.MAX_VALUE);
+					.comment("Rarity of Olive Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
+					.defineInRange("oliveTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			orangeTreeRarity = builder
-					.comment("Rarity of Orange Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 1]")
-					.defineInRange("orangeTreeRarity", 1, 1, Integer.MAX_VALUE);
+					.comment("Rarity of Orange Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
+					.defineInRange("orangeTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			pearTreeRarity = builder
-					.comment("Rarity of Pear Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 1]")
-					.defineInRange("pearTreeRarity", 1, 1, Integer.MAX_VALUE);
+					.comment("Rarity of Pear Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
+					.defineInRange("pearTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			builder.pop();
 
