@@ -11,6 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class HotHandler {
 	private static final String HOT = Reference.MOD_ID + ":hotCounter";
+
 	@SubscribeEvent
 	public void ItemHeld(TickEvent.PlayerTickEvent event) {
 		if (event.phase.equals(TickEvent.Phase.START) && event.side.isServer() && FarmingConfig.COMMON.hotBurnsPlayer.get()) {
@@ -20,10 +21,10 @@ public class HotHandler {
 				ItemStack mainHeldStack = player.getMainHandItem();
 				ItemStack offHeldStack = player.getOffhandItem();
 
-				if(mainHeldStack.is(FarmingTags.HOT_ITEMS) || offHeldStack.is(FarmingTags.HOT_ITEMS)) {
-					if(tag.contains(HOT)) {
+				if (mainHeldStack.is(FarmingTags.HOT_ITEMS) || offHeldStack.is(FarmingTags.HOT_ITEMS)) {
+					if (tag.contains(HOT)) {
 						int currentTimer = tag.getInt(HOT);
-						if(currentTimer < FarmingConfig.COMMON.hotTime.get()) {
+						if (currentTimer < FarmingConfig.COMMON.hotTime.get()) {
 							tag.putInt(HOT, currentTimer + 1);
 						} else {
 							player.setSecondsOnFire(5);

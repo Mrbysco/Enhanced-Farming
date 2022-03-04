@@ -32,30 +32,26 @@ public class GrassModifier {
 	public static class GrassDropSerializer extends GlobalLootModifierSerializer<GrassDropModifier> {
 
 		@Override
-		public GrassDropModifier read(ResourceLocation location, JsonObject jsonObject, LootItemCondition[] lootConditions)
-		{
+		public GrassDropModifier read(ResourceLocation location, JsonObject jsonObject, LootItemCondition[] lootConditions) {
 			return new GrassDropModifier(lootConditions);
 		}
 
 		@Override
-		public JsonObject write(GrassDropModifier instance)
-		{
+		public JsonObject write(GrassDropModifier instance) {
 			return new JsonObject();
 		}
 	}
 
 	private static class GrassDropModifier extends LootModifier {
-		protected GrassDropModifier(LootItemCondition[] lootConditions)
-		{
+		protected GrassDropModifier(LootItemCondition[] lootConditions) {
 			super(lootConditions);
 		}
 
 		@Nonnull
 		@Override
-		protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
-		{
+		protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
 			List<ItemStack> extraLoot = new ArrayList<>();
-			if(FarmingConfig.COMMON.seedsFromGrass.get()) {
+			if (FarmingConfig.COMMON.seedsFromGrass.get()) {
 				extraLoot.add(new ItemStack(FarmingRegistry.MINT_SEEDS.get()));
 				extraLoot.add(new ItemStack(FarmingRegistry.NETHER_FLOWER_SEEDS.get()));
 				extraLoot.add(new ItemStack(FarmingRegistry.TOMATO_SEEDS.get()));
@@ -68,7 +64,7 @@ public class GrassModifier {
 				extraLoot.add(new ItemStack(FarmingRegistry.GARLIC_SEEDS.get()));
 				extraLoot.add(new ItemStack(FarmingRegistry.LETTUCE_SEEDS.get()));
 			}
-			if(FarmingConfig.COMMON.saplingsFromGrass.get()) {
+			if (FarmingConfig.COMMON.saplingsFromGrass.get()) {
 				extraLoot.add(new ItemStack(FarmingRegistry.APPLE_SAPLING.get()));
 				extraLoot.add(new ItemStack(FarmingRegistry.LEMON_SAPLING.get()));
 				extraLoot.add(new ItemStack(FarmingRegistry.ORANGE_SAPLING.get()));
@@ -81,7 +77,7 @@ public class GrassModifier {
 			}
 
 			Random random = context.getRandom();
-			if(generatedLoot.isEmpty() && !extraLoot.isEmpty()) {
+			if (generatedLoot.isEmpty() && !extraLoot.isEmpty()) {
 				generatedLoot.add(extraLoot.get(random.nextInt(extraLoot.size())));
 			}
 
