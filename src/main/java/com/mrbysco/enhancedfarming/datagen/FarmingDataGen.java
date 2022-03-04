@@ -216,12 +216,12 @@ public class FarmingDataGen {
 					.map(RegistryObject::get)
 					.forEach(item -> {
 						String path = Objects.requireNonNull(item.getRegistryName()).getPath();
-						if (!path.equals("scarecrow")) {
-							if (path.endsWith("_sapling")) {
+						if(!path.equals("scarecrow")) {
+							if(path.endsWith("_sapling")) {
 								singleTexture(path, mcLoc("item/handheld"), "layer0", modLoc("block/saplings/" + path));
-							} else if (path.endsWith("_leaves")) {
+							} else if(path.endsWith("_leaves")) {
 								withExistingParent(path, modLoc("block/" + path + "_fruity"));
-							} else if (path.endsWith("_rake")) {
+							} else if(path.endsWith("_rake")) {
 								singleTexture(path, mcLoc("item/handheld"), "layer0", modLoc("item/" + path));
 							} else {
 								singleTexture(path, mcLoc("item/generated"), "layer0", modLoc("item/" + path));
@@ -487,7 +487,7 @@ public class FarmingDataGen {
 		protected void buildSaplings(GrowableSaplingBlock block, String base) {
 			VariantBlockStateBuilder builder = getVariantBuilder(block);
 			for (int i = 0; i <= block.getMatureStage(); i++) {
-				if (i == block.getMatureStage()) {
+				if(i == block.getMatureStage()) {
 					ModelFile file = models().crop(block.getRegistryName().getPath() + "_" + (i),
 							new ResourceLocation(Reference.MOD_ID, "block/saplings/" + block.getRegistryName().getPath()));
 					builder.partialState().with(block.getStageProperty(), i).modelForState().modelFile(file).addModel();
@@ -502,7 +502,7 @@ public class FarmingDataGen {
 		protected void buildLeaves(FruitLeavesBlock block, String originalLeaves) {
 			VariantBlockStateBuilder builder = getVariantBuilder(block);
 			for (int i = 0; i <= block.getMaxAge(); i++) {
-				if (i != block.getMaxAge()) {
+				if(i != block.getMaxAge()) {
 					ModelFile file = models().singleTexture(block.getRegistryName().getPath() + "_blooming", modLoc("block/leave_overlay"), "layer1",
 							new ResourceLocation(Reference.MOD_ID, "block/leaves/" + block.getRegistryName().getPath() + "_blooming")).texture("layer0", mcLoc("block/" + originalLeaves));
 					builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();

@@ -30,11 +30,11 @@ public class ScarecrowBlockEntity extends BlockEntity {
 				pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f)
 				.inflate(-5, -5, -5).inflate(5, 5, 5);
 
-		if (level != null) {
+		if(level != null) {
 			List<Entity> entityList = level.getEntitiesOfClass(Entity.class, hitbox);
-			if (!entityList.isEmpty()) {
-				for (Entity animal : entityList) {
-					if (animal instanceof Animal || animal instanceof WaterAnimal) {
+			if(!entityList.isEmpty()) {
+				for(Entity animal : entityList) {
+					if(animal instanceof Animal || animal instanceof WaterAnimal) {
 						Vec3i animalPos = getInvertedDirection(pos, animal);
 
 						animal.moveRelative(0.25F, new Vec3(animalPos.getX(), animalPos.getY(), animalPos.getZ()));
@@ -45,9 +45,9 @@ public class ScarecrowBlockEntity extends BlockEntity {
 	}
 
 	public static Vec3i getInvertedDirection(BlockPos scarecrow, Entity animal) {
-		double x = (animal.getX() < scarecrow.getX() ? 1 : 0);
-		double z = (animal.getZ() < scarecrow.getZ() ? 1 : 0);
-
-		return new Vec3i(animal.getX() + x, 0, animal.getZ() + z);
+	    double x = (animal.getX() < scarecrow.getX() ? 1 : 0);
+	    double z = (animal.getZ() < scarecrow.getZ() ? 1 : 0);
+	    
+	    return new Vec3i(animal.getX() + x, 0, animal.getZ() + z);
 	}
 }

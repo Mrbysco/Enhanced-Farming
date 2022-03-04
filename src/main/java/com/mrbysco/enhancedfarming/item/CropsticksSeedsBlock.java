@@ -4,13 +4,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public class CropsticksSeedsBlock extends CustomBlockNamedItem {
-
+    
 //    private final Block crops;
-
+    
 	public CropsticksSeedsBlock(Block crops, Item.Properties properties) {
 		super(crops, properties);
 	}
-
+	
 //	@Override
 //	public ActionResultType onItemUse(PlayerEntity player, World worldIn, BlockPos pos, Hand hand, Direction facing, float hitX, float hitY, float hitZ)
 //    {

@@ -186,7 +186,6 @@ public class FarmingConfig {
 
 	public static final ForgeConfigSpec commonSpec;
 	public static final Common COMMON;
-
 	static {
 		final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
 		commonSpec = specPair.getRight();

@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
-public class ContainerFoodItem extends SpecialCustomFoodItem {
+public class ContainerFoodItem extends SpecialCustomFoodItem{
 
 	public ContainerFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects, UseAnim action) {
 		super(properties, useTime, enchanted, directHeal, cureEffects, action);
@@ -28,8 +28,8 @@ public class ContainerFoodItem extends SpecialCustomFoodItem {
 
 	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity) {
 		if (!worldIn.isClientSide && cure) livingEntity.curePotionEffects(stack);
-		if (this.isEdible()) {
-			if (directheal) {
+		if(this.isEdible()) {
+			if(directheal) {
 				livingEntity.heal(this.getFoodProperties().getNutrition());
 				stack = eatStack(livingEntity, worldIn, stack, false);
 			} else {
@@ -42,11 +42,11 @@ public class ContainerFoodItem extends SpecialCustomFoodItem {
 
 	@Override
 	public ItemStack shrinkStack(LivingEntity livingEntity, ItemStack stack) {
-		if (livingEntity instanceof Player player) {
+		if(livingEntity instanceof Player player) {
 			Inventory inventory = player.getInventory();
 			ItemStack bowl = stack.getContainerItem().copy();
 
-			if (!inventory.add(bowl)) {
+			if(!inventory.add(bowl)) {
 				player.spawnAtLocation(bowl, 0F);
 			}
 		}

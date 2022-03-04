@@ -75,16 +75,15 @@ public class SixAgeCropBlock extends CropBlock {
 
 	@Override
 	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
-		if (!world.isAreaLoaded(pos, 1))
-			return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-		if (random.nextInt(5) == 0) {
+		if (!world.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
+		if(random.nextInt(5) == 0) {
 			this.canSurvive(state, world, pos);
 		} else {
 			if (world.getRawBrightness(pos, 0) >= 9) {
 				int i = this.getAge(state);
 				if (i < this.getMaxAge()) {
 					float f = getGrowthSpeed(this, world, pos);
-					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
+					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt((int)(25.0F / f) + 1) == 0)) {
 						world.setBlock(pos, this.getStateForAge(i + 1), 2);
 						net.minecraftforge.common.ForgeHooks.onCropsGrowPost(world, pos, state);
 					}
@@ -105,7 +104,7 @@ public class SixAgeCropBlock extends CropBlock {
 
 	@Override
 	public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
-		if (FarmingConfig.COMMON.bonemealGrow.get()) {
+		if(FarmingConfig.COMMON.bonemealGrow.get()) {
 			return getAge(state) < getMaxAge();
 		} else {
 			return false;

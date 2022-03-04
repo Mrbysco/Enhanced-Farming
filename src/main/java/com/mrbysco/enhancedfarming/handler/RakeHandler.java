@@ -10,9 +10,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class RakeHandler {
 	@SubscribeEvent
 	public void onToolUse(BlockToolInteractEvent event) {
-		if (event.getToolAction() == FarmingActions.RAKE_GATHER) {
+		if(event.getToolAction() == FarmingActions.RAKE_GATHER) {
 			BlockState state = event.getState();
-			if (state.is(FarmingTags.RAKE_BLOCKS)) {
+			if(state.is(FarmingTags.RAKE_BLOCKS)) {
 				event.setFinalState(Blocks.DIRT.defaultBlockState());
 			}
 		}

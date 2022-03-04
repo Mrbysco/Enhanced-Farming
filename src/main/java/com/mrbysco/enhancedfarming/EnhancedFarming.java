@@ -8,7 +8,6 @@ import com.mrbysco.enhancedfarming.handler.InteractionHandler;
 import com.mrbysco.enhancedfarming.handler.RakeHandler;
 import com.mrbysco.enhancedfarming.init.FarmingConditions;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
-import com.mrbysco.enhancedfarming.recipes.FarmingRecipeTypes;
 import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
 import com.mrbysco.enhancedfarming.world.WorldGenHandler;
 import com.mrbysco.enhancedfarming.world.feature.FarmingFeatureConfigs;
@@ -61,11 +60,6 @@ public class EnhancedFarming {
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
-		event.enqueueWork(() -> {
-			//Initialize
-			FarmingRecipeTypes.init();
-		});
-
 		FarmingFeatureConfigs.initialize();
 		FarmingTreePlacements.initialize();
 		FarmingVegetation.initialize();

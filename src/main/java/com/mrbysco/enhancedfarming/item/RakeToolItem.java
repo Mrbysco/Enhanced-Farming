@@ -28,21 +28,21 @@ public class RakeToolItem extends DiggerItem {
 	private final int dropModifier;
 
 	public RakeToolItem(Tier itemTier, int attackDamage, float attackSpeed, int dropModifier, Item.Properties properties) {
-		super((float) attackDamage, attackSpeed, itemTier, BlockTags.MINEABLE_WITH_SHOVEL, properties);
+		super((float)attackDamage, attackSpeed, itemTier, BlockTags.MINEABLE_WITH_SHOVEL, properties);
 		this.dropModifier = dropModifier;
 	}
 
-	public void dropSeedsWithChance(ItemStack itemstack, Level worldIn, BlockPos pos) {
+    public void dropSeedsWithChance(ItemStack itemstack, Level worldIn, BlockPos pos) {
 		final int rand = worldIn.random.nextInt(30 / this.dropModifier);
 		if (!worldIn.isClientSide && rand == 0 && worldIn.getServer() != null) {
 			LootTable table = worldIn.getServer().getLootTables().get(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
-			LootContext.Builder context = (new LootContext.Builder((ServerLevel) worldIn)).withParameter(LootContextParams.ORIGIN, new Vec3(pos.getX(), pos.getY(), pos.getZ()))
+			LootContext.Builder context = (new LootContext.Builder((ServerLevel)worldIn)).withParameter(LootContextParams.ORIGIN, new Vec3(pos.getX(), pos.getY(), pos.getZ()))
 					.withParameter(LootContextParams.TOOL, itemstack).withRandom(worldIn.random);
-			table.getRandomItems(context.create(LootContextParamSets.EMPTY)).forEach(stack -> worldIn.addFreshEntity(new ItemEntity(worldIn, pos.getX(), pos.getY() + 0.2, pos.getZ(), stack)));
+			table.getRandomItems(context.create(LootContextParamSets.EMPTY)).forEach(stack -> worldIn.addFreshEntity(new ItemEntity(worldIn, pos.getX(), pos.getY() + 0.2, pos.getZ(),stack)));
 		}
-	}
+    }
 
-	@Override
+    @Override
 	public InteractionResult useOn(UseOnContext context) {
 		Player player = context.getPlayer();
 		Level level = context.getLevel();

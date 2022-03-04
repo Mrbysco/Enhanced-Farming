@@ -24,8 +24,8 @@ public class FarmingFoods {
 	public static final FoodProperties LETTUCE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).build();
 	public static final FoodProperties ONION = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).build();
 
-	public static final FoodProperties GOLD_LEMON = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 30 * 20, 0), 1.0F).alwaysEat().build();
-	public static final FoodProperties GOLD_ORANGE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 30 * 20, 0), 1.0F).alwaysEat().build();
+	public static final FoodProperties GOLD_LEMON = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 30*20, 0), 1.0F).alwaysEat().build();
+	public static final FoodProperties GOLD_ORANGE = (new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 30*20, 0), 1.0F).alwaysEat().build();
 
 	//Chocolate
 	public static final FoodProperties CHOCOLATE_BAR = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.7F).build();

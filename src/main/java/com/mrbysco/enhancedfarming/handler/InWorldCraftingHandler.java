@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.handler;
 
-import com.mrbysco.enhancedfarming.recipes.FarmingRecipeTypes;
+import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
 import com.mrbysco.enhancedfarming.recipes.PistonRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -21,40 +21,40 @@ import java.util.List;
 public class InWorldCraftingHandler {
 	@SubscribeEvent
 	public void InWorldCrafting(PistonEvent.Post event) {
-		if (!event.getWorld().isClientSide() && event.getPistonMoveType() == PistonMoveType.EXTEND) {
-			final ServerLevel world = (ServerLevel) event.getWorld();
+		if(!event.getWorld().isClientSide() && event.getPistonMoveType() == PistonMoveType.EXTEND) {
+			final ServerLevel world = (ServerLevel)event.getWorld();
 			final BlockPos pos = event.getFaceOffsetPos();
 			final float range = 1F;
 			List<ItemEntity> itemEntities = world.getEntitiesOfClass(ItemEntity.class,
 					new AABB(pos.getX() - 1, pos.getY() - range, pos.getZ() - range,
 							pos.getX() + range, pos.getY() + range, pos.getZ() + range));
 
-			if (!itemEntities.isEmpty()) {
-				for (ItemEntity itemEntity : itemEntities) {
+			if(!itemEntities.isEmpty()) {
+				for(ItemEntity itemEntity : itemEntities) {
 					BlockPos itemPos = itemEntity.blockPosition();
 					Container inventory = createInventory(itemEntity);
-					PistonRecipe recipe = world.getRecipeManager().getRecipeFor(FarmingRecipeTypes.PISTON_CRAFTING_TYPE, inventory, world).orElse(null);
+					PistonRecipe recipe = world.getRecipeManager().getRecipeFor(FarmingRecipes.PISTON_CRAFTING_TYPE, inventory, world).orElse(null);
 					if (recipe != null) {
 						ItemStack stack = itemEntity.getItem();
 						int craftPer = 0;
 						int craftCount = 0;
-						if (!recipe.getIngredients().get(0).isEmpty()) {
+						if(!recipe.getIngredients().get(0).isEmpty()) {
 							ItemStack[] ingredients = recipe.getIngredients().get(0).getItems();
-							for (ItemStack ingredient : ingredients) {
-								if (ingredient.getItem() == stack.getItem()) {
+							for(ItemStack ingredient : ingredients) {
+								if(ingredient.getItem() == stack.getItem()) {
 									craftPer = ingredient.getCount();
-									craftCount = (int) Math.ceil((double) stack.getCount() / ingredient.getCount());
+									craftCount = (int)Math.ceil((double)stack.getCount() / ingredient.getCount());
 									break;
 								}
 							}
 						}
-						if (craftCount > 0) {
+						if(craftCount > 0) {
 							int total = (craftCount * craftPer);
 							ItemStack result = recipe.getResultItem().copy();
 							int maxResultSize = result.getMaxStackSize();
-							if (total <= maxResultSize) {
+							if(total <= maxResultSize) {
 								stack.shrink(total);
-								if (stack.isEmpty()) {
+								if(stack.isEmpty()) {
 									itemEntity.remove(RemovalReason.DISCARDED);
 								} else {
 									itemEntity.setItem(stack);
@@ -64,12 +64,12 @@ public class InWorldCraftingHandler {
 								ItemEntity newItemEntity = new ItemEntity(world, itemPos.getX(), itemPos.getY(), itemPos.getZ(), result);
 								world.addFreshEntity(newItemEntity);
 							} else {
-								int totalStacks = (int) Math.floor((double) total / maxResultSize);
+								int totalStacks = (int) Math.floor((double)total / maxResultSize);
 
 								int currentTotal = total;
-								for (int i = 0; i < totalStacks; i++) {
+								for(int i = 0; i < totalStacks; i++) {
 									ItemStack newStack = recipe.getResultItem().copy();
-									if (currentTotal > maxResultSize) {
+									if(currentTotal > maxResultSize) {
 										newStack.setCount(maxResultSize);
 										currentTotal -= maxResultSize;
 									} else {
@@ -101,7 +101,7 @@ public class InWorldCraftingHandler {
 		}
 
 		public boolean isEmpty() {
-			for (ItemStack itemstack : this.itemStacks) {
+			for(ItemStack itemstack : this.itemStacks) {
 				if (!itemstack.isEmpty()) {
 					return false;
 				}

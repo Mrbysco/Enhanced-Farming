@@ -18,18 +18,18 @@ public class InteractionHandler {
 		ItemStack itemstack = event.getItemStack();
 		Entity entity = event.getTarget();
 
-		if (entity instanceof Cow cow && itemstack.getItem() == Items.GLASS_BOTTLE && !player.getAbilities().instabuild) {
-			if (!cow.isBaby()) {
+		if(entity instanceof Cow cow && itemstack.getItem() == Items.GLASS_BOTTLE && !player.getAbilities().instabuild) {
+			if(!cow.isBaby()) {
 				player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
-				itemstack.shrink(1);
+	            itemstack.shrink(1);
 
-				ItemStack milkStack = new ItemStack(FarmingRegistry.MILK_BOTTLE.get());
+	            ItemStack milkStack = new ItemStack(FarmingRegistry.MILK_BOTTLE.get());
 				InteractionHand hand = player.getUsedItemHand();
-				if (itemstack.isEmpty()) {
-					player.setItemInHand(hand, milkStack);
-				} else if (!player.getInventory().add(milkStack)) {
-					player.spawnAtLocation(milkStack, 0.0F);
-				}
+	            if (itemstack.isEmpty()) {
+	                player.setItemInHand(hand, milkStack);
+	            } else if (!player.getInventory().add(milkStack)) {
+	                player.spawnAtLocation(milkStack, 0.0F);
+	            }
 			}
 		}
 	}

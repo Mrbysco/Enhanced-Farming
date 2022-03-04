@@ -60,8 +60,8 @@ public class ClientHandler {
 
 
 		itemColors.register((stack, tintIndex) -> {
-					BlockState blockstate = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
-					return blockColors.getColor(blockstate, (BlockAndTintGetter) null, (BlockPos) null, tintIndex);
+					BlockState blockstate = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
+					return blockColors.getColor(blockstate, (BlockAndTintGetter)null, (BlockPos)null, tintIndex);
 				}, FarmingRegistry.APPLE_LEAVES.get(), FarmingRegistry.LEMON_LEAVES.get(), FarmingRegistry.ORANGE_LEAVES.get(),
 				FarmingRegistry.CHERRY_LEAVES.get(), FarmingRegistry.PEAR_LEAVES.get(), FarmingRegistry.AVOCADO_LEAVES.get(),
 				FarmingRegistry.MANGO_LEAVES.get(), FarmingRegistry.OLIVE_LEAVES.get(), FarmingRegistry.BANANA_LEAVES.get());

@@ -24,7 +24,7 @@ import net.minecraftforge.common.PlantType;
 
 import java.util.Random;
 
-public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
+public class NetherFlowerBlock extends BushBlock implements BonemealableBlock{
 
 	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
@@ -35,7 +35,7 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D)};
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
 
-	public NetherFlowerBlock(BlockBehaviour.Properties properties) {
+    public NetherFlowerBlock(BlockBehaviour.Properties properties) {
 		super(properties.randomTicks().sound(SoundType.CROP));
 		this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
 	}
@@ -52,18 +52,18 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 	public IntegerProperty getAgeProperty() {
 		return AGE;
 	}
-
+    
 	public int getMaxAge() {
 		return 5;
 	}
-
+	
 	protected int getAge(BlockState state) {
-		return ((Integer) state.getValue(this.getAgeProperty())).intValue();
-	}
-
+        return ((Integer)state.getValue(this.getAgeProperty())).intValue();
+    }
+	
 	public boolean isMaxAge(BlockState state) {
-		return ((Integer) state.getValue(this.getAgeProperty())).intValue() >= this.getMaxAge();
-	}
+        return ((Integer)state.getValue(this.getAgeProperty())).intValue() >= this.getMaxAge();
+    }
 
 	public BlockState getStateForAge(int age) {
 		return this.defaultBlockState().setValue(this.getAgeProperty(), Integer.valueOf(age));
@@ -92,17 +92,17 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
-		if (FarmingConfig.COMMON.bonemealGrow.get()) {
-			return getAge(state) < getMaxAge();
-		} else {
-			return false;
-		}
-	}
+    public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
+    	if(FarmingConfig.COMMON.bonemealGrow.get()) {
+    		return getAge(state) < getMaxAge();
+    	} else {
+    		return false;
+    	}
+    }
 
 	protected int getBonemealAgeIncrease(Level worldIn) {
 		return Mth.nextInt(worldIn.getRandom(), 2, 5) / 2;
-	}
+    }
 
 	@Override
 	public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState state, boolean isClient) {
