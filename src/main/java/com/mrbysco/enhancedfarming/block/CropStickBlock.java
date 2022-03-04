@@ -18,7 +18,7 @@ import net.minecraftforge.common.PlantType;
 import java.util.stream.Stream;
 
 public class CropStickBlock extends BushBlock {
-    protected static final VoxelShape CROPSTICK_SHAPE = Stream.of(
+	protected static final VoxelShape CROPSTICK_SHAPE = Stream.of(
 			Block.box(4, 8, 10, 12, 9, 11),
 			Block.box(5, -1, 5, 6, 12, 6),
 			Block.box(10, -1, 5, 11, 12, 6),
@@ -31,9 +31,9 @@ public class CropStickBlock extends BushBlock {
 			Block.box(4, 8, 5, 12, 9, 6),
 			Block.box(5, 8, 4, 6, 9, 12),
 			Block.box(10, 8, 4, 11, 9, 12)
-		).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
-    public CropStickBlock(BlockBehaviour.Properties properties) {
+	public CropStickBlock(BlockBehaviour.Properties properties) {
 		super(properties.strength(0.5F).sound(SoundType.WOOD));
 	}
 

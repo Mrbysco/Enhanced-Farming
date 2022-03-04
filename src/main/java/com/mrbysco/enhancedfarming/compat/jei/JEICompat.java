@@ -2,7 +2,7 @@ package com.mrbysco.enhancedfarming.compat.jei;
 
 import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.compat.jei.piston.PistonCategory;
-import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
+import com.mrbysco.enhancedfarming.recipes.FarmingRecipeTypes;
 import com.mrbysco.enhancedfarming.recipes.PistonRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -58,6 +58,6 @@ public class JEICompat implements IModPlugin {
 		ErrorUtil.checkNotNull(pistonCategory, "pistonCategory");
 
 		ClientLevel world = Objects.requireNonNull(Minecraft.getInstance().level);
-		registration.addRecipes(world.getRecipeManager().getAllRecipesFor(FarmingRecipes.PISTON_CRAFTING_TYPE), PISTON);
+		registration.addRecipes(world.getRecipeManager().getAllRecipesFor(FarmingRecipeTypes.PISTON_CRAFTING_TYPE), PISTON);
 	}
 }

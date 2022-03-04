@@ -74,18 +74,18 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
 		super.tick(state, world, pos, random);
 
-		if(state.getValue(DISTANCE) <= 6) {
+		if (state.getValue(DISTANCE) <= 6) {
 			if (!isMaxAge(state)) {
-				if(!state.getValue(PERSISTENT)) {
+				if (!state.getValue(PERSISTENT)) {
 					float f = 1.0F;
-					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt((int)(25.0F / f) + 1) == 0)) {
+					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
 						this.grow(world, pos, state, 1);
 						net.minecraftforge.common.ForgeHooks.onCropsGrowPost(world, pos, state);
 					}
 				}
 			} else {
-				if(!world.isClientSide && !FarmingConfig.COMMON.rightClickFruitHarvest.get()) {
-					if(random.nextInt(FarmingConfig.COMMON.treeDropChance.get()) == 0) {
+				if (!world.isClientSide && !FarmingConfig.COMMON.rightClickFruitHarvest.get()) {
+					if (random.nextInt(FarmingConfig.COMMON.treeDropChance.get()) == 0) {
 						ItemEntity fruitItem = new ItemEntity(world, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
 						world.addFreshEntity(fruitItem);
 						world.setBlock(pos, state.setValue(AGE, 0), 4);
@@ -97,7 +97,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 
 	@Override
 	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult traceResult) {
-		if(FarmingConfig.COMMON.rightClickFruitHarvest.get() && isMaxAge(state)) {
+		if (FarmingConfig.COMMON.rightClickFruitHarvest.get() && isMaxAge(state)) {
 			ItemEntity fruitItem = new ItemEntity(world, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
 			world.addFreshEntity(fruitItem);
 			world.setBlock(pos, state.setValue(AGE, 0), 4);
@@ -133,7 +133,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 
 	@Override
 	public boolean isBonemealSuccess(Level world, Random random, BlockPos pos, BlockState state) {
-		return (double)world.random.nextFloat() < 0.45D;
+		return (double) world.random.nextFloat() < 0.45D;
 	}
 
 	@Override
