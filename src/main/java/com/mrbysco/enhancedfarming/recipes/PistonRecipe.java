@@ -34,7 +34,7 @@ public class PistonRecipe implements Recipe<Container> {
 
 	@Override
 	public RecipeType<?> getType() {
-		return FarmingRecipeTypes.PISTON_CRAFTING_TYPE;
+		return FarmingRecipes.PISTON_CRAFTING_TYPE.get();
 	}
 
 	@Override

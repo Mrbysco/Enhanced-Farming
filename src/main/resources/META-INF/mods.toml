@@ -19,3 +19,9 @@ mandatory=true
 versionRange="[1.18.2,1.19)"
 ordering="NONE"
 side="BOTH"
+[[dependencies.enhancedfarming]]
+modId="forge"
+mandatory=true
+versionRange="[40.0.35,)"
+ordering="NONE"
+side="BOTH"

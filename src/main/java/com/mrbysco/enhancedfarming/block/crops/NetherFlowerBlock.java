@@ -74,16 +74,17 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 		return PlantType.NETHER;
 	}
 
-	public boolean isRandomlyTicking(BlockState p_149653_1_) {
-		return p_149653_1_.getValue(AGE) < 5;
+	public boolean isRandomlyTicking(BlockState state) {
+		return state.getValue(AGE) < 5;
 	}
 
-	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
 		int i = state.getValue(AGE);
-		if (i < 3 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt(10) == 0)) {
+		int maxAge = this.getMaxAge();
+		if (i < maxAge && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(10) == 0)) {
 			state = state.setValue(AGE, Integer.valueOf(i + 1));
-			world.setBlock(pos, state, 2);
-			net.minecraftforge.common.ForgeHooks.onCropsGrowPost(world, pos, state);
+			level.setBlock(pos, state, 2);
+			net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
 		}
 	}
 
@@ -92,7 +93,7 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
+	public boolean isBonemealSuccess(Level level, Random rand, BlockPos pos, BlockState state) {
 		if (FarmingConfig.COMMON.bonemealGrow.get()) {
 			return getAge(state) < getMaxAge();
 		} else {
@@ -100,8 +101,8 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 		}
 	}
 
-	protected int getBonemealAgeIncrease(Level worldIn) {
-		return Mth.nextInt(worldIn.getRandom(), 2, 5) / 2;
+	protected int getBonemealAgeIncrease(Level level) {
+		return Mth.nextInt(level.getRandom(), 2, 5) / 2;
 	}
 
 	@Override
@@ -110,24 +111,24 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public void performBonemeal(ServerLevel world, Random random, BlockPos pos, BlockState state) {
+	public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
 		int i;
 		int j = this.getMaxAge();
 
 		if (FarmingConfig.COMMON.instantGrow.get()) {
 			i = getMaxAge();
 		} else {
-			i = this.getAge(state) + this.getBonemealAgeIncrease(world);
+			i = this.getAge(state) + this.getBonemealAgeIncrease(level);
 		}
 
 		if (i > j) {
 			i = j;
 		}
 
-		world.setBlock(pos, this.getStateForAge(i), 2);
+		level.setBlock(pos, this.getStateForAge(i), 2);
 	}
 
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_206840_1_) {
-		p_206840_1_.add(AGE);
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {
+		stateBuilder.add(AGE);
 	}
 }
