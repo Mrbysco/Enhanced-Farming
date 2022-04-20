@@ -42,6 +42,7 @@ public class EnhancedFarming {
 		FarmingRegistry.ITEMS.register(eventBus);
 		FarmingRegistry.BLOCK_ENTITIES.register(eventBus);
 		FarmingFeatures.FEATURES.register(eventBus);
+		FarmingRecipes.RECIPE_TYPES.register(eventBus);
 		FarmingRecipes.RECIPE_SERIALIZERS.register(eventBus);
 
 		MinecraftForge.EVENT_BUS.register(new InteractionHandler());
