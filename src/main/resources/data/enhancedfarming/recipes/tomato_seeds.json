@@ -1,14 +1,16 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"tag": "forge:vegetables/tomato"
-		}
-	],
-	"result": {
-		"item": "enhancedfarming:tomato_seeds"
-	},
-	"conditions": [{
-		"type": "enhancedfarming:crop_to_seeds"
-	}]
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "enhancedfarming:tomato"
+	}
+  ],
+  "result": {
+	"item": "enhancedfarming:tomato_seeds"
+  },
+  "conditions": [
+	{
+	  "type": "enhancedfarming:crop_to_seeds"
+	}
+  ]
 }

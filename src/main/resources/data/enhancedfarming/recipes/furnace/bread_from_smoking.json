@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smoking",
   "ingredient": {
-    "item": "enhancedfarming:dough"
+	"item": "enhancedfarming:dough"
   },
   "result": "minecraft:bread",
   "experience": 0.35,

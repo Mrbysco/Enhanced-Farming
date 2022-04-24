@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "enhancedfarming:chocolate_bar"
-    },
-    {
-      "item": "enhancedfarming:mint"
-    }
+	{
+	  "item": "enhancedfarming:chocolate_bar"
+	},
+	{
+	  "item": "enhancedfarming:mint"
+	}
   ],
   "result": {
-    "item": "enhancedfarming:mint_chocolate_bar"
+	"item": "enhancedfarming:mint_chocolate_bar"
   }
 }

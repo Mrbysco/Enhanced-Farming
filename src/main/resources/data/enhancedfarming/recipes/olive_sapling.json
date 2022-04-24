@@ -1,14 +1,19 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"item": "enhancedfarming:olive"
-		}
-	],
-	"result": {
-		"item": "enhancedfarming:olive_sapling"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "minecraft:jungle_sapling"
 	},
-	"conditions": [{
-		"type": "enhancedfarming:crop_to_seeds"
-	}]
+	{
+	  "item": "enhancedfarming:olive"
+	}
+  ],
+  "result": {
+	"item": "enhancedfarming:olive_sapling"
+  },
+  "conditions": [
+	{
+	  "type": "enhancedfarming:crop_to_seeds"
+	}
+  ]
 }

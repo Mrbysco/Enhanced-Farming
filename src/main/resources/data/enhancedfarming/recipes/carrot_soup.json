@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pot"
-    },
-    {
-      "item": "enhancedfarming:stock"
-    },
-    {
-      "item": "minecraft:carrot"
-    },
 	{
-      "item": "enhancedfarming:cutting_board"
-    }
+	  "item": "enhancedfarming:pot"
+	},
+	{
+	  "item": "enhancedfarming:stock"
+	},
+	{
+	  "item": "minecraft:carrot"
+	},
+	{
+	  "item": "enhancedfarming:cutting_board"
+	}
   ],
   "result": {
-    "item": "enhancedfarming:carrot_soup"
+	"item": "enhancedfarming:carrot_soup"
   }
 }

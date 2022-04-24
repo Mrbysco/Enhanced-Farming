@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "item": "enhancedfarming:avocado"
-    },
-    {
-      "item": "minecraft:bowl"
-    }
+	{
+	  "item": "enhancedfarming:cutting_board"
+	},
+	{
+	  "item": "enhancedfarming:avocado"
+	},
+	{
+	  "item": "minecraft:bowl"
+	}
   ],
   "result": {
-    "item": "enhancedfarming:guacamole"
+	"item": "enhancedfarming:guacamole"
   }
 }

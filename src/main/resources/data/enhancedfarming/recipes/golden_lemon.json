@@ -1,19 +1,19 @@
 {
   "result": {
-    "item": "enhancedfarming:golden_lemon"
+	"item": "enhancedfarming:golden_lemon"
   },
   "pattern": [
-    "GGG",
-    "GFG",
-    "GGG"
+	"GGG",
+	"GFG",
+	"GGG"
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-    "F": {
-      "item": "enhancedfarming:lemon"
-    },
-    "G": {
-      "item": "minecraft:gold_nugget"
-    }
+	"F": {
+	  "item": "enhancedfarming:lemon"
+	},
+	"G": {
+	  "item": "minecraft:gold_nugget"
+	}
   }
 }

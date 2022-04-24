@@ -1,22 +1,24 @@
 {
   "result": {
-    "item": "enhancedfarming:gold_rake"
+	"item": "enhancedfarming:gold_rake"
   },
   "pattern": [
-    "X X",
-    "XSX",
-    " S "
+	"X X",
+	"XSX",
+	" S "
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-    "X": {
-      "tag": "forge:ingots/gold"
-    },
-    "S": {
-      "tag": "forge:rods/wooden"
-    }
+	"X": {
+	  "tag": "forge:ingots/gold"
+	},
+	"S": {
+	  "tag": "forge:rods/wooden"
+	}
   },
-  "conditions": [{
-    "type": "enhancedfarming:rake_enabled"
-  }]
+  "conditions": [
+	{
+	  "type": "enhancedfarming:rake_enabled"
+	}
+  ]
 }

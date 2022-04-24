@@ -1,17 +1,17 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"item": "enhancedfarming:milk_bottle"
-		},
-		{
-			"item": "enhancedfarming:cucumber"
-		},
-		{
-			"item": "minecraft:snowball"
-		}
-	],
-	"result": {
-		"item": "enhancedfarming:smoothie_cucumber"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "enhancedfarming:milk_bottle"
+	},
+	{
+	  "item": "enhancedfarming:cucumber"
+	},
+	{
+	  "item": "minecraft:snowball"
 	}
+  ],
+  "result": {
+	"item": "enhancedfarming:smoothie_cucumber"
+  }
 }

@@ -1,22 +1,24 @@
 {
   "result": {
-    "item": "enhancedfarming:wooden_rake"
+	"item": "enhancedfarming:wooden_rake"
   },
   "pattern": [
-    "X X",
-    "XSX",
-    " S "
+	"X X",
+	"XSX",
+	" S "
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-    "X": {
-      "tag": "minecraft:planks"
-    },
-    "S": {
-      "tag": "forge:rods/wooden"
-    }
+	"X": {
+	  "tag": "minecraft:planks"
+	},
+	"S": {
+	  "tag": "forge:rods/wooden"
+	}
   },
-  "conditions": [{
-    "type": "enhancedfarming:rake_enabled"
-  }]
+  "conditions": [
+	{
+	  "type": "enhancedfarming:rake_enabled"
+	}
+  ]
 }

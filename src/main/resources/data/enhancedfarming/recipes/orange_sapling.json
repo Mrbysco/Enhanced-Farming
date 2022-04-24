@@ -1,14 +1,19 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"item": "enhancedfarming:orange"
-		}
-	],
-	"result": {
-		"item": "enhancedfarming:orange_sapling"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "minecraft:oak_sapling"
 	},
-	"conditions": [{
-		"type": "enhancedfarming:crop_to_seeds"
-	}]
+	{
+	  "item": "enhancedfarming:orange"
+	}
+  ],
+  "result": {
+	"item": "enhancedfarming:orange_sapling"
+  },
+  "conditions": [
+	{
+	  "type": "enhancedfarming:crop_to_seeds"
+	}
+  ]
 }

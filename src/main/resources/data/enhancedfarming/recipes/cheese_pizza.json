@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "item": "enhancedfarming:dough"
-    },
-    {
-      "tag": "forge:vegetables/tomato"
-    },
-    {
-      "item": "enhancedfarming:cheese"
-    }
+	{
+	  "item": "enhancedfarming:cutting_board"
+	},
+	{
+	  "item": "enhancedfarming:dough"
+	},
+	{
+	  "tag": "forge:vegetables/tomato"
+	},
+	{
+	  "item": "enhancedfarming:cheese"
+	}
   ],
   "result": {
-    "item": "enhancedfarming:cheese_pizza"
+	"item": "enhancedfarming:cheese_pizza"
   }
 }

@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pear"
-    },
-    {
-      "tag": "forge:sugar"
-    },
-    {
-      "tag": "forge:eggs"
-    },
-    {
-      "item": "enhancedfarming:flour"
-    }
+	{
+	  "item": "enhancedfarming:pear"
+	},
+	{
+	  "tag": "forge:sugar"
+	},
+	{
+	  "tag": "forge:eggs"
+	},
+	{
+	  "item": "enhancedfarming:flour"
+	}
   ],
   "result": {
-    "item": "enhancedfarming:pear_pie"
+	"item": "enhancedfarming:pear_pie"
   }
 }

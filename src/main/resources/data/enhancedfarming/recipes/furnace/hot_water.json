@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "type": "forge:nbt",
+	"type": "forge:nbt",
 	"item": "minecraft:potion",
 	"nbt": "{Potion:'minecraft:water'}"
   },

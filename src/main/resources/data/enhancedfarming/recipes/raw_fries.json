@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "tag": "forge:vegetables/potato"
-    },
-    {
-      "tag": "forge:vegetables/potato"
-    }
+	{
+	  "item": "enhancedfarming:cutting_board"
+	},
+	{
+	  "tag": "forge:vegetables/potato"
+	},
+	{
+	  "tag": "forge:vegetables/potato"
+	}
   ],
   "result": {
-    "item": "enhancedfarming:raw_fries"
+	"item": "enhancedfarming:raw_fries"
   }
 }

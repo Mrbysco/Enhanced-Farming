@@ -1,15 +1,15 @@
 {
   "result": {
-    "item": "enhancedfarming:crop_stick"
+	"item": "enhancedfarming:crop_stick"
   },
   "pattern": [
-    "SS",
-    "SS"
+	"SS",
+	"SS"
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-    "S": {
-      "tag": "forge:rods/wooden"
-    }
+	"S": {
+	  "tag": "forge:rods/wooden"
+	}
   }
 }

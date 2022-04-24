@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pot"
-    },
-    {
-      "item": "enhancedfarming:stock"
-    },
-    {
-      "tag": "forge:vegetables/tomato"
-    },
 	{
-      "item": "enhancedfarming:cutting_board"
-    }
+	  "item": "enhancedfarming:pot"
+	},
+	{
+	  "item": "enhancedfarming:stock"
+	},
+	{
+	  "tag": "forge:vegetables/tomato"
+	},
+	{
+	  "item": "enhancedfarming:cutting_board"
+	}
   ],
   "result": {
-    "item": "enhancedfarming:tomato_soup"
+	"item": "enhancedfarming:tomato_soup"
   }
 }

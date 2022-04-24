@@ -1,17 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "item": "enhancedfarming:olive_oil"
-    },
-    {
-      "item": "enhancedfarming:dough"
-    }
+	{
+	  "item": "enhancedfarming:cutting_board"
+	},
+	{
+	  "item": "enhancedfarming:olive_oil"
+	},
+	{
+	  "item": "enhancedfarming:dough"
+	}
   ],
   "result": {
-    "item": "enhancedfarming:pasta"
+	"item": "enhancedfarming:pasta"
   }
 }
