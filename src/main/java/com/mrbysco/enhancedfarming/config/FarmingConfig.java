@@ -14,6 +14,7 @@ public class FarmingConfig {
 		public final BooleanValue hotBurnsPlayer;
 		public final IntValue hotTime;
 		public final BooleanValue rightClickFruitHarvest;
+		public final BooleanValue relocationAllowed;
 		public final IntValue treeDropChance;
 		public final BooleanValue bonemealGrow;
 		public final BooleanValue instantGrow;
@@ -59,6 +60,10 @@ public class FarmingConfig {
 			rightClickFruitHarvest = builder
 					.comment("When enabled the fruity leaves have to be right-clicked to be harvested [Default: true]")
 					.define("rightClickFruitHarvest", true);
+
+			relocationAllowed = builder
+					.comment("When enabled makes you able to get fruit from leaves that were placed after shearing [Default: false]")
+					.define("relocationAllowed", false);
 
 			treeDropChance = builder
 					.comment("The chance in which fruit drop from tree when \"rightClickFruitHarvest\" isn't enabled (1 in X chance) [Default: 20]")

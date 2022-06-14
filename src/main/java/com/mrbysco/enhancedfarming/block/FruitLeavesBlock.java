@@ -84,11 +84,13 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 					}
 				}
 			} else {
-				if (!world.isClientSide && !FarmingConfig.COMMON.rightClickFruitHarvest.get()) {
-					if (random.nextInt(FarmingConfig.COMMON.treeDropChance.get()) == 0) {
-						ItemEntity fruitItem = new ItemEntity(world, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
-						world.addFreshEntity(fruitItem);
-						world.setBlock(pos, state.setValue(AGE, 0), 4);
+				if (!state.getValue(PERSISTENT)) {
+					if (!world.isClientSide && !FarmingConfig.COMMON.rightClickFruitHarvest.get()) {
+						if (random.nextInt(FarmingConfig.COMMON.treeDropChance.get()) == 0) {
+							ItemEntity fruitItem = new ItemEntity(world, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
+							world.addFreshEntity(fruitItem);
+							world.setBlock(pos, state.setValue(AGE, 0), 4);
+						}
 					}
 				}
 			}
@@ -98,9 +100,11 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	@Override
 	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult traceResult) {
 		if (FarmingConfig.COMMON.rightClickFruitHarvest.get() && isMaxAge(state)) {
-			ItemEntity fruitItem = new ItemEntity(world, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
-			world.addFreshEntity(fruitItem);
-			world.setBlock(pos, state.setValue(AGE, 0), 4);
+			if (FarmingConfig.COMMON.relocationAllowed.get() || !state.getValue(PERSISTENT)) {
+				ItemEntity fruitItem = new ItemEntity(world, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
+				world.addFreshEntity(fruitItem);
+				world.setBlock(pos, state.setValue(AGE, 0), 4);
+			}
 
 			return InteractionResult.SUCCESS;
 		}
@@ -138,7 +142,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext useContext) {
-		return super.getStateForPlacement(useContext).setValue(AGE, 3);
+		return super.getStateForPlacement(useContext).setValue(AGE, 0);
 	}
 
 	@Override
