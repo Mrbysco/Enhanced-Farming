@@ -48,7 +48,7 @@ public class RakeToolItem extends DiggerItem {
 		Level level = context.getLevel();
 		BlockPos blockpos = context.getClickedPos();
 		BlockState blockstate = level.getBlockState(blockpos);
-		BlockState modifiedState = blockstate.getToolModifiedState(level, blockpos, player, context.getItemInHand(), FarmingActions.RAKE_GATHER);
+		BlockState modifiedState = blockstate.getToolModifiedState(context, FarmingActions.RAKE_GATHER, false);
 		BlockState finalState = null;
 		if (modifiedState != null && level.isEmptyBlock(blockpos.above())) {
 			level.playSound(player, blockpos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);

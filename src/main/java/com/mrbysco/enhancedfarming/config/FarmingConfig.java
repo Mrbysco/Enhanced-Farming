@@ -23,26 +23,6 @@ public class FarmingConfig {
 		public final BooleanValue seedsFromGrass;
 		public final BooleanValue saplingsFromGrass;
 
-		public final BooleanValue generateAppleTree;
-		public final BooleanValue generateAvocadoTree;
-		public final BooleanValue generateBananaTree;
-		public final BooleanValue generateCherryTree;
-		public final BooleanValue generateLemonTree;
-		public final BooleanValue generateMangoTree;
-		public final BooleanValue generateOliveTree;
-		public final BooleanValue generateOrangeTree;
-		public final BooleanValue generatePearTree;
-
-		public final IntValue appleTreeRarity;
-		public final IntValue avocadoTreeRarity;
-		public final IntValue bananaTreeRarity;
-		public final IntValue cherryTreeRarity;
-		public final IntValue lemonTreeRarity;
-		public final IntValue mangoTreeRarity;
-		public final IntValue oliveTreeRarity;
-		public final IntValue orangeTreeRarity;
-		public final IntValue pearTreeRarity;
-
 		public final BooleanValue generateNetherFlower;
 
 		Common(ForgeConfigSpec.Builder builder) {
@@ -92,88 +72,6 @@ public class FarmingConfig {
 			saplingsFromGrass = builder
 					.comment("When enabled makes seeds drop from grass [Default: false]")
 					.define("saplingsFromGrass", false);
-
-			builder.pop();
-
-			builder.comment("Tree settings")
-					.push("tree");
-
-			generateAppleTree = builder
-					.comment("Enable generation of Apple trees [Default: true]")
-					.define("generateAppleTree", true);
-
-			generateAvocadoTree = builder
-					.comment("Enable generation of Avocado trees [Default: true]")
-					.define("generateAvocadoTree", true);
-
-			generateBananaTree = builder
-					.comment("Enable generation of Banana trees [Default: true]")
-					.define("generateBananaTree", true);
-
-			generateCherryTree = builder
-					.comment("Enable generation of Cherry trees [Default: true]")
-					.define("generateCherryTree", true);
-
-			generateLemonTree = builder
-					.comment("Enable generation of Lemon trees [Default: true]")
-					.define("generateLemonTree", true);
-
-			generateMangoTree = builder
-					.comment("Enable generation of Mango trees [Default: true]")
-					.define("generateMangoTree", true);
-
-			generateOliveTree = builder
-					.comment("Enable generation of Olive trees [Default: true]")
-					.define("generateOliveTree", true);
-
-			generateOrangeTree = builder
-					.comment("Enable generation of Orange trees [Default: true]")
-					.define("generateOrangeTree", true);
-
-			generatePearTree = builder
-					.comment("Enable generation of Pear trees [Default: true]")
-					.define("generatePearTree", true);
-
-			builder.pop();
-
-			builder.comment("Tree Rarity")
-					.push("rarity");
-
-			appleTreeRarity = builder
-					.comment("Rarity of Apple Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
-					.defineInRange("appleTreeRarity", 4, 1, Integer.MAX_VALUE);
-
-			avocadoTreeRarity = builder
-					.comment("Rarity of Avocado Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
-					.defineInRange("avocadoTreeRarity", 4, 1, Integer.MAX_VALUE);
-
-			bananaTreeRarity = builder
-					.comment("Rarity of Banana Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
-					.defineInRange("bananaTreeRarity", 4, 1, Integer.MAX_VALUE);
-
-			cherryTreeRarity = builder
-					.comment("Rarity of Cherry Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
-					.defineInRange("cherryTreeRarity", 4, 1, Integer.MAX_VALUE);
-
-			lemonTreeRarity = builder
-					.comment("Rarity of Lemon Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
-					.defineInRange("lemonTreeRarity", 4, 1, Integer.MAX_VALUE);
-
-			mangoTreeRarity = builder
-					.comment("Rarity of Mango Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
-					.defineInRange("mangoTreeRarity", 4, 1, Integer.MAX_VALUE);
-
-			oliveTreeRarity = builder
-					.comment("Rarity of Olive Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
-					.defineInRange("oliveTreeRarity", 4, 1, Integer.MAX_VALUE);
-
-			orangeTreeRarity = builder
-					.comment("Rarity of Orange Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
-					.defineInRange("orangeTreeRarity", 4, 1, Integer.MAX_VALUE);
-
-			pearTreeRarity = builder
-					.comment("Rarity of Pear Trees. Makes the tree generate 1 every X times (Requires restart for changes to effect) [Default: 4]")
-					.defineInRange("pearTreeRarity", 4, 1, Integer.MAX_VALUE);
 
 			builder.pop();
 

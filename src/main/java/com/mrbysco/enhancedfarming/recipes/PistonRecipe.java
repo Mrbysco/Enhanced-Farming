@@ -15,7 +15,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
@@ -73,7 +72,7 @@ public class PistonRecipe implements Recipe<Container> {
 		return FarmingRecipes.PISTON_CRAFTING_SERIALIZER.get();
 	}
 
-	public static class SerializerPistonRecipe extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<PistonRecipe> {
+	public static class SerializerPistonRecipe implements RecipeSerializer<PistonRecipe> {
 		@Override
 		public PistonRecipe fromJson(ResourceLocation recipeId, JsonObject jsonObject) {
 			String s = GsonHelper.getAsString(jsonObject, "group", "");

@@ -1,7 +1,7 @@
 {
   "parent": "enhancedfarming:block/leave_overlay",
   "textures": {
-    "layer1": "enhancedfarming:block/leaves/banana_leaves_fruity",
-    "layer0": "minecraft:block/jungle_leaves"
+    "layer0": "minecraft:block/jungle_leaves",
+    "layer1": "enhancedfarming:block/leaves/banana_leaves_fruity"
   }
 }

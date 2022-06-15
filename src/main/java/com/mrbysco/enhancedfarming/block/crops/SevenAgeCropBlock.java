@@ -3,6 +3,7 @@ package com.mrbysco.enhancedfarming.block.crops;
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
@@ -19,7 +20,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.PlantType;
 
-import java.util.Random;
 import java.util.function.Supplier;
 
 public class SevenAgeCropBlock extends CropBlock {
@@ -75,7 +75,7 @@ public class SevenAgeCropBlock extends CropBlock {
 	}
 
 	@Override
-	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
 		if (!world.isAreaLoaded(pos, 1))
 			return; // Forge: prevent loading unloaded chunks when checking neighbor's light
 		if (random.nextInt(5) == 0) {
@@ -105,7 +105,7 @@ public class SevenAgeCropBlock extends CropBlock {
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
+	public boolean isBonemealSuccess(Level worldIn, RandomSource rand, BlockPos pos, BlockState state) {
 		if (FarmingConfig.COMMON.bonemealGrow.get()) {
 			return getAge(state) < getMaxAge();
 		} else {

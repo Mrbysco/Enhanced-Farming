@@ -1,7 +1,7 @@
 {
   "parent": "enhancedfarming:block/leave_overlay",
   "textures": {
-    "layer1": "enhancedfarming:block/leaves/avocado_leaves_fruity",
-    "layer0": "minecraft:block/oak_leaves"
+    "layer0": "minecraft:block/oak_leaves",
+    "layer1": "enhancedfarming:block/leaves/avocado_leaves_fruity"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_jungle",
+  "features": "enhancedfarming:banana",
+  "step": "vegetal_decoration"
+}

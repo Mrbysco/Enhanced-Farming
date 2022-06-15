@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -26,7 +27,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
-import java.util.Random;
 import java.util.function.Supplier;
 
 public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
@@ -71,7 +71,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+	public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(state, world, pos, random);
 
 		if (state.getValue(DISTANCE) <= 6) {
@@ -116,7 +116,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public void performBonemeal(ServerLevel world, Random random, BlockPos pos, BlockState state) {
+	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
 		this.grow(world, pos, state, this.getBonemealAgeIncrease(world));
 	}
 
@@ -136,7 +136,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level world, Random random, BlockPos pos, BlockState state) {
+	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
 		return (double) world.random.nextFloat() < 0.45D;
 	}
 
@@ -147,6 +147,6 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> blockStateBuilder) {
-		blockStateBuilder.add(DISTANCE, PERSISTENT, AGE);
+		blockStateBuilder.add(DISTANCE, PERSISTENT, WATERLOGGED, AGE);
 	}
 }

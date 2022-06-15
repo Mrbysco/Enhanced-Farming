@@ -21,8 +21,8 @@ public class ScarecrowBlockEntity extends BlockEntity {
 		super(blockEntityType, pos, state);
 	}
 
-	public ScarecrowBlockEntity(BlockPos pos, BlockState p_155332_) {
-		this(FarmingRegistry.SCARECROW_TILE.get(), pos, p_155332_);
+	public ScarecrowBlockEntity(BlockPos pos, BlockState state) {
+		this(FarmingRegistry.SCARECROW_TILE.get(), pos, state);
 	}
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, ScarecrowBlockEntity blockEntity) {

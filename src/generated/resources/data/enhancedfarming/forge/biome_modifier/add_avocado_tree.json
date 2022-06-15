@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_forest",
+  "features": "enhancedfarming:avocado",
+  "step": "vegetal_decoration"
+}

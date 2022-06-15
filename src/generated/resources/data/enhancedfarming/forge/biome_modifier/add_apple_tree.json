@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_forest",
+  "features": "enhancedfarming:apple",
+  "step": "vegetal_decoration"
+}

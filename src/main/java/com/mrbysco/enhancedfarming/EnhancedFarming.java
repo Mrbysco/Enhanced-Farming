@@ -7,14 +7,13 @@ import com.mrbysco.enhancedfarming.handler.InWorldCraftingHandler;
 import com.mrbysco.enhancedfarming.handler.InteractionHandler;
 import com.mrbysco.enhancedfarming.handler.RakeHandler;
 import com.mrbysco.enhancedfarming.init.FarmingConditions;
+import com.mrbysco.enhancedfarming.init.FarmingGLM;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
-import com.mrbysco.enhancedfarming.world.WorldGenHandler;
 import com.mrbysco.enhancedfarming.world.feature.FarmingFeatureConfigs;
 import com.mrbysco.enhancedfarming.world.feature.FarmingFeatures;
 import com.mrbysco.enhancedfarming.world.feature.FarmingTreePlacements;
 import com.mrbysco.enhancedfarming.world.feature.FarmingVegetation;
-import com.mrbysco.enhancedfarming.world.feature.FarmingVegetationPlacements;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -44,13 +43,12 @@ public class EnhancedFarming {
 		FarmingFeatures.FEATURES.register(eventBus);
 		FarmingRecipes.RECIPE_TYPES.register(eventBus);
 		FarmingRecipes.RECIPE_SERIALIZERS.register(eventBus);
+		FarmingGLM.GLM.register(eventBus);
 
 		MinecraftForge.EVENT_BUS.register(new InteractionHandler());
 		MinecraftForge.EVENT_BUS.register(new InWorldCraftingHandler());
 		MinecraftForge.EVENT_BUS.register(new HotHandler());
 		MinecraftForge.EVENT_BUS.register(new RakeHandler());
-
-		MinecraftForge.EVENT_BUS.register(new WorldGenHandler());
 
 		eventBus.register(new FarmingConditions());
 
@@ -64,6 +62,5 @@ public class EnhancedFarming {
 		FarmingFeatureConfigs.initialize();
 		FarmingTreePlacements.initialize();
 		FarmingVegetation.initialize();
-		FarmingVegetationPlacements.initialize();
 	}
 }

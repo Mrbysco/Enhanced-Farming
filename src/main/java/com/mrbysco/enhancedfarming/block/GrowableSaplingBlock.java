@@ -4,6 +4,7 @@ import com.mrbysco.enhancedfarming.config.FarmingConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -16,8 +17,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.Random;
 
 public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock {
 	public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 4);
@@ -53,7 +52,7 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 	}
 
 	@Override
-	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
 		if (world.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0) {
 			if (!world.isAreaLoaded(pos, 1))
 				return; // Forge: prevent loading unloaded chunks when checking neighbor's light
@@ -61,7 +60,7 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 		}
 	}
 
-	public void advanceTree(ServerLevel world, BlockPos pos, BlockState state, Random random) {
+	public void advanceTree(ServerLevel world, BlockPos pos, BlockState state, RandomSource random) {
 		if (!isMature(state)) {
 			if (FarmingConfig.COMMON.instantGrow.get()) {
 				world.setBlock(pos, state.setValue(STAGE, getMatureStage()), 4);
@@ -80,7 +79,7 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level world, Random random, BlockPos pos, BlockState state) {
+	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
 		return (double) world.random.nextFloat() < 0.45D;
 	}
 
@@ -88,7 +87,7 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 		return Mth.nextInt(worldIn.random, 2, 5) / 4;
 	}
 
-	public void performBonemeal(ServerLevel world, Random random, BlockPos pos, BlockState state) {
+	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
 		if (!isMature(state)) {
 			int i;
 			int j = this.getMatureStage();

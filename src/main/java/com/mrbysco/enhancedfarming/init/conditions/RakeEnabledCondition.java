@@ -16,7 +16,7 @@ public class RakeEnabledCondition implements ICondition {
 	}
 
 	@Override
-	public boolean test() {
+	public boolean test(IContext context) {
 		return FarmingConfig.COMMON.enableRake.get();
 	}
 

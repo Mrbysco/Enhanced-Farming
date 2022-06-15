@@ -1,7 +1,7 @@
 {
   "parent": "enhancedfarming:block/leave_overlay",
   "textures": {
-    "layer1": "enhancedfarming:block/leaves/olive_leaves_blooming",
-    "layer0": "minecraft:block/acacia_leaves"
+    "layer0": "minecraft:block/acacia_leaves",
+    "layer1": "enhancedfarming:block/leaves/olive_leaves_blooming"
   }
 }
