@@ -45,6 +45,6 @@ public class PistonCategory<T extends PistonRecipe> implements IRecipeCategory<P
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder builder, PistonRecipe recipe, IFocusGroup focuses) {
 		builder.addSlot(RecipeIngredientRole.INPUT, 1, 23).addIngredients(recipe.getIngredients().get(0));
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 67, 23u).addItemStack(recipe.getResultItem());
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 67, 22).addItemStack(recipe.getResultItem());
 	}
 }
