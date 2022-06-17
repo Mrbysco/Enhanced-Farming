@@ -78,14 +78,14 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     maven {
         name 'JEI maven'
-        url = ""
+        url = "https://dvs1.progwml6.com/files/maven"
     }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-//    implementation fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    implementation fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
