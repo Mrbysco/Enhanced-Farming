@@ -37,7 +37,12 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 		super(properties.randomTicks().strength(0.2F).sound(SoundType.GRASS).noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never));
 		this.itemSupplier = itemSupplier;
 
-		this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, Integer.valueOf(7)).setValue(PERSISTENT, Boolean.valueOf(false)).setValue(AGE, Integer.valueOf(3)));
+		this.registerDefaultState(this.stateDefinition.any()
+				.setValue(DISTANCE, Integer.valueOf(7))
+				.setValue(PERSISTENT, Boolean.valueOf(false))
+				.setValue(WATERLOGGED, Boolean.valueOf(false))
+				.setValue(AGE, Integer.valueOf(3)));
+
 	}
 
 	@Override
