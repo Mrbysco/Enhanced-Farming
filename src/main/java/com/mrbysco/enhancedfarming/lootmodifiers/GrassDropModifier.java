@@ -1,10 +1,12 @@
 package com.mrbysco.enhancedfarming.lootmodifiers;
 
-import com.google.gson.JsonObject;
+import com.google.common.base.Supplier;
+import com.google.common.base.Suppliers;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -15,7 +17,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.Tags.Items;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 
 import javax.annotation.Nonnull;
@@ -23,6 +25,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GrassDropModifier extends LootModifier {
+	public static final Supplier<Codec<GrassDropModifier>> CODEC = Suppliers.memoize(() ->
+			RecordCodecBuilder.create(inst -> codecStart(inst).apply(inst, GrassDropModifier::new)));
+
+	public GrassDropModifier(){
+		super(new LootItemCondition[0]);
+	}
+
 	public GrassDropModifier(LootItemCondition[] lootConditions) {
 		super(lootConditions);
 	}
@@ -70,16 +79,21 @@ public class GrassDropModifier extends LootModifier {
 		return generatedLoot;
 	}
 
-	public static class GrassDropSerializer extends GlobalLootModifierSerializer<GrassDropModifier> {
-
-		@Override
-		public GrassDropModifier read(ResourceLocation location, JsonObject jsonObject, LootItemCondition[] lootConditions) {
-			return new GrassDropModifier(lootConditions);
-		}
-
-		@Override
-		public JsonObject write(GrassDropModifier instance) {
-			return makeConditions(instance.conditions);
-		}
+	@Override
+	public Codec<? extends IGlobalLootModifier> codec() {
+		return CODEC.get();
 	}
+
+//	public static class GrassDropSerializer extends GlobalLootModifierSerializer<GrassDropModifier> {
+//
+//		@Override
+//		public GrassDropModifier read(ResourceLocation location, JsonObject jsonObject, LootItemCondition[] lootConditions) {
+//			return new GrassDropModifier(lootConditions);
+//		}
+//
+//		@Override
+//		public JsonObject write(GrassDropModifier instance) {
+//			return makeConditions(instance.conditions);
+//		}
+//	}
 }

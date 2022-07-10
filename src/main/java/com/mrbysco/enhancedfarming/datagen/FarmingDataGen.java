@@ -666,7 +666,7 @@ public class FarmingDataGen {
 			VariantBlockStateBuilder builder = getVariantBuilder(block);
 			for (int i = 0; i <= block.getMaxAge(); i++) {
 				ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
-						new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i)));
+						new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
 				builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 			}
 		}
@@ -675,7 +675,7 @@ public class FarmingDataGen {
 			VariantBlockStateBuilder builder = getVariantBuilder(block);
 			for (int i = 0; i <= block.getMaxAge(); i++) {
 				ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
-						new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i)));
+						new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
 				builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 			}
 		}
@@ -684,7 +684,7 @@ public class FarmingDataGen {
 			VariantBlockStateBuilder builder = getVariantBuilder(block);
 			for (int i = 0; i <= block.getMaxAge(); i++) {
 				ModelFile file = models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i), modLoc("block/stick_crops"), "crop",
-						new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i)));
+						new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
 				builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 			}
 		}
@@ -694,7 +694,7 @@ public class FarmingDataGen {
 			for (int i = 0; i <= block.getMatureStage(); i++) {
 				if (i == block.getMatureStage()) {
 					ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
-							new ResourceLocation(Reference.MOD_ID, "block/saplings/" + ForgeRegistries.BLOCKS.getKey(block).getPath()));
+							new ResourceLocation(Reference.MOD_ID, "block/saplings/" + ForgeRegistries.BLOCKS.getKey(block).getPath())).renderType(new ResourceLocation("cutout"));
 					builder.partialState().with(block.getStageProperty(), i).modelForState().modelFile(file).addModel();
 				} else {
 					ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
@@ -709,11 +709,13 @@ public class FarmingDataGen {
 			for (int i = 0; i <= block.getMaxAge(); i++) {
 				if (i != block.getMaxAge()) {
 					ModelFile file = models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_blooming", modLoc("block/leave_overlay"), "layer1",
-							new ResourceLocation(Reference.MOD_ID, "block/leaves/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_blooming")).texture("layer0", mcLoc("block/" + originalLeaves));
+							new ResourceLocation(Reference.MOD_ID, "block/leaves/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_blooming")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(new ResourceLocation("cutout_mipped"));
+					;
 					builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 				} else {
 					ModelFile file = models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_fruity", modLoc("block/leave_overlay"), "layer1",
-							new ResourceLocation(Reference.MOD_ID, "block/leaves/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_fruity")).texture("layer0", mcLoc("block/" + originalLeaves));
+							new ResourceLocation(Reference.MOD_ID, "block/leaves/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_fruity")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(new ResourceLocation("cutout_mipped"));
+					;
 					builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 				}
 			}
@@ -727,9 +729,7 @@ public class FarmingDataGen {
 
 		@Override
 		protected void start() {
-			this.add("grass_drops", FarmingGLM.ENHANCED_SEED_DROPS.get(), new GrassDropModifier(
-					new LootItemCondition[]{
-					}));
+			this.add("grass_drops", new GrassDropModifier());
 		}
 	}
 }

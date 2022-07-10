@@ -1,5 +1,6 @@
 {
   "parent": "enhancedfarming:block/leave_overlay",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "layer0": "minecraft:block/oak_leaves",
     "layer1": "enhancedfarming:block/leaves/orange_leaves_blooming"

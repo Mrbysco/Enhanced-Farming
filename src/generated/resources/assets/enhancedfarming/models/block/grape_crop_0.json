@@ -1,5 +1,6 @@
 {
   "parent": "enhancedfarming:block/stick_crops",
+  "render_type": "minecraft:cutout",
   "textures": {
     "crop": "enhancedfarming:block/crops/grape_crop_0"
   }

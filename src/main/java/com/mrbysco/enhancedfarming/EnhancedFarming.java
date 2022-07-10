@@ -53,8 +53,8 @@ public class EnhancedFarming {
 		eventBus.register(new FarmingConditions());
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-			eventBus.addListener(ClientHandler::onClientSetup);
 			eventBus.addListener(ClientHandler::registerBlockColors);
+			eventBus.addListener(ClientHandler::registerItemColors);
 		});
 	}
 
