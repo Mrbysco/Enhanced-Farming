@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries.Keys;
 import net.minecraftforge.registries.RegistryObject;
 
 public class FarmingGLM {
-	public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> GLM = DeferredRegister.create(Keys.LOOT_MODIFIER_SERIALIZERS, Reference.MOD_ID);
+	public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> GLM = DeferredRegister.create(Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, Reference.MOD_ID);
 
 	public static final RegistryObject<Codec<? extends IGlobalLootModifier>> GRASS_DROPS = GLM.register("grass_drops", GrassDropModifier.CODEC);
 }

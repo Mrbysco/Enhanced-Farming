@@ -28,7 +28,7 @@ public class GrassDropModifier extends LootModifier {
 	public static final Supplier<Codec<GrassDropModifier>> CODEC = Suppliers.memoize(() ->
 			RecordCodecBuilder.create(inst -> codecStart(inst).apply(inst, GrassDropModifier::new)));
 
-	public GrassDropModifier(){
+	public GrassDropModifier() {
 		super(new LootItemCondition[0]);
 	}
 
@@ -83,17 +83,4 @@ public class GrassDropModifier extends LootModifier {
 	public Codec<? extends IGlobalLootModifier> codec() {
 		return CODEC.get();
 	}
-
-//	public static class GrassDropSerializer extends GlobalLootModifierSerializer<GrassDropModifier> {
-//
-//		@Override
-//		public GrassDropModifier read(ResourceLocation location, JsonObject jsonObject, LootItemCondition[] lootConditions) {
-//			return new GrassDropModifier(lootConditions);
-//		}
-//
-//		@Override
-//		public JsonObject write(GrassDropModifier instance) {
-//			return makeConditions(instance.conditions);
-//		}
-//	}
 }

@@ -9,9 +9,10 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.event.world.PistonEvent;
-import net.minecraftforge.event.world.PistonEvent.PistonMoveType;
+import net.minecraftforge.event.level.PistonEvent;
+import net.minecraftforge.event.level.PistonEvent.PistonMoveType;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.List;
@@ -19,8 +20,9 @@ import java.util.List;
 public class InWorldCraftingHandler {
 	@SubscribeEvent
 	public void InWorldCrafting(PistonEvent.Post event) {
-		if (!event.getWorld().isClientSide() && event.getPistonMoveType() == PistonMoveType.EXTEND) {
-			final ServerLevel world = (ServerLevel) event.getWorld();
+		final LevelAccessor levelAccessor = event.getLevel();
+		if (!levelAccessor.isClientSide() && event.getPistonMoveType() == PistonMoveType.EXTEND) {
+			final ServerLevel world = (ServerLevel) levelAccessor;
 			final BlockPos pos = event.getFaceOffsetPos();
 			final float range = 1F;
 			List<ItemEntity> itemEntities = world.getEntitiesOfClass(ItemEntity.class,

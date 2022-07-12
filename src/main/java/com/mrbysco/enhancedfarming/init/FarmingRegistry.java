@@ -44,7 +44,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class FarmingRegistry {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MOD_ID);
-	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, Reference.MOD_ID);
+	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Reference.MOD_ID);
 
 	//Blocks
 	public static final RegistryObject<Block> APPLE_SAPLING = BLOCKS.register("apple_sapling", () -> new GrowableSaplingBlock(new AppleTree(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
@@ -242,6 +242,6 @@ public class FarmingRegistry {
 	public static final RegistryObject<Item> CROP_STICK_ITEM = ITEMS.register("crop_stick", () -> new BlockItem(FarmingRegistry.CROP_STICK.get(), new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 	public static final RegistryObject<Item> SCARECROW_ITEM = ITEMS.register("scarecrow", () -> new BlockItem(FarmingRegistry.SCARECROW.get(), new Item.Properties().tab(FarmingTabs.TAB_MAIN)));
 
-	public static final RegistryObject<BlockEntityType<ScarecrowBlockEntity>> SCARECROW_TILE = BLOCK_ENTITIES.register("scarecrow", () ->
+	public static final RegistryObject<BlockEntityType<ScarecrowBlockEntity>> SCARECROW_TILE = BLOCK_ENTITY_TYPES.register("scarecrow", () ->
 			BlockEntityType.Builder.of(ScarecrowBlockEntity::new, FarmingRegistry.SCARECROW.get()).build(null));
 }

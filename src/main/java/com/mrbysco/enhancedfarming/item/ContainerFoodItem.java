@@ -44,7 +44,7 @@ public class ContainerFoodItem extends SpecialCustomFoodItem {
 	public ItemStack shrinkStack(LivingEntity livingEntity, ItemStack stack) {
 		if (livingEntity instanceof Player player) {
 			Inventory inventory = player.getInventory();
-			ItemStack bowl = stack.getContainerItem().copy();
+			ItemStack bowl = stack.getCraftingRemainingItem().copy();
 
 			if (!inventory.add(bowl)) {
 				player.spawnAtLocation(bowl, 0F);

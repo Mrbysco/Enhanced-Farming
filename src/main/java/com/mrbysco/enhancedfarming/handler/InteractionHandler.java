@@ -14,7 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class InteractionHandler {
 	@SubscribeEvent
 	public void CowInteraction(EntityInteract event) {
-		Player player = event.getPlayer();
+		Player player = event.getEntity();
 		ItemStack itemstack = event.getItemStack();
 		Entity entity = event.getTarget();
 

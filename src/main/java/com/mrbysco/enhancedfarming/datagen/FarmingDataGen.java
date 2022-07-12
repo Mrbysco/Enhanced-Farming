@@ -10,7 +10,6 @@ import com.mrbysco.enhancedfarming.block.FruitLeavesBlock;
 import com.mrbysco.enhancedfarming.block.GrowableSaplingBlock;
 import com.mrbysco.enhancedfarming.block.crops.CropstickCropBlock;
 import com.mrbysco.enhancedfarming.block.crops.NetherFlowerBlock;
-import com.mrbysco.enhancedfarming.init.FarmingGLM;
 import com.mrbysco.enhancedfarming.init.FarmingLootTables;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.lootmodifiers.GrassDropModifier;
@@ -73,9 +72,9 @@ import net.minecraftforge.common.data.JsonCodecProvider;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers.AddFeaturesBiomeModifier;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
