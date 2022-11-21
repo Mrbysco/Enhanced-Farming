@@ -12,14 +12,14 @@ public class CropsticksSeedsBlock extends CustomBlockNamedItem {
 	}
 
 //	@Override
-//	public ActionResultType onItemUse(PlayerEntity player, World worldIn, BlockPos pos, Hand hand, Direction facing, float hitX, float hitY, float hitZ)
+//	public ActionResultType onItemUse(PlayerEntity player, World level, BlockPos pos, Hand hand, Direction facing, float hitX, float hitY, float hitZ)
 //    {
 //        ItemStack itemstack = player.getHeldItem(hand);
-//        BlockState state = worldIn.getBlockState(pos);
+//        BlockState state = level.getBlockState(pos);
 //
 //        if (possibleSide(facing) && player.canPlayerEdit(pos.offset(facing), facing, itemstack) && state.getBlock() instanceof CropStickBlock)
 //        {
-//            worldIn.setBlockState(pos, this.crops.getDefaultState());
+//            level.setBlockState(pos, this.crops.getDefaultState());
 //
 //            itemstack.shrink(1);
 //            return ActionResultType.SUCCESS;

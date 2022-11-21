@@ -34,8 +34,8 @@ public class FiveAgeCropBlock extends CropBlock {
 		this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
 	}
 
-	public VoxelShape getShape(BlockState p_220053_1_, BlockGetter p_220053_2_, BlockPos p_220053_3_, CollisionContext p_220053_4_) {
-		return SHAPE_BY_AGE[p_220053_1_.getValue(this.getAgeProperty())];
+	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos p2200533, CollisionContext context) {
+		return SHAPE_BY_AGE[state.getValue(this.getAgeProperty())];
 	}
 
 	@Override
@@ -44,21 +44,21 @@ public class FiveAgeCropBlock extends CropBlock {
 	}
 
 	@Override
-	public void growCrops(Level worldIn, BlockPos pos, BlockState state) {
+	public void growCrops(Level level, BlockPos pos, BlockState state) {
 		int i;
 		int j = this.getMaxAge();
 
 		if (FarmingConfig.COMMON.instantGrow.get()) {
 			i = getMaxAge();
 		} else {
-			i = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
+			i = this.getAge(state) + this.getBonemealAgeIncrease(level);
 		}
 
 		if (i > j) {
 			i = j;
 		}
 
-		worldIn.setBlock(pos, this.getStateForAge(i), 2);
+		level.setBlock(pos, this.getStateForAge(i), 2);
 	}
 
 	public IntegerProperty getAgeProperty() {
@@ -75,19 +75,19 @@ public class FiveAgeCropBlock extends CropBlock {
 	}
 
 	@Override
-	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-		if (!world.isAreaLoaded(pos, 1))
+	public void randomTick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource random) {
+		if (!serverLevel.isAreaLoaded(pos, 1))
 			return; // Forge: prevent loading unloaded chunks when checking neighbor's light
 		if (random.nextInt(5) == 0) {
-			this.canSurvive(state, world, pos);
+			this.canSurvive(state, serverLevel, pos);
 		} else {
-			if (world.getRawBrightness(pos, 0) >= 9) {
+			if (serverLevel.getRawBrightness(pos, 0) >= 9) {
 				int i = this.getAge(state);
 				if (i < this.getMaxAge()) {
-					float f = getGrowthSpeed(this, world, pos);
-					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
-						world.setBlock(pos, this.getStateForAge(i + 1), 2);
-						net.minecraftforge.common.ForgeHooks.onCropsGrowPost(world, pos, state);
+					float f = getGrowthSpeed(this, serverLevel, pos);
+					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(serverLevel, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
+						serverLevel.setBlock(pos, this.getStateForAge(i + 1), 2);
+						net.minecraftforge.common.ForgeHooks.onCropsGrowPost(serverLevel, pos, state);
 					}
 				}
 			}
@@ -100,12 +100,12 @@ public class FiveAgeCropBlock extends CropBlock {
 	}
 
 	@Override
-	public PlantType getPlantType(BlockGetter world, BlockPos pos) {
+	public PlantType getPlantType(BlockGetter blockGetter, BlockPos pos) {
 		return PlantType.CROP;
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level worldIn, RandomSource rand, BlockPos pos, BlockState state) {
+	public boolean isBonemealSuccess(Level level, RandomSource rand, BlockPos pos, BlockState state) {
 		if (FarmingConfig.COMMON.bonemealGrow.get()) {
 			return getAge(state) < getMaxAge();
 		} else {
@@ -114,7 +114,7 @@ public class FiveAgeCropBlock extends CropBlock {
 	}
 
 	@Override
-	protected int getBonemealAgeIncrease(Level worldIn) {
-		return super.getBonemealAgeIncrease(worldIn) / 2;
+	protected int getBonemealAgeIncrease(Level level) {
+		return super.getBonemealAgeIncrease(level) / 2;
 	}
 }

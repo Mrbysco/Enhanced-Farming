@@ -46,12 +46,12 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+	public int getFlammability(BlockState state, BlockGetter blockGetter, BlockPos pos, Direction face) {
 		return 60;
 	}
 
 	@Override
-	public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+	public int getFireSpreadSpeed(BlockState state, BlockGetter blockGetter, BlockPos pos, Direction face) {
 		return 30;
 	}
 
@@ -76,25 +76,25 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-		super.tick(state, world, pos, random);
+	public void tick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource random) {
+		super.tick(state, serverLevel, pos, random);
 
 		if (state.getValue(DISTANCE) <= 6) {
 			if (!isMaxAge(state)) {
 				if (!state.getValue(PERSISTENT)) {
 					float f = 1.0F;
-					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(world, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
-						this.grow(world, pos, state, 1);
-						net.minecraftforge.common.ForgeHooks.onCropsGrowPost(world, pos, state);
+					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(serverLevel, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
+						this.grow(serverLevel, pos, state, 1);
+						net.minecraftforge.common.ForgeHooks.onCropsGrowPost(serverLevel, pos, state);
 					}
 				}
 			} else {
 				if (!state.getValue(PERSISTENT)) {
-					if (!world.isClientSide && !FarmingConfig.COMMON.rightClickFruitHarvest.get()) {
+					if (!serverLevel.isClientSide && !FarmingConfig.COMMON.rightClickFruitHarvest.get()) {
 						if (random.nextInt(FarmingConfig.COMMON.treeDropChance.get()) == 0) {
-							ItemEntity fruitItem = new ItemEntity(world, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
-							world.addFreshEntity(fruitItem);
-							world.setBlock(pos, state.setValue(AGE, 0), 4);
+							ItemEntity fruitItem = new ItemEntity(serverLevel, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
+							serverLevel.addFreshEntity(fruitItem);
+							serverLevel.setBlock(pos, state.setValue(AGE, 0), 4);
 						}
 					}
 				}
@@ -103,51 +103,51 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult traceResult) {
+	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		if (FarmingConfig.COMMON.rightClickFruitHarvest.get() && isMaxAge(state)) {
 			if (FarmingConfig.COMMON.relocationAllowed.get() || !state.getValue(PERSISTENT)) {
-				ItemEntity fruitItem = new ItemEntity(world, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
-				world.addFreshEntity(fruitItem);
-				world.setBlock(pos, state.setValue(AGE, 0), 4);
+				ItemEntity fruitItem = new ItemEntity(level, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
+				level.addFreshEntity(fruitItem);
+				level.setBlock(pos, state.setValue(AGE, 0), 4);
 			}
 
 			return InteractionResult.SUCCESS;
 		}
-		return super.use(state, world, pos, player, hand, traceResult);
+		return super.use(state, level, pos, player, hand, result);
 	}
 
-	protected int getBonemealAgeIncrease(Level worldIn) {
-		return Mth.nextInt(worldIn.random, 0, 2);
+	protected int getBonemealAgeIncrease(Level level) {
+		return Mth.nextInt(level.random, 0, 2);
 	}
 
 	@Override
-	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
-		this.grow(world, pos, state, this.getBonemealAgeIncrease(world));
+	public void performBonemeal(ServerLevel serverLevel, RandomSource random, BlockPos pos, BlockState state) {
+		this.grow(serverLevel, pos, state, this.getBonemealAgeIncrease(serverLevel));
 	}
 
-	public void grow(Level worldIn, BlockPos pos, BlockState state, int increaseBy) {
+	public void grow(Level level, BlockPos pos, BlockState state, int increaseBy) {
 		int i = this.getAge(state) + increaseBy;
 		int j = this.getMaxAge();
 		if (i > j) {
 			i = j;
 		}
 
-		worldIn.setBlock(pos, this.withAge(i), 2);
+		level.setBlock(pos, this.withAge(i), 2);
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(BlockGetter blockReader, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(BlockGetter blockGetter, BlockPos pos, BlockState state, boolean isClient) {
 		return !isMaxAge(state);
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
-		return (double) world.random.nextFloat() < 0.45D;
+	public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+		return (double) level.random.nextFloat() < 0.45D;
 	}
 
 	@Override
-	public BlockState getStateForPlacement(BlockPlaceContext useContext) {
-		return super.getStateForPlacement(useContext).setValue(AGE, 0);
+	public BlockState getStateForPlacement(BlockPlaceContext placeContext) {
+		return super.getStateForPlacement(placeContext).setValue(AGE, 0);
 	}
 
 	@Override

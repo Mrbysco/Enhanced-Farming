@@ -22,10 +22,10 @@ public class InWorldCraftingHandler {
 	public void InWorldCrafting(PistonEvent.Post event) {
 		final LevelAccessor levelAccessor = event.getLevel();
 		if (!levelAccessor.isClientSide() && event.getPistonMoveType() == PistonMoveType.EXTEND) {
-			final ServerLevel world = (ServerLevel) levelAccessor;
+			final ServerLevel serverLevel = (ServerLevel) levelAccessor;
 			final BlockPos pos = event.getFaceOffsetPos();
 			final float range = 1F;
-			List<ItemEntity> itemEntities = world.getEntitiesOfClass(ItemEntity.class,
+			List<ItemEntity> itemEntities = serverLevel.getEntitiesOfClass(ItemEntity.class,
 					new AABB(pos.getX() - 1, pos.getY() - range, pos.getZ() - range,
 							pos.getX() + range, pos.getY() + range, pos.getZ() + range));
 
@@ -33,7 +33,7 @@ public class InWorldCraftingHandler {
 				for (ItemEntity itemEntity : itemEntities) {
 					BlockPos itemPos = itemEntity.blockPosition();
 					Container inventory = new SimpleContainer(itemEntity.getItem().copy());
-					PistonRecipe recipe = world.getRecipeManager().getRecipeFor(FarmingRecipes.PISTON_CRAFTING_TYPE.get(), inventory, world).orElse(null);
+					PistonRecipe recipe = serverLevel.getRecipeManager().getRecipeFor(FarmingRecipes.PISTON_CRAFTING_TYPE.get(), inventory, serverLevel).orElse(null);
 					if (recipe != null) {
 						ItemStack stack = itemEntity.getItem();
 						int craftPer = 0;
@@ -61,8 +61,8 @@ public class InWorldCraftingHandler {
 								}
 
 								result.setCount(total);
-								ItemEntity newItemEntity = new ItemEntity(world, itemPos.getX(), itemPos.getY(), itemPos.getZ(), result);
-								world.addFreshEntity(newItemEntity);
+								ItemEntity newItemEntity = new ItemEntity(serverLevel, itemPos.getX(), itemPos.getY(), itemPos.getZ(), result);
+								serverLevel.addFreshEntity(newItemEntity);
 							} else {
 								int totalStacks = (int) Math.floor((double) total / maxResultSize);
 
@@ -76,8 +76,8 @@ public class InWorldCraftingHandler {
 										newStack.setCount(currentTotal);
 									}
 
-									ItemEntity newItemEntity = new ItemEntity(world, itemPos.getX(), itemPos.getY(), itemPos.getZ(), newStack);
-									world.addFreshEntity(newItemEntity);
+									ItemEntity newItemEntity = new ItemEntity(serverLevel, itemPos.getX(), itemPos.getY(), itemPos.getZ(), newStack);
+									serverLevel.addFreshEntity(newItemEntity);
 								}
 							}
 						}

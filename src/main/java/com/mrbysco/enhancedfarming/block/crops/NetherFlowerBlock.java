@@ -71,7 +71,7 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public PlantType getPlantType(BlockGetter world, BlockPos pos) {
+	public PlantType getPlantType(BlockGetter blockGetter, BlockPos pos) {
 		return PlantType.NETHER;
 	}
 
@@ -89,7 +89,7 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 		}
 	}
 
-	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext context) {
 		return SHAPE_BY_AGE[state.getValue(AGE)];
 	}
 
@@ -107,26 +107,26 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(BlockGetter blockGetter, BlockPos pos, BlockState state, boolean isClient) {
 		return !this.isMaxAge(state);
 	}
 
 	@Override
-	public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+	public void performBonemeal(ServerLevel serverLevel, RandomSource random, BlockPos pos, BlockState state) {
 		int i;
 		int j = this.getMaxAge();
 
 		if (FarmingConfig.COMMON.instantGrow.get()) {
 			i = getMaxAge();
 		} else {
-			i = this.getAge(state) + this.getBonemealAgeIncrease(level);
+			i = this.getAge(state) + this.getBonemealAgeIncrease(serverLevel);
 		}
 
 		if (i > j) {
 			i = j;
 		}
 
-		level.setBlock(pos, this.getStateForAge(i), 2);
+		serverLevel.setBlock(pos, this.getStateForAge(i), 2);
 	}
 
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {

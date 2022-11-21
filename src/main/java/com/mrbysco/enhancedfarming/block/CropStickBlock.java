@@ -38,24 +38,24 @@ public class CropStickBlock extends BushBlock {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState p_220053_1_, BlockGetter p_220053_2_, BlockPos p_220053_3_, CollisionContext p_220053_4_) {
+	public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext context) {
 		return CROPSTICK_SHAPE;
 	}
 
 	@Override
-	public PlantType getPlantType(BlockGetter world, BlockPos pos) {
+	public PlantType getPlantType(BlockGetter blockGetter, BlockPos pos) {
 		return PlantType.CROP;
 	}
 
 	@Override
-	public BlockState getPlant(BlockGetter world, BlockPos pos) {
-		BlockState state = world.getBlockState(pos);
+	public BlockState getPlant(BlockGetter blockGetter, BlockPos pos) {
+		BlockState state = blockGetter.getBlockState(pos);
 		if (state.getBlock() != this) return defaultBlockState();
 		return state;
 	}
 
 	@Override
-	protected boolean mayPlaceOn(BlockState state, BlockGetter reader, BlockPos pos) {
+	protected boolean mayPlaceOn(BlockState state, BlockGetter blockGetter, BlockPos pos) {
 		return state.is(Blocks.FARMLAND);
 	}
 

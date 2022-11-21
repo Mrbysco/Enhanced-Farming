@@ -41,12 +41,12 @@ public class ScarecrowBlock extends BaseEntityBlock implements SimpleWaterlogged
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext selectionContext) {
+	public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext selectionContext) {
 		return SCARECROW_SHAPE;
 	}
 
 	@Override
-	public RenderShape getRenderShape(BlockState p_49232_) {
+	public RenderShape getRenderShape(BlockState state) {
 		return RenderShape.MODEL;
 	}
 
@@ -92,9 +92,9 @@ public class ScarecrowBlock extends BaseEntityBlock implements SimpleWaterlogged
 
 	@Nullable
 	@Override
-	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		BlockPos blockpos = context.getClickedPos();
-		FluidState fluidstate = context.getLevel().getFluidState(blockpos);
-		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+	public BlockState getStateForPlacement(BlockPlaceContext placeContext) {
+		BlockPos blockpos = placeContext.getClickedPos();
+		FluidState fluidstate = placeContext.getLevel().getFluidState(blockpos);
+		return this.defaultBlockState().setValue(FACING, placeContext.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 }

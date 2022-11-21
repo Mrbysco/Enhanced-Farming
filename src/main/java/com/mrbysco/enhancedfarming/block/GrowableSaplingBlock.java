@@ -52,24 +52,25 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 	}
 
 	@Override
-	public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-		if (world.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0) {
-			if (!world.isAreaLoaded(pos, 1))
+	public void randomTick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource random) {
+		if (serverLevel.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0) {
+			if (!serverLevel.isAreaLoaded(pos, 1))
 				return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-			this.advanceTree(world, pos, state, random);
+			this.advanceTree(serverLevel, pos, state, random);
 		}
 	}
 
-	public void advanceTree(ServerLevel world, BlockPos pos, BlockState state, RandomSource random) {
+	public void advanceTree(ServerLevel serverLevel, BlockPos pos, BlockState state, RandomSource random) {
 		if (!isMature(state)) {
 			if (FarmingConfig.COMMON.instantGrow.get()) {
-				world.setBlock(pos, state.setValue(STAGE, getMatureStage()), 4);
+				serverLevel.setBlock(pos, state.setValue(STAGE, getMatureStage()), 4);
 			} else {
-				world.setBlock(pos, state.cycle(STAGE), 4);
+				serverLevel.setBlock(pos, state.cycle(STAGE), 4);
 			}
 		} else {
-			if (!net.minecraftforge.event.ForgeEventFactory.saplingGrowTree(world, random, pos)) return;
-			this.treeGrower.growTree(world, world.getChunkSource().getGenerator(), pos, state, random);
+			net.minecraftforge.event.level.SaplingGrowTreeEvent event = net.minecraftforge.event.ForgeEventFactory.blockGrowFeature(serverLevel, random, pos, null);
+			if (event.getResult().equals(net.minecraftforge.eventbus.api.Event.Result.DENY)) return;
+			this.treeGrower.growTree(serverLevel, serverLevel.getChunkSource().getGenerator(), pos, state, random);
 		}
 	}
 
@@ -79,15 +80,15 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 	}
 
 	@Override
-	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
-		return (double) world.random.nextFloat() < 0.45D;
+	public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+		return (double) level.random.nextFloat() < 0.45D;
 	}
 
-	protected int getBonemealAgeIncrease(Level worldIn) {
-		return Mth.nextInt(worldIn.random, 2, 5) / 4;
+	protected int getBonemealAgeIncrease(Level level) {
+		return Mth.nextInt(level.random, 2, 5) / 4;
 	}
 
-	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
+	public void performBonemeal(ServerLevel serverLevel, RandomSource random, BlockPos pos, BlockState state) {
 		if (!isMature(state)) {
 			int i;
 			int j = this.getMatureStage();
@@ -95,7 +96,7 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 			if (FarmingConfig.COMMON.instantGrow.get()) {
 				i = getMatureStage();
 			} else {
-				i = this.getStage(state) + this.getBonemealAgeIncrease(world);
+				i = this.getStage(state) + this.getBonemealAgeIncrease(serverLevel);
 			}
 
 			if (i > j) {
@@ -103,12 +104,12 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 			}
 
 			if (FarmingConfig.COMMON.instantGrow.get()) {
-				world.setBlock(pos, state.setValue(STAGE, getMatureStage()), 4);
+				serverLevel.setBlock(pos, state.setValue(STAGE, getMatureStage()), 4);
 			} else {
-				world.setBlock(pos, state.setValue(STAGE, i), 4);
+				serverLevel.setBlock(pos, state.setValue(STAGE, i), 4);
 			}
 		} else {
-			this.advanceTree(world, pos, state, random);
+			this.advanceTree(serverLevel, pos, state, random);
 		}
 	}
 

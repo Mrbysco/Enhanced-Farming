@@ -26,14 +26,14 @@ public class ContainerFoodItem extends SpecialCustomFoodItem {
 		this(properties, useTime, false, false, false, UseAnim.EAT);
 	}
 
-	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity) {
-		if (!worldIn.isClientSide && cure) livingEntity.curePotionEffects(stack);
+	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
+		if (!level.isClientSide && cure) livingEntity.curePotionEffects(stack);
 		if (this.isEdible()) {
 			if (directheal) {
 				livingEntity.heal(this.getFoodProperties().getNutrition());
-				stack = eatStack(livingEntity, worldIn, stack, false);
+				stack = eatStack(livingEntity, level, stack, false);
 			} else {
-				stack = eatStack(livingEntity, worldIn, stack, true);
+				stack = eatStack(livingEntity, level, stack, true);
 			}
 			stack = shrinkStack(livingEntity, stack);
 		}
