@@ -40,7 +40,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "enhancedfarming:avocado_sapling",
+          "Name": "enhancedfarming:pear_sapling",
           "Properties": {
             "stage": "0"
           }

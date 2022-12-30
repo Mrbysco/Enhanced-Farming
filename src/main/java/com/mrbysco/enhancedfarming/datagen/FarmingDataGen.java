@@ -127,31 +127,31 @@ public class FarmingDataGen {
 		final Holder<ConfiguredFeature<?, ?>> appleTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(appleTreeFeatureKey);
 		final PlacedFeature appleTreeFeature = new PlacedFeature(
 				appleTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
+				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.APPLE_SAPLING.get()));
 
 		final ResourceKey<ConfiguredFeature<?, ?>> lemonTreeFeatureKey = FarmingVegetation.LEMON_FRUIT_VEGETATION.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
 		final Holder<ConfiguredFeature<?, ?>> lemonTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(lemonTreeFeatureKey);
 		final PlacedFeature lemonTreeFeature = new PlacedFeature(
 				lemonTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
+				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.LEMON_SAPLING.get()));
 
 		final ResourceKey<ConfiguredFeature<?, ?>> orangeTreeFeatureKey = FarmingVegetation.ORANGE_FRUIT_VEGETATION.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
 		final Holder<ConfiguredFeature<?, ?>> orangeTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(orangeTreeFeatureKey);
 		final PlacedFeature orangeTreeFeature = new PlacedFeature(
 				orangeTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
+				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.ORANGE_SAPLING.get()));
 
 		final ResourceKey<ConfiguredFeature<?, ?>> cherryTreeFeatureKey = FarmingVegetation.CHERRY_FRUIT_VEGETATION.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
 		final Holder<ConfiguredFeature<?, ?>> cherryTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(cherryTreeFeatureKey);
 		final PlacedFeature cherryTreeFeature = new PlacedFeature(
 				cherryTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
+				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.CHERRY_SAPLING.get()));
 
 		final ResourceKey<ConfiguredFeature<?, ?>> pearTreeFeatureKey = FarmingVegetation.PEAR_FRUIT_VEGETATION.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
 		final Holder<ConfiguredFeature<?, ?>> pearTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(pearTreeFeatureKey);
 		final PlacedFeature pearTreeFeature = new PlacedFeature(
 				pearTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
+				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.PEAR_SAPLING.get()));
 
 		final ResourceKey<ConfiguredFeature<?, ?>> avocadoTreeFeatureKey = FarmingFeatureConfigs.AVOCADO.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
 		final Holder<ConfiguredFeature<?, ?>> avocadoTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(avocadoTreeFeatureKey);
@@ -163,19 +163,19 @@ public class FarmingDataGen {
 		final Holder<ConfiguredFeature<?, ?>> mangoTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(mangoTreeFeatureKey);
 		final PlacedFeature mangoTreeFeature = new PlacedFeature(
 				mangoTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
+				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.MANGO_SAPLING.get()));
 
 		final ResourceKey<ConfiguredFeature<?, ?>> bananaTreeFeatureKey = FarmingFeatureConfigs.BANANA.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
 		final Holder<ConfiguredFeature<?, ?>> bananaTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(bananaTreeFeatureKey);
 		final PlacedFeature bananaTreeFeature = new PlacedFeature(
 				bananaTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
+				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.BANANA_SAPLING.get()));
 
 		final ResourceKey<ConfiguredFeature<?, ?>> oliveTreeFeatureKey = FarmingFeatureConfigs.OLIVE.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
 		final Holder<ConfiguredFeature<?, ?>> oliveTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(oliveTreeFeatureKey);
 		final PlacedFeature oliveTreeFeature = new PlacedFeature(
 				oliveTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
+				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.OLIVE_SAPLING.get()));
 
 		final ResourceKey<ConfiguredFeature<?, ?>> netherFlowerTreeFeatureKey = FarmingFeatureConfigs.PATCH_NETHER_FLOWER.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
 		final Holder<ConfiguredFeature<?, ?>> netherFlowerTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(netherFlowerTreeFeatureKey);
