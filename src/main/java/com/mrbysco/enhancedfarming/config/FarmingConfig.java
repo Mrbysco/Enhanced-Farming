@@ -23,8 +23,6 @@ public class FarmingConfig {
 		public final BooleanValue seedsFromGrass;
 		public final BooleanValue saplingsFromGrass;
 
-		public final BooleanValue generateNetherFlower;
-
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.comment("General settings")
 					.push("general");
@@ -72,15 +70,6 @@ public class FarmingConfig {
 			saplingsFromGrass = builder
 					.comment("When enabled makes seeds drop from grass [Default: false]")
 					.define("saplingsFromGrass", false);
-
-			builder.pop();
-
-			builder.comment("Crop settings")
-					.push("crop");
-
-			generateNetherFlower = builder
-					.comment("Enable generation of wild Nether Flower crops in the nether [Default: true]")
-					.define("generateNetherFlower", true);
 
 			builder.pop();
 		}

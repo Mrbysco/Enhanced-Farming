@@ -1,10 +1,6 @@
 package com.mrbysco.enhancedfarming.datagen;
 
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.JsonOps;
 import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.block.FruitLeavesBlock;
 import com.mrbysco.enhancedfarming.block.GrowableSaplingBlock;
@@ -14,49 +10,35 @@ import com.mrbysco.enhancedfarming.init.FarmingLootTables;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.lootmodifiers.GrassDropModifier;
 import com.mrbysco.enhancedfarming.world.feature.FarmingFeatureConfigs;
+import com.mrbysco.enhancedfarming.world.feature.FarmingTreePlacements;
 import com.mrbysco.enhancedfarming.world.feature.FarmingVegetation;
+import com.mrbysco.enhancedfarming.world.feature.FarmingVegetationPlacements;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLoot;
-import net.minecraft.data.loot.GiftLoot;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.worldgen.placement.NetherPlacements;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.data.registries.VanillaRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.LootTable.Builder;
 import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -66,26 +48,25 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
-import net.minecraftforge.common.data.JsonCodecProvider;
 import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ForgeBiomeModifiers.AddFeaturesBiomeModifier;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class FarmingDataGen {
@@ -103,198 +84,64 @@ public class FarmingDataGen {
 
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
-		final RegistryOps<JsonElement> ops = RegistryOps.create(JsonOps.INSTANCE, RegistryAccess.builtinCopy());
 		DataGenerator generator = event.getGenerator();
+		PackOutput packOutput = generator.getPackOutput();
 		ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-		generator.addProvider(event.includeServer(), new FarmingLoot(generator));
-		generator.addProvider(event.includeServer(), new FarmingLootModifiers(generator));
-//			generator.addProvider(new FarmingRecipes(generator));
+		generator.addProvider(event.includeServer(), new FarmingLoot(packOutput));
+		generator.addProvider(event.includeServer(), new FarmingLootModifiers(packOutput));
+//			generator.addProvider(new FarmingRecipes(packOutput));
 
-		generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
-				generator, existingFileHelper, Reference.MOD_ID, ops, Registry.PLACED_FEATURE_REGISTRY, getConfiguredFeatures(ops)));
+//		generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
+//				packOutput, existingFileHelper, Reference.MOD_ID, ops, Registry.PLACED_FEATURE_REGISTRY, getConfiguredFeatures(ops)));
+//
+//		generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
+//				packOutput, existingFileHelper, Reference.MOD_ID, ops, ForgeRegistries.Keys.BIOME_MODIFIERS, getBiomeModifiers(ops)));
 
-		generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
-				generator, existingFileHelper, Reference.MOD_ID, ops, ForgeRegistries.Keys.BIOME_MODIFIERS, getBiomeModifiers(ops)));
+		generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(
+				packOutput, CompletableFuture.supplyAsync(FarmingDataGen::getProvider), Set.of(Reference.MOD_ID)));
 
-		generator.addProvider(event.includeClient(), new Language(generator));
-		generator.addProvider(event.includeClient(), new FarmingBlockStates(generator, existingFileHelper));
-		generator.addProvider(event.includeClient(), new FarmingItemModels(generator, existingFileHelper));
+		generator.addProvider(event.includeClient(), new Language(packOutput));
+		generator.addProvider(event.includeClient(), new FarmingBlockStates(packOutput, existingFileHelper));
+		generator.addProvider(event.includeClient(), new FarmingItemModels(packOutput, existingFileHelper));
 	}
 
-	public static Map<ResourceLocation, PlacedFeature> getConfiguredFeatures(RegistryOps<JsonElement> ops) {
-		final ResourceKey<ConfiguredFeature<?, ?>> appleTreeFeatureKey = FarmingVegetation.APPLE_FRUIT_VEGETATION.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> appleTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(appleTreeFeatureKey);
-		final PlacedFeature appleTreeFeature = new PlacedFeature(
-				appleTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
-
-		final ResourceKey<ConfiguredFeature<?, ?>> lemonTreeFeatureKey = FarmingVegetation.LEMON_FRUIT_VEGETATION.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> lemonTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(lemonTreeFeatureKey);
-		final PlacedFeature lemonTreeFeature = new PlacedFeature(
-				lemonTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
-
-		final ResourceKey<ConfiguredFeature<?, ?>> orangeTreeFeatureKey = FarmingVegetation.ORANGE_FRUIT_VEGETATION.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> orangeTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(orangeTreeFeatureKey);
-		final PlacedFeature orangeTreeFeature = new PlacedFeature(
-				orangeTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
-
-		final ResourceKey<ConfiguredFeature<?, ?>> cherryTreeFeatureKey = FarmingVegetation.CHERRY_FRUIT_VEGETATION.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> cherryTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(cherryTreeFeatureKey);
-		final PlacedFeature cherryTreeFeature = new PlacedFeature(
-				cherryTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
-
-		final ResourceKey<ConfiguredFeature<?, ?>> pearTreeFeatureKey = FarmingVegetation.PEAR_FRUIT_VEGETATION.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> pearTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(pearTreeFeatureKey);
-		final PlacedFeature pearTreeFeature = new PlacedFeature(
-				pearTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
-
-		final ResourceKey<ConfiguredFeature<?, ?>> avocadoTreeFeatureKey = FarmingFeatureConfigs.AVOCADO.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> avocadoTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(avocadoTreeFeatureKey);
-		final PlacedFeature avocadoTreeFeature = new PlacedFeature(
-				avocadoTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
-
-		final ResourceKey<ConfiguredFeature<?, ?>> mangoTreeFeatureKey = FarmingFeatureConfigs.MANGO.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> mangoTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(mangoTreeFeatureKey);
-		final PlacedFeature mangoTreeFeature = new PlacedFeature(
-				mangoTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
-
-		final ResourceKey<ConfiguredFeature<?, ?>> bananaTreeFeatureKey = FarmingFeatureConfigs.BANANA.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> bananaTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(bananaTreeFeatureKey);
-		final PlacedFeature bananaTreeFeature = new PlacedFeature(
-				bananaTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
-
-		final ResourceKey<ConfiguredFeature<?, ?>> oliveTreeFeatureKey = FarmingFeatureConfigs.OLIVE.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> oliveTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(oliveTreeFeatureKey);
-		final PlacedFeature oliveTreeFeature = new PlacedFeature(
-				oliveTreeFeatureHolder,
-				fruitTreePlacement(4, PlacementUtils.countExtra(6, 0.1F, 1), FarmingRegistry.AVOCADO_SAPLING.get()));
-
-		final ResourceKey<ConfiguredFeature<?, ?>> netherFlowerTreeFeatureKey = FarmingFeatureConfigs.PATCH_NETHER_FLOWER.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
-		final Holder<ConfiguredFeature<?, ?>> netherFlowerTreeFeatureHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(netherFlowerTreeFeatureKey);
-		final PlacedFeature netherFlowerTreeFeature = new PlacedFeature(
-				netherFlowerTreeFeatureHolder,
-				NetherPlacements.FIRE_PLACEMENT);
-
-
-		return Map.of(
-				new ResourceLocation(Reference.MOD_ID, "patch_nether_flower"), netherFlowerTreeFeature,
-				new ResourceLocation(Reference.MOD_ID, "apple"), appleTreeFeature,
-				new ResourceLocation(Reference.MOD_ID, "lemon"), lemonTreeFeature,
-				new ResourceLocation(Reference.MOD_ID, "orange"), orangeTreeFeature,
-				new ResourceLocation(Reference.MOD_ID, "cherry"), cherryTreeFeature,
-				new ResourceLocation(Reference.MOD_ID, "pear"), pearTreeFeature,
-				new ResourceLocation(Reference.MOD_ID, "avocado"), avocadoTreeFeature,
-				new ResourceLocation(Reference.MOD_ID, "mango"), mangoTreeFeature,
-				new ResourceLocation(Reference.MOD_ID, "banana"), bananaTreeFeature,
-				new ResourceLocation(Reference.MOD_ID, "olive"), oliveTreeFeature
-		);
-	}
-
-	private static ImmutableList.Builder<PlacementModifier> treePlacementBase(PlacementModifier modifier) {
-		return ImmutableList.<PlacementModifier>builder().add(modifier).add(InSquarePlacement.spread()).add(VegetationPlacements.TREE_THRESHOLD).add(PlacementUtils.HEIGHTMAP_OCEAN_FLOOR).add(BiomeFilter.biome());
-	}
-
-	private static List<PlacementModifier> fruitTreePlacement(int rarity, PlacementModifier modifier, Block block) {
-		return treePlacementBase(modifier).add(RarityFilter.onAverageOnceEvery(rarity))
-				.add(BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(block.defaultBlockState(), BlockPos.ZERO))).add(CountPlacement.of(1)).build();
-	}
-
-	public static Map<ResourceLocation, BiomeModifier> getBiomeModifiers(RegistryOps<JsonElement> ops) {
-		final HolderSet.Named<Biome> badlandsTag = new HolderSet.Named<>(ops.registry(Registry.BIOME_REGISTRY).get(), BiomeTags.IS_NETHER);
-		final BiomeModifier addNetherFlowerPatch = new AddFeaturesBiomeModifier(
-				badlandsTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "patch_nether_flower")))),
-				Decoration.UNDERGROUND_DECORATION);
-
-		final HolderSet.Named<Biome> savannaTag = new HolderSet.Named<>(ops.registry(Registry.BIOME_REGISTRY).get(), BiomeTags.IS_SAVANNA);
-		final BiomeModifier addOliveTree = new AddFeaturesBiomeModifier(
-				savannaTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "olive")))),
-				Decoration.VEGETAL_DECORATION);
-
-		final HolderSet.Named<Biome> jungleTag = new HolderSet.Named<>(ops.registry(Registry.BIOME_REGISTRY).get(), BiomeTags.IS_JUNGLE);
-		final BiomeModifier addBananaTree = new AddFeaturesBiomeModifier(
-				jungleTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "banana")))),
-				Decoration.VEGETAL_DECORATION);
-		final HolderSet.Named<Biome> forestTag = new HolderSet.Named<>(ops.registry(Registry.BIOME_REGISTRY).get(), BiomeTags.IS_FOREST);
-		final BiomeModifier addAppleTree = new AddFeaturesBiomeModifier(
-				forestTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "apple")))),
-				Decoration.VEGETAL_DECORATION);
-		final BiomeModifier addLemonTree = new AddFeaturesBiomeModifier(
-				forestTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "lemon")))),
-				Decoration.VEGETAL_DECORATION);
-		final BiomeModifier addOrangeTree = new AddFeaturesBiomeModifier(
-				forestTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "orange")))),
-				Decoration.VEGETAL_DECORATION);
-		final BiomeModifier addCherryTree = new AddFeaturesBiomeModifier(
-				forestTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "cherry")))),
-				Decoration.VEGETAL_DECORATION);
-		final BiomeModifier addPearTree = new AddFeaturesBiomeModifier(
-				forestTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "pear")))),
-				Decoration.VEGETAL_DECORATION);
-		final BiomeModifier addAvocadoTree = new AddFeaturesBiomeModifier(
-				forestTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "avocado")))),
-				Decoration.VEGETAL_DECORATION);
-		final BiomeModifier addMangoTree = new AddFeaturesBiomeModifier(
-				forestTag,
-				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
-						new ResourceLocation(Reference.MOD_ID, "mango")))),
-				Decoration.VEGETAL_DECORATION);
-
-		return Map.of(
-				ADD_NETHER_FLOWER, addNetherFlowerPatch,
-				ADD_OLIVE_TREE, addOliveTree,
-				ADD_BANANA_TREE, addBananaTree,
-				ADD_APPLE_TREE, addAppleTree,
-				ADD_LEMON_TREE, addLemonTree,
-				ADD_ORANGE_TREE, addOrangeTree,
-				ADD_CHERRY_TREE, addCherryTree,
-				ADD_PEAR_TREE, addPearTree,
-				ADD_AVOCADO_TREE, addAvocadoTree,
-				ADD_MANGO_TREE, addMangoTree
-		);
+	private static HolderLookup.Provider getProvider() {
+		final RegistrySetBuilder registryBuilder = new RegistrySetBuilder();
+		registryBuilder.add(Registries.CONFIGURED_FEATURE, (context) -> {
+			FarmingFeatureConfigs.bootstrap(context);
+			FarmingVegetation.bootstrap(context);
+		});
+		registryBuilder.add(Registries.PLACED_FEATURE, (context) -> {
+			FarmingTreePlacements.bootstrap(context);
+			FarmingVegetationPlacements.bootstrap(context);
+		});
+		registryBuilder.add(ForgeRegistries.Keys.BIOME_MODIFIERS, FarmingBiomeModifiers::bootstrap);
+		// We need the BIOME registry to be present so we can use a biome tag, doesn't matter that it's empty
+		registryBuilder.add(Registries.BIOME, context -> {
+		});
+		RegistryAccess.Frozen regAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
+		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup());
 	}
 
 	private static class FarmingLoot extends LootTableProvider {
-		public FarmingLoot(DataGenerator gen) {
-			super(gen);
+
+		public FarmingLoot(PackOutput packOutput) {
+			super(packOutput, Set.of(), List.of(new SubProviderEntry(FarmingBlocks::new, LootContextParamSets.BLOCK),
+					new SubProviderEntry(FarmingRakeDrops::new, LootContextParamSets.GIFT)));
 		}
 
-		@Override
-		protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
-			return ImmutableList.of(Pair.of(FarmingBlocks::new, LootContextParamSets.BLOCK), Pair.of(FarmingRakeDrops::new, LootContextParamSets.GIFT));
-		}
+		private static class FarmingBlocks extends BlockLootSubProvider {
 
-		private static class FarmingBlocks extends BlockLoot {
+			protected FarmingBlocks() {
+				super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+			}
+
 			private final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
 			private final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
 
 			@Override
-			protected void addTables() {
+			protected void generate() {
 				this.dropSelf(FarmingRegistry.APPLE_SAPLING.get());
 				this.dropSelf(FarmingRegistry.LEMON_SAPLING.get());
 				this.dropSelf(FarmingRegistry.ORANGE_SAPLING.get());
@@ -345,9 +192,9 @@ public class FarmingDataGen {
 		}
 
 
-		private static class FarmingRakeDrops extends GiftLoot {
+		private static class FarmingRakeDrops implements LootTableSubProvider {
 			@Override
-			public void accept(BiConsumer<ResourceLocation, Builder> consumer) {
+			public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
 				consumer.accept(FarmingLootTables.GAMEPLAY_RAKE_DROPS,
 						LootTable.lootTable()
 								.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
@@ -383,24 +230,24 @@ public class FarmingDataGen {
 
 
 	private static class FarmingRecipes extends RecipeProvider {
-		public FarmingRecipes(DataGenerator gen) {
-			super(gen);
+		public FarmingRecipes(PackOutput packOutput) {
+			super(packOutput);
 		}
 
 		@Override
-		protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+		protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 
 		}
 
 		@Override
-		protected void saveAdvancement(CachedOutput cache, JsonObject advancementJson, Path path) {
-			// Nope
+		protected @Nullable CompletableFuture<?> saveAdvancement(CachedOutput output, FinishedRecipe finishedRecipe, JsonObject advancementJson) {
+			return null;
 		}
 	}
 
 	private static class FarmingLanguage extends LanguageProvider {
-		public FarmingLanguage(DataGenerator gen) {
-			super(gen, Reference.MOD_ID, "en_us");
+		public FarmingLanguage(PackOutput packOutput) {
+			super(packOutput, Reference.MOD_ID, "en_us");
 		}
 
 		@Override
@@ -410,8 +257,8 @@ public class FarmingDataGen {
 	}
 
 	private static class FarmingItemModels extends ItemModelProvider {
-		public FarmingItemModels(DataGenerator gen, ExistingFileHelper helper) {
-			super(gen, Reference.MOD_ID, helper);
+		public FarmingItemModels(PackOutput packOutput, ExistingFileHelper helper) {
+			super(packOutput, Reference.MOD_ID, helper);
 		}
 
 		@Override
@@ -443,14 +290,14 @@ public class FarmingDataGen {
 	}
 
 	private static class Language extends LanguageProvider {
-		public Language(DataGenerator gen) {
-			super(gen, Reference.MOD_ID, "en_us");
+		public Language(PackOutput packOutput) {
+			super(packOutput, Reference.MOD_ID, "en_us");
 		}
 
 		@Override
 		protected void addTranslations() {
 			add("enhancedfarming.config.title", "Enhanced Farming Config");
-			add("itemGroup.enhancedfarming", "Enhanced Farming");
+			add("itemGroup.enhancedfarming.tab", "Enhanced Farming");
 
 			addBlocks();
 			addItems();
@@ -613,8 +460,8 @@ public class FarmingDataGen {
 
 	private static class FarmingBlockStates extends BlockStateProvider {
 
-		public FarmingBlockStates(DataGenerator gen, ExistingFileHelper helper) {
-			super(gen, Reference.MOD_ID, helper);
+		public FarmingBlockStates(PackOutput packOutput, ExistingFileHelper helper) {
+			super(packOutput, Reference.MOD_ID, helper);
 		}
 
 		@Override
@@ -722,8 +569,8 @@ public class FarmingDataGen {
 	}
 
 	public static class FarmingLootModifiers extends GlobalLootModifierProvider {
-		public FarmingLootModifiers(DataGenerator generator) {
-			super(generator, Reference.MOD_ID);
+		public FarmingLootModifiers(PackOutput packOutput) {
+			super(packOutput, Reference.MOD_ID);
 		}
 
 		@Override

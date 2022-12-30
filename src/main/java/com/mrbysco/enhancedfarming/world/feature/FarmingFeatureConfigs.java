@@ -3,15 +3,15 @@ package com.mrbysco.enhancedfarming.world.feature;
 import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.block.crops.NetherFlowerBlock;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
-import net.minecraft.core.Holder;
+import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.data.worldgen.features.TreeFeatures;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlac
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
+import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
@@ -28,63 +29,58 @@ import java.util.List;
 import java.util.OptionalInt;
 
 public class FarmingFeatureConfigs {
-	public static void initialize() {
-	}
 
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> APPLE = FeatureUtils.register(Reference.MOD_PREFIX + "apple", FarmingFeatures.FRUIT_TREE.get(), getApple().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> APPLE_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "apple_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getApple().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> APPLE_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "apple_bees_002", FarmingFeatures.FRUIT_TREE.get(), getApple().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> APPLE_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "apple_bees_005", FarmingFeatures.FRUIT_TREE.get(), getApple().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_APPLE = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_apple", FarmingFeatures.FRUIT_TREE.get(), getFancyApple().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_APPLE_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_apple_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getFancyApple().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_APPLE_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_apple_bees_002", FarmingFeatures.FRUIT_TREE.get(), getFancyApple().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_APPLE_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_apple_bees_005", FarmingFeatures.FRUIT_TREE.get(), getFancyApple().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "apple").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "apple_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "apple_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "apple_bees_005").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_APPLE = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_apple").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_APPLE_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_apple_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_APPLE_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_apple_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_APPLE_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_apple_bees_005").toString());
 
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> LEMON = FeatureUtils.register(Reference.MOD_PREFIX + "lemon", FarmingFeatures.FRUIT_TREE.get(), getLemon().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> LEMON_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "lemon_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getLemon().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> LEMON_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "lemon_bees_002", FarmingFeatures.FRUIT_TREE.get(), getLemon().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> LEMON_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "lemon_bees_005", FarmingFeatures.FRUIT_TREE.get(), getLemon().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_LEMON = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_lemon", FarmingFeatures.FRUIT_TREE.get(), getFancyLemon().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_LEMON_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_lemon_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getFancyLemon().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_LEMON_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_lemon_bees_002", FarmingFeatures.FRUIT_TREE.get(), getFancyLemon().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_LEMON_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_lemon_bees_005", FarmingFeatures.FRUIT_TREE.get(), getFancyLemon().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> LEMON = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "lemon").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> LEMON_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "lemon_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> LEMON_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "lemon_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> LEMON_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "lemon_bees_005").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_LEMON = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_lemon").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_LEMON_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_lemon_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_LEMON_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_lemon_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_LEMON_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_lemon_bees_005").toString());
 
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> ORANGE = FeatureUtils.register(Reference.MOD_PREFIX + "orange", FarmingFeatures.FRUIT_TREE.get(), getOrange().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> ORANGE_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "orange_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getOrange().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> ORANGE_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "orange_bees_002", FarmingFeatures.FRUIT_TREE.get(), getOrange().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> ORANGE_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "orange_bees_005", FarmingFeatures.FRUIT_TREE.get(), getOrange().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_ORANGE = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_orange", FarmingFeatures.FRUIT_TREE.get(), getFancyOrange().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_ORANGE_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_orange_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getFancyOrange().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_ORANGE_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_orange_bees_002", FarmingFeatures.FRUIT_TREE.get(), getFancyOrange().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_ORANGE_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_orange_bees_005", FarmingFeatures.FRUIT_TREE.get(), getFancyOrange().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "orange").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "orange_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "orange_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "orange_bees_005").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_ORANGE = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_orange").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_ORANGE_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_orange_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_ORANGE_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_orange_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_ORANGE_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_orange_bees_005").toString());
 
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> CHERRY = FeatureUtils.register(Reference.MOD_PREFIX + "cherry", FarmingFeatures.FRUIT_TREE.get(), getCherry().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> CHERRY_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "cherry_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getCherry().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> CHERRY_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "cherry_bees_002", FarmingFeatures.FRUIT_TREE.get(), getCherry().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> CHERRY_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "cherry_bees_005", FarmingFeatures.FRUIT_TREE.get(), getCherry().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_CHERRY = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_cherry", FarmingFeatures.FRUIT_TREE.get(), getFancyCherry().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_CHERRY_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_cherry_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getFancyCherry().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_CHERRY_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_cherry_bees_002", FarmingFeatures.FRUIT_TREE.get(), getFancyCherry().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_CHERRY_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_cherry_bees_005", FarmingFeatures.FRUIT_TREE.get(), getFancyCherry().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> CHERRY = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "cherry").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> CHERRY_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "cherry_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> CHERRY_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "cherry_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> CHERRY_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "cherry_bees_005").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_CHERRY = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_cherry").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_CHERRY_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_cherry_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_CHERRY_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_cherry_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_CHERRY_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_cherry_bees_005").toString());
 
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> PEAR = FeatureUtils.register(Reference.MOD_PREFIX + "pear", FarmingFeatures.FRUIT_TREE.get(), getPear().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> PEAR_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "pear_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getPear().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> PEAR_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "pear_bees_002", FarmingFeatures.FRUIT_TREE.get(), getPear().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> PEAR_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "pear_bees_005", FarmingFeatures.FRUIT_TREE.get(), getPear().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_PEAR = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_pear", FarmingFeatures.FRUIT_TREE.get(), getFancyPear().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_PEAR_BEES_0002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_pear_bees_0002", FarmingFeatures.FRUIT_TREE.get(), getFancyPear().decorators(List.of(TreeFeatures.BEEHIVE_0002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_PEAR_BEES_002 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_pear_bees_002", FarmingFeatures.FRUIT_TREE.get(), getFancyPear().decorators(List.of(TreeFeatures.BEEHIVE_002)).build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> FANCY_PEAR_BEES_005 = FeatureUtils.register(Reference.MOD_PREFIX + "fancy_pear_bees_005", FarmingFeatures.FRUIT_TREE.get(), getFancyPear().decorators(List.of(TreeFeatures.BEEHIVE_005)).build());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> PEAR = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "pear").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> PEAR_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "pear_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> PEAR_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "pear_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> PEAR_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "pear_bees_005").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_PEAR = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_pear").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_PEAR_BEES_0002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_pear_bees_0002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_PEAR_BEES_002 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_pear_bees_002").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_PEAR_BEES_005 = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_pear_bees_005").toString());
 
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> BANANA = FeatureUtils.register(Reference.MOD_PREFIX + "banana", FarmingFeatures.FRUIT_TREE.get(), getBanana().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> AVOCADO = FeatureUtils.register(Reference.MOD_PREFIX + "avocado", FarmingFeatures.FRUIT_TREE.get(), getAvocado().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> MANGO = FeatureUtils.register(Reference.MOD_PREFIX + "mango", FarmingFeatures.FRUIT_TREE.get(), getMango().build());
-	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> OLIVE = FeatureUtils.register(Reference.MOD_PREFIX + "olive", FarmingFeatures.FRUIT_TREE.get(), getOlive().build());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> BANANA = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "banana").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> AVOCADO = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "avocado").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> MANGO = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "mango").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> OLIVE = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "olive").toString());
 
-	public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_NETHER_FLOWER = FeatureUtils.register(Reference.MOD_PREFIX + "patch_nether_flower",
-			Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
-					new SimpleBlockConfiguration(BlockStateProvider.simple(States.NETHER_FLOWER_CROP)),
-					List.of(Blocks.SOUL_SAND), 64));
+	public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_NETHER_FLOWER = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "patch_nether_flower").toString());
 
 
 	private static TreeConfiguration.TreeConfigurationBuilder getApple() {
@@ -215,5 +211,66 @@ public class FarmingFeatureConfigs {
 
 		protected static final BlockState SOUL_SAND = Blocks.SOUL_SAND.defaultBlockState();
 		protected static final BlockState NETHER_FLOWER_CROP = FarmingRegistry.NETHER_FLOWER_CROP.get().defaultBlockState().setValue(NetherFlowerBlock.AGE, Integer.valueOf(5));
+	}
+
+	public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+		BeehiveDecorator BEEHIVE_0002 = new BeehiveDecorator(0.002F);
+		BeehiveDecorator BEEHIVE_002 = new BeehiveDecorator(0.02F);
+		BeehiveDecorator BEEHIVE_005 = new BeehiveDecorator(0.05F);
+
+		FeatureUtils.register(context, APPLE, FarmingFeatures.FRUIT_TREE.get(), getApple().build());
+		FeatureUtils.register(context, APPLE_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getApple().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, APPLE_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getApple().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, APPLE_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getApple().decorators(List.of(BEEHIVE_005)).build());
+		FeatureUtils.register(context, FANCY_APPLE, FarmingFeatures.FRUIT_TREE.get(), getFancyApple().build());
+		FeatureUtils.register(context, FANCY_APPLE_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getFancyApple().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, FANCY_APPLE_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getFancyApple().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, FANCY_APPLE_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getFancyApple().decorators(List.of(BEEHIVE_005)).build());
+
+		FeatureUtils.register(context, LEMON, FarmingFeatures.FRUIT_TREE.get(), getLemon().build());
+		FeatureUtils.register(context, LEMON_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getLemon().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, LEMON_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getLemon().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, LEMON_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getLemon().decorators(List.of(BEEHIVE_005)).build());
+		FeatureUtils.register(context, FANCY_LEMON, FarmingFeatures.FRUIT_TREE.get(), getFancyLemon().build());
+		FeatureUtils.register(context, FANCY_LEMON_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getFancyLemon().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, FANCY_LEMON_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getFancyLemon().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, FANCY_LEMON_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getFancyLemon().decorators(List.of(BEEHIVE_005)).build());
+
+		FeatureUtils.register(context, ORANGE, FarmingFeatures.FRUIT_TREE.get(), getOrange().build());
+		FeatureUtils.register(context, ORANGE_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getOrange().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, ORANGE_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getOrange().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, ORANGE_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getOrange().decorators(List.of(BEEHIVE_005)).build());
+		FeatureUtils.register(context, FANCY_ORANGE, FarmingFeatures.FRUIT_TREE.get(), getFancyOrange().build());
+		FeatureUtils.register(context, FANCY_ORANGE_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getFancyOrange().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, FANCY_ORANGE_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getFancyOrange().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, FANCY_ORANGE_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getFancyOrange().decorators(List.of(BEEHIVE_005)).build());
+
+		FeatureUtils.register(context, CHERRY, FarmingFeatures.FRUIT_TREE.get(), getCherry().build());
+		FeatureUtils.register(context, CHERRY_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getCherry().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, CHERRY_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getCherry().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, CHERRY_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getCherry().decorators(List.of(BEEHIVE_005)).build());
+		FeatureUtils.register(context, FANCY_CHERRY, FarmingFeatures.FRUIT_TREE.get(), getFancyCherry().build());
+		FeatureUtils.register(context, FANCY_CHERRY_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getFancyCherry().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, FANCY_CHERRY_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getFancyCherry().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, FANCY_CHERRY_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getFancyCherry().decorators(List.of(BEEHIVE_005)).build());
+
+		FeatureUtils.register(context, PEAR, FarmingFeatures.FRUIT_TREE.get(), getPear().build());
+		FeatureUtils.register(context, PEAR_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getPear().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, PEAR_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getPear().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, PEAR_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getPear().decorators(List.of(BEEHIVE_005)).build());
+		FeatureUtils.register(context, FANCY_PEAR, FarmingFeatures.FRUIT_TREE.get(), getFancyPear().build());
+		FeatureUtils.register(context, FANCY_PEAR_BEES_0002, FarmingFeatures.FRUIT_TREE.get(), getFancyPear().decorators(List.of(BEEHIVE_0002)).build());
+		FeatureUtils.register(context, FANCY_PEAR_BEES_002, FarmingFeatures.FRUIT_TREE.get(), getFancyPear().decorators(List.of(BEEHIVE_002)).build());
+		FeatureUtils.register(context, FANCY_PEAR_BEES_005, FarmingFeatures.FRUIT_TREE.get(), getFancyPear().decorators(List.of(BEEHIVE_005)).build());
+
+		FeatureUtils.register(context, BANANA, FarmingFeatures.FRUIT_TREE.get(), getBanana().build());
+		FeatureUtils.register(context, AVOCADO, FarmingFeatures.FRUIT_TREE.get(), getAvocado().build());
+		FeatureUtils.register(context, MANGO, FarmingFeatures.FRUIT_TREE.get(), getMango().build());
+		FeatureUtils.register(context, OLIVE, FarmingFeatures.FRUIT_TREE.get(), getOlive().build());
+
+		FeatureUtils.register(context, PATCH_NETHER_FLOWER, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
+				new SimpleBlockConfiguration(BlockStateProvider.simple(States.NETHER_FLOWER_CROP)),
+				List.of(Blocks.SOUL_SAND), 64));
+
 	}
 }

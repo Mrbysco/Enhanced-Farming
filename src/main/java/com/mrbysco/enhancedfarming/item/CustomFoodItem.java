@@ -1,13 +1,8 @@
 package com.mrbysco.enhancedfarming.item;
 
-import com.mrbysco.enhancedfarming.init.FarmingTabs;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 public class CustomFoodItem extends Item {
 
@@ -22,11 +17,6 @@ public class CustomFoodItem extends Item {
 
 	public CustomFoodItem(Item.Properties properties, int useTime) {
 		this(properties, useTime, UseAnim.EAT);
-	}
-
-	@Override
-	public Collection<CreativeModeTab> getCreativeTabs() {
-		return Arrays.asList(CreativeModeTab.TAB_FOOD, FarmingTabs.TAB_MAIN);
 	}
 
 	@Override

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "enhancedfarming:cherry_bees_02",
+    "features": [
+      {
+        "chance": 0.2,
+        "feature": "enhancedfarming:cherry_bees_02"
+      },
+      {
+        "chance": 0.1,
+        "feature": "enhancedfarming:fancy_cherry_bees_02"
+      }
+    ]
+  }
+}

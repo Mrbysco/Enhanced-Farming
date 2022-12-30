@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "enhancedfarming:lemon_bees_02",
+    "features": [
+      {
+        "chance": 0.2,
+        "feature": "enhancedfarming:lemon_bees_02"
+      },
+      {
+        "chance": 0.1,
+        "feature": "enhancedfarming:fancy_lemon_bees_02"
+      }
+    ]
+  }
+}

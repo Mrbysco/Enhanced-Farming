@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:pear_fruit_vegetation",
+  "feature": "enhancedfarming:pear_fruit_vegetation",
   "placement": [
     {
       "type": "minecraft:count",
@@ -40,7 +40,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "enhancedfarming:avocado_sapling",
+          "Name": "enhancedfarming:pear_sapling",
           "Properties": {
             "stage": "0"
           }
