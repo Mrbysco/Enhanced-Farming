@@ -7,6 +7,8 @@ import com.mrbysco.enhancedfarming.datagen.assets.FarmingBlockStateProvider;
 import com.mrbysco.enhancedfarming.datagen.assets.FarmingItemModelProvider;
 import com.mrbysco.enhancedfarming.datagen.assets.FarmingLanguageProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingBiomeModifierProvider;
+import com.mrbysco.enhancedfarming.datagen.data.FarmingBlockTagProvider;
+import com.mrbysco.enhancedfarming.datagen.data.FarmingItemTagProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingLootProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingLootModifierProvider;
 import net.minecraft.core.Registry;
@@ -33,6 +35,9 @@ public class FarmingDataGen {
 			generator.addProvider(event.includeServer(), new FarmingLootProvider(generator));
 			generator.addProvider(event.includeServer(), new FarmingLootModifierProvider(generator));
 //			generator.addProvider(new FarmingRecipes(generator));
+			FarmingBlockTagProvider blockTagProvider;
+			generator.addProvider(event.includeServer(), blockTagProvider = new FarmingBlockTagProvider(generator, existingFileHelper));
+			generator.addProvider(event.includeServer(), new FarmingItemTagProvider(generator, blockTagProvider, existingFileHelper));
 
 			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
 					generator, existingFileHelper, Reference.MOD_ID, ops, Registry.PLACED_FEATURE_REGISTRY, FarmingBiomeModifierProvider.getConfiguredFeatures(ops)));

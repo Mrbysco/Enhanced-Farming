@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
 	{
-	  "item": "enhancedfarming:grapes"
+		"tag": "forge:fruits/grapes"
 	},
 	{
 	  "tag": "forge:sugar"
