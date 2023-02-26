@@ -7,7 +7,7 @@
 	  "nbt": "{Potion:'minecraft:water'}"
 	},
 	{
-	  "item": "enhancedfarming:grapes"
+		"tag": "forge:fruits/grapes"
 	}
   ],
   "result": {

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:vegetables/aubergine",
+    "#forge:vegetables/corn",
+    "#forge:vegetables/cucumber",
+    "#forge:vegetables/garlic",
+    "#forge:vegetables/lettuce",
+    "#forge:vegetables/mint",
+    "#forge:vegetables/olive",
+    "#forge:vegetables/onion",
+    "#forge:vegetables/tomato",
+    "#forge:vegetables/potato",
+    "#forge:vegetables/carrot",
+    "#forge:vegetables/beetroot"
+  ]
+}

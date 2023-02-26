@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "enhancedfarming:apple_leaves",
+    "enhancedfarming:lemon_leaves",
+    "enhancedfarming:orange_leaves",
+    "enhancedfarming:cherry_leaves",
+    "enhancedfarming:pear_leaves",
+    "enhancedfarming:banana_leaves",
+    "enhancedfarming:avocado_leaves",
+    "enhancedfarming:mango_leaves",
+    "enhancedfarming:olive_leaves"
+  ]
+}

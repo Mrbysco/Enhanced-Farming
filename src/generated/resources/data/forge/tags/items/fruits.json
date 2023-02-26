@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:fruits/pineapple",
+    "#forge:fruits/grapes",
+    "#forge:fruits/apple",
+    "#forge:fruits/banana",
+    "#forge:fruits/cherry",
+    "#forge:fruits/lemon",
+    "#forge:fruits/mango",
+    "#forge:fruits/orange",
+    "#forge:fruits/pear"
+  ]
+}

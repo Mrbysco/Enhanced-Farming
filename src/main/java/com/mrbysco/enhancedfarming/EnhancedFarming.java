@@ -7,6 +7,7 @@ import com.mrbysco.enhancedfarming.handler.InWorldCraftingHandler;
 import com.mrbysco.enhancedfarming.handler.InteractionHandler;
 import com.mrbysco.enhancedfarming.handler.RakeHandler;
 import com.mrbysco.enhancedfarming.init.FarmingConditions;
+import com.mrbysco.enhancedfarming.init.FarmingLootModifiers;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
 import com.mrbysco.enhancedfarming.world.WorldGenHandler;
@@ -44,6 +45,7 @@ public class EnhancedFarming {
 		FarmingFeatures.FEATURES.register(eventBus);
 		FarmingRecipes.RECIPE_TYPES.register(eventBus);
 		FarmingRecipes.RECIPE_SERIALIZERS.register(eventBus);
+		FarmingLootModifiers.GLM.register(eventBus);
 
 		MinecraftForge.EVENT_BUS.register(new InteractionHandler());
 		MinecraftForge.EVENT_BUS.register(new InWorldCraftingHandler());
