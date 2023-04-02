@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/crop",
+  "render_type": "minecraft:cutout",
   "textures": {
     "crop": "enhancedfarming:block/saplings/jungle_sapling_0"
   }

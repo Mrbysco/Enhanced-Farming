@@ -103,7 +103,7 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 				builder.partialState().with(block.getStageProperty(), i).modelForState().modelFile(file).addModel();
 			} else {
 				ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
-						new ResourceLocation(Reference.MOD_ID, "block/saplings/" + base + "_" + (i)));
+						new ResourceLocation(Reference.MOD_ID, "block/saplings/" + base + "_" + (i))).renderType(new ResourceLocation("cutout"));
 				builder.partialState().with(block.getStageProperty(), i).modelForState().modelFile(file).addModel();
 			}
 		}
@@ -115,12 +115,10 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 			if (i != block.getMaxAge()) {
 				ModelFile file = models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_blooming", modLoc("block/leave_overlay"), "layer1",
 						new ResourceLocation(Reference.MOD_ID, "block/leaves/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_blooming")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(new ResourceLocation("cutout_mipped"));
-				;
 				builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 			} else {
 				ModelFile file = models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_fruity", modLoc("block/leave_overlay"), "layer1",
 						new ResourceLocation(Reference.MOD_ID, "block/leaves/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_fruity")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(new ResourceLocation("cutout_mipped"));
-				;
 				builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 			}
 		}
