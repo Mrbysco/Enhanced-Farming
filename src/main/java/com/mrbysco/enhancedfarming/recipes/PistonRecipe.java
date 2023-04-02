@@ -3,6 +3,7 @@ package com.mrbysco.enhancedfarming.recipes;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -41,8 +42,8 @@ public class PistonRecipe implements Recipe<Container> {
 		return this.ingredient.test(inv.getItem(0));
 	}
 
-	public ItemStack assemble(Container inventory) {
-		return this.result.copy();
+	public ItemStack assemble(Container inventory, RegistryAccess registryAccess) {
+		return getResultItem(registryAccess);
 	}
 
 	public boolean canCraftInDimensions(int x, int y) {
@@ -55,7 +56,7 @@ public class PistonRecipe implements Recipe<Container> {
 		return nonnulllist;
 	}
 
-	public ItemStack getResultItem() {
+	public ItemStack getResultItem(RegistryAccess registryAccess) {
 		return this.result;
 	}
 

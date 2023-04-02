@@ -47,7 +47,7 @@ public class FarmingDataGen {
 //			generator.addProvider(new FarmingRecipes(packOutput));
 			FarmingBlockTagProvider blockTagProvider;
 			generator.addProvider(event.includeServer(), blockTagProvider = new FarmingBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
-			generator.addProvider(event.includeServer(), new FarmingItemTagProvider(packOutput, lookupProvider, blockTagProvider, existingFileHelper));
+			generator.addProvider(event.includeServer(), new FarmingItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
 
 			generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(
 					packOutput, CompletableFuture.supplyAsync(FarmingDataGen::getProvider), Set.of(Reference.MOD_ID)));

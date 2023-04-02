@@ -69,7 +69,7 @@ public class EnhancedFarming {
 		TAB_MAIN = event.registerCreativeModeTab(new ResourceLocation(Reference.MOD_ID, "tab"), builder ->
 				builder.icon(() -> new ItemStack(FarmingRegistry.SCARECROW_ITEM.get()))
 						.title(Component.translatable("itemGroup.enhancedfarming.tab"))
-						.displayItems((features, output, hasPermissions) -> {
+						.displayItems((displayParameters, output) -> {
 							List<ItemStack> stacks = FarmingRegistry.ITEMS.getEntries().stream().map(reg -> new ItemStack(reg.get())).toList();
 							output.acceptAll(stacks);
 						}));

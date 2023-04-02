@@ -50,7 +50,7 @@ public class InWorldCraftingHandler {
 						}
 						if (craftCount > 0) {
 							int total = (craftCount * craftPer);
-							ItemStack result = recipe.getResultItem().copy();
+							ItemStack result = recipe.getResultItem(levelAccessor.registryAccess()).copy();
 							int maxResultSize = result.getMaxStackSize();
 							if (total <= maxResultSize) {
 								stack.shrink(total);
@@ -68,7 +68,7 @@ public class InWorldCraftingHandler {
 
 								int currentTotal = total;
 								for (int i = 0; i < totalStacks; i++) {
-									ItemStack newStack = recipe.getResultItem().copy();
+									ItemStack newStack = recipe.getResultItem(levelAccessor.registryAccess()).copy();
 									if (currentTotal > maxResultSize) {
 										newStack.setCount(maxResultSize);
 										currentTotal -= maxResultSize;
