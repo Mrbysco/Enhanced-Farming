@@ -1,0 +1,1 @@
+* Fix issue where the first stages of the saplings show black and white boxes
