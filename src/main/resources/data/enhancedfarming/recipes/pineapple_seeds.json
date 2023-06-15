@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:pineapple"
-	}
+    {
+      "item": "enhancedfarming:pineapple"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:pineapple_seeds"
+    "item": "enhancedfarming:pineapple_seeds"
   },
   "conditions": [
-	{
-	  "type": "enhancedfarming:crop_to_seeds"
-	}
+    {
+      "type": "enhancedfarming:crop_to_seeds"
+    }
   ]
 }

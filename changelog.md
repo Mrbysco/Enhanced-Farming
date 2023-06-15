@@ -1,1 +1,1 @@
-* Re-enable JEI support
+* Initial update to 1.20

@@ -1,20 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:pot"
-	},
-	{
-	  "item": "enhancedfarming:stock"
-	},
-	{
-	  "tag": "forge:vegetables/potato"
-	},
-	{
-	  "item": "enhancedfarming:cutting_board"
-	}
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "item": "enhancedfarming:stock"
+    },
+    {
+      "tag": "forge:vegetables/potato"
+    },
+    {
+      "item": "enhancedfarming:cutting_board"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:potato_soup"
+    "item": "enhancedfarming:potato_soup"
   }
 }

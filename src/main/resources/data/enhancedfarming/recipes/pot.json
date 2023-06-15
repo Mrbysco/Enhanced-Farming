@@ -1,18 +1,19 @@
 {
   "result": {
-	"item": "enhancedfarming:pot"
+    "item": "enhancedfarming:pot"
   },
+  "category": "misc",
   "pattern": [
-	"ISI",
-	" I "
+    "ISI",
+    " I "
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-	"I": {
-	  "tag": "forge:ingots/iron"
-	},
-	"S": {
-	  "tag": "forge:stone"
-	}
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "S": {
+      "tag": "forge:stone"
+    }
   }
 }

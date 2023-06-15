@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "type": "forge:nbt",
-	  "item": "minecraft:potion",
-	  "nbt": "{Potion:'minecraft:water'}"
-	},
-	{
-		"tag": "forge:fruits/grapes"
-	}
+    {
+      "type": "forge:nbt",
+      "item": "minecraft:potion",
+      "nbt": "{Potion:'minecraft:water'}"
+    },
+    {
+      "tag": "forge:fruits/grapes"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:grape_juice"
+    "item": "enhancedfarming:grape_juice"
   }
 }

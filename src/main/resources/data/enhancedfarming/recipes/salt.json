@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:pot"
-	},
-	{
-	  "type": "forge:nbt",
-	  "item": "minecraft:potion",
-	  "nbt": "{Potion:'minecraft:water'}"
-	}
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "type": "forge:nbt",
+      "item": "minecraft:potion",
+      "nbt": "{Potion:'minecraft:water'}"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:salt"
+    "item": "enhancedfarming:salt"
   }
 }

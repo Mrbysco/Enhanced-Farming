@@ -1,23 +1,24 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "tag": "forge:fruits/banana"
-	},
-	{
-	  "tag": "forge:sugar"
-	},
-	{
-	  "tag": "forge:milk"
-	},
-	{
-	  "tag": "forge:eggs"
-	},
-	{
-	  "item": "enhancedfarming:flour"
-	}
+    {
+      "tag": "forge:fruits/banana"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "tag": "forge:milk"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "item": "enhancedfarming:flour"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:banana_pie"
+    "item": "enhancedfarming:banana_pie"
   }
 }

@@ -1,7 +1,8 @@
 {
   "type": "minecraft:campfire_cooking",
+  "category": "food",
   "ingredient": {
-	"tag": "forge:eggs"
+    "tag": "forge:eggs"
   },
   "result": "enhancedfarming:baked_egg",
   "experience": 0.35,

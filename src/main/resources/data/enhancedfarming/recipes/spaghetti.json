@@ -1,26 +1,27 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:pot"
-	},
-	{
-	  "item": "enhancedfarming:cutting_board"
-	},
-	{
-	  "item": "enhancedfarming:pasta"
-	},
-	{
-	  "tag": "forge:vegetables/tomato"
-	},
-	{
-	  "item": "minecraft:beef"
-	},
-	{
-	  "item": "minecraft:bowl"
-	}
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "enhancedfarming:pasta"
+    },
+    {
+      "tag": "forge:vegetables/tomato"
+    },
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:spaghetti"
+    "item": "enhancedfarming:spaghetti"
   }
 }

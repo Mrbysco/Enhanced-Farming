@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:grapes"
-	}
+    {
+      "item": "enhancedfarming:grapes"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:grape_seeds"
+    "item": "enhancedfarming:grape_seeds"
   },
   "conditions": [
-	{
-	  "type": "enhancedfarming:crop_to_seeds"
-	}
+    {
+      "type": "enhancedfarming:crop_to_seeds"
+    }
   ]
 }

@@ -1,17 +1,18 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:pot"
-	},
-	{
-	  "tag": "forge:water"
-	},
-	{
-	  "tag": "forge:eggs"
-	}
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "tag": "forge:water"
+    },
+    {
+      "tag": "forge:eggs"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:boiled_egg"
+    "item": "enhancedfarming:boiled_egg"
   }
 }

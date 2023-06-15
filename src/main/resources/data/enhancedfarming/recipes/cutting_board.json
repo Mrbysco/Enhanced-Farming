@@ -1,21 +1,22 @@
 {
   "result": {
-	"item": "enhancedfarming:cutting_board"
+    "item": "enhancedfarming:cutting_board"
   },
+  "category": "misc",
   "pattern": [
-	" I ",
-	"SPP"
+    " I ",
+    "SPP"
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-	"S": {
-	  "tag": "forge:rods/wooden"
-	},
-	"I": {
-	  "tag": "forge:ingots/iron"
-	},
-	"P": {
-	  "tag": "minecraft:planks"
-	}
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    }
   }
 }

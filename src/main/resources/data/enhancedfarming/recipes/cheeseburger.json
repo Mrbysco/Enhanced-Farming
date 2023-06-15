@@ -1,20 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:cutting_board"
-	},
-	{
-	  "item": "minecraft:bread"
-	},
-	{
-	  "item": "minecraft:cooked_beef"
-	},
-	{
-	  "item": "enhancedfarming:cheese"
-	}
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "item": "enhancedfarming:cheese"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:cheeseburger"
+    "item": "enhancedfarming:cheeseburger"
   }
 }

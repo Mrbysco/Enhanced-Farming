@@ -1,15 +1,16 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:cutting_board"
-	},
-	{
-	  "item": "minecraft:bread"
-	}
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "minecraft:bread"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:sliced_bread",
-	"count": 2
+    "item": "enhancedfarming:sliced_bread",
+    "count": 2
   }
 }

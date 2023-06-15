@@ -16,7 +16,7 @@ public class HotHandler {
 	public void ItemHeld(TickEvent.PlayerTickEvent event) {
 		if (event.phase.equals(TickEvent.Phase.START) && event.side.isServer() && FarmingConfig.COMMON.hotBurnsPlayer.get()) {
 			final Player player = event.player;
-			if (player.level.getGameTime() % 20 == 0) {
+			if (player.level().getGameTime() % 20 == 0) {
 				CompoundTag tag = player.getPersistentData();
 				ItemStack mainHeldStack = player.getMainHandItem();
 				ItemStack offHeldStack = player.getOffhandItem();

@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "type": "forge:nbt",
-	  "item": "minecraft:potion",
-	  "nbt": "{Potion:'minecraft:water'}"
-	},
-	{
-	  "tag": "forge:fruits/banana"
-	}
+    {
+      "type": "forge:nbt",
+      "item": "minecraft:potion",
+      "nbt": "{Potion:'minecraft:water'}"
+    },
+    {
+      "tag": "forge:fruits/banana"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:banana_juice"
+    "item": "enhancedfarming:banana_juice"
   }
 }

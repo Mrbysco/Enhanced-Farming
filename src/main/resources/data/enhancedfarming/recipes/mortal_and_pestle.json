@@ -1,18 +1,19 @@
 {
   "result": {
-	"item": "enhancedfarming:mortar_and_pestle"
+    "item": "enhancedfarming:mortar_and_pestle"
   },
+  "category": "misc",
   "pattern": [
-	" S",
-	"B "
+    " S",
+    "B "
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-	"S": {
-	  "tag": "forge:rods/wooden"
-	},
-	"B": {
-	  "tag": "forge:stone"
-	}
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "B": {
+      "tag": "forge:stone"
+    }
   }
 }

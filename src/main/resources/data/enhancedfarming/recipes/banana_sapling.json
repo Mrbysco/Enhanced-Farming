@@ -1,19 +1,20 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "minecraft:jungle_sapling"
-	},
-	{
-	  "item": "enhancedfarming:banana"
-	}
+    {
+      "item": "minecraft:jungle_sapling"
+    },
+    {
+      "item": "enhancedfarming:banana"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:banana_sapling"
+    "item": "enhancedfarming:banana_sapling"
   },
   "conditions": [
-	{
-	  "type": "enhancedfarming:crop_to_seeds"
-	}
+    {
+      "type": "enhancedfarming:crop_to_seeds"
+    }
   ]
 }

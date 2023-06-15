@@ -1,29 +1,30 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:pot"
-	},
-	{
-	  "item": "enhancedfarming:stock"
-	},
-	{
-	  "item": "minecraft:chicken"
-	},
-	{
-	  "item": "minecraft:carrot"
-	},
-	{
-	  "item": "enhancedfarming:onion"
-	},
-	{
-	  "item": "enhancedfarming:pasta"
-	},
-	{
-	  "item": "enhancedfarming:cutting_board"
-	}
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "item": "enhancedfarming:stock"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "enhancedfarming:onion"
+    },
+    {
+      "item": "enhancedfarming:pasta"
+    },
+    {
+      "item": "enhancedfarming:cutting_board"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:chicken_noodle_soup"
+    "item": "enhancedfarming:chicken_noodle_soup"
   }
 }

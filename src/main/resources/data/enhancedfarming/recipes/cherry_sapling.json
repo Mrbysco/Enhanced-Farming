@@ -1,19 +1,20 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "minecraft:oak_sapling"
-	},
-	{
-	  "item": "enhancedfarming:cherry"
-	}
+    {
+      "item": "minecraft:oak_sapling"
+    },
+    {
+      "item": "enhancedfarming:cherry"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:cherry_sapling"
+    "item": "enhancedfarming:cherry_sapling"
   },
   "conditions": [
-	{
-	  "type": "enhancedfarming:crop_to_seeds"
-	}
+    {
+      "type": "enhancedfarming:crop_to_seeds"
+    }
   ]
 }

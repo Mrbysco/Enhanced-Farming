@@ -1,24 +1,25 @@
 {
   "result": {
-	"item": "enhancedfarming:diamond_rake"
+    "item": "enhancedfarming:diamond_rake"
   },
+  "category": "equipment",
   "pattern": [
-	"X X",
-	"XSX",
-	" S "
+    "X X",
+    "XSX",
+    " S "
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-	"X": {
-	  "tag": "forge:gems/diamond"
-	},
-	"S": {
-	  "tag": "forge:rods/wooden"
-	}
+    "X": {
+      "tag": "forge:gems/diamond"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
   },
   "conditions": [
-	{
-	  "type": "enhancedfarming:rake_enabled"
-	}
+    {
+      "type": "enhancedfarming:rake_enabled"
+    }
   ]
 }

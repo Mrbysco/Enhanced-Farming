@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.block;
 
-import com.mrbysco.enhancedfarming.blockentities.ScarecrowBlockEntity;
+import com.mrbysco.enhancedfarming.blockentity.ScarecrowBlockEntity;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

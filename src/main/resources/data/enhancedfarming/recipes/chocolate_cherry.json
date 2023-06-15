@@ -1,18 +1,19 @@
 {
   "result": {
-	"item": "enhancedfarming:chocolate_cherry"
+    "item": "enhancedfarming:chocolate_cherry"
   },
+  "category": "misc",
   "pattern": [
-	" C",
-	"CF"
+    " C",
+    "CF"
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-	"C": {
-	  "item": "minecraft:cocoa_beans"
-	},
-	"F": {
-	  "item": "enhancedfarming:cherry"
-	}
+    "C": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "F": {
+      "item": "enhancedfarming:cherry"
+    }
   }
 }

@@ -1,19 +1,20 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "type": "forge:nbt",
-	  "item": "minecraft:potion",
-	  "nbt": "{Potion:'minecraft:water'}"
-	},
-	{
-	  "item": "enhancedfarming:salt"
-	},
-	{
-	  "item": "enhancedfarming:flour"
-	}
+    {
+      "type": "forge:nbt",
+      "item": "minecraft:potion",
+      "nbt": "{Potion:'minecraft:water'}"
+    },
+    {
+      "item": "enhancedfarming:salt"
+    },
+    {
+      "item": "enhancedfarming:flour"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:dough"
+    "item": "enhancedfarming:dough"
   }
 }

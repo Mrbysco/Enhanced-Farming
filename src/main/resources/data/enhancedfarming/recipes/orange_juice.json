@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "type": "forge:nbt",
-	  "item": "minecraft:potion",
-	  "nbt": "{Potion:'minecraft:water'}"
-	},
-	{
-	  "item": "enhancedfarming:orange"
-	}
+    {
+      "type": "forge:nbt",
+      "item": "minecraft:potion",
+      "nbt": "{Potion:'minecraft:water'}"
+    },
+    {
+      "item": "enhancedfarming:orange"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:orange_juice"
+    "item": "enhancedfarming:orange_juice"
   }
 }

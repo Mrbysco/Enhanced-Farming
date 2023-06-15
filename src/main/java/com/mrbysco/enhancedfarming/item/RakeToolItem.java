@@ -17,7 +17,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -32,13 +32,15 @@ public class RakeToolItem extends DiggerItem {
 		this.dropModifier = dropModifier;
 	}
 
-	public void dropSeedsWithChance(ItemStack itemstack, Level level, BlockPos pos) {
+	public void dropSeedsWithChance(ItemStack toolStack, Level level, BlockPos pos) {
 		final int rand = level.random.nextInt(30 / this.dropModifier);
 		if (!level.isClientSide && rand == 0 && level.getServer() != null) {
-			LootTable table = level.getServer().getLootTables().get(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
-			LootContext.Builder context = (new LootContext.Builder((ServerLevel) level)).withParameter(LootContextParams.ORIGIN, new Vec3(pos.getX(), pos.getY(), pos.getZ()))
-					.withParameter(LootContextParams.TOOL, itemstack).withRandom(level.random);
-			table.getRandomItems(context.create(LootContextParamSets.EMPTY)).forEach(stack -> level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY() + 0.2, pos.getZ(), stack)));
+			LootTable table = level.getServer().getLootData().getLootTable(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
+			LootParams.Builder lootParams = (new LootParams.Builder((ServerLevel) level))
+					.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+					.withParameter(LootContextParams.TOOL, toolStack);
+			table.getRandomItems(lootParams.create(LootContextParamSets.EMPTY)).forEach(stack ->
+					level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY() + 0.2, pos.getZ(), stack)));
 		}
 	}
 

@@ -1,4 +1,4 @@
-package com.mrbysco.enhancedfarming.blockentities;
+package com.mrbysco.enhancedfarming.blockentity;
 
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.core.BlockPos;

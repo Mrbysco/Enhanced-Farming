@@ -1,17 +1,18 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:milk_bottle"
-	},
-	{
-	  "tag": "forge:fruits/pear"
-	},
-	{
-	  "item": "minecraft:snowball"
-	}
+    {
+      "item": "enhancedfarming:milk_bottle"
+    },
+    {
+      "tag": "forge:fruits/pear"
+    },
+    {
+      "item": "minecraft:snowball"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:smoothie_pear"
+    "item": "enhancedfarming:smoothie_pear"
   }
 }

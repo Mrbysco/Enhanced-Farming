@@ -1,20 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:lemon"
-	},
-	{
-	  "tag": "forge:sugar"
-	},
-	{
-	  "tag": "forge:eggs"
-	},
-	{
-	  "item": "enhancedfarming:flour"
-	}
+    {
+      "item": "enhancedfarming:lemon"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "item": "enhancedfarming:flour"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:lemon_pie"
+    "item": "enhancedfarming:lemon_pie"
   }
 }

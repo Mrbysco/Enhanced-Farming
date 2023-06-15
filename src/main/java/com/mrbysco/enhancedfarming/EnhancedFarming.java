@@ -11,14 +11,11 @@ import com.mrbysco.enhancedfarming.init.FarmingGLM;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
 import com.mrbysco.enhancedfarming.world.feature.FarmingFeatures;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -39,11 +36,11 @@ public class EnhancedFarming {
 		ModLoadingContext.get().registerConfig(Type.COMMON, FarmingConfig.commonSpec);
 		FMLJavaModLoadingContext.get().getModEventBus().register(FarmingConfig.class);
 
-		eventBus.addListener(this::registerCreativeTabs);
 		eventBus.addListener(this::buildTabContents);
 
 		FarmingRegistry.BLOCKS.register(eventBus);
 		FarmingRegistry.ITEMS.register(eventBus);
+		FarmingRegistry.CREATIVE_MODE_TABS.register(eventBus);
 		FarmingRegistry.BLOCK_ENTITY_TYPES.register(eventBus);
 		FarmingFeatures.FEATURES.register(eventBus);
 		FarmingRecipes.RECIPE_TYPES.register(eventBus);
@@ -63,20 +60,8 @@ public class EnhancedFarming {
 		});
 	}
 
-	private static CreativeModeTab TAB_MAIN;
-
-	private void registerCreativeTabs(final CreativeModeTabEvent.Register event) {
-		TAB_MAIN = event.registerCreativeModeTab(new ResourceLocation(Reference.MOD_ID, "tab"), builder ->
-				builder.icon(() -> new ItemStack(FarmingRegistry.SCARECROW_ITEM.get()))
-						.title(Component.translatable("itemGroup.enhancedfarming.tab"))
-						.displayItems((displayParameters, output) -> {
-							List<ItemStack> stacks = FarmingRegistry.ITEMS.getEntries().stream().map(reg -> new ItemStack(reg.get())).toList();
-							output.acceptAll(stacks);
-						}));
-	}
-
-	private void buildTabContents(final CreativeModeTabEvent.BuildContents event) {
-		if (event.getTab() == CreativeModeTabs.FOOD_AND_DRINKS) {
+	private void buildTabContents(final BuildCreativeModeTabContentsEvent event) {
+		if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
 			List<ItemStack> stacks = FarmingRegistry.ITEMS.getEntries().stream()
 					.filter(reg -> reg.get().getFoodProperties() != null).map(reg -> new ItemStack(reg.get())).toList();
 			event.acceptAll(stacks);

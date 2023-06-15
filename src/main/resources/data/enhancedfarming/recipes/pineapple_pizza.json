@@ -1,20 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:cutting_board"
-	},
-	{
-	  "item": "enhancedfarming:dough"
-	},
-	{
-	  "tag": "forge:vegetables/tomato"
-	},
-	{
-	  "tag": "forge:fruits/pineapple"
-	}
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "enhancedfarming:dough"
+    },
+    {
+      "tag": "forge:vegetables/tomato"
+    },
+    {
+      "tag": "forge:fruits/pineapple"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:pineapple_pizza"
+    "item": "enhancedfarming:pineapple_pizza"
   }
 }

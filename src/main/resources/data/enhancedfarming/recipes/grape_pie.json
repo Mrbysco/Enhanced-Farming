@@ -1,20 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-		"tag": "forge:fruits/grapes"
-	},
-	{
-	  "tag": "forge:sugar"
-	},
-	{
-	  "tag": "forge:eggs"
-	},
-	{
-	  "item": "enhancedfarming:flour"
-	}
+    {
+      "tag": "forge:fruits/grapes"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "item": "enhancedfarming:flour"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:grape_pie"
+    "item": "enhancedfarming:grape_pie"
   }
 }

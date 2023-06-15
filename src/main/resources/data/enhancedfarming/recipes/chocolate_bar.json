@@ -1,19 +1,20 @@
 {
   "result": {
-	"item": "enhancedfarming:chocolate_bar"
+    "item": "enhancedfarming:chocolate_bar"
   },
+  "category": "misc",
   "pattern": [
-	"CSC",
-	"CSC",
-	"CSC"
+    "CSC",
+    "CSC",
+    "CSC"
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-	"C": {
-	  "item": "minecraft:cocoa_beans"
-	},
-	"S": {
-	  "tag": "forge:sugar"
-	}
+    "C": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "S": {
+      "tag": "forge:sugar"
+    }
   }
 }

@@ -1,17 +1,18 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:pot"
-	},
-	{
-	  "tag": "forge:milk"
-	},
-	{
-	  "item": "enhancedfarming:salt"
-	}
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "tag": "forge:milk"
+    },
+    {
+      "item": "enhancedfarming:salt"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:cheese"
+    "item": "enhancedfarming:cheese"
   }
 }

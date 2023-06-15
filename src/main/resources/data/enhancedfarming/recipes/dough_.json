@@ -1,17 +1,18 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "minecraft:water_bucket"
-	},
-	{
-	  "item": "enhancedfarming:salt"
-	},
-	{
-	  "item": "enhancedfarming:flour"
-	}
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "enhancedfarming:salt"
+    },
+    {
+      "item": "enhancedfarming:flour"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:dough"
+    "item": "enhancedfarming:dough"
   }
 }

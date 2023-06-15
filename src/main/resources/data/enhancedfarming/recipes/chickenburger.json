@@ -1,20 +1,21 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
-	{
-	  "item": "enhancedfarming:cutting_board"
-	},
-	{
-	  "item": "minecraft:bread"
-	},
-	{
-	  "item": "minecraft:cooked_chicken"
-	},
-	{
-	  "item": "enhancedfarming:lettuce"
-	}
+    {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "minecraft:cooked_chicken"
+    },
+    {
+      "item": "enhancedfarming:lettuce"
+    }
   ],
   "result": {
-	"item": "enhancedfarming:chickenburger"
+    "item": "enhancedfarming:chickenburger"
   }
 }

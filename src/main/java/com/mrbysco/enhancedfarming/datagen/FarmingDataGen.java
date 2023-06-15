@@ -9,6 +9,7 @@ import com.mrbysco.enhancedfarming.datagen.data.FarmingBlockTagProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingItemTagProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingLootModifierProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingLootProvider;
+import com.mrbysco.enhancedfarming.datagen.data.FarmingRecipeProvider;
 import com.mrbysco.enhancedfarming.world.feature.FarmingFeatureConfigs;
 import com.mrbysco.enhancedfarming.world.feature.FarmingTreePlacements;
 import com.mrbysco.enhancedfarming.world.feature.FarmingVegetation;
@@ -42,21 +43,21 @@ public class FarmingDataGen {
 		ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
 		if (event.includeServer()) {
-			generator.addProvider(event.includeServer(), new FarmingLootProvider(packOutput));
-			generator.addProvider(event.includeServer(), new FarmingLootModifierProvider(packOutput));
-//			generator.addProvider(new FarmingRecipes(packOutput));
+			generator.addProvider(true, new FarmingLootProvider(packOutput));
+			generator.addProvider(true, new FarmingLootModifierProvider(packOutput));
+			generator.addProvider(true, new FarmingRecipeProvider(packOutput));
 			FarmingBlockTagProvider blockTagProvider;
-			generator.addProvider(event.includeServer(), blockTagProvider = new FarmingBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
-			generator.addProvider(event.includeServer(), new FarmingItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
+			generator.addProvider(true, blockTagProvider = new FarmingBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
+			generator.addProvider(true, new FarmingItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
 
-			generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(
+			generator.addProvider(true, new DatapackBuiltinEntriesProvider(
 					packOutput, CompletableFuture.supplyAsync(FarmingDataGen::getProvider), Set.of(Reference.MOD_ID)));
 		}
 
 		if (event.includeClient()) {
-			generator.addProvider(event.includeClient(), new FarmingLanguageProvider(packOutput));
-			generator.addProvider(event.includeClient(), new FarmingBlockStateProvider(packOutput, existingFileHelper));
-			generator.addProvider(event.includeClient(), new FarmingItemModelProvider(packOutput, existingFileHelper));
+			generator.addProvider(true, new FarmingLanguageProvider(packOutput));
+			generator.addProvider(true, new FarmingBlockStateProvider(packOutput, existingFileHelper));
+			generator.addProvider(true, new FarmingItemModelProvider(packOutput, existingFileHelper));
 		}
 	}
 
