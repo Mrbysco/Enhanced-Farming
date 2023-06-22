@@ -1,1 +1,1 @@
-* Initial update to 1.20
+* Fix incompatibility with forge 47.0.16
