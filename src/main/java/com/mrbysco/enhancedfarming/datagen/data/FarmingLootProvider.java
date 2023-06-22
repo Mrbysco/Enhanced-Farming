@@ -14,7 +14,10 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.packs.VanillaGiftLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -22,11 +25,15 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nonnull;
@@ -44,8 +51,11 @@ public class FarmingLootProvider extends LootTableProvider {
 	}
 
 	private static class FarmingBlocks extends BlockLootSubProvider {
+		private static final LootItemCondition.Builder HAS_SHEARS_OR_SILK_TOUCH = HAS_SHEARS.or(HAS_SILK_TOUCH);
+		private static final LootItemCondition.Builder HAS_NO_SHEARS_OR_SILK_TOUCH = HAS_SHEARS_OR_SILK_TOUCH.invert();
 		private final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
 		private final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
+		private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
 		protected FarmingBlocks() {
 			super(Set.of(), FeatureFlags.REGISTRY.allFlags());
@@ -92,6 +102,47 @@ public class FarmingLootProvider extends LootTableProvider {
 			this.dropSelf(FarmingRegistry.SCARECROW.get());
 		}
 
+		protected void dropSelf(Block block) {
+			this.dropOther(block, block);
+		}
+
+		protected void dropOther(Block block, ItemLike itemLike) {
+			this.add(block, this.createSingleItemTable(itemLike));
+		}
+
+		public LootTable.Builder createSingleItemTable(ItemLike itemLike) {
+			return LootTable.lootTable().withPool(this.applyExplosionCondition(itemLike, LootPool.lootPool().name("main").setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(itemLike))));
+		}
+
+		protected LootTable.Builder createCropDrops(Block crop, Item cropItem, Item seeds, LootItemCondition.Builder builder) {
+			return this.applyExplosionDecay(crop, LootTable.lootTable()
+					.withPool(LootPool.lootPool().name("crop")
+							.add(LootItem.lootTableItem(cropItem).when(builder).otherwise(LootItem.lootTableItem(seeds))))
+					.withPool(LootPool.lootPool().name("seeds").when(builder)
+							.add(LootItem.lootTableItem(seeds).apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))));
+		}
+
+		protected static LootTable.Builder createSilkTouchDispatchTable(Block block, LootPoolEntryContainer.Builder<?> builder) {
+			return createSelfDropDispatchTable(block, HAS_SILK_TOUCH, builder);
+		}
+
+		protected static LootTable.Builder createSelfDropDispatchTable(Block block, LootItemCondition.Builder builder, LootPoolEntryContainer.Builder<?> builder1) {
+			return LootTable.lootTable()
+					.withPool(LootPool.lootPool().name("drops").setRolls(ConstantValue.exactly(1.0F))
+							.add(LootItem.lootTableItem(block).when(builder).otherwise(builder1)));
+		}
+
+		protected static LootTable.Builder createSilkTouchOrShearsDispatchTable(Block block, LootPoolEntryContainer.Builder<?> builder) {
+			return createSelfDropDispatchTable(block, HAS_SHEARS_OR_SILK_TOUCH, builder);
+		}
+
+		protected LootTable.Builder createLeavesDrops(Block leaves, Block sapling, float... chances) {
+			return createSilkTouchOrShearsDispatchTable(leaves, this.applyExplosionCondition(leaves, LootItem.lootTableItem(sapling))
+					.when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, chances)))
+					.withPool(LootPool.lootPool().name("sticks").setRolls(ConstantValue.exactly(1.0F))
+							.when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(this.applyExplosionDecay(leaves, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, NORMAL_LEAVES_STICK_CHANCES))));
+		}
+
 		public LootItemCondition.Builder cropConditionBuilder(CropBlock block, IntegerProperty ageProperty) {
 			return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, block.getMaxAge()));
 		}
@@ -108,7 +159,7 @@ public class FarmingLootProvider extends LootTableProvider {
 		public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
 			consumer.accept(FarmingLootTables.GAMEPLAY_RAKE_DROPS,
 					LootTable.lootTable()
-							.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+							.withPool(LootPool.lootPool().name("drops").setRolls(ConstantValue.exactly(1.0F))
 									.add(LootItem.lootTableItem(FarmingRegistry.APPLE_SAPLING.get()))
 									.add(LootItem.lootTableItem(FarmingRegistry.LEMON_SAPLING.get()))
 									.add(LootItem.lootTableItem(FarmingRegistry.ORANGE_SAPLING.get()))

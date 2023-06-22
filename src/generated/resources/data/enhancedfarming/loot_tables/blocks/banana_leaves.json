@@ -62,6 +62,7 @@
           ]
         }
       ],
+      "name": "drops",
       "rolls": 1.0
     },
     {
@@ -130,6 +131,7 @@
           "name": "minecraft:stick"
         }
       ],
+      "name": "sticks",
       "rolls": 1.0
     }
   ],
