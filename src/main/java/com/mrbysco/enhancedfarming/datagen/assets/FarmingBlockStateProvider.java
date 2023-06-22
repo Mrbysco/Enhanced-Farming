@@ -4,12 +4,16 @@ import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.block.FruitLeavesBlock;
 import com.mrbysco.enhancedfarming.block.GrowableSaplingBlock;
 import com.mrbysco.enhancedfarming.block.crops.CropstickCropBlock;
+import com.mrbysco.enhancedfarming.block.crops.FiveAgeCropBlock;
 import com.mrbysco.enhancedfarming.block.crops.NetherFlowerBlock;
+import com.mrbysco.enhancedfarming.block.crops.SevenAgeCropBlock;
+import com.mrbysco.enhancedfarming.block.crops.SixAgeCropBlock;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -25,17 +29,17 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		buildCrops((CropBlock) FarmingRegistry.MINT_CROP.get());
+		buildCrops((CropBlock) FarmingRegistry.MINT_CROP.get(), FiveAgeCropBlock.AGE);
 		buildNetherCrops((NetherFlowerBlock) FarmingRegistry.NETHER_FLOWER_CROP.get());
-		buildCrops((CropBlock) FarmingRegistry.TOMATO_CROP.get());
-		buildCrops((CropBlock) FarmingRegistry.CUCUMBER_CROP.get());
-		buildCrops((CropBlock) FarmingRegistry.AUBERGINE_CROP.get());
+		buildCrops((CropBlock) FarmingRegistry.TOMATO_CROP.get(), SixAgeCropBlock.AGE);
+		buildCrops((CropBlock) FarmingRegistry.CUCUMBER_CROP.get(), FiveAgeCropBlock.AGE);
+		buildCrops((CropBlock) FarmingRegistry.AUBERGINE_CROP.get(), FiveAgeCropBlock.AGE);
 		buildStickCropCrops((CropstickCropBlock) FarmingRegistry.GRAPE_CROP.get());
-		buildCrops((CropBlock) FarmingRegistry.PINEAPPLE_CROP.get());
-		buildCrops((CropBlock) FarmingRegistry.CORN_CROP.get());
-		buildCrops((CropBlock) FarmingRegistry.ONION_CROP.get());
-		buildCrops((CropBlock) FarmingRegistry.GARLIC_CROP.get());
-		buildCrops((CropBlock) FarmingRegistry.LETTUCE_CROP.get());
+		buildCrops((CropBlock) FarmingRegistry.PINEAPPLE_CROP.get(), FiveAgeCropBlock.AGE);
+		buildCrops((CropBlock) FarmingRegistry.CORN_CROP.get(), SevenAgeCropBlock.AGE);
+		buildCrops((CropBlock) FarmingRegistry.ONION_CROP.get(), FiveAgeCropBlock.AGE);
+		buildCrops((CropBlock) FarmingRegistry.GARLIC_CROP.get(), FiveAgeCropBlock.AGE);
+		buildCrops((CropBlock) FarmingRegistry.LETTUCE_CROP.get(), FiveAgeCropBlock.AGE);
 
 		buildSaplings((GrowableSaplingBlock) FarmingRegistry.APPLE_SAPLING.get(), "oak_sapling");
 		buildSaplings((GrowableSaplingBlock) FarmingRegistry.LEMON_SAPLING.get(), "oak_sapling");
@@ -76,12 +80,12 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 		}
 	}
 
-	protected void buildCrops(CropBlock block) {
+	protected void buildCrops(CropBlock block, IntegerProperty property) {
 		VariantBlockStateBuilder builder = getVariantBuilder(block);
 		for (int i = 0; i <= block.getMaxAge(); i++) {
 			ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
 					new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
-			builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
+			builder.partialState().with(property, i).modelForState().modelFile(file).addModel();
 		}
 	}
 

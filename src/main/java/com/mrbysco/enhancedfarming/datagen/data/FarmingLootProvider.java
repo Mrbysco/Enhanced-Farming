@@ -1,6 +1,10 @@
 package com.mrbysco.enhancedfarming.datagen.data;
 
+import com.mrbysco.enhancedfarming.block.crops.CropstickCropBlock;
+import com.mrbysco.enhancedfarming.block.crops.FiveAgeCropBlock;
 import com.mrbysco.enhancedfarming.block.crops.NetherFlowerBlock;
+import com.mrbysco.enhancedfarming.block.crops.SevenAgeCropBlock;
+import com.mrbysco.enhancedfarming.block.crops.SixAgeCropBlock;
 import com.mrbysco.enhancedfarming.init.FarmingLootTables;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -13,6 +17,7 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
@@ -71,24 +76,24 @@ public class FarmingLootProvider extends LootTableProvider {
 
 			this.add(FarmingRegistry.CROP_STICK.get(), (block) -> createSilkTouchDispatchTable(block, applyExplosionCondition(block, LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3))))));
 
-			this.add(FarmingRegistry.MINT_CROP.get(), (block) -> createCropDrops(FarmingRegistry.MINT_CROP.get(), FarmingRegistry.MINT.get(), FarmingRegistry.MINT_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.MINT_CROP.get())));
+			this.add(FarmingRegistry.MINT_CROP.get(), (block) -> createCropDrops(FarmingRegistry.MINT_CROP.get(), FarmingRegistry.MINT.get(), FarmingRegistry.MINT_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.MINT_CROP.get(), FiveAgeCropBlock.AGE)));
 			LootItemCondition.Builder netherBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(FarmingRegistry.NETHER_FLOWER_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(NetherFlowerBlock.AGE, 5));
 			this.add(FarmingRegistry.NETHER_FLOWER_CROP.get(), (block) -> createCropDrops(FarmingRegistry.NETHER_FLOWER_CROP.get(), Items.BLAZE_ROD, FarmingRegistry.NETHER_FLOWER_SEEDS.get(), netherBuilder));
-			this.add(FarmingRegistry.TOMATO_CROP.get(), (block) -> createCropDrops(FarmingRegistry.TOMATO_CROP.get(), FarmingRegistry.TOMATO.get(), FarmingRegistry.TOMATO_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.TOMATO_CROP.get())));
-			this.add(FarmingRegistry.CUCUMBER_CROP.get(), (block) -> createCropDrops(FarmingRegistry.CUCUMBER_CROP.get(), FarmingRegistry.CUCUMBER.get(), FarmingRegistry.CUCUMBER_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.CUCUMBER_CROP.get())));
-			this.add(FarmingRegistry.AUBERGINE_CROP.get(), (block) -> createCropDrops(FarmingRegistry.AUBERGINE_CROP.get(), FarmingRegistry.AUBERGINE.get(), FarmingRegistry.AUBERGINE_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.AUBERGINE_CROP.get())));
-			this.add(FarmingRegistry.GRAPE_CROP.get(), (block) -> createCropDrops(FarmingRegistry.GRAPE_CROP.get(), FarmingRegistry.GRAPES.get(), FarmingRegistry.GRAPE_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.GRAPE_CROP.get())));
-			this.add(FarmingRegistry.PINEAPPLE_CROP.get(), (block) -> createCropDrops(FarmingRegistry.PINEAPPLE_CROP.get(), FarmingRegistry.PINEAPPLE.get(), FarmingRegistry.PINEAPPLE_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.PINEAPPLE_CROP.get())));
-			this.add(FarmingRegistry.CORN_CROP.get(), (block) -> createCropDrops(FarmingRegistry.CORN_CROP.get(), FarmingRegistry.CORN.get(), FarmingRegistry.CORN_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.CORN_CROP.get())));
-			this.add(FarmingRegistry.ONION_CROP.get(), (block) -> createCropDrops(FarmingRegistry.ONION_CROP.get(), FarmingRegistry.ONION.get(), FarmingRegistry.ONION_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.ONION_CROP.get())));
-			this.add(FarmingRegistry.GARLIC_CROP.get(), (block) -> createCropDrops(FarmingRegistry.GARLIC_CROP.get(), FarmingRegistry.GARLIC.get(), FarmingRegistry.GARLIC_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.GARLIC_CROP.get())));
-			this.add(FarmingRegistry.LETTUCE_CROP.get(), (block) -> createCropDrops(FarmingRegistry.LETTUCE_CROP.get(), FarmingRegistry.LETTUCE.get(), FarmingRegistry.LETTUCE_SEEDS.get(), getBuilder((CropBlock) FarmingRegistry.LETTUCE_CROP.get())));
+			this.add(FarmingRegistry.TOMATO_CROP.get(), (block) -> createCropDrops(FarmingRegistry.TOMATO_CROP.get(), FarmingRegistry.TOMATO.get(), FarmingRegistry.TOMATO_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.TOMATO_CROP.get(), SixAgeCropBlock.AGE)));
+			this.add(FarmingRegistry.CUCUMBER_CROP.get(), (block) -> createCropDrops(FarmingRegistry.CUCUMBER_CROP.get(), FarmingRegistry.CUCUMBER.get(), FarmingRegistry.CUCUMBER_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.CUCUMBER_CROP.get(), FiveAgeCropBlock.AGE)));
+			this.add(FarmingRegistry.AUBERGINE_CROP.get(), (block) -> createCropDrops(FarmingRegistry.AUBERGINE_CROP.get(), FarmingRegistry.AUBERGINE.get(), FarmingRegistry.AUBERGINE_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.AUBERGINE_CROP.get(), FiveAgeCropBlock.AGE)));
+			this.add(FarmingRegistry.GRAPE_CROP.get(), (block) -> createCropDrops(FarmingRegistry.GRAPE_CROP.get(), FarmingRegistry.GRAPES.get(), FarmingRegistry.GRAPE_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.GRAPE_CROP.get(), CropstickCropBlock.AGE)));
+			this.add(FarmingRegistry.PINEAPPLE_CROP.get(), (block) -> createCropDrops(FarmingRegistry.PINEAPPLE_CROP.get(), FarmingRegistry.PINEAPPLE.get(), FarmingRegistry.PINEAPPLE_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.PINEAPPLE_CROP.get(), FiveAgeCropBlock.AGE)));
+			this.add(FarmingRegistry.CORN_CROP.get(), (block) -> createCropDrops(FarmingRegistry.CORN_CROP.get(), FarmingRegistry.CORN.get(), FarmingRegistry.CORN_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.CORN_CROP.get(), SevenAgeCropBlock.AGE)));
+			this.add(FarmingRegistry.ONION_CROP.get(), (block) -> createCropDrops(FarmingRegistry.ONION_CROP.get(), FarmingRegistry.ONION.get(), FarmingRegistry.ONION_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.ONION_CROP.get(), FiveAgeCropBlock.AGE)));
+			this.add(FarmingRegistry.GARLIC_CROP.get(), (block) -> createCropDrops(FarmingRegistry.GARLIC_CROP.get(), FarmingRegistry.GARLIC.get(), FarmingRegistry.GARLIC_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.GARLIC_CROP.get(), FiveAgeCropBlock.AGE)));
+			this.add(FarmingRegistry.LETTUCE_CROP.get(), (block) -> createCropDrops(FarmingRegistry.LETTUCE_CROP.get(), FarmingRegistry.LETTUCE.get(), FarmingRegistry.LETTUCE_SEEDS.get(), cropConditionBuilder((CropBlock) FarmingRegistry.LETTUCE_CROP.get(), FiveAgeCropBlock.AGE)));
 
 			this.dropSelf(FarmingRegistry.SCARECROW.get());
 		}
 
-		public LootItemCondition.Builder getBuilder(CropBlock block) {
-			return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge()));
+		public LootItemCondition.Builder cropConditionBuilder(CropBlock block, IntegerProperty ageProperty) {
+			return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, block.getMaxAge()));
 		}
 
 		@Override
