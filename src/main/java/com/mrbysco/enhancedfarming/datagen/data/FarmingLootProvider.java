@@ -111,7 +111,8 @@ public class FarmingLootProvider extends LootTableProvider {
 		}
 
 		public LootTable.Builder createSingleItemTable(ItemLike itemLike) {
-			return LootTable.lootTable().withPool(this.applyExplosionCondition(itemLike, LootPool.lootPool().name("main").setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(itemLike))));
+			return LootTable.lootTable().withPool(this.applyExplosionCondition(itemLike, LootPool.lootPool().name("main")
+					.setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(itemLike))));
 		}
 
 		protected LootTable.Builder createCropDrops(Block crop, Item cropItem, Item seeds, LootItemCondition.Builder builder) {

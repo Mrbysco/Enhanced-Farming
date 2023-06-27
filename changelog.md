@@ -1,1 +1,1 @@
-* Fix incompatibility with forge 47.0.16
+* Fix creative tab ordering
