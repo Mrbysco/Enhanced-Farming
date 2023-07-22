@@ -1,1 +1,1 @@
-* Fix creative tab ordering
+* Update zh_cn translation courtesy of [panda-lsy](https://github.com/panda-lsy)
