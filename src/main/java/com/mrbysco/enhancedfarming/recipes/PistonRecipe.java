@@ -79,7 +79,7 @@ public class PistonRecipe implements Recipe<Container> {
 			String s = GsonHelper.getAsString(jsonObject, "group", "");
 			JsonElement jsonelement = (JsonElement) (GsonHelper.isArrayNode(jsonObject, "ingredient") ? GsonHelper.getAsJsonArray(jsonObject, "ingredient") : GsonHelper.getAsJsonObject(jsonObject, "ingredient"));
 			Ingredient ingredient = Ingredient.fromJson(jsonelement);
-			//Forge: Check if primitive string to keep vanilla or a object which can contain a count field.
+			//Forge: Check if primitive string to keep vanilla or an object which can contain a count field.
 			if (!jsonObject.has("result"))
 				throw new com.google.gson.JsonSyntaxException("Missing result, expected to find a string or object");
 			ItemStack itemstack;
