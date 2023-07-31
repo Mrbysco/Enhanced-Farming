@@ -63,7 +63,7 @@ public class EnhancedFarming {
 	private void buildTabContents(final BuildCreativeModeTabContentsEvent event) {
 		if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
 			List<ItemStack> stacks = FarmingRegistry.ITEMS.getEntries().stream()
-					.filter(reg -> reg.get().getFoodProperties() != null).map(reg -> new ItemStack(reg.get())).toList();
+					.filter(reg -> reg.get().isEdible()).map(reg -> new ItemStack(reg.get())).toList();
 			event.acceptAll(stacks);
 		}
 	}
