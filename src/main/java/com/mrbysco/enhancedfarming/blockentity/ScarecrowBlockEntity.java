@@ -24,7 +24,7 @@ public class ScarecrowBlockEntity extends BlockEntity {
 		super(blockEntityType, pos, state);
 		this.hitbox = new AABB(pos.getX() - 0.5f, pos.getY() - 0.5f, pos.getZ() - 0.5f,
 				pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f)
-				.inflate(5, 5, 5);
+				.inflate(5);
 	}
 
 	public ScarecrowBlockEntity(BlockPos pos, BlockState state) {
