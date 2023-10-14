@@ -24,7 +24,7 @@ public class ScarecrowBlockEntity extends BlockEntity {
 		super(blockEntityType, pos, state);
 		this.hitbox = new AABB(pos.getX() - 0.5f, pos.getY() - 0.5f, pos.getZ() - 0.5f,
 				pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f)
-				.inflate(-5, -5, -5).inflate(5, 5, 5);
+				.inflate(5, 5, 5);
 	}
 
 	public ScarecrowBlockEntity(BlockPos pos, BlockState state) {
@@ -36,22 +36,20 @@ public class ScarecrowBlockEntity extends BlockEntity {
 			if (level.getGameTime() % 10 == 0) {
 				blockEntity.entityList.clear();
 				blockEntity.entityList.addAll(level.getEntitiesOfClass(PathfinderMob.class, blockEntity.hitbox).stream()
-						.filter(entity -> entity instanceof Animal || entity instanceof WaterAnimal).map(entity -> entity).toList());
+						.filter(entity -> entity instanceof Animal || entity instanceof WaterAnimal).toList());
 			}
 
-			if (blockEntity.entityList != null && !blockEntity.entityList.isEmpty()) {
-				for (PathfinderMob animal : blockEntity.entityList) {
-					final Vec3 animalPos = getInvertedDirection(pos, animal);
-					animal.moveRelative(0.05F, animalPos);
-				}
+			for (PathfinderMob animal : blockEntity.entityList) {
+				final Vec3 animalPos = getInvertedDirection(pos, animal);
+				animal.setDeltaMovement(animal.getDeltaMovement().add(animalPos));
 			}
 		}
 	}
 
 	public static Vec3 getInvertedDirection(BlockPos scarecrow, Entity animal) {
-		double x = (animal.getX() < scarecrow.getX() ? 1 : 0);
-		double z = (animal.getZ() < scarecrow.getZ() ? 1 : 0);
+		Vec3 dir = animal.position().subtract(scarecrow.getX(), 0, scarecrow.getZ())
+				.normalize().scale(1.5);
 
-		return new Vec3(animal.getX() + x, 0.5, animal.getZ() + z);
+		return new Vec3(dir.x(), 0, dir.z());
 	}
 }
