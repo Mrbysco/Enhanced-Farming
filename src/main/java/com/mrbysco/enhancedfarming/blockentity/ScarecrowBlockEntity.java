@@ -47,9 +47,7 @@ public class ScarecrowBlockEntity extends BlockEntity {
 	}
 
 	public static Vec3 getInvertedDirection(BlockPos scarecrow, Entity animal) {
-		Vec3 dir = animal.position().subtract(scarecrow.getX(), 0, scarecrow.getZ())
-				.normalize().scale(1.5);
-
-		return new Vec3(dir.x(), 0, dir.z());
+		return animal.position().subtract(scarecrow.getX(), scarecrow.getY(), scarecrow.getZ())
+				.normalize().scale(0.1);
 	}
 }
