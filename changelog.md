@@ -1,1 +1,1 @@
-* Update zh_cn translation courtesy of [panda-lsy](https://github.com/panda-lsy)
+* Adjust Scarecrow Logic to Properly Push Animals Away in a Radius of Five Blocks (Thanks to [ChampionAsh5357](https://github.com/Mrbysco/Enhanced-Farming/pull/29))
