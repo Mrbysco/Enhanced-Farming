@@ -1,12 +1,18 @@
 package com.mrbysco.enhancedfarming.item;
 
+import com.mrbysco.enhancedfarming.init.FarmingRegistry;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ContainerFoodItem extends SpecialCustomFoodItem {
 
@@ -51,5 +57,13 @@ public class ContainerFoodItem extends SpecialCustomFoodItem {
 			}
 		}
 		return super.shrinkStack(livingEntity, stack);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
+		super.appendHoverText(stack, level, components, flag);
+		if (this == FarmingRegistry.BANANA_JUICE.get()) {
+			components.add(Component.translatable("enhancedfarming.item.banana_juice.tooltip"));
+		}
 	}
 }
