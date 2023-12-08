@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:carved_pumpkin"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "W": {
+      "tag": "forge:crops/wheat"
+    },
+    "X": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    " P ",
+    "WXW",
+    " S "
+  ],
+  "result": {
+    "item": "enhancedfarming:scarecrow"
+  },
+  "show_notification": true
+}

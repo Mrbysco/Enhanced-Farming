@@ -2,6 +2,7 @@ package com.mrbysco.enhancedfarming.datagen.data;
 
 import com.google.gson.JsonObject;
 import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.datagen.data.recipe.PistonRecipeBuilder;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.init.conditions.CropToSeedCondition;
 import com.mrbysco.enhancedfarming.init.conditions.RakeEnabledCondition;
@@ -115,6 +116,14 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_item", has(Items.POTION))
 				.save(consumer, FarmingRegistry.HOT_WATER.getId().withPrefix("cooking/"));
 
+		//Mint Tea
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.MINT_TEA.get())
+				.requires(FarmingRegistry.MINT.get())
+				.requires(FarmingRegistry.HOT_WATER.get())
+				.unlockedBy("has_mint", has(FarmingRegistry.MINT.get()))
+				.unlockedBy("has_hot_water", has(FarmingRegistry.HOT_WATER.get()))
+				.save(consumer);
+
 		//Soup
 		generateSoup(consumer, FarmingRegistry.CARROT_SOUP, "vegetables/carrot");
 		generateNoodleSoup(consumer, FarmingRegistry.CHICKEN_NOODLE_SOUP, "vegetables/onion", "vegetables/carrot", "raw_chicken");
@@ -153,6 +162,21 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_salt", has(saltTag))
 				.unlockedBy("has_flour", has(FLOUR_TAG))
 				.save(consumer, FarmingRegistry.DOUGH.getId().withSuffix("_with_bucket"));
+
+		//Salt
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.SALT.get(), 3)
+				.requires(FarmingRegistry.POT.get())
+				.requires(Items.WATER_BUCKET)
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_water_bucket", has(Items.WATER_BUCKET))
+				.save(consumer, FarmingRegistry.SALT.getId().withSuffix("_alt"));
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.SALT.get())
+				.requires(FarmingRegistry.POT.get())
+				.requires(StrictNBTIngredient.of(waterBottle))
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_water_bottle", has(Items.GLASS_BOTTLE))
+				.save(consumer);
 
 		//Sliced bread
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.SLICED_BREAD.get(), 2)
@@ -220,6 +244,31 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_water", has(waterTag))
 				.unlockedBy("has_egg", has(eggsTag))
 				.save(consumer);
+
+
+		//Stock
+		TagKey<Item> vegetablesTag = createTag("vegetables");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.STOCK.get(), 2)
+				.requires(FarmingRegistry.POT.get())
+				.requires(waterTag)
+				.requires(Items.BOWL)
+				.requires(vegetablesTag)
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_water", has(waterTag))
+				.unlockedBy("has_bowl", has(Items.BOWL))
+				.unlockedBy("has_vegetables", has(vegetablesTag))
+				.save(consumer);
+		TagKey<Item> rawmeatsTag = createTag("rawmeats");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.STOCK.get(), 2)
+				.requires(FarmingRegistry.POT.get())
+				.requires(waterTag)
+				.requires(Items.BOWL)
+				.requires(rawmeatsTag)
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_water", has(waterTag))
+				.unlockedBy("has_bowl", has(Items.BOWL))
+				.unlockedBy("has_rawmeats", has(rawmeatsTag))
+				.save(consumer, FarmingRegistry.STOCK.getId().withSuffix("_alt"));
 
 		//Gold fruit
 		generateGolden(consumer, FarmingRegistry.GOLDEN_LEMON, FarmingRegistry.LEMON);
@@ -291,6 +340,116 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_cherry", has(cherryTag))
 				.save(consumer);
 
+		//Pasta
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.PASTA.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(FarmingRegistry.OLIVE_OIL.get())
+				.requires(FarmingRegistry.DOUGH.get())
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_olive_oil", has(FarmingRegistry.OLIVE_OIL.get()))
+				.unlockedBy("has_dough", has(FarmingRegistry.DOUGH.get()))
+				.save(consumer);
+		//Spaghetti
+		TagKey<Item> tomatoTag = createTag("vegetables/tomato");
+		TagKey<Item> rawBeefTag = createTag("raw_beef");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.SPAGHETTI.get())
+				.requires(FarmingRegistry.POT.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(FarmingRegistry.PASTA.get())
+				.requires(tomatoTag)
+				.requires(rawBeefTag)
+				.requires(Items.BOWL)
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_pasta", has(FarmingRegistry.PASTA.get()))
+				.unlockedBy("has_tomato", has(tomatoTag))
+				.unlockedBy("has_raw_beef", has(rawBeefTag))
+				.unlockedBy("has_bowl", has(Items.BOWL))
+				.save(consumer);
+
+		//Fries
+		TagKey<Item> potatoTag = createTag("vegetables/potato");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.RAW_FRIES.get(), 2)
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(potatoTag)
+				.requires(potatoTag)
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_potato", has(potatoTag))
+				.save(consumer);
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.FRIES.get())
+				.requires(FarmingRegistry.POT.get())
+				.requires(FarmingRegistry.OLIVE_OIL.get())
+				.requires(FarmingRegistry.RAW_FRIES.get())
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_olive_oil", has(FarmingRegistry.OLIVE_OIL.get()))
+				.unlockedBy("has_raw_fries", has(FarmingRegistry.RAW_FRIES.get()))
+				.save(consumer);
+		TagKey<Item> rawFishTag = createTag("raw_fish");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.FISH_AND_CHIPS.get())
+				.requires(FarmingRegistry.POT.get())
+				.requires(FarmingRegistry.OLIVE_OIL.get())
+				.requires(FarmingRegistry.RAW_FRIES.get())
+				.requires(rawFishTag)
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_olive_oil", has(FarmingRegistry.OLIVE_OIL.get()))
+				.unlockedBy("has_raw_fries", has(FarmingRegistry.RAW_FRIES.get()))
+				.unlockedBy("has_raw_fish", has(rawFishTag))
+				.save(consumer);
+		TagKey<Item> cookedFishTag = createTag("cooked_fish");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.FISH_AND_CHIPS.get())
+				.requires(FarmingRegistry.FRIES.get())
+				.requires(cookedFishTag)
+				.unlockedBy("has_fries", has(FarmingRegistry.FRIES.get()))
+				.unlockedBy("has_cooked_fish", has(cookedFishTag))
+				.save(consumer, FarmingRegistry.FISH_AND_CHIPS.getId().withSuffix("_alt"));
+
+		//Potato chips
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.POTATO_CHIPS.get())
+				.requires(FarmingRegistry.POT.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(potatoTag)
+				.requires(FarmingRegistry.OLIVE_OIL.get())
+				.requires(saltTag)
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_potato", has(potatoTag))
+				.unlockedBy("has_olive_oil", has(FarmingRegistry.OLIVE_OIL.get()))
+				.unlockedBy("has_salt", has(saltTag))
+				.save(consumer);
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.GUAC_AND_CHIPS.get())
+				.requires(FarmingRegistry.POTATO_CHIPS.get())
+				.requires(FarmingRegistry.GUACAMOLE.get())
+				.unlockedBy("has_potato_chips", has(FarmingRegistry.POTATO_CHIPS.get()))
+				.unlockedBy("has_guacamole", has(FarmingRegistry.GUACAMOLE.get()))
+				.save(consumer);
+
+		//Quac
+		TagKey<Item> avocadoTag = createTag("fruits/avocado");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.GUACAMOLE.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(avocadoTag)
+				.requires(Items.BOWL)
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_avocado", has(avocadoTag))
+				.unlockedBy("has_bowl", has(Items.BOWL))
+				.save(consumer);
+
+		//Jam
+		TagKey<Item> fruitsTag = createTag("fruits");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.JAM.get())
+				.requires(FarmingRegistry.POT.get())
+				.requires(fruitsTag)
+				.requires(fruitsTag)
+				.requires(sugarTag)
+				.requires(sugarTag)
+				.requires(Items.GLASS_BOTTLE)
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_fruits", has(fruitsTag))
+				.unlockedBy("has_sugar", has(sugarTag))
+				.unlockedBy("has_bottle", has(Items.GLASS_BOTTLE))
+				.save(consumer);
+
+
 		//Rake
 		generateRake(consumer, FarmingRegistry.WOODEN_RAKE, ItemTags.PLANKS);
 		generateRake(consumer, FarmingRegistry.STONE_RAKE, Tags.Items.COBBLESTONE);
@@ -325,6 +484,35 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_stick", has(Tags.Items.INGOTS_IRON))
 				.unlockedBy("has_stone", has(Tags.Items.STONE))
 				.save(consumer);
+
+		//Misc
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, FarmingRegistry.CROP_STICK.get())
+				.pattern("SS")
+				.pattern("SS")
+				.define('S', Tags.Items.RODS_WOODEN)
+				.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
+				.save(consumer);
+
+		//Scarecrow
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, FarmingRegistry.SCARECROW.get())
+				.pattern(" P ")
+				.pattern("WXW")
+				.pattern(" S ")
+				.define('P', Items.CARVED_PUMPKIN)
+				.define('W', Tags.Items.CROPS_WHEAT)
+				.define('X', ItemTags.WOOL)
+				.define('S', Tags.Items.RODS_WOODEN)
+				.unlockedBy("has_pumpkin", has(Items.CARVED_PUMPKIN))
+				.unlockedBy("has_wheat", has(Tags.Items.CROPS_WHEAT))
+				.unlockedBy("has_wool", has(ItemTags.WOOL))
+				.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
+				.save(consumer);
+
+		//Olive Oil
+		TagKey<Item> oliveTag = createTag("vegetables/olive");
+		new PistonRecipeBuilder( FarmingRegistry.OLIVE_OIL.get(), 1, Ingredient.of(oliveTag))
+				.unlockedBy("has_olive", has(FarmingRegistry.OLIVE.get()))
+				.save(consumer, FarmingRegistry.OLIVE_OIL.getId().withPrefix("piston/"));
 	}
 
 	private void generateFurnace(Consumer<FinishedRecipe> consumer, Item output, String ingredientTag) {

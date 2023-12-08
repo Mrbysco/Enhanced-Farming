@@ -3,22 +3,17 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "enhancedfarming:pot"
-    },
-    {
       "item": "enhancedfarming:cutting_board"
     },
     {
       "tag": "forge:vegetables/potato"
     },
     {
-      "item": "enhancedfarming:olive_oil"
-    },
-    {
-      "item": "enhancedfarming:salt"
+      "tag": "forge:vegetables/potato"
     }
   ],
   "result": {
-    "item": "enhancedfarming:potato_chips"
+    "count": 2,
+    "item": "enhancedfarming:raw_fries"
   }
 }

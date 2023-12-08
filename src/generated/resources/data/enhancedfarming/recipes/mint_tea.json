@@ -3,14 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "enhancedfarming:pot"
+      "item": "enhancedfarming:mint"
     },
     {
-      "item": "minecraft:water_bucket"
+      "item": "enhancedfarming:hot_water"
     }
   ],
   "result": {
-    "item": "enhancedfarming:salt",
-    "count": 2
+    "item": "enhancedfarming:mint_tea"
   }
 }

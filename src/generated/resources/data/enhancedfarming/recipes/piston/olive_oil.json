@@ -1,10 +1,8 @@
 {
   "type": "enhancedfarming:piston_crafting",
-  "ingredient": [
-    {
-      "tag": "forge:vegetables/olive"
-    }
-  ],
+  "ingredient": {
+    "tag": "forge:vegetables/olive"
+  },
   "result": {
     "item": "enhancedfarming:olive_oil"
   }

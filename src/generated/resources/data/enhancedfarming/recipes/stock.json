@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:pot"
+    },
+    {
+      "tag": "forge:water"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "forge:vegetables"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "enhancedfarming:stock"
+  }
+}

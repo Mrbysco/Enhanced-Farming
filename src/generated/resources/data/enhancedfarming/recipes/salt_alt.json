@@ -6,12 +6,11 @@
       "item": "enhancedfarming:pot"
     },
     {
-      "type": "forge:nbt",
-      "item": "minecraft:potion",
-      "nbt": "{Potion:'minecraft:water'}"
+      "item": "minecraft:water_bucket"
     }
   ],
   "result": {
+    "count": 3,
     "item": "enhancedfarming:salt"
   }
 }

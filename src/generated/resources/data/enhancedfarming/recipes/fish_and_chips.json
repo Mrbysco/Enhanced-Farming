@@ -6,17 +6,16 @@
       "item": "enhancedfarming:pot"
     },
     {
-      "tag": "forge:water"
+      "item": "enhancedfarming:olive_oil"
     },
     {
-      "item": "minecraft:bowl"
+      "item": "enhancedfarming:raw_fries"
     },
     {
-      "tag": "forge:vegetables"
+      "tag": "forge:raw_fish"
     }
   ],
   "result": {
-    "item": "enhancedfarming:stock",
-    "count": 2
+    "item": "enhancedfarming:fish_and_chips"
   }
 }

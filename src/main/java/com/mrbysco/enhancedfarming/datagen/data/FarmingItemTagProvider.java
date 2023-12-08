@@ -34,6 +34,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private final String RAW_CHICKEN = "raw_chicken";
 	private final String COOKED_BEEF = "cooked_beef";
 	private final String COOKED_CHICKEN = "cooked_chicken";
+	private final String COOKED_FISH = "cooked_fish";
 	private final String FRUITS = "fruits";
 	private final String FISH = "fish";
 	private final String SUGAR = "sugar";

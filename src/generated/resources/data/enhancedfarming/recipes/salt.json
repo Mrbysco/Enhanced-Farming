@@ -6,17 +6,13 @@
       "item": "enhancedfarming:pot"
     },
     {
-      "tag": "forge:water"
-    },
-    {
-      "item": "minecraft:bowl"
-    },
-    {
-      "tag": "forge:rawmeats"
+      "type": "forge:nbt",
+      "count": 1,
+      "item": "minecraft:potion",
+      "nbt": "{Potion:\"minecraft:water\"}"
     }
   ],
   "result": {
-    "item": "enhancedfarming:stock",
-    "count": 2
+    "item": "enhancedfarming:salt"
   }
 }
