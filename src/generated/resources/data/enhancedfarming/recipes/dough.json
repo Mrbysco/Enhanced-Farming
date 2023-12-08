@@ -4,11 +4,12 @@
   "ingredients": [
     {
       "type": "forge:nbt",
+      "count": 1,
       "item": "minecraft:potion",
-      "nbt": "{Potion:'minecraft:water'}"
+      "nbt": "{Potion:\"minecraft:water\"}"
     },
     {
-      "item": "enhancedfarming:salt"
+      "tag": "forge:salt"
     },
     {
       "item": "enhancedfarming:flour"

@@ -1,0 +1,33 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "enhancedfarming:rake_enabled"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "F": {
+            "item": "enhancedfarming:lemon"
+          },
+          "G": {
+            "tag": "forge:nuggets/gold"
+          }
+        },
+        "pattern": [
+          "GGG",
+          "GFG",
+          "GGG"
+        ],
+        "result": {
+          "item": "enhancedfarming:golden_lemon"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

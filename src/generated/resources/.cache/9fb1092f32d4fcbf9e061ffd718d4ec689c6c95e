@@ -1,10 +1,14 @@
-// 1.20.1	2023-12-08T19:30:04.7077355	Recipes
+// 1.20.1	2023-12-08T19:41:01.0231097	Recipes
 e3d142d6cad159f3077fd1150b50386d2e6ed3af data/enhancedfarming/recipes/cooking/baked_egg.json
 6eb250f4fd8634c581e80d2c0b7f0cdfa661597a data/enhancedfarming/recipes/cooking/baked_egg_from_campfire.json
 e74bfdf925b2222defd783ba8dc81697b870def6 data/enhancedfarming/recipes/cooking/bread.json
 2cf9d6ddc588010f1b537641a407623d392c772c data/enhancedfarming/recipes/cooking/bread_from_campfire.json
 0a1636f3dc3a64b40a30541b40fe2fbd8d5753cd data/enhancedfarming/recipes/cooking/hot_chocolate_bottle.json
 633ec0e7eb8356303cad2c32df49aea6fbe795a2 data/enhancedfarming/recipes/cooking/hot_water.json
+7464eb76e564407d3711fee7203566a4b12f528d data/enhancedfarming/recipes/dough.json
+f91e2f3d4dd45375e2fad4afbaa8a388de9cc09b data/enhancedfarming/recipes/dough_with_bucket.json
+2785a7e7cc7e8810c6b8690d6490be2e79b33013 data/enhancedfarming/recipes/golden_lemon.json
+d58fe99d0143220a6cc6b74223b810be8c79f87b data/enhancedfarming/recipes/golden_orange.json
 0102ae83b912f58ab17fbab8ed7f7fd5987d44b5 data/enhancedfarming/recipes/juice/apple_juice.json
 b5aec1236857b0fd1e4863506515dafe342d08d5 data/enhancedfarming/recipes/juice/banana_juice.json
 d8b62c3d6d0db62dd82bb17ad1eb4a160f131f1a data/enhancedfarming/recipes/juice/cherry_juice.json

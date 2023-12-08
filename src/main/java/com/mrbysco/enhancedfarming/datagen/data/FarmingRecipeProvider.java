@@ -43,6 +43,8 @@ public class FarmingRecipeProvider extends RecipeProvider {
 
 	@Override
 	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+		final ItemStack waterBottle = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER);
+
 		generateSapling(consumer, FarmingRegistry.APPLE_SAPLING_ITEM, Items.OAK_SAPLING, "fruits/apple");
 		generateSapling(consumer, FarmingRegistry.LEMON_SAPLING_ITEM, Items.OAK_SAPLING, "fruits/lemon");
 		generateSapling(consumer, FarmingRegistry.ORANGE_SAPLING_ITEM, Items.OAK_SAPLING, "fruits/orange");
@@ -112,7 +114,6 @@ public class FarmingRecipeProvider extends RecipeProvider {
 						FarmingRegistry.HOT_CHOCOLATE_BOTTLE.get(), 0.25F, 200)
 				.unlockedBy("has_item", has(FarmingRegistry.COLD_CHOCOLATE_BOTTLE.get()))
 				.save(consumer, FarmingRegistry.HOT_CHOCOLATE_BOTTLE.getId().withPrefix("cooking/"));
-		ItemStack waterBottle = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER);
 		SimpleCookingRecipeBuilder.smelting(StrictNBTIngredient.of(waterBottle), RecipeCategory.FOOD,
 						FarmingRegistry.HOT_WATER.get(), 0.25F, 200)
 				.unlockedBy("has_item", has(Items.POTION))
@@ -130,6 +131,29 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		//Salad
 		generateSalad(consumer, FarmingRegistry.FRUIT_SALAD, "fruits", "fruits");
 		generateSalad(consumer, FarmingRegistry.SALAD, "vegetables/lettuce", "vegetables/tomato", "vegetables/onion");
+
+		//Dough
+		TagKey<Item> saltTag = createTag("salt");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.DOUGH.get())
+				.requires(StrictNBTIngredient.of(waterBottle))
+				.requires(saltTag)
+				.requires(FarmingRegistry.FLOUR.get())
+				.unlockedBy("has_water", has(Items.POTION))
+				.unlockedBy("has_salt", has(saltTag))
+				.unlockedBy("has_flour", has(FarmingRegistry.FLOUR.get()))
+				.save(consumer, FarmingRegistry.DOUGH.getId());
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.DOUGH.get())
+				.requires(Items.WATER_BUCKET)
+				.requires(saltTag)
+				.requires(FarmingRegistry.FLOUR.get())
+				.unlockedBy("has_water", has(Items.WATER_BUCKET))
+				.unlockedBy("has_salt", has(saltTag))
+				.unlockedBy("has_flour", has(FarmingRegistry.FLOUR.get()))
+				.save(consumer, FarmingRegistry.DOUGH.getId().withSuffix("_with_bucket"));
+
+		//Gold fruit
+		generateGolden(consumer, FarmingRegistry.GOLDEN_LEMON, FarmingRegistry.LEMON);
+		generateGolden(consumer, FarmingRegistry.GOLDEN_ORANGE, FarmingRegistry.ORANGE);
 	}
 
 	private void generateFurnace(Consumer<FinishedRecipe> consumer, Item output, String ingredientTag) {
@@ -302,6 +326,22 @@ public class FarmingRecipeProvider extends RecipeProvider {
 								.unlockedBy("has_stick", has(Tags.Items.RODS_WOODEN))
 								::save
 				).build(consumer, rake.getId().withPrefix("rake/"));
+	}
+
+	private void generateGolden(Consumer<FinishedRecipe> consumer, RegistryObject<Item> goldFruit, RegistryObject<Item> fruit) {
+		ConditionalRecipe.builder()
+				.addCondition(new RakeEnabledCondition())
+				.addRecipe(
+						ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, goldFruit.get())
+								.pattern("GGG")
+								.pattern("GFG")
+								.pattern("GGG")
+								.define('G', Tags.Items.NUGGETS_GOLD)
+								.define('F', fruit.get())
+								.unlockedBy("has_gold_nugget", has(Tags.Items.NUGGETS_GOLD))
+								.unlockedBy("has_fruit", has(fruit.get()))
+								::save
+				).build(consumer, goldFruit.getId());
 	}
 
 	private TagKey<Item> createTag(String name) {

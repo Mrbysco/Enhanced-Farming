@@ -6,7 +6,7 @@
       "item": "minecraft:water_bucket"
     },
     {
-      "item": "enhancedfarming:salt"
+      "tag": "forge:salt"
     },
     {
       "item": "enhancedfarming:flour"

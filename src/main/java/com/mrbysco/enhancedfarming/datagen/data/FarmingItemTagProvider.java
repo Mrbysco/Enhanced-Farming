@@ -39,6 +39,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private final String SEEDS = "seeds";
 	private final String DOUGH = "dough";
 	private final String SALAD_INGREDIENTS = "salad_ingredients";
+	private final String SALT = "edible_salt";
 
 	@Override
 	public void addTags(HolderLookup.Provider lookupProvider) {
@@ -72,6 +73,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 		addRegular(RAW_BEEF, Items.BEEF);
 		addRegular(RAW_CHICKEN, Items.CHICKEN);
+		addRegular(SALT, FarmingRegistry.SALT.get());
 	}
 
 	private void addRegular(String category, Item... items) {
