@@ -1,4 +1,4 @@
-// 1.20.1	2023-06-15T02:37:02.814939	Tags for minecraft:item mod id enhancedfarming
+// 1.20.1	2023-12-08T17:15:06.3211664	Tags for minecraft:item mod id enhancedfarming
 b885809a451e508589932c1f0a14e4db7dac3152 data/enhancedfarming/tags/items/hot_items.json
 59c7af50cc131584877582ed4fcfc0fe7f52a654 data/forge/tags/items/crops.json
 4770eeaeccf0a1a577448b12d52e860c92b53555 data/forge/tags/items/crops/aubergine.json
@@ -12,6 +12,8 @@ a3024738885dad2638d322c31b32de049be9beaa data/forge/tags/items/crops/lettuce.jso
 7fe0aee6c52bc7532c0ca8dc50d441f0c1647597 data/forge/tags/items/crops/onion.json
 a87f6ab8355b25b881e72a0c6eee69ff4f71f154 data/forge/tags/items/crops/pineapple.json
 27efdb6d2dec036ebbf08ed6552734fdcf4c2f8d data/forge/tags/items/crops/tomato.json
+a5c07b9afc5010c37f318065312fb2c2c91194c6 data/forge/tags/items/dough.json
+ff7f0cac033ca72b7c6319c0baa36fb41fd88951 data/forge/tags/items/dough/wheat.json
 315678b2cd4c6e30ffa4f08c310e7562a8187101 data/forge/tags/items/fish/cod.json
 3fe6df0882f02c83c296f5dfaed148dab475c556 data/forge/tags/items/fish/salmon.json
 380153167b23b0d6f9fbeb945e93d225cf87d882 data/forge/tags/items/fruits.json
@@ -33,6 +35,9 @@ d14710b6121edb04c184b88cb21ce8d106aafd32 data/forge/tags/items/rawmeats/beef.jso
 113f509ec498e488c93d8c889a20d330cc8967d0 data/forge/tags/items/rawmeats/mutton.json
 33cb78441f05ba4ca385d72ebd7ddc4849b986d1 data/forge/tags/items/rawmeats/porkchop.json
 676cee16d107d62d62093f32df13eb8e934c7db9 data/forge/tags/items/rawmeats/rabbit.json
+874ee965d002c62c61c0bb0066de39101df3ef56 data/forge/tags/items/salad_ingredients.json
+09aabb564fbe29f3f6fe64800e7cd39a2e8bfeea data/forge/tags/items/salad_ingredients/olive.json
+7fe0aee6c52bc7532c0ca8dc50d441f0c1647597 data/forge/tags/items/salad_ingredients/onion.json
 3923c5f1ff2750d7aa737dc536a2c4850c5d42af data/forge/tags/items/seeds.json
 03e3d10c931c1e78f724ce122d283690a522f8ee data/forge/tags/items/seeds/aubergine.json
 e8efcb6ed3515fa460863b2987bf48a72c15d168 data/forge/tags/items/seeds/corn.json

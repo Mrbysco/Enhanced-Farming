@@ -35,6 +35,8 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private final String WATER = "water";
 	private final String MILK = "milk";
 	private final String SEEDS = "seeds";
+	private final String DOUGH = "dough";
+	private final String SALAD_INGREDIENTS = "salad_ingredients";
 
 	@Override
 	public void addTags(HolderLookup.Provider lookupProvider) {
@@ -62,23 +64,35 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		addCategory(WATER, Items.WATER_BUCKET);
 		addCategory(MILK, Items.MILK_BUCKET);
 		addCategory(SEEDS, FarmingRegistry.NETHER_FLOWER_SEEDS.get());
+
+		addCategoryWithType(DOUGH, "wheat", FarmingRegistry.DOUGH.get());
+		addCategory(SALAD_INGREDIENTS, FarmingRegistry.ONION.get(), FarmingRegistry.OLIVE.get());
 	}
 
 	private void addCategory(String category, Item... items) {
-		TagKey<Item> mainTag = ItemTags.create(new ResourceLocation("forge", category));
+		TagKey<Item> mainTag = createForgeTag(category);
 		for (Item item : items) {
 			String path = ForgeRegistries.ITEMS.getKey(item).getPath();
-			TagKey<Item> categoryTag = ItemTags.create(new ResourceLocation("forge", category + "/" + path));
+			TagKey<Item> categoryTag = createForgeTag(category + "/" + path);
 			this.tag(categoryTag).add(item);
 			this.tag(mainTag).addTag(categoryTag);
 		}
 	}
 
 	private void addCategory(String category, String mainCategory, Item... items) {
-		TagKey<Item> mainTag = ItemTags.create(new ResourceLocation("forge", mainCategory));
+		TagKey<Item> mainTag = createForgeTag(mainCategory);
 		for (Item item : items) {
 			String path = ForgeRegistries.ITEMS.getKey(item).getPath();
-			TagKey<Item> categoryTag = ItemTags.create(new ResourceLocation("forge", category + "/" + path));
+			TagKey<Item> categoryTag = createForgeTag(category + "/" + path);
+			this.tag(categoryTag).add(item);
+			this.tag(mainTag).addTag(categoryTag);
+		}
+	}
+
+	private void addCategoryWithType(String category, String type, Item... items) {
+		TagKey<Item> mainTag = createForgeTag(category);
+		for (Item item : items) {
+			TagKey<Item> categoryTag = createForgeTag(category + "/" + type);
 			this.tag(categoryTag).add(item);
 			this.tag(mainTag).addTag(categoryTag);
 		}
@@ -86,17 +100,21 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 	private void addCrop(RegistryObject<Item> crop, @Nullable RegistryObject<Item> seed, String foodType) {
 		String cropName = crop.getId().getPath();
-		TagKey<Item> croptag = ItemTags.create(new ResourceLocation("forge", "crops/" + cropName));
-		TagKey<Item> mainFoodTag = ItemTags.create(new ResourceLocation("forge", foodType));
-		TagKey<Item> foodTypeTag = ItemTags.create(new ResourceLocation("forge", foodType + "/" + cropName));
-		this.tag(croptag).add(crop.get());
+		TagKey<Item> cropTag = createForgeTag("crops/" + cropName);
+		TagKey<Item> mainFoodTag = createForgeTag(foodType);
+		TagKey<Item> foodTypeTag = createForgeTag(foodType + "/" + cropName);
+		this.tag(cropTag).add(crop.get());
 		this.tag(foodTypeTag).add(crop.get());
 		this.tag(mainFoodTag).addTag(foodTypeTag);
-		this.tag(Tags.Items.CROPS).addTag(croptag);
+		this.tag(Tags.Items.CROPS).addTag(cropTag);
 		if (seed != null) {
-			TagKey<Item> seedTag = ItemTags.create(new ResourceLocation("forge", "seeds/" + cropName));
+			TagKey<Item> seedTag = createForgeTag("seeds/" + cropName);
 			this.tag(seedTag).add(seed.get());
 			this.tag(Tags.Items.SEEDS).addTag(seedTag);
 		}
+	}
+
+	private TagKey<Item> createForgeTag(String name) {
+		return ItemTags.create(new ResourceLocation("forge", name));
 	}
 }
