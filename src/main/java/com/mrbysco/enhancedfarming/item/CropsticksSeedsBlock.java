@@ -1,52 +1,32 @@
 package com.mrbysco.enhancedfarming.item;
 
+import com.mrbysco.enhancedfarming.block.CropStickBlock;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class CropsticksSeedsBlock extends ItemNameBlockItem {
-
-//    private final Block crops;
 
 	public CropsticksSeedsBlock(Block crops, Item.Properties properties) {
 		super(crops, properties);
 	}
 
-//	@Override
-//	public ActionResultType onItemUse(PlayerEntity player, World level, BlockPos pos, Hand hand, Direction facing, float hitX, float hitY, float hitZ)
-//    {
-//        ItemStack itemstack = player.getHeldItem(hand);
-//        BlockState state = level.getBlockState(pos);
-//
-//        if (possibleSide(facing) && player.canPlayerEdit(pos.offset(facing), facing, itemstack) && state.getBlock() instanceof CropStickBlock)
-//        {
-//            level.setBlockState(pos, this.crops.getDefaultState());
-//
-//            itemstack.shrink(1);
-//            return ActionResultType.SUCCESS;
-//        }
-//        else
-//        {
-//            return ActionResultType.FAIL;
-//        }
-//    }
-//
-//	public boolean possibleSide(Direction facing) {
-//        if (!(facing == Direction.DOWN))
-//        	return true;
-//        else
-//        	return false;
-//	}
-//
-//    @Override
-//    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-//    {
-//        return EnumPlantType.Crop;
-//    }
-//
-//    @Override
-//    public BlockState getPlant(IBlockAccess world, BlockPos pos)
-//    {
-//        return this.crops.getDefaultState();
-//    }
+	@Override
+	protected boolean canPlace(BlockPlaceContext placeContext, BlockState cropState) {
+		//Check if right-clicked on a Crop Stick else return false
+		BlockPos pos = placeContext.getClickedPos().relative(placeContext.getClickedFace().getOpposite());
+		BlockState state = placeContext.getLevel().getBlockState(pos);
+		if (!(state.getBlock() instanceof CropStickBlock))
+			return false;
+		return cropState.canSurvive(placeContext.getLevel(), pos);
+	}
+
+	@Override
+	protected boolean placeBlock(BlockPlaceContext placeContext, BlockState state) {
+		BlockPos pos = placeContext.getClickedPos().relative(placeContext.getClickedFace().getOpposite());
+		return placeContext.getLevel().setBlock(pos, state, 11);
+	}
 }
