@@ -1,5 +1,11 @@
-// 1.20.1	2023-12-08T21:29:40.701219	Recipes
+// 1.20.1	2023-12-08T22:02:19.1340737	Recipes
+7598c3485f0ef1a9daff46ab7281fa9867798e6b data/enhancedfarming/recipes/boiled_egg.json
 450fbd4b535f799492ee6104b0cb7687dfd67ea1 data/enhancedfarming/recipes/cheese.json
+6edcca54635c5af11b1b21bba0aca12e616bdf0e data/enhancedfarming/recipes/chocolate_banana.json
+cddd2c33fd8ff49ba33e328d8238c3d175708cbd data/enhancedfarming/recipes/chocolate_bar.json
+73d3bb832a864abd153271dad325735de9909216 data/enhancedfarming/recipes/chocolate_candy.json
+4e9a0396a1602bb74f1bd162602b4a7a8f62fad6 data/enhancedfarming/recipes/chocolate_cherry.json
+47b9d8858bbda6b81c04e6d0920e78faeb216100 data/enhancedfarming/recipes/cold_chocolate_bottle.json
 e3d142d6cad159f3077fd1150b50386d2e6ed3af data/enhancedfarming/recipes/cooking/baked_egg.json
 6eb250f4fd8634c581e80d2c0b7f0cdfa661597a data/enhancedfarming/recipes/cooking/baked_egg_from_campfire.json
 e74bfdf925b2222defd783ba8dc81697b870def6 data/enhancedfarming/recipes/cooking/bread.json
@@ -9,6 +15,7 @@ e74bfdf925b2222defd783ba8dc81697b870def6 data/enhancedfarming/recipes/cooking/br
 6ca125040e0b7228ce1c39c9fa6382c1e685e7c8 data/enhancedfarming/recipes/cutting_board.json
 4836aa12d3720f43cf3a6410f16fc17489957246 data/enhancedfarming/recipes/dough.json
 3af0f4f4c1b388bcc0bd072a832a805692b90845 data/enhancedfarming/recipes/dough_with_bucket.json
+8526dbc64d6bf9f6aec6b2d9a793f16734f97493 data/enhancedfarming/recipes/flour.json
 2785a7e7cc7e8810c6b8690d6490be2e79b33013 data/enhancedfarming/recipes/golden_lemon.json
 d58fe99d0143220a6cc6b74223b810be8c79f87b data/enhancedfarming/recipes/golden_orange.json
 0102ae83b912f58ab17fbab8ed7f7fd5987d44b5 data/enhancedfarming/recipes/juice/apple_juice.json
@@ -20,6 +27,7 @@ b35a9f5db9fef5d5962a056ba43c4a74f71fae5e data/enhancedfarming/recipes/juice/lemo
 2ca58e919b4c64d93a54ece3386a70b537705ee7 data/enhancedfarming/recipes/juice/orange_juice.json
 e016918ef3b0bffc1fa5424c7c636fbc98fc4583 data/enhancedfarming/recipes/juice/pear_juice.json
 283347e5f747008d475682aacf322cbea36eabea data/enhancedfarming/recipes/juice/pineapple_juice.json
+367f163d1b0dbc6f5014677d243ef6e31d39298a data/enhancedfarming/recipes/mint_chocolate_bar.json
 e302e29fac68df7b35d9fcdbedc0d649afed261a data/enhancedfarming/recipes/mortar_and_pestle.json
 2c68857d6b5a0bfd270ee411f727060e16570129 data/enhancedfarming/recipes/pie/apple_pie.json
 883c0abf76df733df0e7676c5783023c92d74cd9 data/enhancedfarming/recipes/pie/bacon_and_egg_pie.json

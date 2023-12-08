@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "enhancedfarming:chocolate_bar"
+      "tag": "forge:herbs/mint"
     },
     {
-      "item": "enhancedfarming:mint"
+      "item": "enhancedfarming:chocolate_bar"
     }
   ],
   "result": {

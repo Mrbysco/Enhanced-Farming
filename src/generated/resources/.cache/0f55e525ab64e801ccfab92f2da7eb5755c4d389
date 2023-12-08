@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-08T21:29:40.7042183	Tags for minecraft:item mod id enhancedfarming
+// 1.20.1	2023-12-08T22:00:07.9839431	Tags for minecraft:item mod id enhancedfarming
 b885809a451e508589932c1f0a14e4db7dac3152 data/enhancedfarming/tags/items/hot_items.json
 003d4d088cac59fd72644823696cea812882ab50 data/forge/tags/items/cheeses.json
 d840dc0792f339408bb23ed1afe4c0374342330d data/forge/tags/items/cheeses/normal.json
@@ -34,6 +34,8 @@ b76cf2d32a0d5bb9d702dd2724caeb5d7d4e30c5 data/forge/tags/items/fruits/avocado.js
 92179fd8d83be142c09764caaae9f1f063ada88b data/forge/tags/items/fruits/orange.json
 97003bf7002a9d85b15b4e5b82069eceeb3ef86e data/forge/tags/items/fruits/pear.json
 a87f6ab8355b25b881e72a0c6eee69ff4f71f154 data/forge/tags/items/fruits/pineapple.json
+e069f744643911905ef88fa3ec56f8cd979515d6 data/forge/tags/items/herbs.json
+5f273646de3d294e6e1dc56a9dc60e1470ae3669 data/forge/tags/items/herbs/mint.json
 d388aee9a692851e0a9568c2f48d71d11eef3686 data/forge/tags/items/milk.json
 edb5947f84984a39ab47c98c6fb0b3c3a9a8cc39 data/forge/tags/items/milk/milk_bucket.json
 388160e39eaaf283ee4f7aeca945dcf539862ad7 data/forge/tags/items/rawfish.json
@@ -62,7 +64,7 @@ f5fbb4d925ce59d1d638bcf3a420edfe9c9685d7 data/forge/tags/items/seeds/nether_flow
 d23a39578c9ae51df4227cfb5bf28fa9b39ffd7b data/forge/tags/items/seeds/tomato.json
 d8974bce1ac26b0f4523e181fa1cdffbb3389a84 data/forge/tags/items/sugar.json
 e801bdef0719e27dd7decd88269ada7c5740348e data/forge/tags/items/sugar/sugar.json
-c00bafd244bfc3b8de0f2eb265bd9def8c795083 data/forge/tags/items/vegetables.json
+fc3c1b1f56a363e74d00cfea1406d4b67df4446e data/forge/tags/items/vegetables.json
 4770eeaeccf0a1a577448b12d52e860c92b53555 data/forge/tags/items/vegetables/aubergine.json
 f9570db096e701a0b8872dddbb31d8dffea2a204 data/forge/tags/items/vegetables/beetroot.json
 3a6049fdf6a247720cef5ea417a0c9519f707e01 data/forge/tags/items/vegetables/carrot.json
@@ -70,7 +72,6 @@ d4fdaec78176594bb8769215f997a2058fa2efb9 data/forge/tags/items/vegetables/corn.j
 50f7bee9797759854793ea2cd921e10ca15d70f2 data/forge/tags/items/vegetables/cucumber.json
 0fd7e28f7b6315d60b8c86acd5488087e123433f data/forge/tags/items/vegetables/garlic.json
 a3024738885dad2638d322c31b32de049be9beaa data/forge/tags/items/vegetables/lettuce.json
-5f273646de3d294e6e1dc56a9dc60e1470ae3669 data/forge/tags/items/vegetables/mint.json
 09aabb564fbe29f3f6fe64800e7cd39a2e8bfeea data/forge/tags/items/vegetables/olive.json
 7fe0aee6c52bc7532c0ca8dc50d441f0c1647597 data/forge/tags/items/vegetables/onion.json
 849f851b30eb74acf2ca9316cd9708544427ecbc data/forge/tags/items/vegetables/potato.json

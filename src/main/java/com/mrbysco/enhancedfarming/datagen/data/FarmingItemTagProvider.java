@@ -28,6 +28,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	}
 
 	private final String VEGETABLES = "vegetables";
+	private final String HERBS = "herbs";
 	private final String RAWMEATS = "rawmeats";
 	private final String RAW_BEEF = "raw_beef";
 	private final String RAW_CHICKEN = "raw_chicken";
@@ -54,7 +55,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		addCrop(FarmingRegistry.CUCUMBER, FarmingRegistry.CUCUMBER_SEEDS, VEGETABLES);
 		addCrop(FarmingRegistry.GARLIC, FarmingRegistry.GARLIC_SEEDS, VEGETABLES);
 		addCrop(FarmingRegistry.LETTUCE, FarmingRegistry.LETTUCE_SEEDS, VEGETABLES);
-		addCrop(FarmingRegistry.MINT, FarmingRegistry.MINT_SEEDS, VEGETABLES);
+		addCrop(FarmingRegistry.MINT, FarmingRegistry.MINT_SEEDS, HERBS);
 		addCrop(FarmingRegistry.OLIVE, null, VEGETABLES);
 		addCrop(FarmingRegistry.ONION, FarmingRegistry.ONION_SEEDS, VEGETABLES);
 		addCrop(FarmingRegistry.TOMATO, FarmingRegistry.TOMATO_SEEDS, VEGETABLES);

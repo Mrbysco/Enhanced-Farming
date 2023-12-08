@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "S": {
+      "tag": "forge:sugar"
+    }
+  },
+  "pattern": [
+    "CSC",
+    "CSC",
+    "CSC"
+  ],
+  "result": {
+    "item": "enhancedfarming:chocolate_bar"
+  },
+  "show_notification": true
+}

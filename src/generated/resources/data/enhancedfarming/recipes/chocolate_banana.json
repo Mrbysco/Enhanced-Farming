@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "F": {
+      "tag": "forge:fruits/banana"
+    }
+  },
+  "pattern": [
+    " C",
+    "CF"
+  ],
+  "result": {
+    "item": "enhancedfarming:chocolate_banana"
+  },
+  "show_notification": true
+}
