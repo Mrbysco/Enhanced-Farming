@@ -154,6 +154,11 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		//Gold fruit
 		generateGolden(consumer, FarmingRegistry.GOLDEN_LEMON, FarmingRegistry.LEMON);
 		generateGolden(consumer, FarmingRegistry.GOLDEN_ORANGE, FarmingRegistry.ORANGE);
+
+		//Pizza
+		generatePizza(consumer, FarmingRegistry.PINEAPPLE_PIZZA, "vegetables/tomato", "fruits/pineapple");
+		generatePizza(consumer, FarmingRegistry.CHEESE_PIZZA, "vegetables/tomato", "cheeses/normal");
+		generatePizza(consumer, FarmingRegistry.BACON_PIZZA, "vegetables/tomato", "raw_beef");
 	}
 
 	private void generateFurnace(Consumer<FinishedRecipe> consumer, Item output, String ingredientTag) {
@@ -264,6 +269,27 @@ public class FarmingRecipeProvider extends RecipeProvider {
 			}
 		}
 		builder.save(consumer, salad.getId().withPrefix("salad/"));
+	}
+
+	private void generatePizza(Consumer<FinishedRecipe> consumer, RegistryObject<Item> salad, String... tags) {
+		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
+
+		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, salad.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(FarmingRegistry.DOUGH.get())
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_dough", has(FarmingRegistry.DOUGH.get()));
+
+		List<String> knownTags = new ArrayList<>();
+		for (TagKey<Item> itemTag : itemTags) {
+			builder = builder.requires(itemTag);
+			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			if (!knownTags.contains(hasTag)) {
+				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				knownTags.add(hasTag);
+			}
+		}
+		builder.save(consumer, salad.getId().withPrefix("pizza/"));
 	}
 
 

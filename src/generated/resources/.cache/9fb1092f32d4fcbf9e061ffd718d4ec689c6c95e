@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-08T19:41:01.0231097	Recipes
+// 1.20.1	2023-12-08T20:35:54.927517	Recipes
 e3d142d6cad159f3077fd1150b50386d2e6ed3af data/enhancedfarming/recipes/cooking/baked_egg.json
 6eb250f4fd8634c581e80d2c0b7f0cdfa661597a data/enhancedfarming/recipes/cooking/baked_egg_from_campfire.json
 e74bfdf925b2222defd783ba8dc81697b870def6 data/enhancedfarming/recipes/cooking/bread.json
@@ -25,6 +25,9 @@ e016918ef3b0bffc1fa5424c7c636fbc98fc4583 data/enhancedfarming/recipes/juice/pear
 7e8ebd7ca169f9a2d27a4e4a92b3151635f7026d data/enhancedfarming/recipes/pie/grape_pie.json
 0d7906cb82effc403d5e80cbf3966108ae260500 data/enhancedfarming/recipes/pie/lemon_pie.json
 e612733b65ecd61f5d73cee321454cba5e9673eb data/enhancedfarming/recipes/pie/pear_pie.json
+2fd7b4f91e629314d64db17dc54dca6727bf214c data/enhancedfarming/recipes/pizza/bacon_pizza.json
+77ddffcfe7d72eb34a13790a8a3ac254be7747ac data/enhancedfarming/recipes/pizza/cheese_pizza.json
+7adb7247469df954972615d779de40f72f9d653f data/enhancedfarming/recipes/pizza/pineapple_pizza.json
 a0b03c12c86d80190e09583a532ae59d4b2ca6e3 data/enhancedfarming/recipes/rake/diamond_rake.json
 9b0b2af614449f41a31e65e84d0c46395bd494cf data/enhancedfarming/recipes/rake/gold_rake.json
 403e5c445b644798270595d7187167e505eaf0b1 data/enhancedfarming/recipes/rake/iron_rake.json

@@ -38,6 +38,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private final String MILK = "milk";
 	private final String SEEDS = "seeds";
 	private final String DOUGH = "dough";
+	private final String CHEESES = "cheeses";
 	private final String SALAD_INGREDIENTS = "salad_ingredients";
 	private final String SALT = "edible_salt";
 
@@ -69,6 +70,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		addCategory(SEEDS, FarmingRegistry.NETHER_FLOWER_SEEDS.get());
 
 		addCategoryWithType(DOUGH, "wheat", FarmingRegistry.DOUGH.get());
+		addCategoryWithType(CHEESES, "normal", FarmingRegistry.CHEESE.get());
 		addCategory(SALAD_INGREDIENTS, FarmingRegistry.ONION.get(), FarmingRegistry.OLIVE.get());
 
 		addRegular(RAW_BEEF, Items.BEEF);
