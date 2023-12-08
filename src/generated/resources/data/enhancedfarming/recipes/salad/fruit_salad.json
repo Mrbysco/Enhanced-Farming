@@ -6,13 +6,13 @@
       "item": "minecraft:bowl"
     },
     {
-      "tag": "forge:fruits"
-    },
-    {
-      "tag": "forge:fruits"
-    },
-    {
       "item": "enhancedfarming:cutting_board"
+    },
+    {
+      "tag": "forge:fruits"
+    },
+    {
+      "tag": "forge:fruits"
     }
   ],
   "result": {

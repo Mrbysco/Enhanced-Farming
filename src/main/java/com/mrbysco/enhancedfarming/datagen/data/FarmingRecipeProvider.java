@@ -30,6 +30,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -125,6 +126,10 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generateSoup(consumer, FarmingRegistry.ONION_SOUP, "vegetables/onion");
 		generateSoup(consumer, FarmingRegistry.POTATO_SOUP, "vegetables/potato");
 		generateSoup(consumer, FarmingRegistry.TOMATO_SOUP, "vegetables/tomato");
+
+		//Salad
+		generateSalad(consumer, FarmingRegistry.FRUIT_SALAD, "fruits", "fruits");
+		generateSalad(consumer, FarmingRegistry.SALAD, "vegetables/lettuce", "vegetables/tomato", "vegetables/onion");
 	}
 
 	private void generateFurnace(Consumer<FinishedRecipe> consumer, Item output, String ingredientTag) {
@@ -182,28 +187,59 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, juice.get())
 				.requires(FarmingRegistry.FLOUR.get())
 				.unlockedBy("has_flour", has(FarmingRegistry.FLOUR.get()));
+		List<String> knownTags = new ArrayList<>();
 		for (TagKey<Item> itemTag : itemTags) {
-			builder = builder.requires(itemTag)
-					.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+			builder = builder.requires(itemTag);
+			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			if (!knownTags.contains(hasTag)) {
+				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				knownTags.add(hasTag);
+			}
 		}
 		builder.save(consumer, juice.getId().withPrefix("pie/"));
 	}
 
-	private void generateSoup(Consumer<FinishedRecipe> consumer, RegistryObject<Item> juice, String... tags) {
+	private void generateSoup(Consumer<FinishedRecipe> consumer, RegistryObject<Item> soup, String... tags) {
 		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
 
-		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, juice.get())
+		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, soup.get())
 				.requires(FarmingRegistry.POT.get())
 				.requires(FarmingRegistry.CUTTING_BOARD.get())
 				.requires(FarmingRegistry.STOCK.get())
 				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
 				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
 				.unlockedBy("has_stock", has(FarmingRegistry.STOCK.get()));
+		List<String> knownTags = new ArrayList<>();
 		for (TagKey<Item> itemTag : itemTags) {
-			builder = builder.requires(itemTag)
-					.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+			builder = builder.requires(itemTag);
+			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			if (!knownTags.contains(hasTag)) {
+				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				knownTags.add(hasTag);
+			}
 		}
-		builder.save(consumer, juice.getId().withPrefix("soup/"));
+		builder.save(consumer, soup.getId().withPrefix("soup/"));
+	}
+
+	private void generateSalad(Consumer<FinishedRecipe> consumer, RegistryObject<Item> salad, String... tags) {
+		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
+
+		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, salad.get())
+				.requires(Items.BOWL)
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.unlockedBy("has_bowl", has(Items.BOWL))
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()));
+
+		List<String> knownTags = new ArrayList<>();
+		for (TagKey<Item> itemTag : itemTags) {
+			builder = builder.requires(itemTag);
+			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			if (!knownTags.contains(hasTag)) {
+				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				knownTags.add(hasTag);
+			}
+		}
+		builder.save(consumer, salad.getId().withPrefix("salad/"));
 	}
 
 
@@ -219,9 +255,14 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
 				.unlockedBy("has_stock", has(FarmingRegistry.STOCK.get()))
 				.unlockedBy("has_pasta", has(FarmingRegistry.PASTA.get()));
+		List<String> knownTags = new ArrayList<>();
 		for (TagKey<Item> itemTag : itemTags) {
-			builder = builder.requires(itemTag)
-					.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+			builder = builder.requires(itemTag);
+			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			if (!knownTags.contains(hasTag)) {
+				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				knownTags.add(hasTag);
+			}
 		}
 		builder.save(consumer, juice.getId().withPrefix("soup/"));
 	}

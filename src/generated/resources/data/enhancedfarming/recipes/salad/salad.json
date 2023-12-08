@@ -6,6 +6,9 @@
       "item": "minecraft:bowl"
     },
     {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
       "tag": "forge:vegetables/lettuce"
     },
     {
@@ -13,9 +16,6 @@
     },
     {
       "tag": "forge:vegetables/onion"
-    },
-    {
-      "item": "enhancedfarming:cutting_board"
     }
   ],
   "result": {
