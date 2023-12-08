@@ -39,6 +39,8 @@ import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -262,4 +264,32 @@ public class FarmingRegistry {
 
 	public static final RegistryObject<BlockEntityType<ScarecrowBlockEntity>> SCARECROW_TILE = BLOCK_ENTITY_TYPES.register("scarecrow", () ->
 			BlockEntityType.Builder.of(ScarecrowBlockEntity::new, FarmingRegistry.SCARECROW.get()).build(null));
+
+	public static void registerCompostable() {
+		for (RegistryObject<Item> item : FarmingRegistry.ITEMS.getEntries()) {
+			if (item.get() instanceof BlockItem blockItem) {
+				Block block = blockItem.getBlock();
+				if (block instanceof FruitLeavesBlock || block instanceof BushBlock)
+					ComposterBlock.COMPOSTABLES.put(item.get(), 0.3F);
+			}
+		}
+		ComposterBlock.COMPOSTABLES.put(AUBERGINE.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(AVOCADO.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(BANANA.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(CHERRY.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(CUCUMBER.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(GRAPES.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(LEMON.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(MANGO.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(MINT.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(OLIVE.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(ORANGE.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(PEAR.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(PINEAPPLE.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(TOMATO.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(CORN.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(GARLIC.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(LETTUCE.get(), 0.65F);
+		ComposterBlock.COMPOSTABLES.put(ONION.get(), 0.65F);
+	}
 }

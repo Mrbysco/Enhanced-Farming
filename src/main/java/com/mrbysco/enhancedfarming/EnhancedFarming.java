@@ -21,6 +21,7 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,6 +37,7 @@ public class EnhancedFarming {
 		ModLoadingContext.get().registerConfig(Type.COMMON, FarmingConfig.commonSpec);
 		FMLJavaModLoadingContext.get().getModEventBus().register(FarmingConfig.class);
 
+		eventBus.addListener(this::setup);
 		eventBus.addListener(this::buildTabContents);
 
 		FarmingRegistry.BLOCKS.register(eventBus);
@@ -58,6 +60,10 @@ public class EnhancedFarming {
 			eventBus.addListener(ClientHandler::registerBlockColors);
 			eventBus.addListener(ClientHandler::registerItemColors);
 		});
+	}
+
+	private void setup(final FMLCommonSetupEvent event) {
+		FarmingRegistry.registerCompostable();
 	}
 
 	private void buildTabContents(final BuildCreativeModeTabContentsEvent event) {
