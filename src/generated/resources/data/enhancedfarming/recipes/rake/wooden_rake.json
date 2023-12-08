@@ -1,0 +1,33 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "enhancedfarming:rake_enabled"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "equipment",
+        "key": {
+          "S": {
+            "tag": "forge:rods/wooden"
+          },
+          "X": {
+            "tag": "minecraft:planks"
+          }
+        },
+        "pattern": [
+          "X X",
+          "XSX",
+          " S "
+        ],
+        "result": {
+          "item": "enhancedfarming:wooden_rake"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

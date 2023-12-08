@@ -29,6 +29,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 	private final String VEGETABLES = "vegetables";
 	private final String RAWMEATS = "rawmeats";
+	private final String RAW_BEEF = "raw_beef";
 	private final String FRUITS = "fruits";
 	private final String FISH = "fish";
 	private final String SUGAR = "sugar";
@@ -56,9 +57,10 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 		addCategory(VEGETABLES, Items.POTATO, Items.CARROT, Items.BEETROOT);
 		addCategory(RAWMEATS, Items.BEEF, Items.CHICKEN, Items.MUTTON, Items.PORKCHOP, Items.RABBIT);
+		addCategory(RAW_BEEF, Items.BEEF);
 		addCategory(FRUITS, Items.APPLE, FarmingRegistry.BANANA.get(), FarmingRegistry.CHERRY.get(),
 				FarmingRegistry.LEMON.get(), FarmingRegistry.MANGO.get(), FarmingRegistry.ORANGE.get(),
-				FarmingRegistry.PEAR.get());
+				FarmingRegistry.PEAR.get(), FarmingRegistry.AVOCADO.get());
 		addCategory(FISH, "rawfish", Items.COD, Items.SALMON);
 		addCategory(SUGAR, Items.SUGAR);
 		addCategory(WATER, Items.WATER_BUCKET);
