@@ -1,4 +1,5 @@
-[![build](https://github.com/Mrbysco/Enhanced-Farming/actions/workflows/build.yml/badge.svg)](https://github.com/Mrbysco/Enhanced-Farming/actions/workflows/build.yml) [![](http://cf.way2muchnoise.eu/versions/285105_latest.svg)](https://minecraft.curseforge.com/projects/enhanced-farming)
+[![build](https://github.com/Mrbysco/Enhanced-Farming/actions/workflows/build.yml/badge.svg)](https://github.com/Mrbysco/Enhanced-Farming/actions/workflows/build.yml) 
+[![](http://cf.way2muchnoise.eu/versions/285105.svg)](https://minecraft.curseforge.com/projects/enhanced-farming)
 
 # Enhanced Farming #
 
