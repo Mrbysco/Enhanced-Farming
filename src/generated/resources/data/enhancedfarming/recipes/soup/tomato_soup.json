@@ -6,16 +6,16 @@
       "item": "enhancedfarming:pot"
     },
     {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
       "item": "enhancedfarming:stock"
     },
     {
-      "item": "enhancedfarming:corn"
-    },
-    {
-      "item": "enhancedfarming:cutting_board"
+      "tag": "forge:vegetables/tomato"
     }
   ],
   "result": {
-    "item": "enhancedfarming:corn_soup"
+    "item": "enhancedfarming:tomato_soup"
   }
 }

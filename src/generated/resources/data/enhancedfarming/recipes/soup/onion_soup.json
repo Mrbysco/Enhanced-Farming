@@ -6,16 +6,16 @@
       "item": "enhancedfarming:pot"
     },
     {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
       "item": "enhancedfarming:stock"
     },
     {
-      "tag": "forge:vegetables/potato"
-    },
-    {
-      "item": "enhancedfarming:cutting_board"
+      "tag": "forge:vegetables/onion"
     }
   ],
   "result": {
-    "item": "enhancedfarming:potato_soup"
+    "item": "enhancedfarming:onion_soup"
   }
 }

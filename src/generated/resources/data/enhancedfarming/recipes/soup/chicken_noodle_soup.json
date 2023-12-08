@@ -6,22 +6,22 @@
       "item": "enhancedfarming:pot"
     },
     {
+      "item": "enhancedfarming:cutting_board"
+    },
+    {
       "item": "enhancedfarming:stock"
-    },
-    {
-      "item": "minecraft:chicken"
-    },
-    {
-      "item": "minecraft:carrot"
-    },
-    {
-      "item": "enhancedfarming:onion"
     },
     {
       "item": "enhancedfarming:pasta"
     },
     {
-      "item": "enhancedfarming:cutting_board"
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "tag": "forge:vegetables/carrot"
+    },
+    {
+      "tag": "forge:raw_chicken"
     }
   ],
   "result": {

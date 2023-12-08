@@ -30,6 +30,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private final String VEGETABLES = "vegetables";
 	private final String RAWMEATS = "rawmeats";
 	private final String RAW_BEEF = "raw_beef";
+	private final String RAW_CHICKEN = "raw_chicken";
 	private final String FRUITS = "fruits";
 	private final String FISH = "fish";
 	private final String SUGAR = "sugar";
@@ -57,7 +58,6 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 		addCategory(VEGETABLES, Items.POTATO, Items.CARROT, Items.BEETROOT);
 		addCategory(RAWMEATS, Items.BEEF, Items.CHICKEN, Items.MUTTON, Items.PORKCHOP, Items.RABBIT);
-		addCategory(RAW_BEEF, Items.BEEF);
 		addCategory(FRUITS, Items.APPLE, FarmingRegistry.BANANA.get(), FarmingRegistry.CHERRY.get(),
 				FarmingRegistry.LEMON.get(), FarmingRegistry.MANGO.get(), FarmingRegistry.ORANGE.get(),
 				FarmingRegistry.PEAR.get(), FarmingRegistry.AVOCADO.get());
@@ -69,6 +69,14 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 		addCategoryWithType(DOUGH, "wheat", FarmingRegistry.DOUGH.get());
 		addCategory(SALAD_INGREDIENTS, FarmingRegistry.ONION.get(), FarmingRegistry.OLIVE.get());
+
+		addRegular(RAW_BEEF, Items.BEEF);
+		addRegular(RAW_CHICKEN, Items.CHICKEN);
+	}
+
+	private void addRegular(String category, Item... items) {
+		TagKey<Item> mainTag = createForgeTag(category);
+		this.tag(mainTag).add(items);
 	}
 
 	private void addCategory(String category, Item... items) {

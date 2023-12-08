@@ -1,7 +1,6 @@
 package com.mrbysco.enhancedfarming.datagen.data;
 
 import com.google.gson.JsonObject;
-import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.init.conditions.CropToSeedCondition;
@@ -80,7 +79,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 
 		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_APPLE, "fruits/apple");
 		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_BANANA, "fruits/banana");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_CHERRY, "fruits/cherry");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_CHERRY, "fruits/1cherry");
 		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_CUCUMBER, "vegetables/cucumber");
 		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_GRAPE, "fruits/grapes");
 		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_LEMON, "fruits/lemon");
@@ -117,6 +116,15 @@ public class FarmingRecipeProvider extends RecipeProvider {
 						FarmingRegistry.HOT_WATER.get(), 0.25F, 200)
 				.unlockedBy("has_item", has(Items.POTION))
 				.save(consumer, FarmingRegistry.HOT_WATER.getId().withPrefix("cooking/"));
+
+		//Soup
+		generateSoup(consumer, FarmingRegistry.CARROT_SOUP, "vegetables/carrot");
+		generateNoodleSoup(consumer, FarmingRegistry.CHICKEN_NOODLE_SOUP, "vegetables/onion", "vegetables/carrot", "raw_chicken");
+		generateSoup(consumer, FarmingRegistry.CORN_SOUP, "vegetables/corn");
+		generateSoup(consumer, FarmingRegistry.CUCUMBER_SOUP, "vegetables/cucumber");
+		generateSoup(consumer, FarmingRegistry.ONION_SOUP, "vegetables/onion");
+		generateSoup(consumer, FarmingRegistry.POTATO_SOUP, "vegetables/potato");
+		generateSoup(consumer, FarmingRegistry.TOMATO_SOUP, "vegetables/tomato");
 	}
 
 	private void generateFurnace(Consumer<FinishedRecipe> consumer, Item output, String ingredientTag) {
@@ -169,7 +177,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 	}
 
 	private void generatePie(Consumer<FinishedRecipe> consumer, RegistryObject<Item> juice, String... tags) {
-		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(tag -> createTag(tag)).toList();
+		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
 
 		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, juice.get())
 				.requires(FarmingRegistry.FLOUR.get())
@@ -179,6 +187,43 @@ public class FarmingRecipeProvider extends RecipeProvider {
 					.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
 		}
 		builder.save(consumer, juice.getId().withPrefix("pie/"));
+	}
+
+	private void generateSoup(Consumer<FinishedRecipe> consumer, RegistryObject<Item> juice, String... tags) {
+		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
+
+		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, juice.get())
+				.requires(FarmingRegistry.POT.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(FarmingRegistry.STOCK.get())
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_stock", has(FarmingRegistry.STOCK.get()));
+		for (TagKey<Item> itemTag : itemTags) {
+			builder = builder.requires(itemTag)
+					.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+		}
+		builder.save(consumer, juice.getId().withPrefix("soup/"));
+	}
+
+
+	private void generateNoodleSoup(Consumer<FinishedRecipe> consumer, RegistryObject<Item> juice, String... tags) {
+		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
+
+		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, juice.get())
+				.requires(FarmingRegistry.POT.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(FarmingRegistry.STOCK.get())
+				.requires(FarmingRegistry.PASTA.get())
+				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_stock", has(FarmingRegistry.STOCK.get()))
+				.unlockedBy("has_pasta", has(FarmingRegistry.PASTA.get()));
+		for (TagKey<Item> itemTag : itemTags) {
+			builder = builder.requires(itemTag)
+					.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+		}
+		builder.save(consumer, juice.getId().withPrefix("soup/"));
 	}
 
 	private void generateSapling(Consumer<FinishedRecipe> consumer, RegistryObject<Item> newSapling, ItemLike sapling, String tag) {

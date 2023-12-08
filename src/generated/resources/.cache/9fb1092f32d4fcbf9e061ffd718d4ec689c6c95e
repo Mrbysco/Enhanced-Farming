@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-08T19:10:27.0390032	Recipes
+// 1.20.1	2023-12-08T19:19:27.8306923	Recipes
 e3d142d6cad159f3077fd1150b50386d2e6ed3af data/enhancedfarming/recipes/cooking/baked_egg.json
 6eb250f4fd8634c581e80d2c0b7f0cdfa661597a data/enhancedfarming/recipes/cooking/baked_egg_from_campfire.json
 e74bfdf925b2222defd783ba8dc81697b870def6 data/enhancedfarming/recipes/cooking/bread.json
@@ -46,7 +46,7 @@ ddec2f20666122b97db59e390cf1cbc28fd9089e data/enhancedfarming/recipes/seed/pinea
 c40a5d54e8c4669e7347ac365b73c56b20fb9de4 data/enhancedfarming/recipes/seed/tomato_seeds.json
 517d0bf8a5461479587d899cf7c4da0822a1f819 data/enhancedfarming/recipes/smoothie/smoothie_apple.json
 23437f59b29c5089a446037c150813c8a269167b data/enhancedfarming/recipes/smoothie/smoothie_banana.json
-fc5f2256abd41bc8ae65600601a6659377a07f11 data/enhancedfarming/recipes/smoothie/smoothie_cherry.json
+3d8d5cc65452b3cea63d43c0e1bdd4028496c33a data/enhancedfarming/recipes/smoothie/smoothie_cherry.json
 e65a36b875d21bd7f39d2dd67bf0f0555f295d4a data/enhancedfarming/recipes/smoothie/smoothie_cucumber.json
 4a3d62738d35072a26af5b067d57ce284b48f04c data/enhancedfarming/recipes/smoothie/smoothie_grape.json
 d4d1195b6ebfbe1d8d84fb21960cba89bce8131d data/enhancedfarming/recipes/smoothie/smoothie_lemon.json
@@ -54,3 +54,10 @@ a7d97b2b4517225dc2c7923872d0b9b044510ff3 data/enhancedfarming/recipes/smoothie/s
 d8716a4fa8b9de8dd892d509befd6442cd639de8 data/enhancedfarming/recipes/smoothie/smoothie_orange.json
 cf7532c4b663d7dbc647348b3d32ee8e03ae53a7 data/enhancedfarming/recipes/smoothie/smoothie_pear.json
 8ef3b7100e009e64215355ece21f2b5cf049bfab data/enhancedfarming/recipes/smoothie/smoothie_pineapple.json
+07bc2e1c5c9699b1d3272de7d5bdec4ac85309bb data/enhancedfarming/recipes/soup/carrot_soup.json
+f5c2ff9581d09904ab4dd6ac0864098d6a0ae1f9 data/enhancedfarming/recipes/soup/chicken_noodle_soup.json
+1b32419dbfdab8f0826ef5fd9e12c1855f7b52bb data/enhancedfarming/recipes/soup/corn_soup.json
+b118a884339bc16af1805ac81555b9b89492929c data/enhancedfarming/recipes/soup/cucumber_soup.json
+ac3d9de299f26a14c297b60735549f3722a903f6 data/enhancedfarming/recipes/soup/onion_soup.json
+718e4306e2308417c44f59a69ac3b8a75718a7d1 data/enhancedfarming/recipes/soup/potato_soup.json
+eaed15246c728e6bb6d6647c184b1fceae6a10c5 data/enhancedfarming/recipes/soup/tomato_soup.json

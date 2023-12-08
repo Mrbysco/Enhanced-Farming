@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-08T18:26:59.9958707	Tags for minecraft:item mod id enhancedfarming
+// 1.20.1	2023-12-08T19:20:34.7512597	Tags for minecraft:item mod id enhancedfarming
 b885809a451e508589932c1f0a14e4db7dac3152 data/enhancedfarming/tags/items/hot_items.json
 59c7af50cc131584877582ed4fcfc0fe7f52a654 data/forge/tags/items/crops.json
 4770eeaeccf0a1a577448b12d52e860c92b53555 data/forge/tags/items/crops/aubergine.json
@@ -36,8 +36,8 @@ d14710b6121edb04c184b88cb21ce8d106aafd32 data/forge/tags/items/rawmeats/beef.jso
 113f509ec498e488c93d8c889a20d330cc8967d0 data/forge/tags/items/rawmeats/mutton.json
 33cb78441f05ba4ca385d72ebd7ddc4849b986d1 data/forge/tags/items/rawmeats/porkchop.json
 676cee16d107d62d62093f32df13eb8e934c7db9 data/forge/tags/items/rawmeats/rabbit.json
-714bda8dbfadfd6d782739c88b3e1fa6330ce319 data/forge/tags/items/raw_beef.json
-d14710b6121edb04c184b88cb21ce8d106aafd32 data/forge/tags/items/raw_beef/beef.json
+d14710b6121edb04c184b88cb21ce8d106aafd32 data/forge/tags/items/raw_beef.json
+3acc48b98a61c64992c20898e3cda550f0dac516 data/forge/tags/items/raw_chicken.json
 874ee965d002c62c61c0bb0066de39101df3ef56 data/forge/tags/items/salad_ingredients.json
 09aabb564fbe29f3f6fe64800e7cd39a2e8bfeea data/forge/tags/items/salad_ingredients/olive.json
 7fe0aee6c52bc7532c0ca8dc50d441f0c1647597 data/forge/tags/items/salad_ingredients/onion.json
