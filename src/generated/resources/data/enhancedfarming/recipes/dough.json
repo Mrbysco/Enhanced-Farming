@@ -9,7 +9,7 @@
       "nbt": "{Potion:\"minecraft:water\"}"
     },
     {
-      "tag": "forge:salt"
+      "tag": "forge:edible_salt"
     },
     {
       "tag": "forge:flour/wheat"

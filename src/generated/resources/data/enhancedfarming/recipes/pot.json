@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "S": {
+      "tag": "forge:stone"
+    }
+  },
+  "pattern": [
+    "ISI",
+    " I "
+  ],
+  "result": {
+    "item": "enhancedfarming:pot"
+  },
+  "show_notification": true
+}

@@ -12,13 +12,13 @@
       "item": "enhancedfarming:sliced_bread"
     },
     {
-      "item": "minecraft:cooked_chicken"
+      "tag": "forge:vegetables/tomato"
     },
     {
-      "tag": "forge:vegetables/tomato"
+      "tag": "forge:cooked_beef"
     }
   ],
   "result": {
-    "item": "enhancedfarming:chicken_sandwich"
+    "item": "enhancedfarming:bacon_sandwich"
   }
 }

@@ -12,7 +12,7 @@
       "item": "enhancedfarming:sliced_bread"
     },
     {
-      "item": "enhancedfarming:cheese"
+      "tag": "forge:cheeses/normal"
     },
     {
       "item": "enhancedfarming:jam"

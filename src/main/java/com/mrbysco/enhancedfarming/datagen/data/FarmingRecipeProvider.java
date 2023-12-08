@@ -103,12 +103,6 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generateSeed(consumer, FarmingRegistry.GARLIC_SEEDS, FarmingRegistry.GARLIC.get());
 		generateSeed(consumer, FarmingRegistry.LETTUCE_SEEDS, FarmingRegistry.LETTUCE.get());
 
-		generateRake(consumer, FarmingRegistry.WOODEN_RAKE, ItemTags.PLANKS);
-		generateRake(consumer, FarmingRegistry.STONE_RAKE, Tags.Items.COBBLESTONE);
-		generateRake(consumer, FarmingRegistry.IRON_RAKE, Tags.Items.INGOTS_IRON);
-		generateRake(consumer, FarmingRegistry.GOLD_RAKE, Tags.Items.INGOTS_GOLD);
-		generateRake(consumer, FarmingRegistry.DIAMOND_RAKE, Tags.Items.GEMS_DIAMOND);
-
 		//Furnace recipes
 		generateFurnace(consumer, FarmingRegistry.BAKED_EGG.get(), "eggs");
 		generateFurnace(consumer, Items.BREAD, FarmingRegistry.DOUGH.get());
@@ -135,7 +129,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generateSalad(consumer, FarmingRegistry.SALAD, "vegetables/lettuce", "vegetables/tomato", "vegetables/onion");
 
 		//Dough
-		TagKey<Item> saltTag = createTag("salt");
+		TagKey<Item> saltTag = createTag("edible_salt");
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.DOUGH.get())
 				.requires(StrictNBTIngredient.of(waterBottle))
 				.requires(saltTag)
@@ -153,6 +147,17 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_flour", has(FLOUR_TAG))
 				.save(consumer, FarmingRegistry.DOUGH.getId().withSuffix("_with_bucket"));
 
+		//Cheese
+		TagKey<Item> milkTag = createTag("milk");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.CHEESE.get())
+				.requires(FarmingRegistry.POT.get())
+				.requires(milkTag)
+				.requires(saltTag)
+				.unlockedBy("has_water", has(FarmingRegistry.POT.get()))
+				.unlockedBy("has_milk", has(milkTag))
+				.unlockedBy("has_salt", has(saltTag))
+				.save(consumer, FarmingRegistry.CHEESE.getId());
+
 		//Gold fruit
 		generateGolden(consumer, FarmingRegistry.GOLDEN_LEMON, FarmingRegistry.LEMON);
 		generateGolden(consumer, FarmingRegistry.GOLDEN_ORANGE, FarmingRegistry.ORANGE);
@@ -161,6 +166,48 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generatePizza(consumer, FarmingRegistry.PINEAPPLE_PIZZA, "vegetables/tomato", "fruits/pineapple");
 		generatePizza(consumer, FarmingRegistry.CHEESE_PIZZA, "vegetables/tomato", "cheeses/normal");
 		generatePizza(consumer, FarmingRegistry.BACON_PIZZA, "vegetables/tomato", "raw_beef");
+
+		//Sandwich
+		generateSandwich(consumer, FarmingRegistry.JC_SANDWICH, List.of("cheeses/normal"), FarmingRegistry.JAM.get());
+		generateSandwich(consumer, FarmingRegistry.EGG_SANDWICH, List.of(), FarmingRegistry.BAKED_EGG.get());
+		generateSandwichAlt(consumer, FarmingRegistry.EGG_SANDWICH, List.of(), FarmingRegistry.BOILED_EGG.get());
+		generateSandwich(consumer, FarmingRegistry.BACON_SANDWICH, List.of("vegetables/tomato", "cooked_beef"));
+		generateSandwich(consumer, FarmingRegistry.CHICKEN_SANDWICH, List.of("cooked_chicken"));
+
+		//Rake
+		generateRake(consumer, FarmingRegistry.WOODEN_RAKE, ItemTags.PLANKS);
+		generateRake(consumer, FarmingRegistry.STONE_RAKE, Tags.Items.COBBLESTONE);
+		generateRake(consumer, FarmingRegistry.IRON_RAKE, Tags.Items.INGOTS_IRON);
+		generateRake(consumer, FarmingRegistry.GOLD_RAKE, Tags.Items.INGOTS_GOLD);
+		generateRake(consumer, FarmingRegistry.DIAMOND_RAKE, Tags.Items.GEMS_DIAMOND);
+
+		//Utensils
+		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FarmingRegistry.POT.get())
+				.pattern("ISI")
+				.pattern(" I ")
+				.define('I', Tags.Items.INGOTS_IRON)
+				.define('S', Tags.Items.STONE)
+				.unlockedBy("has_iron_ingot", has(Tags.Items.INGOTS_IRON))
+				.unlockedBy("has_stone", has(Tags.Items.STONE))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FarmingRegistry.CUTTING_BOARD.get())
+				.pattern(" I ")
+				.pattern("SPP")
+				.define('I', Tags.Items.INGOTS_IRON)
+				.define('S', Tags.Items.RODS_WOODEN)
+				.define('P', ItemTags.PLANKS)
+				.unlockedBy("has_iron_ingot", has(Tags.Items.INGOTS_IRON))
+				.unlockedBy("has_stick", has(Tags.Items.INGOTS_IRON))
+				.unlockedBy("has_planks", has(ItemTags.PLANKS))
+				.save(consumer);
+		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FarmingRegistry.MORTAR_AND_PESTLE.get())
+				.pattern(" S")
+				.pattern("B ")
+				.define('S', Tags.Items.INGOTS_IRON)
+				.define('B', Tags.Items.STONE)
+				.unlockedBy("has_stick", has(Tags.Items.INGOTS_IRON))
+				.unlockedBy("has_stone", has(Tags.Items.STONE))
+				.save(consumer);
 	}
 
 	private void generateFurnace(Consumer<FinishedRecipe> consumer, Item output, String ingredientTag) {
@@ -294,7 +341,6 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		builder.save(consumer, salad.getId().withPrefix("pizza/"));
 	}
 
-
 	private void generateNoodleSoup(Consumer<FinishedRecipe> consumer, RegistryObject<Item> juice, String... tags) {
 		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
 
@@ -317,6 +363,70 @@ public class FarmingRecipeProvider extends RecipeProvider {
 			}
 		}
 		builder.save(consumer, juice.getId().withPrefix("soup/"));
+	}
+
+	private void generateSandwich(Consumer<FinishedRecipe> consumer, RegistryObject<Item> sandwich, List<String> tags, Item... items) {
+		List<TagKey<Item>> itemTags = tags.stream().map(this::createTag).toList();
+
+		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwich.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(FarmingRegistry.SLICED_BREAD.get())
+				.requires(FarmingRegistry.SLICED_BREAD.get())
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_sliced_bread", has(FarmingRegistry.SLICED_BREAD.get()));
+		List<String> knownUnlocks = new ArrayList<>();
+		for (TagKey<Item> itemTag : itemTags) {
+			builder = builder.requires(itemTag);
+			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			if (!knownUnlocks.contains(hasTag)) {
+				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				knownUnlocks.add(hasTag);
+			}
+		}
+		for (Item item : items) {
+			ResourceLocation itemLocation = ForgeRegistries.ITEMS.getKey(item);
+			if (itemLocation != null) {
+				builder = builder.requires(item);
+				String hasTag = "has_" + itemLocation.getPath();
+				if (!knownUnlocks.contains(hasTag)) {
+					builder = builder.unlockedBy("has_" + itemLocation.getPath(), has(item));
+					knownUnlocks.add(hasTag);
+				}
+			}
+		}
+		builder.save(consumer, sandwich.getId().withPrefix("sandwich/"));
+	}
+
+	private void generateSandwichAlt(Consumer<FinishedRecipe> consumer, RegistryObject<Item> sandwich, List<String> tags, Item... items) {
+		List<TagKey<Item>> itemTags = tags.stream().map(this::createTag).toList();
+
+		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwich.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(FarmingRegistry.SLICED_BREAD.get())
+				.requires(FarmingRegistry.SLICED_BREAD.get())
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_sliced_bread", has(FarmingRegistry.SLICED_BREAD.get()));
+		List<String> knownUnlocks = new ArrayList<>();
+		for (TagKey<Item> itemTag : itemTags) {
+			builder = builder.requires(itemTag);
+			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			if (!knownUnlocks.contains(hasTag)) {
+				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				knownUnlocks.add(hasTag);
+			}
+		}
+		for (Item item : items) {
+			ResourceLocation itemLocation = ForgeRegistries.ITEMS.getKey(item);
+			if (itemLocation != null) {
+				builder = builder.requires(item);
+				String hasTag = "has_" + itemLocation.getPath();
+				if (!knownUnlocks.contains(hasTag)) {
+					builder = builder.unlockedBy("has_" + itemLocation.getPath(), has(item));
+					knownUnlocks.add(hasTag);
+				}
+			}
+		}
+		builder.save(consumer, sandwich.getId().withPrefix("sandwich/").withSuffix("_alt"));
 	}
 
 	private void generateSapling(Consumer<FinishedRecipe> consumer, RegistryObject<Item> newSapling, ItemLike sapling, String tag) {

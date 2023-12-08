@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "tag": "forge:stone"
+    },
+    "S": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "pattern": [
+    " S",
+    "B "
+  ],
+  "result": {
+    "item": "enhancedfarming:mortar_and_pestle"
+  },
+  "show_notification": true
+}

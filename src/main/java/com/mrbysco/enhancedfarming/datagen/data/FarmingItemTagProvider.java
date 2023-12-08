@@ -31,6 +31,8 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private final String RAWMEATS = "rawmeats";
 	private final String RAW_BEEF = "raw_beef";
 	private final String RAW_CHICKEN = "raw_chicken";
+	private final String COOKED_BEEF = "cooked_beef";
+	private final String COOKED_CHICKEN = "cooked_chicken";
 	private final String FRUITS = "fruits";
 	private final String FISH = "fish";
 	private final String SUGAR = "sugar";
@@ -77,6 +79,8 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 		addRegular(RAW_BEEF, Items.BEEF);
 		addRegular(RAW_CHICKEN, Items.CHICKEN);
+		addRegular(COOKED_BEEF, Items.COOKED_BEEF);
+		addRegular(COOKED_CHICKEN, Items.COOKED_CHICKEN);
 		addRegular(SALT, FarmingRegistry.SALT.get());
 	}
 
