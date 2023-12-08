@@ -12,7 +12,7 @@
       "tag": "forge:salt"
     },
     {
-      "item": "enhancedfarming:flour"
+      "tag": "forge:flour/wheat"
     }
   ],
   "result": {

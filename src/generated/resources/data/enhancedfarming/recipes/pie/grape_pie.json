@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "enhancedfarming:flour"
+      "tag": "forge:flour/wheat"
     },
     {
       "tag": "forge:sugar"

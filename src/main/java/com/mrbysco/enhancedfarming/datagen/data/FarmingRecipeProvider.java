@@ -41,6 +41,8 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		super(packOutput);
 	}
 
+	private static final TagKey<Item> FLOUR_TAG = createForgeTag("flour/wheat");
+
 	@Override
 	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 		final ItemStack waterBottle = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER);
@@ -137,18 +139,18 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.DOUGH.get())
 				.requires(StrictNBTIngredient.of(waterBottle))
 				.requires(saltTag)
-				.requires(FarmingRegistry.FLOUR.get())
+				.requires(FLOUR_TAG)
 				.unlockedBy("has_water", has(Items.POTION))
 				.unlockedBy("has_salt", has(saltTag))
-				.unlockedBy("has_flour", has(FarmingRegistry.FLOUR.get()))
+				.unlockedBy("has_flour", has(FLOUR_TAG))
 				.save(consumer, FarmingRegistry.DOUGH.getId());
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.DOUGH.get())
 				.requires(Items.WATER_BUCKET)
 				.requires(saltTag)
-				.requires(FarmingRegistry.FLOUR.get())
+				.requires(FLOUR_TAG)
 				.unlockedBy("has_water", has(Items.WATER_BUCKET))
 				.unlockedBy("has_salt", has(saltTag))
-				.unlockedBy("has_flour", has(FarmingRegistry.FLOUR.get()))
+				.unlockedBy("has_flour", has(FLOUR_TAG))
 				.save(consumer, FarmingRegistry.DOUGH.getId().withSuffix("_with_bucket"));
 
 		//Gold fruit
@@ -214,8 +216,8 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
 
 		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, juice.get())
-				.requires(FarmingRegistry.FLOUR.get())
-				.unlockedBy("has_flour", has(FarmingRegistry.FLOUR.get()));
+				.requires(FLOUR_TAG)
+				.unlockedBy("has_flour", has(FLOUR_TAG));
 		List<String> knownTags = new ArrayList<>();
 		for (TagKey<Item> itemTag : itemTags) {
 			builder = builder.requires(itemTag);
@@ -371,6 +373,10 @@ public class FarmingRecipeProvider extends RecipeProvider {
 	}
 
 	private TagKey<Item> createTag(String name) {
+		return ItemTags.create(new ResourceLocation("forge", name));
+	}
+
+	private static TagKey<Item> createForgeTag(String name) {
 		return ItemTags.create(new ResourceLocation("forge", name));
 	}
 

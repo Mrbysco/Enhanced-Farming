@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-08T20:35:19.4523339	Tags for minecraft:item mod id enhancedfarming
+// 1.20.1	2023-12-08T20:39:40.3920915	Tags for minecraft:item mod id enhancedfarming
 b885809a451e508589932c1f0a14e4db7dac3152 data/enhancedfarming/tags/items/hot_items.json
 003d4d088cac59fd72644823696cea812882ab50 data/forge/tags/items/cheeses.json
 d840dc0792f339408bb23ed1afe4c0374342330d data/forge/tags/items/cheeses/normal.json
@@ -19,6 +19,8 @@ ff7f0cac033ca72b7c6319c0baa36fb41fd88951 data/forge/tags/items/dough/wheat.json
 01a03023ed613ee68cd3f763508294d8bbaf0ae2 data/forge/tags/items/edible_salt.json
 315678b2cd4c6e30ffa4f08c310e7562a8187101 data/forge/tags/items/fish/cod.json
 3fe6df0882f02c83c296f5dfaed148dab475c556 data/forge/tags/items/fish/salmon.json
+7ddbda42135dbac002eb8bbadd97083d00e2be17 data/forge/tags/items/flour.json
+65b8934d89fc8fae9984bf473e998f1bf9acbb79 data/forge/tags/items/flour/wheat.json
 5ab4741148b6269588f0ac595a897d08104ae20d data/forge/tags/items/fruits.json
 b33dde3cf95c3f821d49bc84b8c46f9fd65289e8 data/forge/tags/items/fruits/apple.json
 b76cf2d32a0d5bb9d702dd2724caeb5d7d4e30c5 data/forge/tags/items/fruits/avocado.json

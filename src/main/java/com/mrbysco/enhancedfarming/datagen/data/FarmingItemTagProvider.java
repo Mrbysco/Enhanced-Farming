@@ -41,6 +41,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private final String CHEESES = "cheeses";
 	private final String SALAD_INGREDIENTS = "salad_ingredients";
 	private final String SALT = "edible_salt";
+	private final String FLOUR = "flour";
 
 	@Override
 	public void addTags(HolderLookup.Provider lookupProvider) {
@@ -70,6 +71,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		addCategory(SEEDS, FarmingRegistry.NETHER_FLOWER_SEEDS.get());
 
 		addCategoryWithType(DOUGH, "wheat", FarmingRegistry.DOUGH.get());
+		addCategoryWithType(FLOUR, "wheat", FarmingRegistry.FLOUR.get());
 		addCategoryWithType(CHEESES, "normal", FarmingRegistry.CHEESE.get());
 		addCategory(SALAD_INGREDIENTS, FarmingRegistry.ONION.get(), FarmingRegistry.OLIVE.get());
 
