@@ -1,6 +1,8 @@
 package com.mrbysco.enhancedfarming.datagen.data;
 
 import com.google.gson.JsonObject;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
+import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.init.conditions.CropToSeedCondition;
 import com.mrbysco.enhancedfarming.init.conditions.RakeEnabledCondition;
@@ -11,6 +13,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -19,10 +22,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.StrictNBTIngredient;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
@@ -95,10 +100,48 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generateSeed(consumer, FarmingRegistry.LETTUCE_SEEDS, FarmingRegistry.LETTUCE.get());
 
 		generateRake(consumer, FarmingRegistry.WOODEN_RAKE, ItemTags.PLANKS);
-		generateRake(consumer, FarmingRegistry.STONE_RAKE, ItemTags.STONE_TOOL_MATERIALS);
+		generateRake(consumer, FarmingRegistry.STONE_RAKE, Tags.Items.COBBLESTONE);
 		generateRake(consumer, FarmingRegistry.IRON_RAKE, Tags.Items.INGOTS_IRON);
 		generateRake(consumer, FarmingRegistry.GOLD_RAKE, Tags.Items.INGOTS_GOLD);
 		generateRake(consumer, FarmingRegistry.DIAMOND_RAKE, Tags.Items.GEMS_DIAMOND);
+
+		//Furnace recipes
+		generateFurnace(consumer, FarmingRegistry.BAKED_EGG.get(), "eggs");
+		generateFurnace(consumer, Items.BREAD, FarmingRegistry.DOUGH.get());
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(FarmingRegistry.COLD_CHOCOLATE_BOTTLE.get()), RecipeCategory.FOOD,
+						FarmingRegistry.HOT_CHOCOLATE_BOTTLE.get(), 0.25F, 200)
+				.unlockedBy("has_item", has(FarmingRegistry.COLD_CHOCOLATE_BOTTLE.get()))
+				.save(consumer, FarmingRegistry.HOT_CHOCOLATE_BOTTLE.getId().withPrefix("cooking/"));
+		ItemStack waterBottle = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER);
+		SimpleCookingRecipeBuilder.smelting(StrictNBTIngredient.of(waterBottle), RecipeCategory.FOOD,
+						FarmingRegistry.HOT_WATER.get(), 0.25F, 200)
+				.unlockedBy("has_item", has(Items.POTION))
+				.save(consumer, FarmingRegistry.HOT_WATER.getId().withPrefix("cooking/"));
+	}
+
+	private void generateFurnace(Consumer<FinishedRecipe> consumer, Item output, String ingredientTag) {
+		TagKey<Item> itemTag = createTag(ingredientTag);
+		ResourceLocation id = new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(output).getPath()).withPrefix("cooking/");
+
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemTag), RecipeCategory.FOOD, output, 0.35F, 200)
+				.unlockedBy("has_item", has(itemTag))
+				.save(consumer, id);
+
+		SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(itemTag), RecipeCategory.FOOD, output, 0.35F, 600)
+				.unlockedBy("has_item", has(itemTag))
+				.save(consumer, id.withSuffix("_from_campfire"));
+	}
+
+	private void generateFurnace(Consumer<FinishedRecipe> consumer, Item output, Item ingredient) {
+		ResourceLocation id = new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(output).getPath()).withPrefix("cooking/");
+
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.FOOD, output, 0.35F, 200)
+				.unlockedBy("has_item", has(ingredient))
+				.save(consumer, id);
+
+		SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), RecipeCategory.FOOD, output, 0.35F, 600)
+				.unlockedBy("has_item", has(ingredient))
+				.save(consumer, id.withSuffix("_from_campfire"));
 	}
 
 	private void generateJuice(Consumer<FinishedRecipe> consumer, RegistryObject<Item> juice, String tag) {

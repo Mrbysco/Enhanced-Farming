@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "ingredient": {
+    "type": "forge:nbt",
+    "count": 1,
+    "item": "minecraft:potion",
+    "nbt": "{Potion:\"minecraft:water\"}"
+  },
+  "result": "enhancedfarming:hot_water"
+}

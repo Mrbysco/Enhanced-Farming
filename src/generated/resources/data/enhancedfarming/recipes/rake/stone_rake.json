@@ -15,7 +15,7 @@
             "tag": "forge:rods/wooden"
           },
           "X": {
-            "tag": "minecraft:stone_tool_materials"
+            "tag": "forge:cobblestone"
           }
         },
         "pattern": [

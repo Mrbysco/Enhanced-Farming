@@ -1,4 +1,10 @@
-// 1.20.1	2023-12-08T18:44:16.6298308	Recipes
+// 1.20.1	2023-12-08T19:10:27.0390032	Recipes
+e3d142d6cad159f3077fd1150b50386d2e6ed3af data/enhancedfarming/recipes/cooking/baked_egg.json
+6eb250f4fd8634c581e80d2c0b7f0cdfa661597a data/enhancedfarming/recipes/cooking/baked_egg_from_campfire.json
+e74bfdf925b2222defd783ba8dc81697b870def6 data/enhancedfarming/recipes/cooking/bread.json
+2cf9d6ddc588010f1b537641a407623d392c772c data/enhancedfarming/recipes/cooking/bread_from_campfire.json
+0a1636f3dc3a64b40a30541b40fe2fbd8d5753cd data/enhancedfarming/recipes/cooking/hot_chocolate_bottle.json
+633ec0e7eb8356303cad2c32df49aea6fbe795a2 data/enhancedfarming/recipes/cooking/hot_water.json
 0102ae83b912f58ab17fbab8ed7f7fd5987d44b5 data/enhancedfarming/recipes/juice/apple_juice.json
 b5aec1236857b0fd1e4863506515dafe342d08d5 data/enhancedfarming/recipes/juice/banana_juice.json
 d8b62c3d6d0db62dd82bb17ad1eb4a160f131f1a data/enhancedfarming/recipes/juice/cherry_juice.json
@@ -18,7 +24,7 @@ e612733b65ecd61f5d73cee321454cba5e9673eb data/enhancedfarming/recipes/pie/pear_p
 a0b03c12c86d80190e09583a532ae59d4b2ca6e3 data/enhancedfarming/recipes/rake/diamond_rake.json
 9b0b2af614449f41a31e65e84d0c46395bd494cf data/enhancedfarming/recipes/rake/gold_rake.json
 403e5c445b644798270595d7187167e505eaf0b1 data/enhancedfarming/recipes/rake/iron_rake.json
-10b255583fc7fbde4bb702d87770f771ba5aff15 data/enhancedfarming/recipes/rake/stone_rake.json
+ed84ef5227dc4b6ee8c157076659c9375743408a data/enhancedfarming/recipes/rake/stone_rake.json
 f12fe9c2df5039355e25ad3fe418e4e5620115a7 data/enhancedfarming/recipes/rake/wooden_rake.json
 80bf7d59945b506bf1aaa902309d5b6bf7e56069 data/enhancedfarming/recipes/sapling/apple_sapling.json
 711a39f871786da7f41b56409d7ccd2849d386b1 data/enhancedfarming/recipes/sapling/avocado_sapling.json
