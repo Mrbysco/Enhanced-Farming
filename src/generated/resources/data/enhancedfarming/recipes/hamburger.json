@@ -9,13 +9,13 @@
       "item": "minecraft:bread"
     },
     {
-      "item": "minecraft:cooked_chicken"
+      "tag": "forge:cooked_beef"
     },
     {
-      "item": "enhancedfarming:lettuce"
+      "tag": "forge:vegetables/lettuce"
     }
   ],
   "result": {
-    "item": "enhancedfarming:chickenburger"
+    "item": "enhancedfarming:hamburger"
   }
 }

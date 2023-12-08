@@ -7,15 +7,10 @@
     },
     {
       "item": "minecraft:bread"
-    },
-    {
-      "item": "minecraft:cooked_beef"
-    },
-    {
-      "item": "enhancedfarming:lettuce"
     }
   ],
   "result": {
-    "item": "enhancedfarming:hamburger"
+    "count": 2,
+    "item": "enhancedfarming:sliced_bread"
   }
 }

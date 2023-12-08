@@ -154,9 +154,53 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_flour", has(FLOUR_TAG))
 				.save(consumer, FarmingRegistry.DOUGH.getId().withSuffix("_with_bucket"));
 
+		//Sliced bread
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.SLICED_BREAD.get(), 2)
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(Items.BREAD)
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_bread", has(Items.BREAD))
+				.save(consumer);
+
+		//Burger
+		TagKey<Item> cookedBeefTag = createTag("cooked_beef");
+		TagKey<Item> lettuceTag = createTag("vegetables/lettuce");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.HAMBURGER.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(Items.BREAD)
+				.requires(cookedBeefTag)
+				.requires(lettuceTag)
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_bread", has(Items.BREAD))
+				.unlockedBy("has_cooked_beef", has(cookedBeefTag))
+				.unlockedBy("has_lettuce", has(lettuceTag))
+				.save(consumer);
+		TagKey<Item> cheeseTag = createTag("cheeses/normal");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.CHEESEBURGER.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(Items.BREAD)
+				.requires(cookedBeefTag)
+				.requires(cheeseTag)
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_bread", has(Items.BREAD))
+				.unlockedBy("has_cooked_beef", has(cookedBeefTag))
+				.unlockedBy("has_cheese", has(cheeseTag))
+				.save(consumer);
+		TagKey<Item> cookedChickenTag = createTag("cooked_chicken");
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.CHICKENBURGER.get())
+				.requires(FarmingRegistry.CUTTING_BOARD.get())
+				.requires(Items.BREAD)
+				.requires(cookedChickenTag)
+				.requires(cheeseTag)
+				.unlockedBy("has_cutting_board", has(FarmingRegistry.CUTTING_BOARD.get()))
+				.unlockedBy("has_bread", has(Items.BREAD))
+				.unlockedBy("has_cooked_chicken", has(cookedChickenTag))
+				.unlockedBy("has_cheese", has(cheeseTag))
+				.save(consumer);
+
 		//Cheese
 		TagKey<Item> milkTag = createTag("milk");
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.CHEESE.get())
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.CHEESE.get())
 				.requires(FarmingRegistry.POT.get())
 				.requires(milkTag)
 				.requires(saltTag)
@@ -168,7 +212,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		//Egg
 		TagKey<Item> waterTag = createTag("water");
 		TagKey<Item> eggsTag = createTag("eggs");
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.BOILED_EGG.get())
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.BOILED_EGG.get())
 				.requires(FarmingRegistry.POT.get())
 				.requires(waterTag)
 				.requires(eggsTag)
@@ -194,7 +238,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generateSandwich(consumer, FarmingRegistry.CHICKEN_SANDWICH, List.of("cooked_chicken"));
 
 		//Chocolate
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.COLD_CHOCOLATE_BOTTLE.get())
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.COLD_CHOCOLATE_BOTTLE.get())
 				.requires(Items.COCOA_BEANS)
 				.requires(FarmingRegistry.MILK_BOTTLE.get())
 				.unlockedBy("has_cocoa_beans", has(Items.COCOA_BEANS))
@@ -202,7 +246,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.save(consumer);
 
 		TagKey<Item> sugarTag = createTag("sugar");
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FarmingRegistry.CHOCOLATE_BAR.get())
+		ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, FarmingRegistry.CHOCOLATE_BAR.get())
 				.pattern("CSC")
 				.pattern("CSC")
 				.pattern("CSC")
@@ -213,7 +257,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.save(consumer);
 
 		TagKey<Item> mintTag = createTag("herbs/mint");
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.MINT_CHOCOLATE_BAR.get())
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.MINT_CHOCOLATE_BAR.get())
 				.requires(mintTag)
 				.requires(FarmingRegistry.CHOCOLATE_BAR.get())
 				.unlockedBy("has_mint", has(mintTag))
@@ -229,7 +273,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_sugar", has(sugarTag))
 				.save(consumer);
 		TagKey<Item> bananaTag = createTag("fruits/banana");
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FarmingRegistry.CHOCOLATE_BANANA.get())
+		ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, FarmingRegistry.CHOCOLATE_BANANA.get())
 				.pattern(" C")
 				.pattern("CF")
 				.define('C', Items.COCOA_BEANS)
@@ -238,7 +282,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_banana", has(bananaTag))
 				.save(consumer);
 		TagKey<Item> cherryTag = createTag("fruits/cherry");
-		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FarmingRegistry.CHOCOLATE_CHERRY.get())
+		ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, FarmingRegistry.CHOCOLATE_CHERRY.get())
 				.pattern(" C")
 				.pattern("CF")
 				.define('C', Items.COCOA_BEANS)

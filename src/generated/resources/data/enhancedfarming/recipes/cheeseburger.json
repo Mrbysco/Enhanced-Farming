@@ -7,10 +7,15 @@
     },
     {
       "item": "minecraft:bread"
+    },
+    {
+      "tag": "forge:cooked_beef"
+    },
+    {
+      "tag": "forge:cheeses/normal"
     }
   ],
   "result": {
-    "item": "enhancedfarming:sliced_bread",
-    "count": 2
+    "item": "enhancedfarming:cheeseburger"
   }
 }
