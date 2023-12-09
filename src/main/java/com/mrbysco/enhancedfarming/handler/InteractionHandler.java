@@ -8,12 +8,12 @@ import net.minecraft.world.entity.animal.Cow;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 public class InteractionHandler {
 	@SubscribeEvent
-	public void CowInteraction(EntityInteract event) {
+	public void CowInteraction(PlayerInteractEvent.EntityInteract event) {
 		Player player = event.getEntity();
 		ItemStack itemstack = event.getItemStack();
 		Entity entity = event.getTarget();

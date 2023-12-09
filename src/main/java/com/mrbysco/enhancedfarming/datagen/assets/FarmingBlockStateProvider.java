@@ -9,17 +9,17 @@ import com.mrbysco.enhancedfarming.block.crops.NetherFlowerBlock;
 import com.mrbysco.enhancedfarming.block.crops.SevenAgeCropBlock;
 import com.mrbysco.enhancedfarming.block.crops.SixAgeCropBlock;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class FarmingBlockStateProvider extends BlockStateProvider {
 
@@ -67,15 +67,15 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 	}
 
 	protected void model(Block block) {
-		ModelFile file = models().getExistingFile(ForgeRegistries.BLOCKS.getKey(block));
+		ModelFile file = models().getExistingFile(BuiltInRegistries.BLOCK.getKey(block));
 		getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(file).build());
 	}
 
 	protected void buildNetherCrops(NetherFlowerBlock block) {
 		VariantBlockStateBuilder builder = getVariantBuilder(block);
 		for (int i = 0; i <= block.getMaxAge(); i++) {
-			ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
-					new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
+			ModelFile file = models().crop(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i),
+					new ResourceLocation(Reference.MOD_ID, "block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
 			builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 		}
 	}
@@ -83,8 +83,8 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 	protected void buildCrops(CropBlock block, IntegerProperty property) {
 		VariantBlockStateBuilder builder = getVariantBuilder(block);
 		for (int i = 0; i <= block.getMaxAge(); i++) {
-			ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
-					new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
+			ModelFile file = models().crop(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i),
+					new ResourceLocation(Reference.MOD_ID, "block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
 			builder.partialState().with(property, i).modelForState().modelFile(file).addModel();
 		}
 	}
@@ -92,8 +92,8 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 	protected void buildStickCropCrops(CropstickCropBlock block) {
 		VariantBlockStateBuilder builder = getVariantBuilder(block);
 		for (int i = 0; i <= block.getMaxAge(); i++) {
-			ModelFile file = models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i), modLoc("block/stick_crops"), "crop",
-					new ResourceLocation(Reference.MOD_ID, "block/crops/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
+			ModelFile file = models().singleTexture(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i), modLoc("block/stick_crops"), "crop",
+					new ResourceLocation(Reference.MOD_ID, "block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i))).renderType(new ResourceLocation("cutout"));
 			builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 		}
 	}
@@ -102,11 +102,11 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 		VariantBlockStateBuilder builder = getVariantBuilder(block);
 		for (int i = 0; i <= block.getMatureStage(); i++) {
 			if (i == block.getMatureStage()) {
-				ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
-						new ResourceLocation(Reference.MOD_ID, "block/saplings/" + ForgeRegistries.BLOCKS.getKey(block).getPath())).renderType(new ResourceLocation("cutout"));
+				ModelFile file = models().crop(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i),
+						new ResourceLocation(Reference.MOD_ID, "block/saplings/" + BuiltInRegistries.BLOCK.getKey(block).getPath())).renderType(new ResourceLocation("cutout"));
 				builder.partialState().with(block.getStageProperty(), i).modelForState().modelFile(file).addModel();
 			} else {
-				ModelFile file = models().crop(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_" + (i),
+				ModelFile file = models().crop(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i),
 						new ResourceLocation(Reference.MOD_ID, "block/saplings/" + base + "_" + (i))).renderType(new ResourceLocation("cutout"));
 				builder.partialState().with(block.getStageProperty(), i).modelForState().modelFile(file).addModel();
 			}
@@ -117,12 +117,12 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 		VariantBlockStateBuilder builder = getVariantBuilder(block);
 		for (int i = 0; i <= block.getMaxAge(); i++) {
 			if (i != block.getMaxAge()) {
-				ModelFile file = models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_blooming", modLoc("block/leave_overlay"), "layer1",
-						new ResourceLocation(Reference.MOD_ID, "block/leaves/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_blooming")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(new ResourceLocation("cutout_mipped"));
+				ModelFile file = models().singleTexture(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_blooming", modLoc("block/leave_overlay"), "layer1",
+						new ResourceLocation(Reference.MOD_ID, "block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_blooming")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(new ResourceLocation("cutout_mipped"));
 				builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 			} else {
-				ModelFile file = models().singleTexture(ForgeRegistries.BLOCKS.getKey(block).getPath() + "_fruity", modLoc("block/leave_overlay"), "layer1",
-						new ResourceLocation(Reference.MOD_ID, "block/leaves/" + ForgeRegistries.BLOCKS.getKey(block).getPath() + "_fruity")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(new ResourceLocation("cutout_mipped"));
+				ModelFile file = models().singleTexture(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruity", modLoc("block/leave_overlay"), "layer1",
+						new ResourceLocation(Reference.MOD_ID, "block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruity")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(new ResourceLocation("cutout_mipped"));
 				builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 			}
 		}

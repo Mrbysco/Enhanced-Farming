@@ -1,33 +1,21 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
-    {
-      "conditions": [
-        {
-          "type": "enhancedfarming:rake_enabled"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "key": {
-          "F": {
-            "item": "enhancedfarming:orange"
-          },
-          "G": {
-            "tag": "forge:nuggets/gold"
-          }
-        },
-        "pattern": [
-          "GGG",
-          "GFG",
-          "GGG"
-        ],
-        "result": {
-          "item": "enhancedfarming:golden_orange"
-        },
-        "show_notification": true
-      }
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "enhancedfarming:orange"
+    },
+    "G": {
+      "tag": "forge:nuggets/gold"
     }
-  ]
+  },
+  "pattern": [
+    "GGG",
+    "GFG",
+    "GGG"
+  ],
+  "result": {
+    "item": "enhancedfarming:golden_orange"
+  },
+  "show_notification": true
 }

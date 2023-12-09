@@ -1,24 +1,17 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "enhancedfarming:crop_to_seeds"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "category": "misc",
-        "ingredients": [
-          {
-            "item": "enhancedfarming:cucumber"
-          }
-        ],
-        "result": {
-          "item": "enhancedfarming:cucumber_seeds"
-        }
-      }
+      "type": "enhancedfarming:crop_to_seeds"
     }
-  ]
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:cucumber"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:cucumber_seeds"
+  }
 }

@@ -1,24 +1,17 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "enhancedfarming:crop_to_seeds"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "category": "misc",
-        "ingredients": [
-          {
-            "item": "enhancedfarming:aubergine"
-          }
-        ],
-        "result": {
-          "item": "enhancedfarming:aubergine_seeds"
-        }
-      }
+      "type": "enhancedfarming:crop_to_seeds"
     }
-  ]
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "enhancedfarming:aubergine"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:aubergine_seeds"
+  }
 }

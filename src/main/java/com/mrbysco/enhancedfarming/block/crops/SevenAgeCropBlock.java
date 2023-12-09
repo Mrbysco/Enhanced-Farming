@@ -18,17 +18,18 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.PlantType;
+import net.neoforged.neoforge.common.PlantType;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import java.util.function.Supplier;
 
 public class SevenAgeCropBlock extends CropBlock {
 
-	private final Supplier<Item> baseSeedSupplier;
+	private final Supplier<? extends Item> baseSeedSupplier;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
 	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
-	public SevenAgeCropBlock(BlockBehaviour.Properties properties, Supplier<Item> baseSeedSupplier) {
+	public SevenAgeCropBlock(BlockBehaviour.Properties properties, Supplier<? extends Item> baseSeedSupplier) {
 		super(properties);
 		this.baseSeedSupplier = baseSeedSupplier;
 		this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
@@ -85,9 +86,9 @@ public class SevenAgeCropBlock extends CropBlock {
 				int i = this.getAge(state);
 				if (i < this.getMaxAge()) {
 					float f = getGrowthSpeed(this, serverLevel, pos);
-					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(serverLevel, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
+					if (CommonHooks.onCropsGrowPre(serverLevel, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
 						serverLevel.setBlock(pos, this.getStateForAge(i + 1), 2);
-						net.minecraftforge.common.ForgeHooks.onCropsGrowPost(serverLevel, pos, state);
+						CommonHooks.onCropsGrowPost(serverLevel, pos, state);
 					}
 				}
 			}

@@ -1,38 +1,29 @@
 package com.mrbysco.enhancedfarming.init.conditions;
 
-import com.google.gson.JsonObject;
-import com.mrbysco.enhancedfarming.Reference;
+import com.mojang.serialization.Codec;
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.crafting.conditions.ICondition;
-import net.minecraftforge.common.crafting.conditions.IConditionSerializer;
+import net.neoforged.neoforge.common.conditions.ICondition;
 
 public class RakeEnabledCondition implements ICondition {
-	private static final ResourceLocation ID = new ResourceLocation(Reference.MOD_ID, "rake_enabled");
+	public static final RakeEnabledCondition INSTANCE = new RakeEnabledCondition();
 
-	@Override
-	public ResourceLocation getID() {
-		return ID;
+	public static final Codec<RakeEnabledCondition> CODEC = Codec.unit(INSTANCE).stable();
+
+	private RakeEnabledCondition() {
 	}
 
 	@Override
 	public boolean test(IContext context) {
-		return FarmingConfig.COMMON.enableRake.get();
+		return FarmingConfig.COMMON.cropToSeeds.get();
 	}
 
-	public static class Serializer implements IConditionSerializer<RakeEnabledCondition> {
-		public static final RakeEnabledCondition.Serializer INSTANCE = new RakeEnabledCondition.Serializer();
+	@Override
+	public Codec<? extends ICondition> codec() {
+		return CODEC;
+	}
 
-		public void write(JsonObject json, RakeEnabledCondition value) {
-
-		}
-
-		public RakeEnabledCondition read(JsonObject json) {
-			return new RakeEnabledCondition();
-		}
-
-		public ResourceLocation getID() {
-			return RakeEnabledCondition.ID;
-		}
+	@Override
+	public String toString() {
+		return "rake_enabled";
 	}
 }

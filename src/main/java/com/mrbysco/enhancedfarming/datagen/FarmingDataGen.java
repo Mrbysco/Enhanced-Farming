@@ -22,12 +22,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.registries.VanillaRegistries;
-import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -45,7 +45,7 @@ public class FarmingDataGen {
 		if (event.includeServer()) {
 			generator.addProvider(true, new FarmingLootProvider(packOutput));
 			generator.addProvider(true, new FarmingLootModifierProvider(packOutput));
-			generator.addProvider(true, new FarmingRecipeProvider(packOutput));
+			generator.addProvider(true, new FarmingRecipeProvider(packOutput, lookupProvider));
 			FarmingBlockTagProvider blockTagProvider;
 			generator.addProvider(true, blockTagProvider = new FarmingBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
 			generator.addProvider(true, new FarmingItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
@@ -71,7 +71,7 @@ public class FarmingDataGen {
 			FarmingTreePlacements.bootstrap(context);
 			FarmingVegetationPlacements.bootstrap(context);
 		});
-		registryBuilder.add(ForgeRegistries.Keys.BIOME_MODIFIERS, FarmingBiomeModifiers::bootstrap);
+		registryBuilder.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FarmingBiomeModifiers::bootstrap);
 		// We need the BIOME registry to be present so we can use a biome tag, doesn't matter that it's empty
 		registryBuilder.add(Registries.BIOME, context -> {
 		});

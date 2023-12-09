@@ -1,27 +1,20 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "enhancedfarming:crop_to_seeds"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "category": "misc",
-        "ingredients": [
-          {
-            "item": "minecraft:acacia_sapling"
-          },
-          {
-            "tag": "forge:vegetables/olive"
-          }
-        ],
-        "result": {
-          "item": "enhancedfarming:olive_sapling"
-        }
-      }
+      "type": "enhancedfarming:crop_to_seeds"
     }
-  ]
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:acacia_sapling"
+    },
+    {
+      "tag": "forge:vegetables/olive"
+    }
+  ],
+  "result": {
+    "item": "enhancedfarming:olive_sapling"
+  }
 }

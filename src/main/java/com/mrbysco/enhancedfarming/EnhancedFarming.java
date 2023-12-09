@@ -13,16 +13,15 @@ import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
 import com.mrbysco.enhancedfarming.world.feature.FarmingFeatures;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig.Type;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,7 +33,7 @@ public class EnhancedFarming {
 
 	public EnhancedFarming() {
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-		ModLoadingContext.get().registerConfig(Type.COMMON, FarmingConfig.commonSpec);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, FarmingConfig.commonSpec);
 		FMLJavaModLoadingContext.get().getModEventBus().register(FarmingConfig.class);
 
 		eventBus.addListener(this::setup);
@@ -48,18 +47,18 @@ public class EnhancedFarming {
 		FarmingRecipes.RECIPE_TYPES.register(eventBus);
 		FarmingRecipes.RECIPE_SERIALIZERS.register(eventBus);
 		FarmingGLM.GLM.register(eventBus);
+		FarmingConditions.CONDITION_CODECS.register(eventBus);
 
-		MinecraftForge.EVENT_BUS.register(new InteractionHandler());
-		MinecraftForge.EVENT_BUS.register(new InWorldCraftingHandler());
-		MinecraftForge.EVENT_BUS.register(new HotHandler());
-		MinecraftForge.EVENT_BUS.register(new RakeHandler());
+		NeoForge.EVENT_BUS.register(new InteractionHandler());
+		NeoForge.EVENT_BUS.register(new InWorldCraftingHandler());
+		NeoForge.EVENT_BUS.register(new HotHandler());
+		NeoForge.EVENT_BUS.register(new RakeHandler());
 
-		eventBus.register(new FarmingConditions());
 
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+		if (FMLEnvironment.dist.isClient()) {
 			eventBus.addListener(ClientHandler::registerBlockColors);
 			eventBus.addListener(ClientHandler::registerItemColors);
-		});
+		}
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {

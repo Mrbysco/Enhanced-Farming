@@ -9,11 +9,11 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.event.level.PistonEvent;
-import net.minecraftforge.event.level.PistonEvent.PistonMoveType;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.level.PistonEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class InWorldCraftingHandler {
 	@SubscribeEvent
 	public void InWorldCrafting(PistonEvent.Post event) {
 		final LevelAccessor levelAccessor = event.getLevel();
-		if (!levelAccessor.isClientSide() && event.getPistonMoveType() == PistonMoveType.EXTEND) {
+		if (!levelAccessor.isClientSide() && event.getPistonMoveType() == PistonEvent.PistonMoveType.EXTEND) {
 			final ServerLevel serverLevel = (ServerLevel) levelAccessor;
 			final BlockPos pos = event.getFaceOffsetPos();
 			final float range = 1F;
@@ -33,11 +33,12 @@ public class InWorldCraftingHandler {
 				for (ItemEntity itemEntity : itemEntities) {
 					BlockPos itemPos = itemEntity.blockPosition();
 					Container inventory = new SimpleContainer(itemEntity.getItem().copy());
-					PistonRecipe recipe = serverLevel.getRecipeManager().getRecipeFor(FarmingRecipes.PISTON_CRAFTING_TYPE.get(), inventory, serverLevel).orElse(null);
-					if (recipe != null) {
+					RecipeHolder<PistonRecipe> recipeHolder = serverLevel.getRecipeManager().getRecipeFor(FarmingRecipes.PISTON_CRAFTING_TYPE.get(), inventory, serverLevel).orElse(null);
+					if (recipeHolder != null) {
 						ItemStack stack = itemEntity.getItem();
 						int craftPer = 0;
 						int craftCount = 0;
+						PistonRecipe recipe = recipeHolder.value();
 						if (!recipe.getIngredients().get(0).isEmpty()) {
 							ItemStack[] ingredients = recipe.getIngredients().get(0).getItems();
 							for (ItemStack ingredient : ingredients) {

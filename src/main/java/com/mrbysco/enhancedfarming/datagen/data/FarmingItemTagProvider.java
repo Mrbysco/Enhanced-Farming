@@ -4,6 +4,7 @@ import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.init.FarmingTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -12,10 +13,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -94,7 +94,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private void addCategory(String category, Item... items) {
 		TagKey<Item> mainTag = createForgeTag(category);
 		for (Item item : items) {
-			String path = ForgeRegistries.ITEMS.getKey(item).getPath();
+			String path = BuiltInRegistries.ITEM.getKey(item).getPath();
 			TagKey<Item> categoryTag = createForgeTag(category + "/" + path);
 			this.tag(categoryTag).add(item);
 			this.tag(mainTag).addTag(categoryTag);
@@ -104,7 +104,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private void addCategory(String category, String mainCategory, Item... items) {
 		TagKey<Item> mainTag = createForgeTag(mainCategory);
 		for (Item item : items) {
-			String path = ForgeRegistries.ITEMS.getKey(item).getPath();
+			String path = BuiltInRegistries.ITEM.getKey(item).getPath();
 			TagKey<Item> categoryTag = createForgeTag(category + "/" + path);
 			this.tag(categoryTag).add(item);
 			this.tag(mainTag).addTag(categoryTag);
@@ -120,7 +120,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		}
 	}
 
-	private void addCrop(RegistryObject<Item> crop, @Nullable RegistryObject<Item> seed, String foodType) {
+	private void addCrop(DeferredItem<? extends Item> crop, @Nullable DeferredItem<? extends Item> seed, String foodType) {
 		String cropName = crop.getId().getPath();
 		TagKey<Item> cropTag = createForgeTag("crops/" + cropName);
 		TagKey<Item> mainFoodTag = createForgeTag(foodType);

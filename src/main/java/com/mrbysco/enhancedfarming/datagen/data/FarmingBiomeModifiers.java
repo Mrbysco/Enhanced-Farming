@@ -12,9 +12,9 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ForgeBiomeModifiers;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.common.world.BiomeModifiers;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class FarmingBiomeModifiers {
 	public static final ResourceKey<BiomeModifier> NETHER_FLOWER_PATCH = createKey("add_nether_flower_patch");
@@ -32,58 +32,58 @@ public class FarmingBiomeModifiers {
 		final HolderGetter<Biome> biomeHolderGetter = context.lookup(Registries.BIOME);
 		final HolderGetter<PlacedFeature> placedHolderGetter = context.lookup(Registries.PLACED_FEATURE);
 
-		context.register(NETHER_FLOWER_PATCH, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(NETHER_FLOWER_PATCH, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_NETHER),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.PATCH_NETHER_FLOWER)),
 				GenerationStep.Decoration.UNDERGROUND_DECORATION));
 
-		context.register(OLIVE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(OLIVE, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_SAVANNA),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.OLIVE)),
 				GenerationStep.Decoration.VEGETAL_DECORATION));
 
-		context.register(BANANA, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(BANANA, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_JUNGLE),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.BANANA)),
 				GenerationStep.Decoration.VEGETAL_DECORATION));
 
-		context.register(APPLE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(APPLE, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_FOREST),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.APPLE)),
 				GenerationStep.Decoration.VEGETAL_DECORATION));
 
-		context.register(LEMON, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(LEMON, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_FOREST),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.LEMON)),
 				GenerationStep.Decoration.VEGETAL_DECORATION));
 
-		context.register(ORANGE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(ORANGE, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_FOREST),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.ORANGE)),
 				GenerationStep.Decoration.VEGETAL_DECORATION));
 
-		context.register(CHERRY, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(CHERRY, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_FOREST),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.CHERRY)),
 				GenerationStep.Decoration.VEGETAL_DECORATION));
 
-		context.register(PEAR, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(PEAR, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_FOREST),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.PEAR)),
 				GenerationStep.Decoration.VEGETAL_DECORATION));
 
-		context.register(AVOCADO, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(AVOCADO, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_FOREST),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.AVOCADO)),
 				GenerationStep.Decoration.VEGETAL_DECORATION));
 
-		context.register(MANGO, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+		context.register(MANGO, new BiomeModifiers.AddFeaturesBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_FOREST),
 				HolderSet.direct(placedHolderGetter.getOrThrow(FarmingVegetationPlacements.MANGO)),
 				GenerationStep.Decoration.VEGETAL_DECORATION));
 	}
 
 	private static ResourceKey<BiomeModifier> createKey(String name) {
-		return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Reference.MOD_ID, name));
+		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Reference.MOD_ID, name));
 	}
 }

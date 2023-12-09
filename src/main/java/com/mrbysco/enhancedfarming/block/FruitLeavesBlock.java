@@ -27,14 +27,15 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import java.util.function.Supplier;
 
 public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-	public final Supplier<Item> itemSupplier;
+	public final Supplier<? extends Item> itemSupplier;
 
-	public FruitLeavesBlock(BlockBehaviour.Properties properties, Supplier<Item> itemSupplier) {
+	public FruitLeavesBlock(BlockBehaviour.Properties properties, Supplier<? extends Item> itemSupplier) {
 		super(properties.randomTicks().strength(0.2F).sound(SoundType.GRASS).noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never));
 		this.itemSupplier = itemSupplier;
 
@@ -84,9 +85,9 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 			if (!isMaxAge(state)) {
 				if (!state.getValue(PERSISTENT)) {
 					float f = 1.0F;
-					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(serverLevel, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
+					if (CommonHooks.onCropsGrowPre(serverLevel, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
 						this.grow(serverLevel, pos, state, 1);
-						net.minecraftforge.common.ForgeHooks.onCropsGrowPost(serverLevel, pos, state);
+						CommonHooks.onCropsGrowPost(serverLevel, pos, state);
 					}
 				}
 			} else {
@@ -137,7 +138,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader blockGetter, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(LevelReader blockGetter, BlockPos pos, BlockState state) {
 		return !isMaxAge(state);
 	}
 

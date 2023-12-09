@@ -22,7 +22,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.PlantType;
+import net.neoforged.neoforge.common.PlantType;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import java.util.Random;
 
@@ -83,10 +84,10 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
 		int i = state.getValue(AGE);
 		int maxAge = this.getMaxAge();
-		if (i < maxAge && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(10) == 0)) {
+		if (i < maxAge && CommonHooks.onCropsGrowPre(level, pos, state, random.nextInt(10) == 0)) {
 			state = state.setValue(AGE, Integer.valueOf(i + 1));
 			level.setBlock(pos, state, 2);
-			net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
+			CommonHooks.onCropsGrowPost(level, pos, state);
 		}
 	}
 
@@ -108,7 +109,7 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader blockGetter, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(LevelReader blockGetter, BlockPos pos, BlockState state) {
 		return !this.isMaxAge(state);
 	}
 

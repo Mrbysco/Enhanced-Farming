@@ -18,6 +18,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.bus.api.Event;
+import net.neoforged.neoforge.event.EventHooks;
+import net.neoforged.neoforge.event.level.SaplingGrowTreeEvent;
 
 public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock {
 	public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 4);
@@ -69,14 +72,14 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 				serverLevel.setBlock(pos, state.cycle(STAGE), 4);
 			}
 		} else {
-			net.minecraftforge.event.level.SaplingGrowTreeEvent event = net.minecraftforge.event.ForgeEventFactory.blockGrowFeature(serverLevel, random, pos, null);
-			if (event.getResult().equals(net.minecraftforge.eventbus.api.Event.Result.DENY)) return;
+			SaplingGrowTreeEvent event = EventHooks.blockGrowFeature(serverLevel, random, pos, null);
+			if (event.getResult().equals(Event.Result.DENY)) return;
 			this.treeGrower.growTree(serverLevel, serverLevel.getChunkSource().getGenerator(), pos, state, random);
 		}
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader reader, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isValidBonemealTarget(LevelReader reader, BlockPos pos, BlockState state) {
 		return true;
 	}
 

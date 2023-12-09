@@ -3,7 +3,7 @@ package com.mrbysco.enhancedfarming.datagen.assets;
 import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class FarmingLanguageProvider extends LanguageProvider {
 	public FarmingLanguageProvider(PackOutput packOutput) {

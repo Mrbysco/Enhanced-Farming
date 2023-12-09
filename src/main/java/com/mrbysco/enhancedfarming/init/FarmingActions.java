@@ -1,7 +1,7 @@
 package com.mrbysco.enhancedfarming.init;
 
 import com.google.common.collect.Sets;
-import net.minecraftforge.common.ToolAction;
+import net.neoforged.neoforge.common.ToolAction;
 
 import java.util.Set;
 import java.util.stream.Collectors;

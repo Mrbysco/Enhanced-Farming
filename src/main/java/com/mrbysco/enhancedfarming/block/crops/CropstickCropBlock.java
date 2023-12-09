@@ -22,7 +22,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.PlantType;
+import net.neoforged.neoforge.common.PlantType;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
@@ -30,10 +31,10 @@ import java.util.function.Supplier;
 public class CropstickCropBlock extends CropBlock {
 	protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
 
-	private final Supplier<Item> baseSeedSupplier;
+	private final Supplier<? extends Item> baseSeedSupplier;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
 
-	public CropstickCropBlock(BlockBehaviour.Properties properties, Supplier<Item> baseSeedSupplier) {
+	public CropstickCropBlock(BlockBehaviour.Properties properties, Supplier<? extends Item> baseSeedSupplier) {
 		super(properties.strength(0.5F));
 		this.baseSeedSupplier = baseSeedSupplier;
 		this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
@@ -99,9 +100,9 @@ public class CropstickCropBlock extends CropBlock {
 				int i = this.getAge(state);
 				if (i < this.getMaxAge()) {
 					float f = getGrowthSpeed(this, level, pos);
-					if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
+					if (CommonHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
 						level.setBlock(pos, this.getStateForAge(i + 1), 2);
-						net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
+						CommonHooks.onCropsGrowPost(level, pos, state);
 					}
 				}
 			}

@@ -1,33 +1,26 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "enhancedfarming:rake_enabled"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "equipment",
-        "key": {
-          "S": {
-            "tag": "forge:rods/wooden"
-          },
-          "X": {
-            "tag": "forge:ingots/iron"
-          }
-        },
-        "pattern": [
-          "X X",
-          "XSX",
-          " S "
-        ],
-        "result": {
-          "item": "enhancedfarming:iron_rake"
-        },
-        "show_notification": true
-      }
+      "type": "enhancedfarming:rake_enabled"
     }
-  ]
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "X": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "pattern": [
+    "X X",
+    "XSX",
+    " S "
+  ],
+  "result": {
+    "item": "enhancedfarming:iron_rake"
+  },
+  "show_notification": true
 }

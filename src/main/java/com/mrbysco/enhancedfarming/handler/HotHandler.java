@@ -6,8 +6,8 @@ import com.mrbysco.enhancedfarming.init.FarmingTags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.TickEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 
 public class HotHandler {
 	private static final String HOT = Reference.MOD_ID + ":hotCounter";

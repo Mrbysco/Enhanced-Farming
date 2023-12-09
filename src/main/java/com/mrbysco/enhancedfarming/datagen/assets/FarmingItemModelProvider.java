@@ -3,12 +3,9 @@ package com.mrbysco.enhancedfarming.datagen.assets;
 import com.mrbysco.enhancedfarming.Reference;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-
-import java.util.Objects;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class FarmingItemModelProvider extends ItemModelProvider {
 	public FarmingItemModelProvider(PackOutput packOutput, ExistingFileHelper helper) {
@@ -18,9 +15,9 @@ public class FarmingItemModelProvider extends ItemModelProvider {
 	@Override
 	protected void registerModels() {
 		FarmingRegistry.ITEMS.getEntries().stream()
-				.map(RegistryObject::get)
-				.forEach(item -> {
-					String path = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(item)).getPath();
+				.map(DeferredHolder::getId)
+				.forEach(itemID -> {
+					String path = itemID.getPath();
 					if (!path.equals("scarecrow")) {
 						if (path.endsWith("_sapling")) {
 							singleTexture(path, mcLoc("item/handheld"), "layer0", modLoc("block/saplings/" + path));

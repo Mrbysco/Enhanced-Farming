@@ -1,18 +1,15 @@
 package com.mrbysco.enhancedfarming.init.conditions;
 
-import com.google.gson.JsonObject;
-import com.mrbysco.enhancedfarming.Reference;
+import com.mojang.serialization.Codec;
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.crafting.conditions.ICondition;
-import net.minecraftforge.common.crafting.conditions.IConditionSerializer;
+import net.neoforged.neoforge.common.conditions.ICondition;
 
 public class CropToSeedCondition implements ICondition {
-	private static final ResourceLocation ID = new ResourceLocation(Reference.MOD_ID, "crop_to_seeds");
+	public static final CropToSeedCondition INSTANCE = new CropToSeedCondition();
 
-	@Override
-	public ResourceLocation getID() {
-		return ID;
+	public static final Codec<CropToSeedCondition> CODEC = Codec.unit(INSTANCE).stable();
+
+	private CropToSeedCondition() {
 	}
 
 	@Override
@@ -20,19 +17,13 @@ public class CropToSeedCondition implements ICondition {
 		return FarmingConfig.COMMON.cropToSeeds.get();
 	}
 
-	public static class Serializer implements IConditionSerializer<CropToSeedCondition> {
-		public static final CropToSeedCondition.Serializer INSTANCE = new CropToSeedCondition.Serializer();
+	@Override
+	public Codec<? extends ICondition> codec() {
+		return CODEC;
+	}
 
-		public void write(JsonObject json, CropToSeedCondition value) {
-
-		}
-
-		public CropToSeedCondition read(JsonObject json) {
-			return new CropToSeedCondition();
-		}
-
-		public ResourceLocation getID() {
-			return CropToSeedCondition.ID;
-		}
+	@Override
+	public String toString() {
+		return "crop_to_seeds";
 	}
 }
