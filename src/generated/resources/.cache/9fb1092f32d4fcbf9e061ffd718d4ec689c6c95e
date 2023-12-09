@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-08T23:03:58.6665935	Recipes
+// 1.20.1	2023-12-09T18:07:11.3269312	Recipes
 7598c3485f0ef1a9daff46ab7281fa9867798e6b data/enhancedfarming/recipes/boiled_egg.json
 450fbd4b535f799492ee6104b0cb7687dfd67ea1 data/enhancedfarming/recipes/cheese.json
 fa2d4fafe6566a140ec0455395d641c0fc4f5532 data/enhancedfarming/recipes/cheeseburger.json
@@ -22,8 +22,8 @@ c85e83c2a5f5df516861757636fa5c9817627e4e data/enhancedfarming/recipes/crop_stick
 7b195d57cdc92291736d9187dcdbec2dc69f2cdb data/enhancedfarming/recipes/fish_and_chips_alt.json
 8526dbc64d6bf9f6aec6b2d9a793f16734f97493 data/enhancedfarming/recipes/flour.json
 384abd9e13f8c8b3344001c0a517858a8e6d9626 data/enhancedfarming/recipes/fries.json
-2785a7e7cc7e8810c6b8690d6490be2e79b33013 data/enhancedfarming/recipes/golden_lemon.json
-d58fe99d0143220a6cc6b74223b810be8c79f87b data/enhancedfarming/recipes/golden_orange.json
+882ad8c53fbebd5aaa28e9669f274fca52abe14a data/enhancedfarming/recipes/golden_lemon.json
+93ba18da6cb7501872f39bf6a4c813c1dfb4f036 data/enhancedfarming/recipes/golden_orange.json
 065c2548edf010997110b4ef757dbdfb6c7ca8f8 data/enhancedfarming/recipes/guacamole.json
 d4c558fecb3372617b674a851389267a049e2e41 data/enhancedfarming/recipes/guac_and_chips.json
 fe16dd8b2f4833d6c2e0689be84e6609c497b8dd data/enhancedfarming/recipes/hamburger.json

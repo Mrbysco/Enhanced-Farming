@@ -510,7 +510,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 
 		//Olive Oil
 		TagKey<Item> oliveTag = createTag("vegetables/olive");
-		new PistonRecipeBuilder( FarmingRegistry.OLIVE_OIL.get(), 1, Ingredient.of(oliveTag))
+		new PistonRecipeBuilder(FarmingRegistry.OLIVE_OIL.get(), 1, Ingredient.of(oliveTag))
 				.unlockedBy("has_olive", has(FarmingRegistry.OLIVE.get()))
 				.save(consumer, FarmingRegistry.OLIVE_OIL.getId().withPrefix("piston/"));
 	}
@@ -772,19 +772,15 @@ public class FarmingRecipeProvider extends RecipeProvider {
 	}
 
 	private void generateGolden(Consumer<FinishedRecipe> consumer, RegistryObject<Item> goldFruit, RegistryObject<Item> fruit) {
-		ConditionalRecipe.builder()
-				.addCondition(new RakeEnabledCondition())
-				.addRecipe(
-						ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, goldFruit.get())
-								.pattern("GGG")
-								.pattern("GFG")
-								.pattern("GGG")
-								.define('G', Tags.Items.NUGGETS_GOLD)
-								.define('F', fruit.get())
-								.unlockedBy("has_gold_nugget", has(Tags.Items.NUGGETS_GOLD))
-								.unlockedBy("has_fruit", has(fruit.get()))
-								::save
-				).build(consumer, goldFruit.getId());
+		ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, goldFruit.get())
+				.pattern("GGG")
+				.pattern("GFG")
+				.pattern("GGG")
+				.define('G', Tags.Items.NUGGETS_GOLD)
+				.define('F', fruit.get())
+				.unlockedBy("has_gold_nugget", has(Tags.Items.NUGGETS_GOLD))
+				.unlockedBy("has_fruit", has(fruit.get()))
+				.save(consumer, goldFruit.getId());
 	}
 
 	private TagKey<Item> createTag(String name) {
