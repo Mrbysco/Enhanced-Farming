@@ -1,16 +1,13 @@
 package com.mrbysco.enhancedfarming.datagen.data;
 
-import com.google.gson.JsonObject;
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.datagen.data.recipe.PistonRecipeBuilder;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.init.conditions.CropToSeedCondition;
 import com.mrbysco.enhancedfarming.init.conditions.RakeEnabledCondition;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.CachedOutput;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -28,9 +25,8 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.crafting.StrictNBTIngredient;
+import net.neoforged.neoforge.common.crafting.NBTIngredient;
 import net.neoforged.neoforge.registries.DeferredItem;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -111,7 +107,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 						FarmingRegistry.HOT_CHOCOLATE_BOTTLE.get(), 0.25F, 200)
 				.unlockedBy("has_item", has(FarmingRegistry.COLD_CHOCOLATE_BOTTLE.get()))
 				.save(recipeOutput, FarmingRegistry.HOT_CHOCOLATE_BOTTLE.getId().withPrefix("cooking/"));
-		SimpleCookingRecipeBuilder.smelting(StrictNBTIngredient.of(waterBottle), RecipeCategory.FOOD,
+		SimpleCookingRecipeBuilder.smelting(NBTIngredient.of(true, waterBottle), RecipeCategory.FOOD,
 						FarmingRegistry.HOT_WATER.get(), 0.25F, 200)
 				.unlockedBy("has_item", has(Items.POTION))
 				.save(recipeOutput, FarmingRegistry.HOT_WATER.getId().withPrefix("cooking/"));
@@ -147,7 +143,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.save(recipeOutput);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.DOUGH.get())
-				.requires(StrictNBTIngredient.of(waterBottle))
+				.requires(NBTIngredient.of(true, waterBottle))
 				.requires(saltTag)
 				.requires(FLOUR_TAG)
 				.unlockedBy("has_water", has(Items.POTION))
@@ -173,7 +169,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, FarmingRegistry.SALT.get())
 				.requires(FarmingRegistry.POT.get())
-				.requires(StrictNBTIngredient.of(waterBottle))
+				.requires(NBTIngredient.of(true, waterBottle))
 				.unlockedBy("has_pot", has(FarmingRegistry.POT.get()))
 				.unlockedBy("has_water_bottle", has(Items.GLASS_BOTTLE))
 				.save(recipeOutput);
@@ -517,7 +513,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 
 	private void generateFurnace(RecipeOutput recipeOutput, Item output, String ingredientTag) {
 		TagKey<Item> itemTag = createTag(ingredientTag);
-		ResourceLocation id = new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
+		ResourceLocation id = new ResourceLocation(EnhancedFarming.MOD_ID, BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
 
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemTag), RecipeCategory.FOOD, output, 0.35F, 200)
 				.unlockedBy("has_item", has(itemTag))
@@ -529,7 +525,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 	}
 
 	private void generateFurnace(RecipeOutput recipeOutput, Item output, Item ingredient) {
-		ResourceLocation id = new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
+		ResourceLocation id = new ResourceLocation(EnhancedFarming.MOD_ID, BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
 
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.FOOD, output, 0.35F, 200)
 				.unlockedBy("has_item", has(ingredient))
@@ -545,7 +541,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		ItemStack waterBottle = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, juice.get())
-				.requires(StrictNBTIngredient.of(waterBottle))
+				.requires(NBTIngredient.of(true, waterBottle))
 				.requires(itemTag)
 				.unlockedBy("has_item", has(itemTag))
 				.save(recipeOutput, juice.getId().withPrefix("juice/"));
@@ -786,8 +782,5 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		return ItemTags.create(new ResourceLocation("forge", name));
 	}
 
-	@Override
-	protected @Nullable CompletableFuture<?> saveAdvancement(CachedOutput output, FinishedRecipe finishedRecipe, JsonObject advancementJson) {
-		return null;
-	}
+	//TODO: Disable advancement generation? I guess the overriding the buildAdvancement and returning null doesn't work anymore
 }

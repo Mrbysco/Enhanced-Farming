@@ -1,7 +1,7 @@
 package com.mrbysco.enhancedfarming.world.feature;
 
 import com.google.common.collect.ImmutableList;
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderGetter;
@@ -26,16 +26,16 @@ import net.minecraft.world.level.levelgen.placement.SurfaceWaterDepthFilter;
 import java.util.List;
 
 public class FarmingVegetationPlacements {
-	public static final ResourceKey<PlacedFeature> PATCH_NETHER_FLOWER = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "patch_nether_flower").toString());
-	public static final ResourceKey<PlacedFeature> APPLE = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "apple").toString());
-	public static final ResourceKey<PlacedFeature> LEMON = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "lemon").toString());
-	public static final ResourceKey<PlacedFeature> ORANGE = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "orange").toString());
-	public static final ResourceKey<PlacedFeature> CHERRY = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "cherry").toString());
-	public static final ResourceKey<PlacedFeature> PEAR = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "pear").toString());
-	public static final ResourceKey<PlacedFeature> AVOCADO = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "avocado").toString());
-	public static final ResourceKey<PlacedFeature> MANGO = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "mango").toString());
-	public static final ResourceKey<PlacedFeature> BANANA = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "banana").toString());
-	public static final ResourceKey<PlacedFeature> OLIVE = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "olive").toString());
+	public static final ResourceKey<PlacedFeature> PATCH_NETHER_FLOWER = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "patch_nether_flower").toString());
+	public static final ResourceKey<PlacedFeature> APPLE = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "apple").toString());
+	public static final ResourceKey<PlacedFeature> LEMON = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "lemon").toString());
+	public static final ResourceKey<PlacedFeature> ORANGE = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "orange").toString());
+	public static final ResourceKey<PlacedFeature> CHERRY = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "cherry").toString());
+	public static final ResourceKey<PlacedFeature> PEAR = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "pear").toString());
+	public static final ResourceKey<PlacedFeature> AVOCADO = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "avocado").toString());
+	public static final ResourceKey<PlacedFeature> MANGO = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "mango").toString());
+	public static final ResourceKey<PlacedFeature> BANANA = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "banana").toString());
+	public static final ResourceKey<PlacedFeature> OLIVE = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "olive").toString());
 
 	public static void bootstrap(BootstapContext<PlacedFeature> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);

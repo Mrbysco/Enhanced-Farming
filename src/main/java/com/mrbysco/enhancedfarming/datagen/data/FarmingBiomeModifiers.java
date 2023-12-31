@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.datagen.data;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.world.feature.FarmingVegetationPlacements;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -84,6 +84,6 @@ public class FarmingBiomeModifiers {
 	}
 
 	private static ResourceKey<BiomeModifier> createKey(String name) {
-		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Reference.MOD_ID, name));
+		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(EnhancedFarming.MOD_ID, name));
 	}
 }

@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.compat.rei.category;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.compat.rei.REIPlugin;
 import com.mrbysco.enhancedfarming.compat.rei.display.PistonDisplay;
 import me.shedaniel.math.Point;
@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PistonCategory implements DisplayCategory<PistonDisplay> {
-	private static final ResourceLocation ICON_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/jei/piston_icon.png");
-	private static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/jei/piston.png");
+	private static final ResourceLocation ICON_TEXTURE = new ResourceLocation(EnhancedFarming.MOD_ID, "textures/gui/jei/piston_icon.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(EnhancedFarming.MOD_ID, "textures/gui/jei/piston.png");
 
 	@Override
 	public CategoryIdentifier<? extends PistonDisplay> getCategoryIdentifier() {

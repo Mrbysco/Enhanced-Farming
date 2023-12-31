@@ -1,0 +1,58 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cooked_chicken": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:cooked_chicken"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cutting_board": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:cutting_board"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sliced_bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:sliced_bread"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:sandwich/chicken_sandwich"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cutting_board",
+      "has_sliced_bread",
+      "has_cooked_chicken"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:sandwich/chicken_sandwich"
+    ]
+  }
+}

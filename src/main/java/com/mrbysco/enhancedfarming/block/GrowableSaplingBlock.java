@@ -1,5 +1,7 @@
 package com.mrbysco.enhancedfarming.block;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -11,7 +13,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -23,6 +25,11 @@ import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.level.SaplingGrowTreeEvent;
 
 public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock {
+	public static final MapCodec<GrowableSaplingBlock> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
+		return instance.group(TreeGrower.CODEC.fieldOf("tree").forGetter((saplingBlock) -> {
+			return saplingBlock.treeGrower;
+		}), propertiesCodec()).apply(instance, GrowableSaplingBlock::new);
+	});
 	public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 4);
 
 	private static final VoxelShape[] SHAPE_BY_STAGE = new VoxelShape[]{
@@ -31,12 +38,17 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D)};
-	private final AbstractTreeGrower treeGrower;
+	private final TreeGrower treeGrower;
 
-	public GrowableSaplingBlock(AbstractTreeGrower tree, BlockBehaviour.Properties properties) {
+	public GrowableSaplingBlock(TreeGrower tree, BlockBehaviour.Properties properties) {
 		super(properties);
 		this.treeGrower = tree;
 		this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
+	}
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
 	}
 
 	public IntegerProperty getStageProperty() {

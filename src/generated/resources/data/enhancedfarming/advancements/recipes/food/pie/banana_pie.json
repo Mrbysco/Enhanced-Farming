@@ -1,0 +1,65 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_eggs": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:eggs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_flour": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:flour/wheat"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_milk": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:milk"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sugar": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:sugar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:pie/banana_pie"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_flour",
+      "has_sugar",
+      "has_eggs",
+      "has_milk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:pie/banana_pie"
+    ]
+  }
+}

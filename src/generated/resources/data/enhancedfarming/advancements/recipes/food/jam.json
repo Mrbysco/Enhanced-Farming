@@ -1,0 +1,69 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:glass_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fruits": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:fruits"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:pot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sugar": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:sugar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:jam"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pot",
+      "has_fruits",
+      "has_sugar",
+      "has_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:jam"
+    ]
+  }
+}

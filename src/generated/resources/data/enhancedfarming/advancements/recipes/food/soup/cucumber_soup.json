@@ -1,0 +1,71 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cutting_board": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:cutting_board"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:pot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stock": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:stock"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:soup/cucumber_soup"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vegetables/cucumber": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:vegetables/cucumber"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pot",
+      "has_cutting_board",
+      "has_stock",
+      "has_vegetables/cucumber"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:soup/cucumber_soup"
+    ]
+  }
+}

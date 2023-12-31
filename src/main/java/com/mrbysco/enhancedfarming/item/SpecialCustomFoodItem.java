@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.EffectCures;
 
 public class SpecialCustomFoodItem extends CustomFoodItem {
 
@@ -39,7 +40,7 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
 	}
 
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-		if (!level.isClientSide && cure) livingEntity.curePotionEffects(stack);
+		if (!level.isClientSide && cure) livingEntity.removeEffectsCuredBy(EffectCures.MILK);
 		if (this.isEdible()) {
 			if (directheal) {
 				livingEntity.heal(this.getFoodProperties().getNutrition());

@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.handler;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
 import com.mrbysco.enhancedfarming.init.FarmingTags;
 import net.minecraft.nbt.CompoundTag;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.event.TickEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 
 public class HotHandler {
-	private static final String HOT = Reference.MOD_ID + ":hotCounter";
+	private static final String HOT = EnhancedFarming.MOD_ID + ":hotCounter";
 
 	@SubscribeEvent
 	public void ItemHeld(TickEvent.PlayerTickEvent event) {

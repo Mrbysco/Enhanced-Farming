@@ -18,7 +18,6 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -27,14 +26,14 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-@Mod(Reference.MOD_ID)
+@Mod(EnhancedFarming.MOD_ID)
 public class EnhancedFarming {
-	public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
+	public static final String MOD_ID = "enhancedfarming";
+	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-	public EnhancedFarming() {
-		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+	public EnhancedFarming(IEventBus eventBus) {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, FarmingConfig.commonSpec);
-		FMLJavaModLoadingContext.get().getModEventBus().register(FarmingConfig.class);
+		eventBus.register(FarmingConfig.class);
 
 		eventBus.addListener(this::setup);
 		eventBus.addListener(this::buildTabContents);

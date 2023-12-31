@@ -1,0 +1,82 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cutting_board": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:cutting_board"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_olive_oil": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:olive_oil"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:pot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_potato": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:vegetables/potato"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_salt": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:edible_salt"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:potato_chips"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pot",
+      "has_cutting_board",
+      "has_potato",
+      "has_olive_oil",
+      "has_salt"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:potato_chips"
+    ]
+  }
+}

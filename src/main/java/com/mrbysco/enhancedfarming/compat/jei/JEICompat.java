@@ -1,6 +1,6 @@
 //package com.mrbysco.enhancedfarming.compat.jei;
 //
-//import com.mrbysco.enhancedfarming.Reference;
+//import com.mrbysco.enhancedfarming.EnhancedFarming;
 //import com.mrbysco.enhancedfarming.compat.jei.piston.PistonCategory;
 //import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
 //import com.mrbysco.enhancedfarming.recipes.PistonRecipe;
@@ -24,13 +24,13 @@
 //
 //@JeiPlugin
 //public class JEICompat implements IModPlugin {
-//	public static final ResourceLocation RECIPE_PISTON_JEI = new ResourceLocation(Reference.MOD_ID, "textures/gui/jei/piston.png");
-//	public static final ResourceLocation RECIPE_PISTON_ICON_JEI = new ResourceLocation(Reference.MOD_ID, "textures/gui/jei/piston_icon.png");
+//	public static final ResourceLocation RECIPE_PISTON_JEI = new ResourceLocation(EnhancedFarming.MOD_ID, "textures/gui/jei/piston.png");
+//	public static final ResourceLocation RECIPE_PISTON_ICON_JEI = new ResourceLocation(EnhancedFarming.MOD_ID, "textures/gui/jei/piston_icon.png");
 //
-//	public static final ResourceLocation PLUGIN_UID = new ResourceLocation(Reference.MOD_ID, "main");
+//	public static final ResourceLocation PLUGIN_UID = new ResourceLocation(EnhancedFarming.MOD_ID, "main");
 //
-//	public static final ResourceLocation PISTON = new ResourceLocation(Reference.MOD_ID, "piston");
-//	public static final RecipeType<PistonRecipe> PISTON_TYPE = RecipeType.create(Reference.MOD_ID, "piston", PistonRecipe.class);
+//	public static final ResourceLocation PISTON = new ResourceLocation(EnhancedFarming.MOD_ID, "piston");
+//	public static final RecipeType<PistonRecipe> PISTON_TYPE = RecipeType.create(EnhancedFarming.MOD_ID, "piston", PistonRecipe.class);
 //
 //	@Nullable
 //	private IRecipeCategory<PistonRecipe> pistonCategory;

@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.datagen.assets;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class FarmingItemModelProvider extends ItemModelProvider {
 	public FarmingItemModelProvider(PackOutput packOutput, ExistingFileHelper helper) {
-		super(packOutput, Reference.MOD_ID, helper);
+		super(packOutput, EnhancedFarming.MOD_ID, helper);
 	}
 
 	@Override

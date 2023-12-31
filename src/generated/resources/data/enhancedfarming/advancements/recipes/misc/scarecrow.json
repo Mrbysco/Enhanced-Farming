@@ -1,0 +1,67 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pumpkin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:carved_pumpkin"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stick": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rods/wooden"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:scarecrow"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wheat": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:crops/wheat"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_wool": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:wool"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pumpkin",
+      "has_wheat",
+      "has_wool",
+      "has_stick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:scarecrow"
+    ]
+  }
+}

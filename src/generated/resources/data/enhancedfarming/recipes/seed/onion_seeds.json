@@ -1,7 +1,8 @@
 {
   "neoforge:conditions": [
     {
-      "type": "enhancedfarming:crop_to_seeds"
+      "type": "enhancedfarming:crop_to_seeds",
+      "value": {}
     }
   ],
   "type": "minecraft:crafting_shapeless",

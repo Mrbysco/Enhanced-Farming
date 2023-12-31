@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.world.feature;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -17,11 +17,11 @@ import java.util.List;
 
 public class FarmingVegetation {
 
-	public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "apple_fruit_vegetation").toString());
-	public static final ResourceKey<ConfiguredFeature<?, ?>> LEMON_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "lemon_fruit_vegetation").toString());
-	public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "orange_fruit_vegetation").toString());
-	public static final ResourceKey<ConfiguredFeature<?, ?>> CHERRY_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "cherry_fruit_vegetation").toString());
-	public static final ResourceKey<ConfiguredFeature<?, ?>> PEAR_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(Reference.MOD_ID, "pear_fruit_vegetation").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> APPLE_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "apple_fruit_vegetation").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> LEMON_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "lemon_fruit_vegetation").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "orange_fruit_vegetation").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> CHERRY_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "cherry_fruit_vegetation").toString());
+	public static final ResourceKey<ConfiguredFeature<?, ?>> PEAR_FRUIT_VEGETATION = FeatureUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "pear_fruit_vegetation").toString());
 
 	public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
 		HolderGetter<PlacedFeature> placedHolderGetter = context.lookup(Registries.PLACED_FEATURE);

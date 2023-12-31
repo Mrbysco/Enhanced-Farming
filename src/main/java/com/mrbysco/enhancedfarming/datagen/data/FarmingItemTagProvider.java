@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.datagen.data;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.init.FarmingTags;
 import net.minecraft.core.HolderLookup;
@@ -24,7 +24,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 	public FarmingItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
 								  CompletableFuture<TagLookup<Block>> blockTagProvider, ExistingFileHelper existingFileHelper) {
-		super(output, lookupProvider, blockTagProvider, Reference.MOD_ID, existingFileHelper);
+		super(output, lookupProvider, blockTagProvider, EnhancedFarming.MOD_ID, existingFileHelper);
 	}
 
 	private final String VEGETABLES = "vegetables";

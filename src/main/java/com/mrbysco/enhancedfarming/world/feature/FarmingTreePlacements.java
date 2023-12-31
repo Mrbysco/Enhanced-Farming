@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.world.feature;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -13,16 +13,16 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class FarmingTreePlacements {
 
-	public static final ResourceKey<PlacedFeature> APPLE_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "apple_bees_02").toString());
-	public static final ResourceKey<PlacedFeature> FANCY_APPLE_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_apple_bees_02").toString());
-	public static final ResourceKey<PlacedFeature> LEMON_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "lemon_bees_02").toString());
-	public static final ResourceKey<PlacedFeature> FANCY_LEMON_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_lemon_bees_02").toString());
-	public static final ResourceKey<PlacedFeature> ORANGE_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "orange_bees_02").toString());
-	public static final ResourceKey<PlacedFeature> FANCY_ORANGE_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_orange_bees_02").toString());
-	public static final ResourceKey<PlacedFeature> CHERRY_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "cherry_bees_02").toString());
-	public static final ResourceKey<PlacedFeature> FANCY_CHERRY_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_cherry_bees_02").toString());
-	public static final ResourceKey<PlacedFeature> PEAR_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "pear_bees_02").toString());
-	public static final ResourceKey<PlacedFeature> FANCY_PEAR_BEES_002 = PlacementUtils.createKey(new ResourceLocation(Reference.MOD_ID, "fancy_pear_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> APPLE_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "apple_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> FANCY_APPLE_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "fancy_apple_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> LEMON_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "lemon_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> FANCY_LEMON_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "fancy_lemon_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> ORANGE_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "orange_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> FANCY_ORANGE_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "fancy_orange_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> CHERRY_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "cherry_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> FANCY_CHERRY_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "fancy_cherry_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> PEAR_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "pear_bees_02").toString());
+	public static final ResourceKey<PlacedFeature> FANCY_PEAR_BEES_002 = PlacementUtils.createKey(new ResourceLocation(EnhancedFarming.MOD_ID, "fancy_pear_bees_02").toString());
 
 
 	public static void bootstrap(BootstapContext<PlacedFeature> context) {

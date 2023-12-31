@@ -1,0 +1,106 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cutting_board": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:cutting_board"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pasta": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:pasta"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:pot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_raw_chicken": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:raw_chicken"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stock": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:stock"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:soup/chicken_noodle_soup"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vegetables/carrot": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:vegetables/carrot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_vegetables/onion": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:vegetables/onion"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pot",
+      "has_cutting_board",
+      "has_stock",
+      "has_pasta",
+      "has_vegetables/onion",
+      "has_vegetables/carrot",
+      "has_raw_chicken"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:soup/chicken_noodle_soup"
+    ]
+  }
+}

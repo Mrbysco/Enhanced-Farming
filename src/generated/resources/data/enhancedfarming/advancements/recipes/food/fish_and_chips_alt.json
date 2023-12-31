@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cooked_fish": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:cooked_fish"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fries": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:fries"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:fish_and_chips_alt"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fries",
+      "has_cooked_fish"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:fish_and_chips_alt"
+    ]
+  }
+}

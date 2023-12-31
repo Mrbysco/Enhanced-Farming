@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:pot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:salt"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_water_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:glass_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pot",
+      "has_water_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:salt"
+    ]
+  }
+}

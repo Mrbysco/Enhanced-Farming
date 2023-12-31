@@ -1,5 +1,6 @@
 package com.mrbysco.enhancedfarming.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
@@ -18,6 +19,7 @@ import net.neoforged.neoforge.common.PlantType;
 import java.util.stream.Stream;
 
 public class CropStickBlock extends BushBlock {
+	public static final MapCodec<CropStickBlock> CODEC = simpleCodec(CropStickBlock::new);
 	protected static final VoxelShape CROPSTICK_SHAPE = Stream.of(
 			Block.box(4, 8, 10, 12, 9, 11),
 			Block.box(5, -1, 5, 6, 12, 6),
@@ -35,6 +37,11 @@ public class CropStickBlock extends BushBlock {
 
 	public CropStickBlock(BlockBehaviour.Properties properties) {
 		super(properties.strength(0.5F).sound(SoundType.WOOD));
+	}
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
 	}
 
 	@Override

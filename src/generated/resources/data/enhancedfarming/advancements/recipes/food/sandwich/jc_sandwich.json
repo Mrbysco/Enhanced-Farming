@@ -1,0 +1,71 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cheeses/normal": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:cheeses/normal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cutting_board": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:cutting_board"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_jam": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:jam"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sliced_bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:sliced_bread"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:sandwich/jc_sandwich"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cutting_board",
+      "has_sliced_bread",
+      "has_cheeses/normal",
+      "has_jam"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:sandwich/jc_sandwich"
+    ]
+  }
+}

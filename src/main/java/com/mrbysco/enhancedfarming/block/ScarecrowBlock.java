@@ -1,5 +1,6 @@
 package com.mrbysco.enhancedfarming.block;
 
+import com.mojang.serialization.MapCodec;
 import com.mrbysco.enhancedfarming.blockentity.ScarecrowBlockEntity;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.core.BlockPos;
@@ -30,6 +31,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class ScarecrowBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+	public static final MapCodec<ScarecrowBlock> CODEC = simpleCodec(ScarecrowBlock::new);
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
@@ -38,6 +40,11 @@ public class ScarecrowBlock extends BaseEntityBlock implements SimpleWaterlogged
 	public ScarecrowBlock(BlockBehaviour.Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
+	}
+
+	@Override
+	protected MapCodec<? extends BaseEntityBlock> codec() {
+		return CODEC;
 	}
 
 	@Override

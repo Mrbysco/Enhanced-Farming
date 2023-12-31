@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.compat.rei;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.compat.rei.category.PistonCategory;
 import com.mrbysco.enhancedfarming.compat.rei.display.PistonDisplay;
 import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
@@ -21,7 +21,7 @@ import java.util.List;
 
 @REIPluginClient
 public class REIPlugin implements REIClientPlugin {
-	public static final CategoryIdentifier<PistonDisplay> PISTON = CategoryIdentifier.of(Reference.MOD_ID, "plugins/piston");
+	public static final CategoryIdentifier<PistonDisplay> PISTON = CategoryIdentifier.of(EnhancedFarming.MOD_ID, "plugins/piston");
 
 	@Override
 	public void registerCategories(CategoryRegistry registry) {

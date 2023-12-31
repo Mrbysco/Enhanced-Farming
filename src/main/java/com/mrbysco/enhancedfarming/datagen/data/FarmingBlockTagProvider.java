@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.datagen.data;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.init.FarmingTags;
 import net.minecraft.core.HolderLookup;
@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class FarmingBlockTagProvider extends BlockTagsProvider {
 	public FarmingBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-		super(output, lookupProvider, Reference.MOD_ID, existingFileHelper);
+		super(output, lookupProvider, EnhancedFarming.MOD_ID, existingFileHelper);
 	}
 
 	@Override

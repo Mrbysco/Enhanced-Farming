@@ -1,7 +1,6 @@
 package com.mrbysco.enhancedfarming.recipes;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
@@ -9,13 +8,11 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingRecipeCodecs;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import org.apache.commons.lang3.NotImplementedException;
 
 import javax.annotation.Nullable;
 
@@ -68,15 +65,14 @@ public class PistonRecipe implements Recipe<Container> {
 	}
 
 	public static class Serializer implements RecipeSerializer<PistonRecipe> {
-		private static final Codec<PistonRecipe> CODEC = Serializer.RawPistonRecipe.CODEC.flatXmap(rawLootRecipe -> {
-			return DataResult.success(new PistonRecipe(
-					rawLootRecipe.group,
-					rawLootRecipe.ingredient,
-					rawLootRecipe.result
-			));
-		}, recipe -> {
-			throw new NotImplementedException("Serializing PistonRecipe is not implemented yet.");
-		});
+		private static final Codec<PistonRecipe> CODEC = RecordCodecBuilder.create(
+				instance -> instance.group(
+								ExtraCodecs.strictOptionalField(Codec.STRING, "group", "").forGetter(recipe -> recipe.group),
+								Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(recipe -> recipe.ingredient),
+								ItemStack.ITEM_WITH_COUNT_CODEC.fieldOf("result").forGetter(hardcoreRecipe -> hardcoreRecipe.result)
+						)
+						.apply(instance, PistonRecipe::new)
+		);
 
 		@Override
 		public Codec<PistonRecipe> codec() {
@@ -97,19 +93,6 @@ public class PistonRecipe implements Recipe<Container> {
 			buffer.writeUtf(recipe.group);
 			recipe.ingredient.toNetwork(buffer);
 			buffer.writeItem(recipe.result);
-		}
-
-		static record RawPistonRecipe(
-				String group, Ingredient ingredient, ItemStack result
-		) {
-			public static final Codec<RawPistonRecipe> CODEC = RecordCodecBuilder.create(
-					instance -> instance.group(
-									ExtraCodecs.strictOptionalField(Codec.STRING, "group", "").forGetter(recipe -> recipe.group),
-									Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(recipe -> recipe.ingredient),
-									CraftingRecipeCodecs.ITEMSTACK_OBJECT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result)
-							)
-							.apply(instance, RawPistonRecipe::new)
-			);
 		}
 	}
 }

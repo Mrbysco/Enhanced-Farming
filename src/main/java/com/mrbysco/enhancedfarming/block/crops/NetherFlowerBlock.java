@@ -1,5 +1,6 @@
 package com.mrbysco.enhancedfarming.block.crops;
 
+import com.mojang.serialization.MapCodec;
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.core.BlockPos;
@@ -22,13 +23,13 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.PlantType;
 import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.common.PlantType;
 
 import java.util.Random;
 
 public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
-
+	public static final MapCodec<NetherFlowerBlock> CODEC = simpleCodec(NetherFlowerBlock::new);
 	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
 			Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D),
@@ -41,6 +42,11 @@ public class NetherFlowerBlock extends BushBlock implements BonemealableBlock {
 	public NetherFlowerBlock(BlockBehaviour.Properties properties) {
 		super(properties.randomTicks().sound(SoundType.CROP));
 		this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
+	}
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
 	}
 
 	public ItemStack getCloneItemStack(BlockGetter reader, BlockPos pos, BlockState state) {

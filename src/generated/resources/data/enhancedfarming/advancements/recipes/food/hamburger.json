@@ -1,0 +1,69 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:bread"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cooked_beef": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:cooked_beef"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cutting_board": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:cutting_board"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_lettuce": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:vegetables/lettuce"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:hamburger"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cutting_board",
+      "has_bread",
+      "has_cooked_beef",
+      "has_lettuce"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:hamburger"
+    ]
+  }
+}

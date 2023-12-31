@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_beef": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:raw_beef"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dough": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dough/wheat"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_egg": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:eggs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:pie/bacon_and_egg_pie"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_beef",
+      "has_egg",
+      "has_dough"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:pie/bacon_and_egg_pie"
+    ]
+  }
+}

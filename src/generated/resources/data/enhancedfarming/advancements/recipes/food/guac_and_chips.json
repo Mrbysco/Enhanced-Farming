@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_guacamole": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:guacamole"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_potato_chips": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:potato_chips"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:guac_and_chips"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_potato_chips",
+      "has_guacamole"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:guac_and_chips"
+    ]
+  }
+}

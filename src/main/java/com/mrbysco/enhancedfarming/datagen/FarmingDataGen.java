@@ -1,6 +1,6 @@
 package com.mrbysco.enhancedfarming.datagen;
 
-import com.mrbysco.enhancedfarming.Reference;
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.datagen.assets.FarmingBlockStateProvider;
 import com.mrbysco.enhancedfarming.datagen.assets.FarmingItemModelProvider;
 import com.mrbysco.enhancedfarming.datagen.assets.FarmingLanguageProvider;
@@ -14,6 +14,7 @@ import com.mrbysco.enhancedfarming.world.feature.FarmingFeatureConfigs;
 import com.mrbysco.enhancedfarming.world.feature.FarmingTreePlacements;
 import com.mrbysco.enhancedfarming.world.feature.FarmingVegetation;
 import com.mrbysco.enhancedfarming.world.feature.FarmingVegetationPlacements;
+import net.minecraft.core.Cloner;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySetBuilder;
@@ -51,7 +52,7 @@ public class FarmingDataGen {
 			generator.addProvider(true, new FarmingItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
 
 			generator.addProvider(true, new DatapackBuiltinEntriesProvider(
-					packOutput, CompletableFuture.supplyAsync(FarmingDataGen::getProvider), Set.of(Reference.MOD_ID)));
+					packOutput, CompletableFuture.supplyAsync(FarmingDataGen::getProvider), Set.of(EnhancedFarming.MOD_ID)));
 		}
 
 		if (event.includeClient()) {
@@ -61,7 +62,7 @@ public class FarmingDataGen {
 		}
 	}
 
-	private static HolderLookup.Provider getProvider() {
+	private static RegistrySetBuilder.PatchedRegistries getProvider() {
 		final RegistrySetBuilder registryBuilder = new RegistrySetBuilder();
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, (context) -> {
 			FarmingFeatureConfigs.bootstrap(context);
@@ -72,10 +73,12 @@ public class FarmingDataGen {
 			FarmingVegetationPlacements.bootstrap(context);
 		});
 		registryBuilder.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, FarmingBiomeModifiers::bootstrap);
-		// We need the BIOME registry to be present so we can use a biome tag, doesn't matter that it's empty
+		// We need the BIOME registry to be present, so we can use a biome tag, doesn't matter that it's empty
 		registryBuilder.add(Registries.BIOME, context -> {
 		});
 		RegistryAccess.Frozen regAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
-		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup());
+		Cloner.Factory cloner$factory = new Cloner.Factory();
+		net.neoforged.neoforge.registries.DataPackRegistriesHooks.getDataPackRegistriesWithDimensions().forEach(p_311524_ -> p_311524_.runWithArguments(cloner$factory::addCodec));
+		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup(), cloner$factory);
 	}
 }

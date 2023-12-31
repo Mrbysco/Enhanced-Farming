@@ -1,0 +1,95 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bowl": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:bowl"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cutting_board": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:cutting_board"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pasta": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:pasta"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "enhancedfarming:pot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_raw_beef": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:raw_beef"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "enhancedfarming:spaghetti"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tomato": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:vegetables/tomato"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pot",
+      "has_cutting_board",
+      "has_pasta",
+      "has_tomato",
+      "has_raw_beef",
+      "has_bowl"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enhancedfarming:spaghetti"
+    ]
+  }
+}
