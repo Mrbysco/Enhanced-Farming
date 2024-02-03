@@ -70,8 +70,8 @@ repositories {
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-//    compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
-//    compileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
 //
 //    runtimeOnly "mezz.jei:jei-${mc_version}-forge:${jei_version}"
 
@@ -132,8 +132,7 @@ if (System.getenv().CURSEFORGE_KEY) {
         mainFile.changelog = file("$project.rootDir/changelog.md")
         mainFile.changelogType = 'markdown'
 
-//        mainFile.addOptional("jei")
-        mainFile.addOptional("roughly-enough-items")
+        mainFile.addOptional("jei", "roughly-enough-items")
     }
 }
 
@@ -150,7 +149,7 @@ if (System.getenv().MODRINTH_KEY) {
         loaders = ["neoforge"]
 
         dependencies {
-//            optional.project "jei"
+            optional.project "jei"
             optional.project "rei"
         }
     }
