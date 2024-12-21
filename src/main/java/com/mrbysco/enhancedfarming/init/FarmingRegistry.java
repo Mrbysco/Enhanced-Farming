@@ -206,10 +206,10 @@ public class FarmingRegistry {
 
 	//Rakes
 	public static final DeferredItem<RakeToolItem> WOODEN_RAKE = ITEMS.register("wooden_rake", () -> new RakeToolItem(Tiers.WOOD, 0, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -3.0F, 1))));
-	public static final DeferredItem<RakeToolItem> STONE_RAKE = ITEMS.register("stone_rake", () -> new RakeToolItem(Tiers.STONE, -1, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -2.0F, 2))));
-	public static final DeferredItem<RakeToolItem> IRON_RAKE = ITEMS.register("iron_rake", () -> new RakeToolItem(Tiers.IRON, -2, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -1.0F, 3))));
+	public static final DeferredItem<RakeToolItem> STONE_RAKE = ITEMS.register("stone_rake", () -> new RakeToolItem(Tiers.STONE, 1, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -2.0F, 2))));
+	public static final DeferredItem<RakeToolItem> IRON_RAKE = ITEMS.register("iron_rake", () -> new RakeToolItem(Tiers.IRON, 2, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -1.0F, 3))));
 	public static final DeferredItem<RakeToolItem> GOLD_RAKE = ITEMS.register("gold_rake", () -> new RakeToolItem(Tiers.GOLD, 0, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -3.0F, 6))));
-	public static final DeferredItem<RakeToolItem> DIAMOND_RAKE = ITEMS.register("diamond_rake", () -> new RakeToolItem(Tiers.DIAMOND, -3, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, 0.0F, 5))));
+	public static final DeferredItem<RakeToolItem> DIAMOND_RAKE = ITEMS.register("diamond_rake", () -> new RakeToolItem(Tiers.DIAMOND, 3, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, 0.0F, 5))));
 
 	//Seeds
 	public static final DeferredItem<ItemNameBlockItem> MINT_SEEDS = ITEMS.register("mint_seeds", () -> new ItemNameBlockItem(FarmingRegistry.MINT_CROP.get(), new Item.Properties()));
