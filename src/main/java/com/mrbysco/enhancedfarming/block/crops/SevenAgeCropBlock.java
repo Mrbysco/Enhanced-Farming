@@ -70,7 +70,7 @@ public class SevenAgeCropBlock extends CropBlock {
 
 	@Override
 	public int getMaxAge() {
-		return 7;
+		return super.getMaxAge(); // super is 7
 	}
 
 	@Override
