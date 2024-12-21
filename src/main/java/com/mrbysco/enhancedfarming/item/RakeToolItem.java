@@ -55,10 +55,10 @@ public class RakeToolItem extends DiggerItem {
 	}
 
 	public void dropSeedsWithChance(ItemStack toolStack, Level level, BlockPos pos) {
-		if (this.dropModifier == 0) {
+		if (this.dropModifier < 0) {
 			return;
 		}
-		final int rand = level.random.nextInt(30 / this.dropModifier);
+		final int rand = level.random.nextInt(30 / (this.dropModifier + 1));
 		if (!level.isClientSide && rand == 0 && level.getServer() != null) {
 			LootTable table = level.getServer().reloadableRegistries().getLootTable(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
 			LootParams.Builder lootParams = (new LootParams.Builder((ServerLevel) level))
