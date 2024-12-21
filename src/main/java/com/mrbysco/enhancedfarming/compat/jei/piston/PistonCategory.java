@@ -4,12 +4,14 @@ import com.mrbysco.enhancedfarming.compat.jei.JEICompat;
 import com.mrbysco.enhancedfarming.recipes.PistonRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
@@ -36,8 +38,13 @@ public class PistonCategory<T extends PistonRecipe> implements IRecipeCategory<P
 	}
 
 	@Override
-	public IDrawable getBackground() {
-		return background;
+	public int getWidth() {
+		return 84;
+	}
+
+	@Override
+	public int getHeight() {
+		return 62;
 	}
 
 	@Override
@@ -56,5 +63,11 @@ public class PistonCategory<T extends PistonRecipe> implements IRecipeCategory<P
 
 		builder.addSlot(RecipeIngredientRole.INPUT, 1, 23).addIngredients(recipe.getIngredients().get(0));
 		builder.addSlot(RecipeIngredientRole.OUTPUT, 67, 22).addItemStack(recipe.getResultItem(registryAccess));
+	}
+
+	@Override
+	public void draw(PistonRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+		this.background.draw(guiGraphics);
+		IRecipeCategory.super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 	}
 }
