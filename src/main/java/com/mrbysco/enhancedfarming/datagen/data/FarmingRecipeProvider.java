@@ -509,7 +509,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 
 	private void generateFurnace(RecipeOutput recipeOutput, Item output, String ingredientTag) {
 		TagKey<Item> itemTag = createTag(ingredientTag);
-		ResourceLocation id = ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
+		ResourceLocation id = EnhancedFarming.modLoc(BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
 
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemTag), RecipeCategory.FOOD, output, 0.35F, 200)
 				.unlockedBy("has_item", has(itemTag))
@@ -521,7 +521,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 	}
 
 	private void generateFurnace(RecipeOutput recipeOutput, Item output, Item ingredient) {
-		ResourceLocation id = ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
+		ResourceLocation id = EnhancedFarming.modLoc(BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
 
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.FOOD, output, 0.35F, 200)
 				.unlockedBy("has_item", has(ingredient))

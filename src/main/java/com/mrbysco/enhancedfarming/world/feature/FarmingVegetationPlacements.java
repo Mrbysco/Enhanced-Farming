@@ -38,7 +38,7 @@ public class FarmingVegetationPlacements {
 	public static final ResourceKey<PlacedFeature> OLIVE = createKey("olive");
 
 	public static ResourceKey<PlacedFeature> createKey(String key) {
-		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, key));
+		return ResourceKey.create(Registries.PLACED_FEATURE, EnhancedFarming.modLoc(key));
 	}
 
 	public static void bootstrap(BootstrapContext<PlacedFeature> context) {

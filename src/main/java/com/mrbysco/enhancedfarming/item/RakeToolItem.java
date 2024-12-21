@@ -1,5 +1,6 @@
 package com.mrbysco.enhancedfarming.item;
 
+import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.init.FarmingActions;
 import com.mrbysco.enhancedfarming.init.FarmingLootTables;
 import net.minecraft.core.BlockPos;
@@ -42,13 +43,13 @@ public class RakeToolItem extends DiggerItem {
 				.add(
 						Attributes.ATTACK_DAMAGE,
 						new AttributeModifier(
-								ResourceLocation.fromNamespaceAndPath("enhancedfarming", "rake_attack_damage"), (double) (attackDamage + tier.getAttackDamageBonus()), AttributeModifier.Operation.ADD_VALUE
+								EnhancedFarming.modLoc("rake_attack_damage"), (double) (attackDamage + tier.getAttackDamageBonus()), AttributeModifier.Operation.ADD_VALUE
 						),
 						EquipmentSlotGroup.MAINHAND
 				)
 				.add(
 						Attributes.ATTACK_SPEED,
-						new AttributeModifier(ResourceLocation.fromNamespaceAndPath("enhancedfarming", "rake_attack_speed"), (double) attackSpeed, AttributeModifier.Operation.ADD_VALUE),
+						new AttributeModifier(EnhancedFarming.modLoc("rake_attack_speed"), (double) attackSpeed, AttributeModifier.Operation.ADD_VALUE),
 						EquipmentSlotGroup.MAINHAND
 				)
 				.build();

@@ -84,6 +84,6 @@ public class FarmingBiomeModifiers {
 	}
 
 	private static ResourceKey<BiomeModifier> createKey(String name) {
-		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, name));
+		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, EnhancedFarming.modLoc(name));
 	}
 }

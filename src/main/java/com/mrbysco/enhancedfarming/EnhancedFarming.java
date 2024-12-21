@@ -12,6 +12,7 @@ import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.recipes.FarmingRecipes;
 import com.mrbysco.enhancedfarming.world.feature.FarmingFeatures;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
@@ -70,5 +71,9 @@ public class EnhancedFarming {
 					.filter(reg -> reg.get().getDefaultInstance().has(DataComponents.FOOD)).map(reg -> new ItemStack(reg.get())).toList();
 			event.acceptAll(stacks);
 		}
+	}
+
+	public static ResourceLocation modLoc(String path) {
+		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
 	}
 }

@@ -25,7 +25,7 @@ public class FarmingTreePlacements {
 	public static final ResourceKey<PlacedFeature> FANCY_PEAR_BEES_002 = createKey("fancy_pear_bees_02");
 
 	public static ResourceKey<PlacedFeature> createKey(String key) {
-		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, key));
+		return ResourceKey.create(Registries.PLACED_FEATURE, EnhancedFarming.modLoc(key));
 	}
 
 	public static void bootstrap(BootstrapContext<PlacedFeature> context) {

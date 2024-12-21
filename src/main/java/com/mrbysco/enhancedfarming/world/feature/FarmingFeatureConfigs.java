@@ -84,7 +84,7 @@ public class FarmingFeatureConfigs {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_NETHER_FLOWER = createKey("patch_nether_flower");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
-		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, name));
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, EnhancedFarming.modLoc(name));
 	}
 
 	private static TreeConfiguration.TreeConfigurationBuilder getApple() {

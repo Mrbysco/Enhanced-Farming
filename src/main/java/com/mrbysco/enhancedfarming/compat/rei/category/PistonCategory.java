@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PistonCategory implements DisplayCategory<PistonDisplay> {
-	private static final ResourceLocation ICON_TEXTURE = ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "textures/gui/jei/piston_icon.png");
-	private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "textures/gui/jei/piston.png");
+	private static final ResourceLocation ICON_TEXTURE = EnhancedFarming.modLoc("textures/gui/jei/piston_icon.png");
+	private static final ResourceLocation TEXTURE = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
 
 	@Override
 	public CategoryIdentifier<? extends PistonDisplay> getCategoryIdentifier() {

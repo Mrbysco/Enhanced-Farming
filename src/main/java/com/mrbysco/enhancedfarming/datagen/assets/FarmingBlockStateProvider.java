@@ -75,7 +75,7 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 		VariantBlockStateBuilder builder = getVariantBuilder(block);
 		for (int i = 0; i <= block.getMaxAge(); i++) {
 			ModelFile file = models().crop(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i),
-					ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
+					EnhancedFarming.modLoc("block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
 			builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 		}
 	}
@@ -84,7 +84,7 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 		VariantBlockStateBuilder builder = getVariantBuilder(block);
 		for (int i = 0; i <= block.getMaxAge(); i++) {
 			ModelFile file = models().crop(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i),
-					ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
+					EnhancedFarming.modLoc("block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
 			builder.partialState().with(property, i).modelForState().modelFile(file).addModel();
 		}
 	}
@@ -93,7 +93,7 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 		VariantBlockStateBuilder builder = getVariantBuilder(block);
 		for (int i = 0; i <= block.getMaxAge(); i++) {
 			ModelFile file = models().singleTexture(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i), modLoc("block/stick_crops"), "crop",
-					ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
+					EnhancedFarming.modLoc("block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
 			builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 		}
 	}
@@ -103,11 +103,11 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 		for (int i = 0; i <= block.getMatureStage(); i++) {
 			if (i == block.getMatureStage()) {
 				ModelFile file = models().crop(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i),
-						ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "block/saplings/" + BuiltInRegistries.BLOCK.getKey(block).getPath())).renderType(ResourceLocation.withDefaultNamespace("cutout"));
+						EnhancedFarming.modLoc("block/saplings/" + BuiltInRegistries.BLOCK.getKey(block).getPath())).renderType(ResourceLocation.withDefaultNamespace("cutout"));
 				builder.partialState().with(block.getStageProperty(), i).modelForState().modelFile(file).addModel();
 			} else {
 				ModelFile file = models().crop(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i),
-						ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "block/saplings/" + base + "_" + (i))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
+						EnhancedFarming.modLoc("block/saplings/" + base + "_" + (i))).renderType(ResourceLocation.withDefaultNamespace("cutout"));
 				builder.partialState().with(block.getStageProperty(), i).modelForState().modelFile(file).addModel();
 			}
 		}
@@ -118,11 +118,11 @@ public class FarmingBlockStateProvider extends BlockStateProvider {
 		for (int i = 0; i <= block.getMaxAge(); i++) {
 			if (i != block.getMaxAge()) {
 				ModelFile file = models().singleTexture(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_blooming", modLoc("block/leave_overlay"), "layer1",
-						ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_blooming")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(ResourceLocation.withDefaultNamespace("cutout_mipped"));
+						EnhancedFarming.modLoc("block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_blooming")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(ResourceLocation.withDefaultNamespace("cutout_mipped"));
 				builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 			} else {
 				ModelFile file = models().singleTexture(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruity", modLoc("block/leave_overlay"), "layer1",
-						ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruity")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(ResourceLocation.withDefaultNamespace("cutout_mipped"));
+						EnhancedFarming.modLoc("block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruity")).texture("layer0", mcLoc("block/" + originalLeaves)).renderType(ResourceLocation.withDefaultNamespace("cutout_mipped"));
 				builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
 			}
 		}

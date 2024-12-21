@@ -24,7 +24,7 @@ public class FarmingVegetation {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> PEAR_FRUIT_VEGETATION = createKey("pear_fruit_vegetation");
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
-		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, name));
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, EnhancedFarming.modLoc(name));
 	}
 
 	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {

@@ -25,10 +25,10 @@ import java.util.Objects;
 
 @JeiPlugin
 public class JEICompat implements IModPlugin {
-    public static final ResourceLocation RECIPE_PISTON_JEI = ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "textures/gui/jei/piston.png");
-    public static final ResourceLocation RECIPE_PISTON_ICON_JEI = ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "textures/gui/jei/piston_icon.png");
+    public static final ResourceLocation RECIPE_PISTON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
+    public static final ResourceLocation RECIPE_PISTON_ICON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston_icon.png");
 
-    public static final ResourceLocation PLUGIN_UID = ResourceLocation.fromNamespaceAndPath(EnhancedFarming.MOD_ID, "main");
+    public static final ResourceLocation PLUGIN_UID = EnhancedFarming.modLoc("main");
 
     public static final RecipeType<PistonRecipe> PISTON_TYPE = RecipeType.create(EnhancedFarming.MOD_ID, "piston", PistonRecipe.class);
 
