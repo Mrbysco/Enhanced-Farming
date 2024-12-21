@@ -21,6 +21,7 @@ public class FarmingLanguageProvider extends LanguageProvider {
 		add("enhancedfarming.item.banana_juice.tooltip", "Wait, you're going to drink this?");
 
 		add("enhancedfarming.gui.jei.category.piston", "Piston crafting");
+		add("emi.category.enhancedfarming.plugins.piston", "Piston crafting");
 	}
 
 	private void addBlocks() {

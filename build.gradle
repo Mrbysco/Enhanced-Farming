@@ -91,7 +91,7 @@ dependencies {
     compileOnly "dev.architectury:architectury-neoforge:${architectury_version}"
 
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
-    localRuntime "dev.emi:emi-neoforge:${emi_version}"
+    compileOnly "dev.emi:emi-neoforge:${emi_version}"
 }
 
 jar {
