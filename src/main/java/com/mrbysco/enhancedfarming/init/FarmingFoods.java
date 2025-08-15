@@ -1,7 +1,5 @@
 package com.mrbysco.enhancedfarming.init;
 
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
 public class FarmingFoods {
@@ -24,8 +22,8 @@ public class FarmingFoods {
 	public static final FoodProperties LETTUCE = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.3F).build();
 	public static final FoodProperties ONION = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.3F).build();
 
-	public static final FoodProperties GOLD_LEMON = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.3F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 30 * 20, 0), 1.0F).alwaysEdible().build();
-	public static final FoodProperties GOLD_ORANGE = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.3F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 30 * 20, 0), 1.0F).alwaysEdible().build();
+	public static final FoodProperties GOLD_LEMON = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.3F).alwaysEdible().build();
+	public static final FoodProperties GOLD_ORANGE = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.3F).alwaysEdible().build();
 
 	//Chocolate
 	public static final FoodProperties CHOCOLATE_BAR = (new FoodProperties.Builder()).nutrition(4).saturationModifier(0.7F).build();

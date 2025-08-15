@@ -1,6 +1,7 @@
 package com.mrbysco.enhancedfarming.handler;
 
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -28,7 +29,8 @@ public class InteractionHandler {
 				if (itemstack.isEmpty()) {
 					player.setItemInHand(hand, milkStack);
 				} else if (!player.getInventory().add(milkStack)) {
-					player.spawnAtLocation(milkStack, 0.0F);
+					if (player.level() instanceof ServerLevel serverLevel)
+						player.spawnAtLocation(serverLevel, milkStack, 0.0F);
 				}
 			}
 		}

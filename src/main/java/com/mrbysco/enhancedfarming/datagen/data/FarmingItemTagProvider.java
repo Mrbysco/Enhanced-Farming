@@ -14,7 +14,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,8 +22,8 @@ import java.util.concurrent.CompletableFuture;
 public class FarmingItemTagProvider extends ItemTagsProvider {
 
 	public FarmingItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-	                              CompletableFuture<TagLookup<Block>> blockTagProvider, ExistingFileHelper existingFileHelper) {
-		super(output, lookupProvider, blockTagProvider, EnhancedFarming.MOD_ID, existingFileHelper);
+	                              CompletableFuture<TagLookup<Block>> blockTagProvider) {
+		super(output, lookupProvider, blockTagProvider, EnhancedFarming.MOD_ID);
 	}
 
 	private final String VEGETABLES = "foods/vegetables";

@@ -4,6 +4,10 @@ import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.init.FarmingActions;
 import com.mrbysco.enhancedfarming.init.FarmingLootTables;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -17,10 +21,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -29,29 +36,14 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.ItemAbility;
 
+import java.util.List;
+
 public class RakeToolItem extends DiggerItem {
 	private final int dropModifier;
 
-	public RakeToolItem(Tier itemTier, int dropModifier, Item.Properties properties) {
-		super(itemTier, BlockTags.MINEABLE_WITH_SHOVEL, properties);
+	public RakeToolItem(ToolMaterial itemTier, int dropModifier, float attackDamage, float attackSpeed, Item.Properties properties) {
+		super(itemTier, BlockTags.MINEABLE_WITH_SHOVEL, attackDamage, attackSpeed, properties);
 		this.dropModifier = dropModifier;
-	}
-
-	public static ItemAttributeModifiers createAttributes(Tier tier, float attackDamage, float attackSpeed) {
-		return ItemAttributeModifiers.builder()
-				.add(
-						Attributes.ATTACK_DAMAGE,
-						new AttributeModifier(
-								EnhancedFarming.modLoc("rake_attack_damage"), (double) (attackDamage + tier.getAttackDamageBonus()), AttributeModifier.Operation.ADD_VALUE
-						),
-						EquipmentSlotGroup.MAINHAND
-				)
-				.add(
-						Attributes.ATTACK_SPEED,
-						new AttributeModifier(EnhancedFarming.modLoc("rake_attack_speed"), (double) attackSpeed, AttributeModifier.Operation.ADD_VALUE),
-						EquipmentSlotGroup.MAINHAND
-				)
-				.build();
 	}
 
 	public void dropSeedsWithChance(ItemStack toolStack, Level level, BlockPos pos) {
@@ -91,7 +83,7 @@ public class RakeToolItem extends DiggerItem {
 				}
 			}
 
-			return InteractionResult.sidedSuccess(level.isClientSide);
+			return InteractionResult.SUCCESS;
 		} else {
 			return InteractionResult.PASS;
 		}

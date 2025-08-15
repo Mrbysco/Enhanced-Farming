@@ -8,10 +8,11 @@ import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
 
@@ -47,18 +48,18 @@ public class PistonRecipeBuilder implements RecipeBuilder {
 		return this.result;
 	}
 
-	public void save(RecipeOutput recipeConsumer, ResourceLocation id) {
+	public void save(RecipeOutput recipeConsumer, ResourceKey<Recipe<?>> id) {
 		this.ensureValid(id);
 		Advancement.Builder advancement$builder = recipeConsumer.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);
 		Objects.requireNonNull(advancement$builder);
 		this.criteria.forEach(advancement$builder::addCriterion);
 		PistonRecipe recipe = new PistonRecipe(this.group == null ? "" : this.group, this.ingredient, new ItemStack(this.result, this.count));
-		recipeConsumer.accept(id, recipe, advancement$builder.build(id.withPrefix("recipes/")));
+		recipeConsumer.accept(id, recipe, advancement$builder.build(id.location().withPrefix("recipes/")));
 	}
 
-	private void ensureValid(ResourceLocation id) {
+	private void ensureValid(ResourceKey<Recipe<?>> recipe) {
 		if (this.criteria.isEmpty()) {
-			throw new IllegalStateException("No way of obtaining recipe " + id);
+			throw new IllegalStateException("No way of obtaining recipe " + recipe.location());
 		}
 	}
 }

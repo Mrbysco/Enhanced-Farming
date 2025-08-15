@@ -53,6 +53,7 @@ public class FarmingLootProvider extends LootTableProvider {
 	}
 
 	private static class FarmingBlocks extends BlockLootSubProvider {
+
 		private final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
 		private final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
 		private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
@@ -137,7 +138,7 @@ public class FarmingLootProvider extends LootTableProvider {
 		}
 
 		private LootItemCondition.Builder doesNotHaveShearsOrSilkTouch() {
-			return HAS_SHEARS.or(this.hasSilkTouch()).invert();
+			return hasShears().or(this.hasSilkTouch()).invert();
 		}
 
 		public LootItemCondition.Builder cropConditionBuilder(CropBlock block, IntegerProperty ageProperty) {

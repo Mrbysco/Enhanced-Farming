@@ -8,12 +8,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.ItemUseAnimation;
+import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.consume_effects.ClearAllStatusEffectsConsumeEffect;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.EffectCures;
 
 public class SpecialCustomFoodItem extends CustomFoodItem {
 
@@ -21,7 +21,7 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
 	public final boolean directheal;
 	public final boolean cure;
 
-	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects, UseAnim action) {
+	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects, ItemUseAnimation action) {
 		super(properties, useTime, action);
 
 		this.enchanted = enchanted;
@@ -29,23 +29,24 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
 		this.cure = cureEffects;
 	}
 
-	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, UseAnim action) {
+	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, ItemUseAnimation action) {
 		this(properties, useTime, enchanted, false, false, action);
 	}
 
 	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted, boolean directHeal, boolean cureEffects) {
-		this(properties, useTime, enchanted, directHeal, cureEffects, UseAnim.EAT);
+		this(properties, useTime, enchanted, directHeal, cureEffects, ItemUseAnimation.EAT);
 	}
 
 	public SpecialCustomFoodItem(Item.Properties properties, int useTime, boolean enchanted) {
-		this(properties, useTime, enchanted, false, false, UseAnim.EAT);
+		this(properties, useTime, enchanted, false, false, ItemUseAnimation.EAT);
 	}
 
+	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-		if (!level.isClientSide && cure) livingEntity.removeEffectsCuredBy(EffectCures.MILK);
+		if (!level.isClientSide && cure) ClearAllStatusEffectsConsumeEffect.INSTANCE.apply(level, stack, livingEntity);
 		if (stack.has(DataComponents.FOOD)) {
 			if (directheal) {
-				livingEntity.heal(this.getFoodProperties(stack, livingEntity).nutrition());
+				livingEntity.heal(stack.get(DataComponents.FOOD).nutrition());
 				stack = eatStack(livingEntity, level, stack, false);
 			} else {
 				stack = eatStack(livingEntity, level, stack, true);
@@ -65,7 +66,7 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
 	public ItemStack eatStack(LivingEntity livingEntity, Level level, ItemStack stack, boolean useFood) {
 		if (livingEntity instanceof Player player) {
 			if (useFood) {
-				player.getFoodData().eat(stack.getFoodProperties(player));
+				player.getFoodData().eat(stack.get(DataComponents.FOOD));
 			}
 			player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
 			level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
@@ -73,10 +74,11 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
 				CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer) player, stack);
 			}
 		} else {
-			level.playSound((Player) null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), livingEntity.getEatingSound(stack), SoundSource.NEUTRAL, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
-			FoodProperties foodProperties = stack.getFoodProperties(livingEntity);
-			if (foodProperties != null)
-				livingEntity.addEatEffect(foodProperties);
+			Consumable consumable = stack.get(DataComponents.CONSUMABLE);
+			if (consumable != null) {
+				level.playSound((Player) null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), consumable.sound(), SoundSource.NEUTRAL, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
+				consumable.onConsume(level, livingEntity, stack);
+			}
 		}
 		return stack;
 	}

@@ -1,8 +1,6 @@
 package com.mrbysco.enhancedfarming.datagen;
 
 import com.mrbysco.enhancedfarming.EnhancedFarming;
-import com.mrbysco.enhancedfarming.datagen.assets.FarmingBlockStateProvider;
-import com.mrbysco.enhancedfarming.datagen.assets.FarmingItemModelProvider;
 import com.mrbysco.enhancedfarming.datagen.assets.FarmingLanguageProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingBiomeModifiers;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingBlockTagProvider;
@@ -26,7 +24,6 @@ import net.minecraft.data.registries.VanillaRegistries;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
@@ -37,29 +34,25 @@ import java.util.concurrent.CompletableFuture;
 public class FarmingDataGen {
 
 	@SubscribeEvent
-	public static void gatherData(GatherDataEvent event) {
+	public static void gatherData(GatherDataEvent.Client event) {
 		DataGenerator generator = event.getGenerator();
 		PackOutput packOutput = generator.getPackOutput();
 		CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-		ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-		if (event.includeServer()) {
-			generator.addProvider(true, new FarmingLootProvider(packOutput, lookupProvider));
-			generator.addProvider(true, new FarmingLootModifierProvider(packOutput, lookupProvider));
-			generator.addProvider(true, new FarmingRecipeProvider(packOutput, lookupProvider));
-			FarmingBlockTagProvider blockTagProvider;
-			generator.addProvider(true, blockTagProvider = new FarmingBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
-			generator.addProvider(true, new FarmingItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
+		generator.addProvider(true, new FarmingLootProvider(packOutput, lookupProvider));
+		generator.addProvider(true, new FarmingLootModifierProvider(packOutput, lookupProvider));
+		generator.addProvider(true, new FarmingRecipeProvider.Runner(packOutput, lookupProvider));
+		FarmingBlockTagProvider blockTagProvider;
+		generator.addProvider(true, blockTagProvider = new FarmingBlockTagProvider(packOutput, lookupProvider));
+		generator.addProvider(true, new FarmingItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter()));
 
-			generator.addProvider(true, new DatapackBuiltinEntriesProvider(
-					packOutput, CompletableFuture.supplyAsync(FarmingDataGen::getProvider), Set.of(EnhancedFarming.MOD_ID)));
-		}
+		generator.addProvider(true, new DatapackBuiltinEntriesProvider(
+				packOutput, CompletableFuture.supplyAsync(FarmingDataGen::getProvider), Set.of(EnhancedFarming.MOD_ID)));
 
-		if (event.includeClient()) {
-			generator.addProvider(true, new FarmingLanguageProvider(packOutput));
-			generator.addProvider(true, new FarmingBlockStateProvider(packOutput, existingFileHelper));
-			generator.addProvider(true, new FarmingItemModelProvider(packOutput, existingFileHelper));
-		}
+
+		generator.addProvider(true, new FarmingLanguageProvider(packOutput));
+//		generator.addProvider(true, new FarmingBlockStateProvider(packOutput));
+//		generator.addProvider(true, new FarmingItemModelProvider(packOutput));
 	}
 
 	private static RegistrySetBuilder.PatchedRegistries getProvider() {

@@ -24,11 +24,11 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Tiers;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
@@ -52,177 +52,179 @@ public class FarmingRegistry {
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, EnhancedFarming.MOD_ID);
 
 	//Blocks
-	public static final DeferredBlock<GrowableSaplingBlock> APPLE_SAPLING = BLOCKS.register("apple_sapling", () -> new GrowableSaplingBlock(FarmingTrees.APPLE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final DeferredBlock<GrowableSaplingBlock> LEMON_SAPLING = BLOCKS.register("lemon_sapling", () -> new GrowableSaplingBlock(FarmingTrees.LEMON, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final DeferredBlock<GrowableSaplingBlock> ORANGE_SAPLING = BLOCKS.register("orange_sapling", () -> new GrowableSaplingBlock(FarmingTrees.ORANGE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final DeferredBlock<GrowableSaplingBlock> CHERRY_SAPLING = BLOCKS.register("cherry_sapling", () -> new GrowableSaplingBlock(FarmingTrees.CHERRY, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final DeferredBlock<GrowableSaplingBlock> PEAR_SAPLING = BLOCKS.register("pear_sapling", () -> new GrowableSaplingBlock(FarmingTrees.PEAR, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final DeferredBlock<GrowableSaplingBlock> BANANA_SAPLING = BLOCKS.register("banana_sapling", () -> new GrowableSaplingBlock(FarmingTrees.BANANA, BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final DeferredBlock<GrowableSaplingBlock> AVOCADO_SAPLING = BLOCKS.register("avocado_sapling", () -> new GrowableSaplingBlock(FarmingTrees.AVOCADO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final DeferredBlock<GrowableSaplingBlock> MANGO_SAPLING = BLOCKS.register("mango_sapling", () -> new GrowableSaplingBlock(FarmingTrees.MANGO, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-	public static final DeferredBlock<GrowableSaplingBlock> OLIVE_SAPLING = BLOCKS.register("olive_sapling", () -> new GrowableSaplingBlock(FarmingTrees.OLIVE, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+	public static final DeferredBlock<GrowableSaplingBlock> APPLE_SAPLING = BLOCKS.registerBlock("apple_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.APPLE, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> LEMON_SAPLING = BLOCKS.registerBlock("lemon_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.LEMON, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> ORANGE_SAPLING = BLOCKS.registerBlock("orange_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.ORANGE, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> CHERRY_SAPLING = BLOCKS.registerBlock("cherry_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.CHERRY, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> PEAR_SAPLING = BLOCKS.registerBlock("pear_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.PEAR, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> BANANA_SAPLING = BLOCKS.registerBlock("banana_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.BANANA, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> AVOCADO_SAPLING = BLOCKS.registerBlock("avocado_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.AVOCADO, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> MANGO_SAPLING = BLOCKS.registerBlock("mango_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.MANGO, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> OLIVE_SAPLING = BLOCKS.registerBlock("olive_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.OLIVE, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
 
-	public static final DeferredBlock<FruitLeavesBlock> APPLE_LEAVES = BLOCKS.register("apple_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), () -> Items.APPLE));
-	public static final DeferredBlock<FruitLeavesBlock> LEMON_LEAVES = BLOCKS.register("lemon_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), FarmingRegistry.LEMON));
-	public static final DeferredBlock<FruitLeavesBlock> ORANGE_LEAVES = BLOCKS.register("orange_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), FarmingRegistry.ORANGE));
-	public static final DeferredBlock<FruitLeavesBlock> CHERRY_LEAVES = BLOCKS.register("cherry_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), FarmingRegistry.CHERRY));
-	public static final DeferredBlock<FruitLeavesBlock> PEAR_LEAVES = BLOCKS.register("pear_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), FarmingRegistry.PEAR));
-	public static final DeferredBlock<FruitLeavesBlock> BANANA_LEAVES = BLOCKS.register("banana_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LEAVES), FarmingRegistry.BANANA));
-	public static final DeferredBlock<FruitLeavesBlock> AVOCADO_LEAVES = BLOCKS.register("avocado_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), FarmingRegistry.AVOCADO));
-	public static final DeferredBlock<FruitLeavesBlock> MANGO_LEAVES = BLOCKS.register("mango_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), FarmingRegistry.MANGO));
-	public static final DeferredBlock<FruitLeavesBlock> OLIVE_LEAVES = BLOCKS.register("olive_leaves", () -> new FruitLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES), FarmingRegistry.OLIVE));
+	public static final DeferredBlock<FruitLeavesBlock> APPLE_LEAVES = BLOCKS.registerBlock("apple_leaves", (properties) -> new FruitLeavesBlock(properties, () -> Items.APPLE), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> LEMON_LEAVES = BLOCKS.registerBlock("lemon_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.LEMON), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> ORANGE_LEAVES = BLOCKS.registerBlock("orange_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.ORANGE), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> CHERRY_LEAVES = BLOCKS.registerBlock("cherry_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.CHERRY), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> PEAR_LEAVES = BLOCKS.registerBlock("pear_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.PEAR), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> BANANA_LEAVES = BLOCKS.registerBlock("banana_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.BANANA), BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> AVOCADO_LEAVES = BLOCKS.registerBlock("avocado_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.AVOCADO), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> MANGO_LEAVES = BLOCKS.registerBlock("mango_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.MANGO), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> OLIVE_LEAVES = BLOCKS.registerBlock("olive_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.OLIVE), BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES));
 
-	public static final DeferredBlock<FiveAgeCropBlock> MINT_CROP = BLOCKS.register("mint_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.MINT));
-	public static final DeferredBlock<NetherFlowerBlock> NETHER_FLOWER_CROP = BLOCKS.register("nether_flower_crop", () -> new NetherFlowerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
-	public static final DeferredBlock<SixAgeCropBlock> TOMATO_CROP = BLOCKS.register("tomato_crop", () -> new SixAgeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.TOMATO));
-	public static final DeferredBlock<FiveAgeCropBlock> CUCUMBER_CROP = BLOCKS.register("cucumber_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.CUCUMBER));
-	public static final DeferredBlock<FiveAgeCropBlock> AUBERGINE_CROP = BLOCKS.register("aubergine_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.AUBERGINE));
-	public static final DeferredBlock<CropstickCropBlock> GRAPE_CROP = BLOCKS.register("grape_crop", () -> new CropstickCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.GRAPES));
-	public static final DeferredBlock<FiveAgeCropBlock> PINEAPPLE_CROP = BLOCKS.register("pineapple_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.PINEAPPLE));
-	public static final DeferredBlock<SevenAgeCropBlock> CORN_CROP = BLOCKS.register("corn_crop", () -> new SevenAgeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.CORN));
-	public static final DeferredBlock<FiveAgeCropBlock> ONION_CROP = BLOCKS.register("onion_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.ONION));
-	public static final DeferredBlock<FiveAgeCropBlock> GARLIC_CROP = BLOCKS.register("garlic_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.GARLIC));
-	public static final DeferredBlock<FiveAgeCropBlock> LETTUCE_CROP = BLOCKS.register("lettuce_crop", () -> new FiveAgeCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), FarmingRegistry.LETTUCE));
+	public static final DeferredBlock<FiveAgeCropBlock> MINT_CROP = BLOCKS.registerBlock("mint_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.MINT), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<NetherFlowerBlock> NETHER_FLOWER_CROP = BLOCKS.registerBlock("nether_flower_crop", NetherFlowerBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<SixAgeCropBlock> TOMATO_CROP = BLOCKS.registerBlock("tomato_crop", (properties) -> new SixAgeCropBlock(properties, FarmingRegistry.TOMATO), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<FiveAgeCropBlock> CUCUMBER_CROP = BLOCKS.registerBlock("cucumber_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.CUCUMBER), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<FiveAgeCropBlock> AUBERGINE_CROP = BLOCKS.registerBlock("aubergine_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.AUBERGINE), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<CropstickCropBlock> GRAPE_CROP = BLOCKS.registerBlock("grape_crop", (properties) -> new CropstickCropBlock(properties, FarmingRegistry.GRAPES), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<FiveAgeCropBlock> PINEAPPLE_CROP = BLOCKS.registerBlock("pineapple_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.PINEAPPLE), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<SevenAgeCropBlock> CORN_CROP = BLOCKS.registerBlock("corn_crop", (properties) -> new SevenAgeCropBlock(properties, FarmingRegistry.CORN), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<FiveAgeCropBlock> ONION_CROP = BLOCKS.registerBlock("onion_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.ONION), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<FiveAgeCropBlock> GARLIC_CROP = BLOCKS.registerBlock("garlic_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.GARLIC), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<FiveAgeCropBlock> LETTUCE_CROP = BLOCKS.registerBlock("lettuce_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.LETTUCE), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
 
-	public static final DeferredBlock<CropStickBlock> CROP_STICK = BLOCKS.register("crop_stick", () -> new CropStickBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
-	public static final DeferredBlock<ScarecrowBlock> SCARECROW = BLOCKS.register("scarecrow", () -> new ScarecrowBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).sound(SoundType.WOOL)));
+	public static final DeferredBlock<CropStickBlock> CROP_STICK = BLOCKS.registerBlock("crop_stick", CropStickBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT));
+	public static final DeferredBlock<ScarecrowBlock> SCARECROW = BLOCKS.registerBlock("scarecrow", ScarecrowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).sound(SoundType.WOOL));
 
 	//Items
-	public static final DeferredItem<CustomUtensilItem> POT = ITEMS.register("pot", () -> new CustomUtensilItem(new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<CustomUtensilItem> CUTTING_BOARD = ITEMS.register("cutting_board", () -> new CustomUtensilItem(new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<CustomUtensilItem> MORTAR_AND_PESTLE = ITEMS.register("mortar_and_pestle", () -> new CustomUtensilItem(new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<CustomUtensilItem> POT = ITEMS.registerItem("pot", (properties) -> new CustomUtensilItem(properties.stacksTo(1)));
+	public static final DeferredItem<CustomUtensilItem> CUTTING_BOARD = ITEMS.registerItem("cutting_board", (properties) -> new CustomUtensilItem(properties.stacksTo(1)));
+	public static final DeferredItem<CustomUtensilItem> MORTAR_AND_PESTLE = ITEMS.registerItem("mortar_and_pestle", (properties) -> new CustomUtensilItem(properties.stacksTo(1)));
 
-	public static final DeferredItem<CustomFoodItem> AUBERGINE = ITEMS.register("aubergine", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.AUBERGINE), 32));
-	public static final DeferredItem<CustomFoodItem> AVOCADO = ITEMS.register("avocado", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.AVOCADO), 32));
-	public static final DeferredItem<CustomFoodItem> BANANA = ITEMS.register("banana", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.BANANA), 32));
-	public static final DeferredItem<CustomFoodItem> CHERRY = ITEMS.register("cherry", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHERRY), 32));
-	public static final DeferredItem<CustomFoodItem> CUCUMBER = ITEMS.register("cucumber", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CUCUMBER), 32));
-	public static final DeferredItem<CustomFoodItem> GRAPES = ITEMS.register("grapes", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.GRAPES), 32));
-	public static final DeferredItem<CustomFoodItem> LEMON = ITEMS.register("lemon", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.LEMON), 32));
-	public static final DeferredItem<CustomFoodItem> MANGO = ITEMS.register("mango", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.MANGO), 32));
+	public static final DeferredItem<CustomFoodItem> AUBERGINE = ITEMS.registerItem("aubergine", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.AUBERGINE), 32));
+	public static final DeferredItem<CustomFoodItem> AVOCADO = ITEMS.registerItem("avocado", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.AVOCADO), 32));
+	public static final DeferredItem<CustomFoodItem> BANANA = ITEMS.registerItem("banana", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.BANANA), 32));
+	public static final DeferredItem<CustomFoodItem> CHERRY = ITEMS.registerItem("cherry", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHERRY), 32));
+	public static final DeferredItem<CustomFoodItem> CUCUMBER = ITEMS.registerItem("cucumber", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CUCUMBER), 32));
+	public static final DeferredItem<CustomFoodItem> GRAPES = ITEMS.registerItem("grapes", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.GRAPES), 32));
+	public static final DeferredItem<CustomFoodItem> LEMON = ITEMS.registerItem("lemon", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.LEMON), 32));
+	public static final DeferredItem<CustomFoodItem> MANGO = ITEMS.registerItem("mango", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.MANGO), 32));
 	public static final DeferredItem<Item> MINT = ITEMS.registerSimpleItem("mint");
-	public static final DeferredItem<CustomFoodItem> OLIVE = ITEMS.register("olive", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.OLIVE), 32));
-	public static final DeferredItem<CustomFoodItem> ORANGE = ITEMS.register("orange", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.ORANGE), 32));
-	public static final DeferredItem<CustomFoodItem> PEAR = ITEMS.register("pear", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.PEAR), 32));
-	public static final DeferredItem<CustomFoodItem> PINEAPPLE = ITEMS.register("pineapple", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.PINEAPPLE), 32));
-	public static final DeferredItem<CustomFoodItem> TOMATO = ITEMS.register("tomato", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.TOMATO), 32));
+	public static final DeferredItem<CustomFoodItem> OLIVE = ITEMS.registerItem("olive", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.OLIVE), 32));
+	public static final DeferredItem<CustomFoodItem> ORANGE = ITEMS.registerItem("orange", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.ORANGE), 32));
+	public static final DeferredItem<CustomFoodItem> PEAR = ITEMS.registerItem("pear", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.PEAR), 32));
+	public static final DeferredItem<CustomFoodItem> PINEAPPLE = ITEMS.registerItem("pineapple", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.PINEAPPLE), 32));
+	public static final DeferredItem<CustomFoodItem> TOMATO = ITEMS.registerItem("tomato", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.TOMATO), 32));
 
-	public static final DeferredItem<CustomFoodItem> CORN = ITEMS.register("corn", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CORN), 32));
-	public static final DeferredItem<CustomFoodItem> GARLIC = ITEMS.register("garlic", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.GARLIC), 32));
-	public static final DeferredItem<CustomFoodItem> LETTUCE = ITEMS.register("lettuce", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.LETTUCE), 32));
-	public static final DeferredItem<CustomFoodItem> ONION = ITEMS.register("onion", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.ONION), 32));
+	public static final DeferredItem<CustomFoodItem> CORN = ITEMS.registerItem("corn", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CORN), 32));
+	public static final DeferredItem<CustomFoodItem> GARLIC = ITEMS.registerItem("garlic", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.GARLIC), 32));
+	public static final DeferredItem<CustomFoodItem> LETTUCE = ITEMS.registerItem("lettuce", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.LETTUCE), 32));
+	public static final DeferredItem<CustomFoodItem> ONION = ITEMS.registerItem("onion", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.ONION), 32));
 
-	public static final DeferredItem<SpecialCustomFoodItem> GOLDEN_LEMON = ITEMS.register("golden_lemon", () -> new SpecialCustomFoodItem(new Item.Properties().food(FarmingFoods.GOLD_LEMON), 32, true));
-	public static final DeferredItem<SpecialCustomFoodItem> GOLDEN_ORANGE = ITEMS.register("golden_orange", () -> new SpecialCustomFoodItem(new Item.Properties().food(FarmingFoods.GOLD_ORANGE), 32, true));
+	public static final DeferredItem<SpecialCustomFoodItem> GOLDEN_LEMON = ITEMS.registerItem("golden_lemon", (properties) -> new SpecialCustomFoodItem(properties
+			.food(FarmingFoods.GOLD_LEMON, FarmingConsumables.GOLD_LEMON), 32, true));
+	public static final DeferredItem<SpecialCustomFoodItem> GOLDEN_ORANGE = ITEMS.registerItem("golden_orange", (properties) -> new SpecialCustomFoodItem(properties
+			.food(FarmingFoods.GOLD_ORANGE, FarmingConsumables.GOLD_ORANGE), 32, true));
 
-	public static final DeferredItem<CustomFoodItem> CHOCOLATE_BAR = ITEMS.register("chocolate_bar", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_BAR), 32));
-	public static final DeferredItem<CustomFoodItem> CHOCOLATE_BANANA = ITEMS.register("chocolate_banana", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_BANANA), 32));
-	public static final DeferredItem<CustomFoodItem> CHOCOLATE_CANDY = ITEMS.register("chocolate_candy", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_CANDY), 2));
-	public static final DeferredItem<CustomFoodItem> CHOCOLATE_CHERRY = ITEMS.register("chocolate_cherry", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_CHERRY), 32));
+	public static final DeferredItem<CustomFoodItem> CHOCOLATE_BAR = ITEMS.registerItem("chocolate_bar", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHOCOLATE_BAR), 32));
+	public static final DeferredItem<CustomFoodItem> CHOCOLATE_BANANA = ITEMS.registerItem("chocolate_banana", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHOCOLATE_BANANA), 32));
+	public static final DeferredItem<CustomFoodItem> CHOCOLATE_CANDY = ITEMS.registerItem("chocolate_candy", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHOCOLATE_CANDY), 2));
+	public static final DeferredItem<CustomFoodItem> CHOCOLATE_CHERRY = ITEMS.registerItem("chocolate_cherry", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHOCOLATE_CHERRY), 32));
 
-	public static final DeferredItem<SpecialCustomFoodItem> MINT_CHOCOLATE_BAR = ITEMS.register("mint_chocolate_bar", () -> new SpecialCustomFoodItem(new Item.Properties().food(FarmingFoods.CHOCOLATE_BAR_MINT).stacksTo(16), 32, false, true, false));
-	public static final DeferredItem<ContainerFoodItem> MINT_TEA = ITEMS.register("mint_tea", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MINT_TEA).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, false, true, false, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> MILK_BOTTLE = ITEMS.register("milk_bottle", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MILK_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, false, false, true, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> COLD_CHOCOLATE_BOTTLE = ITEMS.register("cold_chocolate_bottle", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.COLD_CHOCOLATE_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> HOT_CHOCOLATE_BOTTLE = ITEMS.register("hot_chocolate_bottle", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.HOT_CHOCOLATE_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final DeferredItem<SpecialCustomFoodItem> MINT_CHOCOLATE_BAR = ITEMS.registerItem("mint_chocolate_bar", (properties) -> new SpecialCustomFoodItem(properties.food(FarmingFoods.CHOCOLATE_BAR_MINT).stacksTo(16), 32, false, true, false));
+	public static final DeferredItem<ContainerFoodItem> MINT_TEA = ITEMS.registerItem("mint_tea", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.MINT_TEA).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, false, true, false, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> MILK_BOTTLE = ITEMS.registerItem("milk_bottle", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.MILK_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, false, false, true, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> COLD_CHOCOLATE_BOTTLE = ITEMS.registerItem("cold_chocolate_bottle", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.COLD_CHOCOLATE_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> HOT_CHOCOLATE_BOTTLE = ITEMS.registerItem("hot_chocolate_bottle", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.HOT_CHOCOLATE_BOTTLE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
 	public static final DeferredItem<Item> HOT_WATER = ITEMS.registerSimpleItem("hot_water");
 
 	//Juices
-	public static final DeferredItem<ContainerFoodItem> APPLE_JUICE = ITEMS.register("apple_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.APPLE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> LEMONADE = ITEMS.register("lemonade", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.LEMONADE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> ORANGE_JUICE = ITEMS.register("orange_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.ORANGE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> CHERRY_JUICE = ITEMS.register("cherry_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHERRY_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> PEAR_JUICE = ITEMS.register("pear_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PEAR_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> BANANA_JUICE = ITEMS.register("banana_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.BANANA_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> GRAPE_JUICE = ITEMS.register("grape_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.GRAPE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> MANGO_JUICE = ITEMS.register("mango_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MANGO_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> PINEAPPLE_JUICE = ITEMS.register("pineapple_juice", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PINEAPPLE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final DeferredItem<ContainerFoodItem> APPLE_JUICE = ITEMS.registerItem("apple_juice", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.APPLE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> LEMONADE = ITEMS.registerItem("lemonade", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.LEMONADE).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> ORANGE_JUICE = ITEMS.registerItem("orange_juice", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.ORANGE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> CHERRY_JUICE = ITEMS.registerItem("cherry_juice", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.CHERRY_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> PEAR_JUICE = ITEMS.registerItem("pear_juice", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.PEAR_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> BANANA_JUICE = ITEMS.registerItem("banana_juice", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.BANANA_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> GRAPE_JUICE = ITEMS.registerItem("grape_juice", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.GRAPE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> MANGO_JUICE = ITEMS.registerItem("mango_juice", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.MANGO_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> PINEAPPLE_JUICE = ITEMS.registerItem("pineapple_juice", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.PINEAPPLE_JUICE).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
 
 	//Smoothies
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_APPLE = ITEMS.register("smoothie_apple", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.APPLE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_BANANA = ITEMS.register("smoothie_banana", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.BANANA_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_CHERRY = ITEMS.register("smoothie_cherry", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHERRY_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_CUCUMBER = ITEMS.register("smoothie_cucumber", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CUCUMBER_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_GRAPE = ITEMS.register("smoothie_grape", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.GRAPE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_LEMON = ITEMS.register("smoothie_lemon", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.LEMON_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_MANGO = ITEMS.register("smoothie_mango", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.MANGO_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_ORANGE = ITEMS.register("smoothie_orange", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.ORANGE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_PEAR = ITEMS.register("smoothie_pear", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PEAR_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_PINEAPPLE = ITEMS.register("smoothie_pineapple", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.PINEAPPLE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, UseAnim.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_APPLE = ITEMS.registerItem("smoothie_apple", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.APPLE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_BANANA = ITEMS.registerItem("smoothie_banana", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.BANANA_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_CHERRY = ITEMS.registerItem("smoothie_cherry", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.CHERRY_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_CUCUMBER = ITEMS.registerItem("smoothie_cucumber", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.CUCUMBER_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_GRAPE = ITEMS.registerItem("smoothie_grape", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.GRAPE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_LEMON = ITEMS.registerItem("smoothie_lemon", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.LEMON_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_MANGO = ITEMS.registerItem("smoothie_mango", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.MANGO_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_ORANGE = ITEMS.registerItem("smoothie_orange", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.ORANGE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_PEAR = ITEMS.registerItem("smoothie_pear", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.PEAR_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> SMOOTHIE_PINEAPPLE = ITEMS.registerItem("smoothie_pineapple", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.PINEAPPLE_SMOOTHIE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32, ItemUseAnimation.DRINK));
 
 	//Actual food
 	public static final DeferredItem<Item> DOUGH = ITEMS.registerSimpleItem("dough");
 	public static final DeferredItem<Item> FLOUR = ITEMS.registerSimpleItem("flour");
-	public static final DeferredItem<Item> OLIVE_OIL = ITEMS.registerSimpleItem("olive_oil", new Item.Properties().craftRemainder(Items.GLASS_BOTTLE));
+	public static final DeferredItem<Item> OLIVE_OIL = ITEMS.registerSimpleItem("olive_oil", new Properties().craftRemainder(Items.GLASS_BOTTLE));
 	public static final DeferredItem<Item> PASTA = ITEMS.registerSimpleItem("pasta");
 	public static final DeferredItem<Item> RAW_FRIES = ITEMS.registerSimpleItem("raw_fries");
 	public static final DeferredItem<Item> SALT = ITEMS.registerSimpleItem("salt");
 	public static final DeferredItem<Item> STOCK = ITEMS.registerSimpleItem("stock");
 
-	public static final DeferredItem<ContainerFoodItem> FRUIT_SALAD = ITEMS.register("fruit_salad", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.FRUIT_SALAD).stacksTo(16).craftRemainder(Items.BOWL), 24, UseAnim.EAT));
-	public static final DeferredItem<ContainerFoodItem> SALAD = ITEMS.register("salad", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.SALAD).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 24, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> CARROT_SOUP = ITEMS.register("carrot_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CARROT_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> CHICKEN_NOODLE_SOUP = ITEMS.register("chicken_noodle_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CHICKEN_NOODLE_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> CORN_SOUP = ITEMS.register("corn_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CORN_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> CUCUMBER_SOUP = ITEMS.register("cucumber_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.CUCUMBER_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> ONION_SOUP = ITEMS.register("onion_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.ONION_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> POTATO_SOUP = ITEMS.register("potato_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.POTATO_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
-	public static final DeferredItem<ContainerFoodItem> TOMATO_SOUP = ITEMS.register("tomato_soup", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.TOMATO_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, UseAnim.DRINK));
+	public static final DeferredItem<ContainerFoodItem> FRUIT_SALAD = ITEMS.registerItem("fruit_salad", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.FRUIT_SALAD).stacksTo(16).craftRemainder(Items.BOWL), 24, ItemUseAnimation.EAT));
+	public static final DeferredItem<ContainerFoodItem> SALAD = ITEMS.registerItem("salad", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.SALAD).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 24, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> CARROT_SOUP = ITEMS.registerItem("carrot_soup", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.CARROT_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> CHICKEN_NOODLE_SOUP = ITEMS.registerItem("chicken_noodle_soup", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.CHICKEN_NOODLE_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> CORN_SOUP = ITEMS.registerItem("corn_soup", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.CORN_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> CUCUMBER_SOUP = ITEMS.registerItem("cucumber_soup", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.CUCUMBER_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> ONION_SOUP = ITEMS.registerItem("onion_soup", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.ONION_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> POTATO_SOUP = ITEMS.registerItem("potato_soup", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.POTATO_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, ItemUseAnimation.DRINK));
+	public static final DeferredItem<ContainerFoodItem> TOMATO_SOUP = ITEMS.registerItem("tomato_soup", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.TOMATO_SOUP).stacksTo(16).craftRemainder(Items.BOWL), 32, ItemUseAnimation.DRINK));
 
-	public static final DeferredItem<CustomFoodItem> BAKED_EGG = ITEMS.register("baked_egg", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.OMELET), 32));
-	public static final DeferredItem<CustomFoodItem> BOILED_EGG = ITEMS.register("boiled_egg", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.BOILED_EGG), 32));
-	public static final DeferredItem<CustomFoodItem> CHEESE = ITEMS.register("cheese", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHEESE), 32));
-	public static final DeferredItem<CustomFoodItem> CHEESEBURGER = ITEMS.register("cheeseburger", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHEESE_BURGER), 32));
-	public static final DeferredItem<CustomFoodItem> CHICKENBURGER = ITEMS.register("chickenburger", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHICKEN_BURGER), 32));
-	public static final DeferredItem<CustomFoodItem> FISH_AND_CHIPS = ITEMS.register("fish_and_chips", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.FISH_AND_CHIPS), 32));
-	public static final DeferredItem<CustomFoodItem> FRIES = ITEMS.register("fries", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.FRIES), 32));
-	public static final DeferredItem<CustomFoodItem> GUACAMOLE = ITEMS.register("guacamole", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.GUACAMOLE), 32));
-	public static final DeferredItem<CustomFoodItem> GUAC_AND_CHIPS = ITEMS.register("guac_and_chips", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.GUAC_AND_CHIPS), 28));
-	public static final DeferredItem<CustomFoodItem> HAMBURGER = ITEMS.register("hamburger", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.HAMBURGER), 32));
-	public static final DeferredItem<CustomFoodItem> JAM = ITEMS.register("jam", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.JAM).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32));
-	public static final DeferredItem<CustomFoodItem> POTATO_CHIPS = ITEMS.register("potato_chips", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.POTATO_CHIPS), 24));
-	public static final DeferredItem<CustomFoodItem> SLICED_BREAD = ITEMS.register("sliced_bread", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.SLICED_BREAD), 32));
-	public static final DeferredItem<CustomFoodItem> SPAGHETTI = ITEMS.register("spaghetti", () -> new ContainerFoodItem(new Item.Properties().food(FarmingFoods.SPAGHETTI).stacksTo(16).craftRemainder(Items.BOWL), 40));
+	public static final DeferredItem<CustomFoodItem> BAKED_EGG = ITEMS.registerItem("baked_egg", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.OMELET), 32));
+	public static final DeferredItem<CustomFoodItem> BOILED_EGG = ITEMS.registerItem("boiled_egg", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.BOILED_EGG), 32));
+	public static final DeferredItem<CustomFoodItem> CHEESE = ITEMS.registerItem("cheese", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHEESE), 32));
+	public static final DeferredItem<CustomFoodItem> CHEESEBURGER = ITEMS.registerItem("cheeseburger", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHEESE_BURGER), 32));
+	public static final DeferredItem<CustomFoodItem> CHICKENBURGER = ITEMS.registerItem("chickenburger", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHICKEN_BURGER), 32));
+	public static final DeferredItem<CustomFoodItem> FISH_AND_CHIPS = ITEMS.registerItem("fish_and_chips", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.FISH_AND_CHIPS), 32));
+	public static final DeferredItem<CustomFoodItem> FRIES = ITEMS.registerItem("fries", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.FRIES), 32));
+	public static final DeferredItem<CustomFoodItem> GUACAMOLE = ITEMS.registerItem("guacamole", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.GUACAMOLE), 32));
+	public static final DeferredItem<CustomFoodItem> GUAC_AND_CHIPS = ITEMS.registerItem("guac_and_chips", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.GUAC_AND_CHIPS), 28));
+	public static final DeferredItem<CustomFoodItem> HAMBURGER = ITEMS.registerItem("hamburger", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.HAMBURGER), 32));
+	public static final DeferredItem<CustomFoodItem> JAM = ITEMS.registerItem("jam", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.JAM).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE), 32));
+	public static final DeferredItem<CustomFoodItem> POTATO_CHIPS = ITEMS.registerItem("potato_chips", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.POTATO_CHIPS), 24));
+	public static final DeferredItem<CustomFoodItem> SLICED_BREAD = ITEMS.registerItem("sliced_bread", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.SLICED_BREAD), 32));
+	public static final DeferredItem<CustomFoodItem> SPAGHETTI = ITEMS.registerItem("spaghetti", (properties) -> new ContainerFoodItem(properties.food(FarmingFoods.SPAGHETTI).stacksTo(16).craftRemainder(Items.BOWL), 40));
 
 	//Sandwiches
-	public static final DeferredItem<CustomFoodItem> BACON_SANDWICH = ITEMS.register("bacon_sandwich", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.BACON_SANDWICH), 32));
-	public static final DeferredItem<CustomFoodItem> CHICKEN_SANDWICH = ITEMS.register("chicken_sandwich", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHICKEN_SANDWICH), 32));
-	public static final DeferredItem<CustomFoodItem> EGG_SANDWICH = ITEMS.register("egg_sandwich", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.EGG_SANDWICH), 32));
-	public static final DeferredItem<CustomFoodItem> JC_SANDWICH = ITEMS.register("jc_sandwich", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.JC_SANDWICH), 32));
+	public static final DeferredItem<CustomFoodItem> BACON_SANDWICH = ITEMS.registerItem("bacon_sandwich", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.BACON_SANDWICH), 32));
+	public static final DeferredItem<CustomFoodItem> CHICKEN_SANDWICH = ITEMS.registerItem("chicken_sandwich", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHICKEN_SANDWICH), 32));
+	public static final DeferredItem<CustomFoodItem> EGG_SANDWICH = ITEMS.registerItem("egg_sandwich", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.EGG_SANDWICH), 32));
+	public static final DeferredItem<CustomFoodItem> JC_SANDWICH = ITEMS.registerItem("jc_sandwich", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.JC_SANDWICH), 32));
 
 	//Pizza
-	public static final DeferredItem<CustomFoodItem> BACON_PIZZA = ITEMS.register("bacon_pizza", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.BACON_PIZZA), 40));
-	public static final DeferredItem<CustomFoodItem> CHEESE_PIZZA = ITEMS.register("cheese_pizza", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHEESE_PIZZA), 40));
-	public static final DeferredItem<CustomFoodItem> PINEAPPLE_PIZZA = ITEMS.register("pineapple_pizza", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.PINEAPPLE_PIZZA), 40));
+	public static final DeferredItem<CustomFoodItem> BACON_PIZZA = ITEMS.registerItem("bacon_pizza", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.BACON_PIZZA), 40));
+	public static final DeferredItem<CustomFoodItem> CHEESE_PIZZA = ITEMS.registerItem("cheese_pizza", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHEESE_PIZZA), 40));
+	public static final DeferredItem<CustomFoodItem> PINEAPPLE_PIZZA = ITEMS.registerItem("pineapple_pizza", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.PINEAPPLE_PIZZA), 40));
 
 	//Pies
-	public static final DeferredItem<CustomFoodItem> APPLE_PIE = ITEMS.register("apple_pie", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.APPLE_PIE), 32));
-	public static final DeferredItem<CustomFoodItem> BACON_AND_EGG_PIE = ITEMS.register("bacon_and_egg_pie", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.BACON_AND_EGG_PIE), 32));
-	public static final DeferredItem<CustomFoodItem> BANANA_PIE = ITEMS.register("banana_pie", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.BANANA_PIE), 32));
-	public static final DeferredItem<CustomFoodItem> CHERRY_PIE = ITEMS.register("cherry_pie", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.CHERRY_PIE), 32));
-	public static final DeferredItem<CustomFoodItem> GRAPE_PIE = ITEMS.register("grape_pie", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.GRAPE_PIE), 32));
-	public static final DeferredItem<CustomFoodItem> LEMON_PIE = ITEMS.register("lemon_pie", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.LEMON_PIE), 32));
-	public static final DeferredItem<CustomFoodItem> PEAR_PIE = ITEMS.register("pear_pie", () -> new CustomFoodItem(new Item.Properties().food(FarmingFoods.PEAR_PIE), 32));
+	public static final DeferredItem<CustomFoodItem> APPLE_PIE = ITEMS.registerItem("apple_pie", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.APPLE_PIE), 32));
+	public static final DeferredItem<CustomFoodItem> BACON_AND_EGG_PIE = ITEMS.registerItem("bacon_and_egg_pie", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.BACON_AND_EGG_PIE), 32));
+	public static final DeferredItem<CustomFoodItem> BANANA_PIE = ITEMS.registerItem("banana_pie", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.BANANA_PIE), 32));
+	public static final DeferredItem<CustomFoodItem> CHERRY_PIE = ITEMS.registerItem("cherry_pie", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.CHERRY_PIE), 32));
+	public static final DeferredItem<CustomFoodItem> GRAPE_PIE = ITEMS.registerItem("grape_pie", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.GRAPE_PIE), 32));
+	public static final DeferredItem<CustomFoodItem> LEMON_PIE = ITEMS.registerItem("lemon_pie", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.LEMON_PIE), 32));
+	public static final DeferredItem<CustomFoodItem> PEAR_PIE = ITEMS.registerItem("pear_pie", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.PEAR_PIE), 32));
 
 	//Rakes
-	public static final DeferredItem<RakeToolItem> WOODEN_RAKE = ITEMS.register("wooden_rake", () -> new RakeToolItem(Tiers.WOOD, 0, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -3.0F, 1))));
-	public static final DeferredItem<RakeToolItem> STONE_RAKE = ITEMS.register("stone_rake", () -> new RakeToolItem(Tiers.STONE, 1, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -2.0F, 2))));
-	public static final DeferredItem<RakeToolItem> IRON_RAKE = ITEMS.register("iron_rake", () -> new RakeToolItem(Tiers.IRON, 2, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -1.0F, 3))));
-	public static final DeferredItem<RakeToolItem> GOLD_RAKE = ITEMS.register("gold_rake", () -> new RakeToolItem(Tiers.GOLD, 0, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, -3.0F, 6))));
-	public static final DeferredItem<RakeToolItem> DIAMOND_RAKE = ITEMS.register("diamond_rake", () -> new RakeToolItem(Tiers.DIAMOND, 3, new Item.Properties().attributes(RakeToolItem.createAttributes(Tiers.WOOD, 0.0F, 5))));
+	public static final DeferredItem<RakeToolItem> WOODEN_RAKE = ITEMS.registerItem("wooden_rake", (properties) -> new RakeToolItem(ToolMaterial.WOOD, 0, -3.0F, 1, properties));
+	public static final DeferredItem<RakeToolItem> STONE_RAKE = ITEMS.registerItem("stone_rake", (properties) -> new RakeToolItem(ToolMaterial.STONE, 1, -2.0F, 2, properties));
+	public static final DeferredItem<RakeToolItem> IRON_RAKE = ITEMS.registerItem("iron_rake", (properties) -> new RakeToolItem(ToolMaterial.IRON, 2, -1.0F, 3, properties));
+	public static final DeferredItem<RakeToolItem> GOLD_RAKE = ITEMS.registerItem("gold_rake", (properties) -> new RakeToolItem(ToolMaterial.GOLD, 0, -3.0F, 6, properties));
+	public static final DeferredItem<RakeToolItem> DIAMOND_RAKE = ITEMS.registerItem("diamond_rake", (properties) -> new RakeToolItem(ToolMaterial.DIAMOND, 3, 0.0F, 5, properties));
 
 	//Seeds
-	public static final DeferredItem<ItemNameBlockItem> MINT_SEEDS = ITEMS.register("mint_seeds", () -> new ItemNameBlockItem(FarmingRegistry.MINT_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> NETHER_FLOWER_SEEDS = ITEMS.register("nether_flower_seeds", () -> new ItemNameBlockItem(FarmingRegistry.NETHER_FLOWER_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new ItemNameBlockItem(FarmingRegistry.TOMATO_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> CUCUMBER_SEEDS = ITEMS.register("cucumber_seeds", () -> new ItemNameBlockItem(FarmingRegistry.CUCUMBER_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> AUBERGINE_SEEDS = ITEMS.register("aubergine_seeds", () -> new ItemNameBlockItem(FarmingRegistry.AUBERGINE_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> GRAPE_SEEDS = ITEMS.register("grape_seeds", () -> new CropsticksSeedsBlock(FarmingRegistry.GRAPE_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> PINEAPPLE_SEEDS = ITEMS.register("pineapple_seeds", () -> new ItemNameBlockItem(FarmingRegistry.PINEAPPLE_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> CORN_SEEDS = ITEMS.register("corn_seeds", () -> new ItemNameBlockItem(FarmingRegistry.CORN_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> ONION_SEEDS = ITEMS.register("onion_seeds", () -> new ItemNameBlockItem(FarmingRegistry.ONION_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> GARLIC_SEEDS = ITEMS.register("garlic_seeds", () -> new ItemNameBlockItem(FarmingRegistry.GARLIC_CROP.get(), new Item.Properties()));
-	public static final DeferredItem<ItemNameBlockItem> LETTUCE_SEEDS = ITEMS.register("lettuce_seeds", () -> new ItemNameBlockItem(FarmingRegistry.LETTUCE_CROP.get(), new Item.Properties()));
+	public static final DeferredItem<BlockItem> MINT_SEEDS = ITEMS.registerSimpleBlockItem("mint_seeds", FarmingRegistry.MINT_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> NETHER_FLOWER_SEEDS = ITEMS.registerSimpleBlockItem("nether_flower_seeds", FarmingRegistry.NETHER_FLOWER_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> TOMATO_SEEDS = ITEMS.registerSimpleBlockItem("tomato_seeds", FarmingRegistry.TOMATO_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> CUCUMBER_SEEDS = ITEMS.registerSimpleBlockItem("cucumber_seeds", FarmingRegistry.CUCUMBER_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> AUBERGINE_SEEDS = ITEMS.registerSimpleBlockItem("aubergine_seeds", FarmingRegistry.AUBERGINE_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> GRAPE_SEEDS = ITEMS.registerItem("grape_seeds", (properties) -> new CropsticksSeedsBlock(FarmingRegistry.GRAPE_CROP.get(), properties), new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> PINEAPPLE_SEEDS = ITEMS.registerSimpleBlockItem("pineapple_seeds", FarmingRegistry.PINEAPPLE_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> CORN_SEEDS = ITEMS.registerSimpleBlockItem("corn_seeds", FarmingRegistry.CORN_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> ONION_SEEDS = ITEMS.registerSimpleBlockItem("onion_seeds", FarmingRegistry.ONION_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> GARLIC_SEEDS = ITEMS.registerSimpleBlockItem("garlic_seeds", FarmingRegistry.GARLIC_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> LETTUCE_SEEDS = ITEMS.registerSimpleBlockItem("lettuce_seeds", FarmingRegistry.LETTUCE_CROP, new Properties().useItemDescriptionPrefix());
 
 	public static final DeferredItem<BlockItem> APPLE_SAPLING_ITEM = ITEMS.registerSimpleBlockItem("apple_sapling", FarmingRegistry.APPLE_SAPLING);
 	public static final DeferredItem<BlockItem> LEMON_SAPLING_ITEM = ITEMS.registerSimpleBlockItem("lemon_sapling", FarmingRegistry.LEMON_SAPLING);
@@ -257,7 +259,7 @@ public class FarmingRegistry {
 			}).build());
 
 	public static final Supplier<BlockEntityType<ScarecrowBlockEntity>> SCARECROW_TILE = BLOCK_ENTITY_TYPES.register("scarecrow", () ->
-			BlockEntityType.Builder.of(ScarecrowBlockEntity::new, FarmingRegistry.SCARECROW.get()).build(null));
+			new BlockEntityType<>(ScarecrowBlockEntity::new, FarmingRegistry.SCARECROW.get()));
 
 	public static void registerCompostable() {
 		for (DeferredHolder<Item, ? extends Item> item : FarmingRegistry.ITEMS.getEntries()) {

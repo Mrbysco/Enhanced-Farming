@@ -4,12 +4,14 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeBookCategories;
+import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -27,8 +29,18 @@ public class PistonRecipe implements Recipe<RecipeInput> {
 	}
 
 	@Override
-	public RecipeType<?> getType() {
+	public RecipeType<PistonRecipe> getType() {
 		return FarmingRecipes.PISTON_CRAFTING_TYPE.get();
+	}
+
+	@Override
+	public PlacementInfo placementInfo() {
+		return PlacementInfo.NOT_PLACEABLE;
+	}
+
+	@Override
+	public RecipeBookCategory recipeBookCategory() {
+		return RecipeBookCategories.CRAFTING_MISC;
 	}
 
 	@Override
@@ -36,22 +48,17 @@ public class PistonRecipe implements Recipe<RecipeInput> {
 		return this.ingredient.test(input.getItem(0));
 	}
 
+	@Override
 	public ItemStack assemble(RecipeInput input, HolderLookup.Provider registries) {
-		return getResultItem(registries);
+		return result();
 	}
 
-	public boolean canCraftInDimensions(int x, int y) {
-		return true;
+	public Ingredient ingredient() {
+		return this.ingredient;
 	}
 
-	public NonNullList<Ingredient> getIngredients() {
-		NonNullList<Ingredient> nonnulllist = NonNullList.create();
-		nonnulllist.add(this.ingredient);
-		return nonnulllist;
-	}
-
-	public ItemStack getResultItem(HolderLookup.Provider registries) {
-		return this.result;
+	public ItemStack result() {
+		return this.result.copy();
 	}
 
 	public String getGroup() {
@@ -59,7 +66,7 @@ public class PistonRecipe implements Recipe<RecipeInput> {
 	}
 
 	@Override
-	public RecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<PistonRecipe> getSerializer() {
 		return FarmingRecipes.PISTON_CRAFTING_SERIALIZER.get();
 	}
 
@@ -67,7 +74,7 @@ public class PistonRecipe implements Recipe<RecipeInput> {
 		private static final MapCodec<PistonRecipe> CODEC = RecordCodecBuilder.mapCodec(
 				instance -> instance.group(
 								Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
-								Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(recipe -> recipe.ingredient),
+								Ingredient.CODEC.fieldOf("ingredient").forGetter(recipe -> recipe.ingredient),
 								ItemStack.STRICT_CODEC.fieldOf("result").forGetter(hardcoreRecipe -> hardcoreRecipe.result)
 						)
 						.apply(instance, PistonRecipe::new)

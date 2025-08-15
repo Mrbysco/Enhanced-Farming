@@ -23,6 +23,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -42,8 +43,8 @@ public class EnhancedFarming {
 
 		FarmingRegistry.BLOCKS.register(eventBus);
 		FarmingRegistry.ITEMS.register(eventBus);
-		FarmingRegistry.CREATIVE_MODE_TABS.register(eventBus);
 		FarmingRegistry.BLOCK_ENTITY_TYPES.register(eventBus);
+		FarmingRegistry.CREATIVE_MODE_TABS.register(eventBus);
 		FarmingFeatures.FEATURES.register(eventBus);
 		FarmingRecipes.RECIPE_TYPES.register(eventBus);
 		FarmingRecipes.RECIPE_SERIALIZERS.register(eventBus);
@@ -54,11 +55,17 @@ public class EnhancedFarming {
 		NeoForge.EVENT_BUS.register(new InWorldCraftingHandler());
 		NeoForge.EVENT_BUS.register(new HotHandler());
 		NeoForge.EVENT_BUS.register(new RakeHandler());
+		NeoForge.EVENT_BUS.addListener(this::onDatapackSync);
 
 		if (dist.isClient()) {
 			eventBus.addListener(ClientHandler::registerBlockColors);
-			eventBus.addListener(ClientHandler::registerItemColors);
+			NeoForge.EVENT_BUS.addListener(ClientHandler::onRecipeReceived);
+//			eventBus.addListener(ClientHandler::registerItemColors);
 		}
+	}
+
+	private void onDatapackSync(OnDatapackSyncEvent event) {
+		event.sendRecipes(FarmingRecipes.PISTON_CRAFTING_TYPE.get());
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {

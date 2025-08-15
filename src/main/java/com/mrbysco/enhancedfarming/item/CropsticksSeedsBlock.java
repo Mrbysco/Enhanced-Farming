@@ -2,13 +2,13 @@ package com.mrbysco.enhancedfarming.item;
 
 import com.mrbysco.enhancedfarming.block.CropStickBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CropsticksSeedsBlock extends ItemNameBlockItem {
+public class CropsticksSeedsBlock extends BlockItem {
 
 	public CropsticksSeedsBlock(Block crops, Item.Properties properties) {
 		super(crops, properties);

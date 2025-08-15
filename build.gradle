@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.171'
+    id 'net.neoforged.gradle.userdev' version '7.0.192'
     id 'net.darkhax.curseforgegradle' version '1.1.26'
     id 'com.modrinth.minotaur' version "2.+"
 }
@@ -46,12 +46,12 @@ runs {
         programArgument '--nogui'
     }
 
-    data {
+    clientData {
         // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
         // workingDirectory project.file('run-data')
 
         // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-        programArguments.addAll '--mod', "${mod_id}", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        arguments.addAll '--mod', "${mod_id}", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
@@ -90,8 +90,8 @@ dependencies {
     compileOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
     compileOnly "dev.architectury:architectury-neoforge:${architectury_version}"
 
-    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
-    compileOnly "dev.emi:emi-neoforge:${emi_version}"
+//    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
+//    compileOnly "dev.emi:emi-neoforge:${emi_version}"
 }
 
 jar {

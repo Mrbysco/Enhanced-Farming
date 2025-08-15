@@ -32,15 +32,15 @@ public class InWorldCraftingHandler {
 				for (ItemEntity itemEntity : itemEntities) {
 					BlockPos itemPos = itemEntity.blockPosition();
 					SingleRecipeInput input = new SingleRecipeInput(itemEntity.getItem().copy());
-					RecipeHolder<PistonRecipe> recipeHolder = serverLevel.getRecipeManager()
+					RecipeHolder<PistonRecipe> recipeHolder = serverLevel.recipeAccess()
 							.getRecipeFor(FarmingRecipes.PISTON_CRAFTING_TYPE.get(), input, serverLevel).orElse(null);
 					if (recipeHolder != null) {
 						ItemStack stack = itemEntity.getItem();
 						int craftPer = 0;
 						int craftCount = 0;
 						PistonRecipe recipe = recipeHolder.value();
-						if (!recipe.getIngredients().get(0).isEmpty()) {
-							ItemStack[] ingredients = recipe.getIngredients().get(0).getItems();
+						if (!recipe.ingredient().isEmpty()) {
+							List<ItemStack> ingredients = recipe.ingredient().getValues().stream().map(ItemStack::new).toList();
 							for (ItemStack ingredient : ingredients) {
 								if (ingredient.getItem() == stack.getItem()) {
 									craftPer = ingredient.getCount();
@@ -51,7 +51,7 @@ public class InWorldCraftingHandler {
 						}
 						if (craftCount > 0) {
 							int total = (craftCount * craftPer);
-							ItemStack result = recipe.getResultItem(levelAccessor.registryAccess()).copy();
+							ItemStack result = recipe.result();
 							int maxResultSize = result.getMaxStackSize();
 							if (total <= maxResultSize) {
 								stack.shrink(total);
@@ -69,7 +69,7 @@ public class InWorldCraftingHandler {
 
 								int currentTotal = total;
 								for (int i = 0; i < totalStacks; i++) {
-									ItemStack newStack = recipe.getResultItem(levelAccessor.registryAccess()).copy();
+									ItemStack newStack = recipe.result();
 									if (currentTotal > maxResultSize) {
 										newStack.setCount(maxResultSize);
 										currentTotal -= maxResultSize;

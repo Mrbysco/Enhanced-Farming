@@ -41,11 +41,11 @@ public class GrassDropModifier extends LootModifier {
 	@Override
 	protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 		ServerLevel level = context.getLevel();
-		BlockState state = context.getParamOrNull(LootContextParams.BLOCK_STATE);
-		ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
+		BlockState state = context.getOptionalParameter(LootContextParams.BLOCK_STATE);
+		ItemStack tool = context.getOptionalParameter(LootContextParams.TOOL);
 		if (state != null && tool != null && context.getRandom().nextDouble() <= 0.1) {
 			if (state.getBlock() instanceof TallGrassBlock && !tool.is(Items.TOOLS_SHEAR) &&
-					EnchantmentHelper.getItemEnchantmentLevel(level.holderOrThrow(Enchantments.SILK_TOUCH), tool) <= 0) {
+					EnchantmentHelper.getTagEnchantmentLevel(level.holderOrThrow(Enchantments.SILK_TOUCH), tool) <= 0) {
 				List<ItemStack> extraLoot = new ArrayList<>();
 				if (FarmingConfig.COMMON.seedsFromGrass.get()) {
 					extraLoot.add(new ItemStack(FarmingRegistry.MINT_SEEDS.get()));

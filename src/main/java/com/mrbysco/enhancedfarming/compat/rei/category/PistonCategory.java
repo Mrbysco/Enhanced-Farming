@@ -1,7 +1,7 @@
 package com.mrbysco.enhancedfarming.compat.rei.category;
 
 import com.mrbysco.enhancedfarming.EnhancedFarming;
-import com.mrbysco.enhancedfarming.compat.rei.REIPlugin;
+import com.mrbysco.enhancedfarming.compat.rei.FarmingREIPlugin;
 import com.mrbysco.enhancedfarming.compat.rei.display.PistonDisplay;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -24,7 +24,7 @@ public class PistonCategory implements DisplayCategory<PistonDisplay> {
 
 	@Override
 	public CategoryIdentifier<? extends PistonDisplay> getCategoryIdentifier() {
-		return REIPlugin.PISTON;
+		return FarmingREIPlugin.PISTON;
 	}
 
 	@Override
@@ -44,8 +44,8 @@ public class PistonCategory implements DisplayCategory<PistonDisplay> {
 		widgets.add(Widgets.createRecipeBase(bounds));
 		widgets.add(Widgets.createTexturedWidget(TEXTURE, centerPoint.x - 24, centerPoint.y - 24, 18, 7, 48, 48));
 
-		widgets.add(Widgets.createSlot(new Point(bounds.getMinX() + 5, centerPoint.y - 8)).entries(display.getInputEntries().get(0)).markInput());
-		widgets.add(Widgets.createSlot(new Point(bounds.getMaxX() - 21, centerPoint.y - 8)).entries(display.getOutputEntries().get(0)).markOutput());
+		widgets.add(Widgets.createSlot(new Point(bounds.getMinX() + 5, centerPoint.y - 8)).entries(display.getInputEntries().getFirst()).markInput());
+		widgets.add(Widgets.createSlot(new Point(bounds.getMaxX() - 21, centerPoint.y - 8)).entries(display.getOutputEntries().getFirst()).markOutput());
 
 		return widgets;
 	}
