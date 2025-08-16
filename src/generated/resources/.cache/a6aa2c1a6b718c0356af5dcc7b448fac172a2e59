@@ -1,4 +1,4 @@
-// 1.21.4	2025-08-16T16:52:57.9885855	Model Definitions - enhancedfarming
+// 1.21.4	2025-08-16T17:03:32.2562557	Model Definitions - enhancedfarming
 beaf58245205fc6b38b7a99588bc786b93be0b3d assets/enhancedfarming/blockstates/apple_leaves.json
 390eb1e6af522bf428f9de1f35f18120bd9dce94 assets/enhancedfarming/blockstates/apple_sapling.json
 e9b236f8544fa73f1e05d3dac102df5eceb0eccc assets/enhancedfarming/blockstates/aubergine_crop.json
@@ -69,7 +69,7 @@ ea2ec57167105b2f6e96b805208e4243c958df21 assets/enhancedfarming/items/chocolate_
 0341cca92b75ea235a6ef733b3c614bc3ecf2e91 assets/enhancedfarming/items/corn.json
 ed48758581e9f8731c762afcaa271914146a28dc assets/enhancedfarming/items/corn_seeds.json
 2bd15614a9e09193142780d7c75adc765e110184 assets/enhancedfarming/items/corn_soup.json
-f8da67af1ab93da1c215152008133a5a0083c8a8 assets/enhancedfarming/items/crop_stick.json
+94c94c7e7a148e9ab06dfaaa47106ff99e1b7d61 assets/enhancedfarming/items/crop_stick.json
 be229a5a0ae7007aed54227791c3108d1ba35fd7 assets/enhancedfarming/items/cucumber.json
 073345ac6436bba427eb261957a1b7ffa2a7db31 assets/enhancedfarming/items/cucumber_seeds.json
 0ebdeaaffd138bbd133d97e7b1cfba1acb29925f assets/enhancedfarming/items/cucumber_soup.json
@@ -329,6 +329,7 @@ fd883b54cf3b67ca3ec3cd0321c1c0e242e71c09 assets/enhancedfarming/models/item/cold
 c1d339987dbd7d2584a445177233f090aadd4f57 assets/enhancedfarming/models/item/corn.json
 6ce2aa023db7e7f7852c9ef77c4b61de8b721b10 assets/enhancedfarming/models/item/corn_seeds.json
 5c5be7b550fc8eeeaa95ab9dd1043caf9c7c4ab2 assets/enhancedfarming/models/item/corn_soup.json
+f932c3b5ab965b868fa6b11e5ab0620ae2966e8e assets/enhancedfarming/models/item/crop_stick.json
 97dac6b80767c35c361e1687a20e539a2b69b351 assets/enhancedfarming/models/item/cucumber.json
 194d43428551024d6ccb0d75225d71be0f8c70df assets/enhancedfarming/models/item/cucumber_seeds.json
 7002316506931d97f96c4bcb118332a84a17ebed assets/enhancedfarming/models/item/cucumber_soup.json

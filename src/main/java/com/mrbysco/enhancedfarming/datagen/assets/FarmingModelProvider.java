@@ -76,6 +76,7 @@ public class FarmingModelProvider extends ModelProvider {
 		buildLeaves(blockModels, FarmingRegistry.OLIVE_LEAVES.get(), "acacia_leaves", -12012264);
 
 		model(blockModels, FarmingRegistry.CROP_STICK.get());
+		itemModels.generateFlatItem(FarmingRegistry.CROP_STICK.asItem(), ModelTemplates.FLAT_ITEM);
 
 		blockModels.createNonTemplateHorizontalBlock(FarmingRegistry.SCARECROW.get());
 		blockModels.registerSimpleItemModel(FarmingRegistry.SCARECROW.get(), EnhancedFarming.modLoc("block/scarecrow"));
