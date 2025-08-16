@@ -567,9 +567,10 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		List<String> knownTags = new ArrayList<>();
 		for (TagKey<Item> itemTag : itemTags) {
 			builder = builder.requires(itemTag);
-			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			String replace = "has_" + itemTag.location().getPath().replace(":", "_");
+			String hasTag = replace;
 			if (!knownTags.contains(hasTag)) {
-				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				builder = builder.unlockedBy(replace, has(itemTag));
 				knownTags.add(hasTag);
 			}
 		}
@@ -589,9 +590,10 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		List<String> knownTags = new ArrayList<>();
 		for (TagKey<Item> itemTag : itemTags) {
 			builder = builder.requires(itemTag);
-			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			String replace = itemTag.location().getPath().replace(":", "_");
+			String hasTag = "has_" + replace;
 			if (!knownTags.contains(hasTag)) {
-				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				builder = builder.unlockedBy("has_" + replace, has(itemTag));
 				knownTags.add(hasTag);
 			}
 		}
@@ -631,9 +633,10 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		List<String> knownTags = new ArrayList<>();
 		for (TagKey<Item> itemTag : itemTags) {
 			builder = builder.requires(itemTag);
-			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			String replace = itemTag.location().getPath().replace(":", "_");
+			String hasTag = "has_" + replace;
 			if (!knownTags.contains(hasTag)) {
-				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				builder = builder.unlockedBy("has_" + replace, has(itemTag));
 				knownTags.add(hasTag);
 			}
 		}
@@ -708,9 +711,10 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		List<String> knownUnlocks = new ArrayList<>();
 		for (TagKey<Item> itemTag : itemTags) {
 			builder = builder.requires(itemTag);
-			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
+			String replace = itemTag.location().getPath().replace(":", "_");
+			String hasTag = "has_" + replace;
 			if (!knownUnlocks.contains(hasTag)) {
-				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				builder = builder.unlockedBy("has_" + replace, has(itemTag));
 				knownUnlocks.add(hasTag);
 			}
 		}
