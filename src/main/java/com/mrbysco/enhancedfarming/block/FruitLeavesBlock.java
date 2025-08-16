@@ -18,8 +18,8 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.TintedParticleLeavesBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -29,12 +29,12 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.function.Supplier;
 
-public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
+public class FruitLeavesBlock extends TintedParticleLeavesBlock implements BonemealableBlock {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 	public final Supplier<? extends Item> itemSupplier;
 
 	public FruitLeavesBlock(BlockBehaviour.Properties properties, Supplier<? extends Item> itemSupplier) {
-		super(properties.randomTicks().strength(0.2F).sound(SoundType.GRASS).noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never));
+		super(0.01F, properties.randomTicks().strength(0.2F).sound(SoundType.GRASS).noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never));
 		this.itemSupplier = itemSupplier;
 
 		this.registerDefaultState(this.stateDefinition.any()
@@ -100,6 +100,11 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 				}
 			}
 		}
+	}
+
+	@Override
+	protected void spawnFallingLeavesParticle(Level level, BlockPos pos, RandomSource random) {
+
 	}
 
 	@Override

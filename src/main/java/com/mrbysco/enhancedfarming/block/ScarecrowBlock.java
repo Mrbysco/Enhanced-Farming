@@ -42,7 +42,7 @@ public class ScarecrowBlock extends BaseEntityBlock implements SimpleWaterlogged
 	}
 
 	@Override
-	protected MapCodec<? extends BaseEntityBlock> codec() {
+	protected MapCodec<ScarecrowBlock> codec() {
 		return CODEC;
 	}
 

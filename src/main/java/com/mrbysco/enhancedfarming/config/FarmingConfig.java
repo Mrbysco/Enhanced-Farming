@@ -5,16 +5,17 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
+import net.neoforged.neoforge.common.ModConfigSpec.IntValue;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class FarmingConfig {
 
 	public static class Common {
 		public final BooleanValue hotBurnsPlayer;
-		public final ModConfigSpec.IntValue hotTime;
+		public final IntValue hotTime;
 		public final BooleanValue rightClickFruitHarvest;
 		public final BooleanValue relocationAllowed;
-		public final ModConfigSpec.IntValue treeDropChance;
+		public final IntValue treeDropChance;
 		public final BooleanValue bonemealGrow;
 		public final BooleanValue instantGrow;
 		public final BooleanValue cropToSeeds;

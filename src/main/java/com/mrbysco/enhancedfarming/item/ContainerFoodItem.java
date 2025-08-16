@@ -11,10 +11,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.consume_effects.ClearAllStatusEffectsConsumeEffect;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 public class ContainerFoodItem extends SpecialCustomFoodItem {
 
@@ -63,10 +64,10 @@ public class ContainerFoodItem extends SpecialCustomFoodItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
-		super.appendHoverText(stack, context, components, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> tooltipAdder, TooltipFlag flag) {
+		super.appendHoverText(stack, context, tooltipDisplay, tooltipAdder, flag);
 		if (this == FarmingRegistry.BANANA_JUICE.get()) {
-			components.add(Component.translatable("enhancedfarming.item.banana_juice.tooltip"));
+			tooltipAdder.accept(Component.translatable("enhancedfarming.item.banana_juice.tooltip"));
 		}
 	}
 }

@@ -6,8 +6,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -17,7 +17,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.stream.Stream;
 
-public class CropStickBlock extends BushBlock {
+public class CropStickBlock extends VegetationBlock {
 	public static final MapCodec<CropStickBlock> CODEC = simpleCodec(CropStickBlock::new);
 	protected static final VoxelShape CROPSTICK_SHAPE = Stream.of(
 			Block.box(4, 8, 10, 12, 9, 11),
@@ -39,7 +39,7 @@ public class CropStickBlock extends BushBlock {
 	}
 
 	@Override
-	protected MapCodec<? extends BushBlock> codec() {
+	protected MapCodec<CropStickBlock> codec() {
 		return CODEC;
 	}
 

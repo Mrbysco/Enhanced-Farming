@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,7 +23,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
 
-public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock {
+public class GrowableSaplingBlock extends VegetationBlock implements BonemealableBlock {
 	public static final MapCodec<GrowableSaplingBlock> CODEC = RecordCodecBuilder.mapCodec((instance) ->
 			instance.group(TreeGrower.CODEC.fieldOf("tree").forGetter((saplingBlock) -> saplingBlock.treeGrower),
 					propertiesCodec()).apply(instance, GrowableSaplingBlock::new));
@@ -44,7 +44,7 @@ public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock
 	}
 
 	@Override
-	protected MapCodec<? extends BushBlock> codec() {
+	public MapCodec<GrowableSaplingBlock> codec() {
 		return CODEC;
 	}
 

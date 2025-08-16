@@ -34,6 +34,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -86,7 +87,7 @@ public class FarmingRegistry {
 	public static final DeferredBlock<FiveAgeCropBlock> GARLIC_CROP = registerCrop("garlic_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.GARLIC), BlockBehaviour.Properties.of());
 	public static final DeferredBlock<FiveAgeCropBlock> LETTUCE_CROP = registerCrop("lettuce_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.LETTUCE), BlockBehaviour.Properties.of());
 
-	public static <T extends BushBlock> DeferredBlock<T> registerCrop(String name, Function<BlockBehaviour.Properties, ? extends T> func, BlockBehaviour.Properties props) {
+	public static <T extends VegetationBlock> DeferredBlock<T> registerCrop(String name, Function<BlockBehaviour.Properties, ? extends T> func, BlockBehaviour.Properties props) {
 		return BLOCKS.registerBlock(name, func,
 				props.noCollission()
 						.randomTicks()

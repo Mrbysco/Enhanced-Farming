@@ -11,6 +11,6 @@ public class FarmingConsumables {
 			.onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 30 * 20, 0), 1.0F))
 			.build();
 	public static final Consumable GOLD_ORANGE = Consumables.defaultFood()
-			.onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 30 * 20, 0), 1.0F))
+			.onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.STRENGTH, 30 * 20, 0), 1.0F))
 			.build();
 }

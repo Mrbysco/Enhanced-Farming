@@ -34,20 +34,24 @@ public class PistonRecipeBuilder implements RecipeBuilder {
 		this.ingredient = ingredient;
 	}
 
+	@Override
 	public PistonRecipeBuilder unlockedBy(String id, Criterion<?> criterion) {
 		this.criteria.put(id, criterion);
 		return this;
 	}
 
+	@Override
 	public PistonRecipeBuilder group(@Nullable String group) {
 		this.group = group;
 		return this;
 	}
 
+	@Override
 	public Item getResult() {
 		return this.result;
 	}
 
+	@Override
 	public void save(RecipeOutput recipeConsumer, ResourceKey<Recipe<?>> id) {
 		this.ensureValid(id);
 		Advancement.Builder advancement$builder = recipeConsumer.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);

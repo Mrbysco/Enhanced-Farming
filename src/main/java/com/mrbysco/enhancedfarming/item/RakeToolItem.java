@@ -10,7 +10,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
@@ -24,11 +23,11 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.ItemAbility;
 
-public class RakeToolItem extends DiggerItem {
+public class RakeToolItem extends Item {
 	private final int dropModifier;
 
 	public RakeToolItem(ToolMaterial itemTier, int dropModifier, float attackDamage, float attackSpeed, Item.Properties properties) {
-		super(itemTier, BlockTags.MINEABLE_WITH_SHOVEL, attackDamage, attackSpeed, properties);
+		super(properties.tool(itemTier, BlockTags.MINEABLE_WITH_SHOVEL, attackDamage, attackSpeed, 0.0F));
 		this.dropModifier = dropModifier;
 	}
 

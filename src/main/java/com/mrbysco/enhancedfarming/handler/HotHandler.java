@@ -23,7 +23,7 @@ public class HotHandler {
 
 				if (mainHeldStack.is(FarmingTags.HOT_ITEMS) || offHeldStack.is(FarmingTags.HOT_ITEMS)) {
 					if (tag.contains(HOT)) {
-						int currentTimer = tag.getInt(HOT);
+						int currentTimer = tag.getIntOr(HOT, 0);
 						if (currentTimer < FarmingConfig.COMMON.hotTime.get()) {
 							tag.putInt(HOT, currentTimer + 1);
 						} else {

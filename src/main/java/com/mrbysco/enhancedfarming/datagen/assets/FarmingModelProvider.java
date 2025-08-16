@@ -16,8 +16,6 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.blockstates.Variant;
-import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.ItemModelUtils;
 import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplate;
@@ -101,8 +99,8 @@ public class FarmingModelProvider extends ModelProvider {
 		ResourceLocation model = BuiltInRegistries.BLOCK.getKey(block).withPrefix("block/");
 		blockModels.blockStateOutput
 				.accept(
-						MultiVariantGenerator.multiVariant(
-								block, Variant.variant().with(VariantProperties.MODEL, model)
+						MultiVariantGenerator.dispatch(
+								block, BlockModelGenerators.plainVariant(model)
 						)
 				);
 	}
@@ -112,18 +110,18 @@ public class FarmingModelProvider extends ModelProvider {
 			throw new IllegalArgumentException();
 		} else {
 			Int2ObjectMap<ResourceLocation> int2objectmap = new Int2ObjectOpenHashMap<>();
-			PropertyDispatch propertydispatch = PropertyDispatch.property(ageProperty)
+			PropertyDispatch propertydispatch = PropertyDispatch.initial(ageProperty)
 					.generate(
 							p_388091_ -> {
 								int i = ageToVisualStageMapping[p_388091_];
 								ResourceLocation resourcelocation = int2objectmap.computeIfAbsent(
 										i, p_387534_ -> blockModels.createSuffixedVariant(cropBlock, "_stage" + i, STICK_CROP, TextureMapping::crop)
 								);
-								return Variant.variant().with(VariantProperties.MODEL, resourcelocation);
+								return BlockModelGenerators.plainVariant(resourcelocation);
 							}
 					);
 			blockModels.registerSimpleFlatItemModel(cropBlock.asItem());
-			blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(cropBlock).with(propertydispatch));
+			blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(cropBlock).with(propertydispatch));
 		}
 	}
 
@@ -134,22 +132,19 @@ public class FarmingModelProvider extends ModelProvider {
 						EnhancedFarming.modLoc("block/saplings/" + path)),
 				blockModels.modelOutput);
 
-		var propertyDispatch = PropertyDispatch.property(block.getStageProperty());
+		var propertyDispatch = PropertyDispatch.initial(block.getStageProperty());
 		for (int i = 0; i <= block.getMatureStage(); i++) {
 			if (i == block.getMatureStage()) {
-				propertyDispatch.select(i, Variant.variant().with(
-						VariantProperties.MODEL, finalModel)
-				);
+				propertyDispatch.select(i, BlockModelGenerators.plainVariant(finalModel));
 			} else {
-				propertyDispatch.select(i, Variant.variant().with(
-						VariantProperties.MODEL, CUTOUT_CROP.createWithSuffix(block, "_" + i,
-								TextureMapping.crop(EnhancedFarming.modLoc("block/saplings/" + base + "_" + (i))), blockModels.modelOutput)
-				));
+				ResourceLocation model = CUTOUT_CROP.createWithSuffix(block, "_" + i,
+						TextureMapping.crop(EnhancedFarming.modLoc("block/saplings/" + base + "_" + (i))), blockModels.modelOutput);
+				propertyDispatch.select(i, BlockModelGenerators.plainVariant(model));
 			}
 		}
 		blockModels.blockStateOutput
 				.accept(
-						MultiVariantGenerator.multiVariant(block)
+						MultiVariantGenerator.dispatch(block)
 								.with(propertyDispatch)
 				);
 
@@ -177,21 +172,17 @@ public class FarmingModelProvider extends ModelProvider {
 						ResourceLocation.withDefaultNamespace("block/" + originalLeaves)
 				),
 				blockModels.modelOutput);
-		var propertyDispatch = PropertyDispatch.property(block.getAgeProperty());
+		var propertyDispatch = PropertyDispatch.initial(block.getAgeProperty());
 		for (int i = 0; i <= block.getMaxAge(); i++) {
 			if (i != block.getMaxAge()) {
-				propertyDispatch.select(i, Variant.variant().with(
-						VariantProperties.MODEL, bloomingModel
-				));
+				propertyDispatch.select(i, BlockModelGenerators.plainVariant(bloomingModel));
 			} else {
-				propertyDispatch.select(i, Variant.variant().with(
-						VariantProperties.MODEL, fruityModel
-				));
+				propertyDispatch.select(i, BlockModelGenerators.plainVariant(fruityModel));
 			}
 		}
 		blockModels.blockStateOutput
 				.accept(
-						MultiVariantGenerator.multiVariant(block)
+						MultiVariantGenerator.dispatch(block)
 								.with(propertyDispatch)
 				);
 		blockModels.registerSimpleTintedItemModel(block, fruityModel, ItemModelUtils.constantTint(tint));

@@ -64,7 +64,6 @@ public class EnhancedFarming {
 			eventBus.addListener(ClientHandler::onClientSetup);
 			eventBus.addListener(ClientHandler::registerBlockColors);
 			NeoForge.EVENT_BUS.addListener(ClientHandler::onRecipeReceived);
-//			eventBus.addListener(ClientHandler::registerItemColors);
 		}
 	}
 
