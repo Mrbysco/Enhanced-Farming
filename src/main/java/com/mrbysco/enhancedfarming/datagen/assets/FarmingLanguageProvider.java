@@ -4,6 +4,7 @@ import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+import org.jetbrains.annotations.Nullable;
 
 public class FarmingLanguageProvider extends LanguageProvider {
 	public FarmingLanguageProvider(PackOutput packOutput) {
@@ -174,5 +175,31 @@ public class FarmingLanguageProvider extends LanguageProvider {
 		addItem(FarmingRegistry.IRON_RAKE, "Iron Rake");
 		addItem(FarmingRegistry.GOLD_RAKE, "Gold Rake");
 		addItem(FarmingRegistry.DIAMOND_RAKE, "Diamond Rake");
+
+		addConfig("general", "General", "General Settings");
+		addConfig("hotBurnsPlayer", "Hot Drinks Burn Player", "Makes it so if you hold hot drinks for too long that you begin taking fire damage");
+		addConfig("hotTime", "Hot Drink Time", "Amount of seconds before you start taking fire damage when 'hotBurnsPlayer' is enabled");
+		addConfig("rightClickFruitHarvest", "Right Click Fruit Harvest", "When enabled the fruity leaves have to be right-clicked to be harvested");
+		addConfig("relocationAllowed", "Relocation Allowed", "When enabled makes you able to get fruit from leaves that were placed after shearing");
+		addConfig("treeDropChance", "Tree Drop Chance", "The chance in which fruit drop from tree when \"rightClickFruitHarvest\" isn't enabled (1 in X chance)");
+		addConfig("bonemealGrow", "Bonemeal Grow", "When enabled allows the usage of bonemeal on the mods plants");
+		addConfig("instantGrow", "Instant Grow", "When enabled allows instant-growth using bonemeal on the mods plants");
+		addConfig("crop_to_seeds", "Crop to Seeds", "Enables Crop to Seeds recipes");
+		addConfig("enableRake", "Enable Rake", "Enables rakes");
+		addConfig("seedsFromGrass", "Seeds From Grass", "When enabled makes seeds drop from grass");
+		addConfig("saplingsFromGrass", "Saplings From Grass", "When enabled makes saplings drop from grass");
+	}
+
+	/**
+	 * Add the translation for a config entry
+	 *
+	 * @param path        The path of the config entry
+	 * @param name        The name of the config entry
+	 * @param description The description of the config entry (optional in case of targeting "title" or similar entries that have no tooltip)
+	 */
+	private void addConfig(String path, String name, @Nullable String description) {
+		this.add(EnhancedFarming.MOD_ID + ".configuration." + path, name);
+		if (description != null && !description.isEmpty())
+			this.add(EnhancedFarming.MOD_ID + ".configuration." + path + ".tooltip", description);
 	}
 }
