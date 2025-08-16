@@ -772,12 +772,12 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.save(recipeOutput);
 	}
 
-	private TagKey<Item> createTag(String name) {
-		return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
+	private TagKey<Item> createTag(String path) {
+		return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
 	}
 
-	private static TagKey<Item> createCTag(String name) {
-		return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
+	private static TagKey<Item> createCTag(String path) {
+		return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
 	}
 
 	private HolderSet<Item> tagSet(TagKey<Item> tagKey) {
