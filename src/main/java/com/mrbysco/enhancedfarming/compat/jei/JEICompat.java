@@ -25,42 +25,42 @@ import java.util.Objects;
 
 @JeiPlugin
 public class JEICompat implements IModPlugin {
-    public static final ResourceLocation RECIPE_PISTON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
-    public static final ResourceLocation RECIPE_PISTON_ICON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston_icon.png");
+	public static final ResourceLocation RECIPE_PISTON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
+	public static final ResourceLocation RECIPE_PISTON_ICON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston_icon.png");
 
-    public static final ResourceLocation PLUGIN_UID = EnhancedFarming.modLoc("main");
+	public static final ResourceLocation PLUGIN_UID = EnhancedFarming.modLoc("main");
 
-    public static final RecipeType<PistonRecipe> PISTON_TYPE = RecipeType.create(EnhancedFarming.MOD_ID, "piston", PistonRecipe.class);
+	public static final RecipeType<PistonRecipe> PISTON_TYPE = RecipeType.create(EnhancedFarming.MOD_ID, "piston", PistonRecipe.class);
 
-    @Nullable
-    private IRecipeCategory<PistonRecipe> pistonCategory;
+	@Nullable
+	private IRecipeCategory<PistonRecipe> pistonCategory;
 
-    @Override
-    public ResourceLocation getPluginUid() {
-        return PLUGIN_UID;
-    }
+	@Override
+	public ResourceLocation getPluginUid() {
+		return PLUGIN_UID;
+	}
 
-    @Override
-    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(Items.PISTON), PISTON_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(Items.STICKY_PISTON), PISTON_TYPE);
-    }
+	@Override
+	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+		registration.addRecipeCatalyst(new ItemStack(Items.PISTON), PISTON_TYPE);
+		registration.addRecipeCatalyst(new ItemStack(Items.STICKY_PISTON), PISTON_TYPE);
+	}
 
-    @Override
-    public void registerCategories(IRecipeCategoryRegistration registration) {
-        IJeiHelpers jeiHelpers = registration.getJeiHelpers();
-        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-        registration.addRecipeCategories(
-                pistonCategory = new PistonCategory(guiHelper)
-        );
-    }
+	@Override
+	public void registerCategories(IRecipeCategoryRegistration registration) {
+		IJeiHelpers jeiHelpers = registration.getJeiHelpers();
+		IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
+		registration.addRecipeCategories(
+				pistonCategory = new PistonCategory(guiHelper)
+		);
+	}
 
-    @Override
-    public void registerRecipes(IRecipeRegistration registration) {
-        assert PISTON_TYPE != null;
+	@Override
+	public void registerRecipes(IRecipeRegistration registration) {
+		assert PISTON_TYPE != null;
 
-        ClientLevel world = Objects.requireNonNull(Minecraft.getInstance().level);
-        registration.addRecipes(PISTON_TYPE, world.getRecipeManager().getAllRecipesFor(FarmingRecipes.PISTON_CRAFTING_TYPE.get()).stream()
+		ClientLevel world = Objects.requireNonNull(Minecraft.getInstance().level);
+		registration.addRecipes(PISTON_TYPE, world.getRecipeManager().getAllRecipesFor(FarmingRecipes.PISTON_CRAFTING_TYPE.get()).stream()
 				.map(RecipeHolder::value).toList());
-    }
+	}
 }
