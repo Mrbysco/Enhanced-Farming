@@ -27,8 +27,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public class ScarecrowBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
 	public static final MapCodec<ScarecrowBlock> CODEC = simpleCodec(ScarecrowBlock::new);
