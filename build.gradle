@@ -144,7 +144,7 @@ if (System.getenv().CURSEFORGE_KEY) {
         mainFile.changelog = file("$project.rootDir/changelog.md")
         mainFile.changelogType = 'markdown'
 
-        mainFile.addOptional("jei", "roughly-enough-items", "emi")
+        mainFile.addOptional("jei", "roughly-enough-items") //"emi"
     }
 }
 
@@ -163,7 +163,7 @@ if (System.getenv().MODRINTH_KEY) {
         dependencies {
             optional.project "jei"
             optional.project "rei"
-            optional.project "emi"
+//            optional.project "emi"
         }
     }
 }
