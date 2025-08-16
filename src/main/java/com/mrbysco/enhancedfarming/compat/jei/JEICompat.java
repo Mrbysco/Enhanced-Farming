@@ -48,7 +48,7 @@ public class JEICompat implements IModPlugin {
         IJeiHelpers jeiHelpers = registration.getJeiHelpers();
         IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
         registration.addRecipeCategories(
-                pistonCategory = new PistonCategory(guiHelper)
+                pistonCategory = new PistonCategory<>(guiHelper)
         );
     }
 
