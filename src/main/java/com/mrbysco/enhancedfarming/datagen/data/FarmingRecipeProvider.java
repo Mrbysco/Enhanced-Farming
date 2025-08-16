@@ -784,8 +784,6 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		return this.registries.lookupOrThrow(Registries.ITEM).getOrThrow(tagKey);
 	}
 
-	//TODO: Disable advancement generation? I guess the overriding the buildAdvancement and returning null doesn't work anymore
-
 	public static class Runner extends RecipeProvider.Runner {
 		public Runner(PackOutput output, CompletableFuture<Provider> completableFuture) {
 			super(output, completableFuture);
