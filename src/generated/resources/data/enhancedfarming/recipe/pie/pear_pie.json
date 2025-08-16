@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "tag": "c:flour/wheat"
-    },
-    {
-      "tag": "c:sugar"
-    },
-    {
-      "tag": "c:eggs"
-    }
+    "#c:flour/wheat",
+    "#c:sugar",
+    "#c:eggs"
   ],
   "result": {
     "count": 1,

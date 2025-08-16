@@ -2,21 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "item": "enhancedfarming:sliced_bread"
-    },
-    {
-      "item": "enhancedfarming:sliced_bread"
-    },
-    {
-      "tag": "c:foods/cheeses/normal"
-    },
-    {
-      "item": "enhancedfarming:jam"
-    }
+    "enhancedfarming:cutting_board",
+    "enhancedfarming:sliced_bread",
+    "enhancedfarming:sliced_bread",
+    "#c:foods/cheeses/normal",
+    "enhancedfarming:jam"
   ],
   "result": {
     "count": 1,

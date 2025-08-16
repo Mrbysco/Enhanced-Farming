@@ -32,7 +32,7 @@ public class SixAgeCropBlock extends CropBlock {
 		this.registerDefaultState(this.stateDefinition.any().setValue(this.getAgeProperty(), Integer.valueOf(0)));
 	}
 
-	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos p2200533, CollisionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
 		return SHAPE_BY_AGE[state.getValue(this.getAgeProperty())];
 	}
 

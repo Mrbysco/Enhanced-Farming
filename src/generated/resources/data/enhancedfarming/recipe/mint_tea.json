@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:mint"
-    },
-    {
-      "item": "enhancedfarming:hot_water"
-    }
+    "enhancedfarming:mint",
+    "enhancedfarming:hot_water"
   ],
   "result": {
     "count": 1,

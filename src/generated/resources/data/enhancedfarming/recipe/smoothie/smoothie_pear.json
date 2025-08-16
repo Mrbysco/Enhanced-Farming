@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:milk_bottle"
-    },
-    {
-      "tag": "c:foods/fruits/pear"
-    },
-    {
-      "item": "minecraft:snowball"
-    }
+    "enhancedfarming:milk_bottle",
+    "#c:foods/fruits/pear",
+    "minecraft:snowball"
   ],
   "result": {
     "count": 1,

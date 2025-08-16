@@ -2,21 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pot"
-    },
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "tag": "c:foods/vegetables/potato"
-    },
-    {
-      "item": "enhancedfarming:olive_oil"
-    },
-    {
-      "tag": "c:foods/edible_salt"
-    }
+    "enhancedfarming:pot",
+    "enhancedfarming:cutting_board",
+    "#c:foods/vegetables/potato",
+    "enhancedfarming:olive_oil",
+    "#c:foods/edible_salt"
   ],
   "result": {
     "count": 1,

@@ -1,5 +1,6 @@
 {
 	"__comment": "Designed by Mrbysco",
+    "parent": "block/block",
 	"textures": {
 		"particle": "block/oak_planks",
 		"texture": "block/oak_planks"

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "S": "#c:rods/wooden"
   },
   "pattern": [
     "SS",

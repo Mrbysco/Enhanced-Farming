@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "item": "enhancedfarming:dough"
-    },
-    {
-      "tag": "c:foods/vegetables/tomato"
-    },
-    {
-      "tag": "c:foods/cheeses/normal"
-    }
+    "enhancedfarming:cutting_board",
+    "enhancedfarming:dough",
+    "#c:foods/vegetables/tomato",
+    "#c:foods/cheeses/normal"
   ],
   "result": {
     "count": 1,

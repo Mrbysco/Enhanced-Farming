@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "tag": "c:foods/fruits/avocado"
-    },
-    {
-      "item": "minecraft:bowl"
-    }
+    "enhancedfarming:cutting_board",
+    "#c:foods/fruits/avocado",
+    "minecraft:bowl"
   ],
   "result": {
     "count": 1,

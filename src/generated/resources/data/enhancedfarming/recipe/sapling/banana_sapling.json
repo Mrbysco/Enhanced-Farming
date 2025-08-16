@@ -7,12 +7,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:jungle_sapling"
-    },
-    {
-      "tag": "c:foods/fruits/banana"
-    }
+    "minecraft:jungle_sapling",
+    "#c:foods/fruits/banana"
   ],
   "result": {
     "count": 1,

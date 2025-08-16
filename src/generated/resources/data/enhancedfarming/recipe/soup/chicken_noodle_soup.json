@@ -2,27 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pot"
-    },
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "item": "enhancedfarming:stock"
-    },
-    {
-      "item": "enhancedfarming:pasta"
-    },
-    {
-      "tag": "c:foods/vegetables/onion"
-    },
-    {
-      "tag": "c:foods/vegetables/carrot"
-    },
-    {
-      "tag": "c:foods/raw_chicken"
-    }
+    "enhancedfarming:pot",
+    "enhancedfarming:cutting_board",
+    "enhancedfarming:stock",
+    "enhancedfarming:pasta",
+    "#c:foods/vegetables/onion",
+    "#c:foods/vegetables/carrot",
+    "#c:foods/raw_chicken"
   ],
   "result": {
     "count": 1,

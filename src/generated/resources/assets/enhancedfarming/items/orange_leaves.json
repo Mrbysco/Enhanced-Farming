@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "enhancedfarming:block/orange_leaves_fruity",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -12012264
+      }
+    ]
+  }
+}

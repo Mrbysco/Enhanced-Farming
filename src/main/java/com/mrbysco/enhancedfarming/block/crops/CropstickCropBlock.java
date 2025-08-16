@@ -39,7 +39,7 @@ public class CropstickCropBlock extends CropBlock {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos p2200533, CollisionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
 		return SHAPE;
 	}
 

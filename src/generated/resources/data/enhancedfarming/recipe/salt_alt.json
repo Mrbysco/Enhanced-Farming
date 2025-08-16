@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pot"
-    },
-    {
-      "item": "minecraft:water_bucket"
-    }
+    "enhancedfarming:pot",
+    "minecraft:water_bucket"
   ],
   "result": {
     "count": 3,

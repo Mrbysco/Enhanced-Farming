@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:potato_chips"
-    },
-    {
-      "item": "enhancedfarming:guacamole"
-    }
+    "enhancedfarming:potato_chips",
+    "enhancedfarming:guacamole"
   ],
   "result": {
     "count": 1,

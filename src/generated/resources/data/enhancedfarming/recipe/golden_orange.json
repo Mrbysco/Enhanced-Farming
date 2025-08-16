@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "F": {
-      "item": "enhancedfarming:orange"
-    },
-    "G": {
-      "tag": "c:nuggets/gold"
-    }
+    "F": "enhancedfarming:orange",
+    "G": "#c:nuggets/gold"
   },
   "pattern": [
     "GGG",

@@ -3,9 +3,7 @@
   "category": "food",
   "cookingtime": 600,
   "experience": 0.35,
-  "ingredient": {
-    "item": "enhancedfarming:dough"
-  },
+  "ingredient": "enhancedfarming:dough",
   "result": {
     "count": 1,
     "id": "minecraft:bread"

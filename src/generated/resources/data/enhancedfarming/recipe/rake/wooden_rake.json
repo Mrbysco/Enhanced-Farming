@@ -7,12 +7,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "S": {
-      "tag": "c:rods/wooden"
-    },
-    "X": {
-      "tag": "minecraft:planks"
-    }
+    "S": "#c:rods/wooden",
+    "X": "#minecraft:planks"
   },
   "pattern": [
     "X X",

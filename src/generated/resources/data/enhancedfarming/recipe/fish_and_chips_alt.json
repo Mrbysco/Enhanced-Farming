@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:fries"
-    },
-    {
-      "tag": "c:foods/cooked_fish"
-    }
+    "enhancedfarming:fries",
+    "#c:foods/cooked_fish"
   ],
   "result": {
     "count": 1,

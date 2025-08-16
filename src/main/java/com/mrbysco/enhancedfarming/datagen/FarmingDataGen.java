@@ -2,6 +2,7 @@ package com.mrbysco.enhancedfarming.datagen;
 
 import com.mrbysco.enhancedfarming.EnhancedFarming;
 import com.mrbysco.enhancedfarming.datagen.assets.FarmingLanguageProvider;
+import com.mrbysco.enhancedfarming.datagen.assets.FarmingModelProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingBiomeModifiers;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingBlockTagProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingItemTagProvider;
@@ -51,8 +52,7 @@ public class FarmingDataGen {
 
 
 		generator.addProvider(true, new FarmingLanguageProvider(packOutput));
-//		generator.addProvider(true, new FarmingBlockStateProvider(packOutput));
-//		generator.addProvider(true, new FarmingItemModelProvider(packOutput));
+		generator.addProvider(true, new FarmingModelProvider(packOutput));
 	}
 
 	private static RegistrySetBuilder.PatchedRegistries getProvider() {

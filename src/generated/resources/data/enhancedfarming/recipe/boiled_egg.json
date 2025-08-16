@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pot"
-    },
-    {
-      "tag": "c:water"
-    },
-    {
-      "tag": "c:eggs"
-    }
+    "enhancedfarming:pot",
+    "#c:water",
+    "#c:eggs"
   ],
   "result": {
     "count": 1,

@@ -24,11 +24,9 @@ import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
 
 public class GrowableSaplingBlock extends BushBlock implements BonemealableBlock {
-	public static final MapCodec<GrowableSaplingBlock> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
-		return instance.group(TreeGrower.CODEC.fieldOf("tree").forGetter((saplingBlock) -> {
-			return saplingBlock.treeGrower;
-		}), propertiesCodec()).apply(instance, GrowableSaplingBlock::new);
-	});
+	public static final MapCodec<GrowableSaplingBlock> CODEC = RecordCodecBuilder.mapCodec((instance) ->
+			instance.group(TreeGrower.CODEC.fieldOf("tree").forGetter((saplingBlock) -> saplingBlock.treeGrower),
+					propertiesCodec()).apply(instance, GrowableSaplingBlock::new));
 	public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 4);
 
 	private static final VoxelShape[] SHAPE_BY_STAGE = new VoxelShape[]{

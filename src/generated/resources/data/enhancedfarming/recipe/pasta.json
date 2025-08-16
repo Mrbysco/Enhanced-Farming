@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "item": "enhancedfarming:olive_oil"
-    },
-    {
-      "item": "enhancedfarming:dough"
-    }
+    "enhancedfarming:cutting_board",
+    "enhancedfarming:olive_oil",
+    "enhancedfarming:dough"
   ],
   "result": {
     "count": 1,

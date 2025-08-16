@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pot"
-    },
-    {
-      "item": "enhancedfarming:olive_oil"
-    },
-    {
-      "item": "enhancedfarming:raw_fries"
-    },
-    {
-      "tag": "c:foods/raw_fish"
-    }
+    "enhancedfarming:pot",
+    "enhancedfarming:olive_oil",
+    "enhancedfarming:raw_fries",
+    "#c:foods/raw_fish"
   ],
   "result": {
     "count": 1,

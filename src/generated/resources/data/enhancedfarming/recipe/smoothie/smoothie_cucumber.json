@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:milk_bottle"
-    },
-    {
-      "tag": "c:foods/vegetables/cucumber"
-    },
-    {
-      "item": "minecraft:snowball"
-    }
+    "enhancedfarming:milk_bottle",
+    "#c:foods/vegetables/cucumber",
+    "minecraft:snowball"
   ],
   "result": {
     "count": 1,

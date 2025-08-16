@@ -7,9 +7,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:corn"
-    }
+    "enhancedfarming:corn"
   ],
   "result": {
     "count": 1,

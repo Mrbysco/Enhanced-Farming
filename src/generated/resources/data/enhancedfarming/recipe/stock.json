@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pot"
-    },
-    {
-      "tag": "c:water"
-    },
-    {
-      "item": "minecraft:bowl"
-    },
-    {
-      "tag": "c:foods/vegetable"
-    }
+    "enhancedfarming:pot",
+    "#c:water",
+    "minecraft:bowl",
+    "#c:foods/vegetable"
   ],
   "result": {
     "count": 2,

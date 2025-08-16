@@ -7,9 +7,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:garlic"
-    }
+    "enhancedfarming:garlic"
   ],
   "result": {
     "count": 1,

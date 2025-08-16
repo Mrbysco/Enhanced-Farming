@@ -2,24 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:pot"
-    },
-    {
-      "tag": "c:foods/fruit"
-    },
-    {
-      "tag": "c:foods/fruit"
-    },
-    {
-      "tag": "c:sugar"
-    },
-    {
-      "tag": "c:sugar"
-    },
-    {
-      "item": "minecraft:glass_bottle"
-    }
+    "enhancedfarming:pot",
+    "#c:foods/fruit",
+    "#c:foods/fruit",
+    "#c:sugar",
+    "#c:sugar",
+    "minecraft:glass_bottle"
   ],
   "result": {
     "count": 1,

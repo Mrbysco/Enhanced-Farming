@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "tag": "c:foods/vegetables/potato"
-    },
-    {
-      "tag": "c:foods/vegetables/potato"
-    }
+    "enhancedfarming:cutting_board",
+    "#c:foods/vegetables/potato",
+    "#c:foods/vegetables/potato"
   ],
   "result": {
     "count": 2,

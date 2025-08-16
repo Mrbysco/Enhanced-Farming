@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "minecraft:carved_pumpkin"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    },
-    "W": {
-      "tag": "c:crops/wheat"
-    },
-    "X": {
-      "tag": "minecraft:wool"
-    }
+    "P": "minecraft:carved_pumpkin",
+    "S": "#c:rods/wooden",
+    "W": "#c:crops/wheat",
+    "X": "#minecraft:wool"
   },
   "pattern": [
     " P ",

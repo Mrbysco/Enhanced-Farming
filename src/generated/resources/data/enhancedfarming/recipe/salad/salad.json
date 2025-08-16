@@ -2,21 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:bowl"
-    },
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "tag": "c:foods/vegetables/lettuce"
-    },
-    {
-      "tag": "c:foods/vegetables/tomato"
-    },
-    {
-      "tag": "c:foods/vegetables/onion"
-    }
+    "minecraft:bowl",
+    "enhancedfarming:cutting_board",
+    "#c:foods/vegetables/lettuce",
+    "#c:foods/vegetables/tomato",
+    "#c:foods/vegetables/onion"
   ],
   "result": {
     "count": 1,

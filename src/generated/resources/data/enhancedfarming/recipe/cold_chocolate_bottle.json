@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:cocoa_beans"
-    },
-    {
-      "item": "enhancedfarming:milk_bottle"
-    }
+    "minecraft:cocoa_beans",
+    "enhancedfarming:milk_bottle"
   ],
   "result": {
     "count": 1,

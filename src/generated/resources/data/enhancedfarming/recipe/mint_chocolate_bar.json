@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "tag": "c:herbs/mint"
-    },
-    {
-      "item": "enhancedfarming:chocolate_bar"
-    }
+    "#c:herbs/mint",
+    "enhancedfarming:chocolate_bar"
   ],
   "result": {
     "count": 1,

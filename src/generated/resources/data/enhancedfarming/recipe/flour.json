@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "tag": "c:crops/wheat"
-    },
-    {
-      "item": "enhancedfarming:mortar_and_pestle"
-    }
+    "#c:crops/wheat",
+    "enhancedfarming:mortar_and_pestle"
   ],
   "result": {
     "count": 1,

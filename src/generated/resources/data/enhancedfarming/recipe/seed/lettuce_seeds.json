@@ -7,9 +7,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:lettuce"
-    }
+    "enhancedfarming:lettuce"
   ],
   "result": {
     "count": 1,

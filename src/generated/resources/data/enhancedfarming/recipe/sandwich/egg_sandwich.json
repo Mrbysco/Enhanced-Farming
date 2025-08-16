@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enhancedfarming:cutting_board"
-    },
-    {
-      "item": "enhancedfarming:sliced_bread"
-    },
-    {
-      "item": "enhancedfarming:sliced_bread"
-    },
-    {
-      "item": "enhancedfarming:baked_egg"
-    }
+    "enhancedfarming:cutting_board",
+    "enhancedfarming:sliced_bread",
+    "enhancedfarming:sliced_bread",
+    "enhancedfarming:baked_egg"
   ],
   "result": {
     "count": 1,

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "I": {
-      "tag": "c:ingots/iron"
-    },
-    "P": {
-      "tag": "minecraft:planks"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "I": "#c:ingots/iron",
+    "P": "#minecraft:planks",
+    "S": "#c:rods/wooden"
   },
   "pattern": [
     " I ",

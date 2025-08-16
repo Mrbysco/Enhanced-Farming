@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:water_bucket"
-    },
-    {
-      "tag": "c:foods/edible_salt"
-    },
-    {
-      "tag": "c:flour/wheat"
-    }
+    "minecraft:water_bucket",
+    "#c:foods/edible_salt",
+    "#c:flour/wheat"
   ],
   "result": {
     "count": 1,

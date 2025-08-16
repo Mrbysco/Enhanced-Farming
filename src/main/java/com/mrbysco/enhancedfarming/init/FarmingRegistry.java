@@ -37,12 +37,14 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class FarmingRegistry {
@@ -72,25 +74,34 @@ public class FarmingRegistry {
 	public static final DeferredBlock<FruitLeavesBlock> MANGO_LEAVES = BLOCKS.registerBlock("mango_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.MANGO), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
 	public static final DeferredBlock<FruitLeavesBlock> OLIVE_LEAVES = BLOCKS.registerBlock("olive_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.OLIVE), BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES));
 
-	public static final DeferredBlock<FiveAgeCropBlock> MINT_CROP = BLOCKS.registerBlock("mint_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.MINT), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<NetherFlowerBlock> NETHER_FLOWER_CROP = BLOCKS.registerBlock("nether_flower_crop", NetherFlowerBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<SixAgeCropBlock> TOMATO_CROP = BLOCKS.registerBlock("tomato_crop", (properties) -> new SixAgeCropBlock(properties, FarmingRegistry.TOMATO), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<FiveAgeCropBlock> CUCUMBER_CROP = BLOCKS.registerBlock("cucumber_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.CUCUMBER), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<FiveAgeCropBlock> AUBERGINE_CROP = BLOCKS.registerBlock("aubergine_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.AUBERGINE), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<CropstickCropBlock> GRAPE_CROP = BLOCKS.registerBlock("grape_crop", (properties) -> new CropstickCropBlock(properties, FarmingRegistry.GRAPES), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<FiveAgeCropBlock> PINEAPPLE_CROP = BLOCKS.registerBlock("pineapple_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.PINEAPPLE), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<SevenAgeCropBlock> CORN_CROP = BLOCKS.registerBlock("corn_crop", (properties) -> new SevenAgeCropBlock(properties, FarmingRegistry.CORN), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<FiveAgeCropBlock> ONION_CROP = BLOCKS.registerBlock("onion_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.ONION), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<FiveAgeCropBlock> GARLIC_CROP = BLOCKS.registerBlock("garlic_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.GARLIC), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-	public static final DeferredBlock<FiveAgeCropBlock> LETTUCE_CROP = BLOCKS.registerBlock("lettuce_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.LETTUCE), BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+	public static final DeferredBlock<FiveAgeCropBlock> MINT_CROP = registerCrop("mint_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.MINT), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<NetherFlowerBlock> NETHER_FLOWER_CROP = registerCrop("nether_flower_crop", NetherFlowerBlock::new, BlockBehaviour.Properties.of());
+	public static final DeferredBlock<SixAgeCropBlock> TOMATO_CROP = registerCrop("tomato_crop", (properties) -> new SixAgeCropBlock(properties, FarmingRegistry.TOMATO), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> CUCUMBER_CROP = registerCrop("cucumber_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.CUCUMBER), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> AUBERGINE_CROP = registerCrop("aubergine_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.AUBERGINE), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<CropstickCropBlock> GRAPE_CROP = registerCrop("grape_crop", (properties) -> new CropstickCropBlock(properties, FarmingRegistry.GRAPES), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> PINEAPPLE_CROP = registerCrop("pineapple_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.PINEAPPLE), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<SevenAgeCropBlock> CORN_CROP = registerCrop("corn_crop", (properties) -> new SevenAgeCropBlock(properties, FarmingRegistry.CORN), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> ONION_CROP = registerCrop("onion_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.ONION), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> GARLIC_CROP = registerCrop("garlic_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.GARLIC), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> LETTUCE_CROP = registerCrop("lettuce_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.LETTUCE), BlockBehaviour.Properties.of());
 
-	public static final DeferredBlock<CropStickBlock> CROP_STICK = BLOCKS.registerBlock("crop_stick", CropStickBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT));
+	public static <T extends BushBlock> DeferredBlock<T> registerCrop(String name, Function<BlockBehaviour.Properties, ? extends T> func, BlockBehaviour.Properties props) {
+		return BLOCKS.registerBlock(name, func,
+				props.noCollission()
+						.randomTicks()
+						.instabreak()
+						.sound(SoundType.CROP)
+						.pushReaction(PushReaction.DESTROY));
+	}
+
+	public static final DeferredBlock<CropStickBlock> CROP_STICK = registerCrop("crop_stick", CropStickBlock::new, BlockBehaviour.Properties.of());
 	public static final DeferredBlock<ScarecrowBlock> SCARECROW = BLOCKS.registerBlock("scarecrow", ScarecrowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).sound(SoundType.WOOL));
 
 	//Items
-	public static final DeferredItem<CustomUtensilItem> POT = ITEMS.registerItem("pot", (properties) -> new CustomUtensilItem(properties.stacksTo(1)));
-	public static final DeferredItem<CustomUtensilItem> CUTTING_BOARD = ITEMS.registerItem("cutting_board", (properties) -> new CustomUtensilItem(properties.stacksTo(1)));
-	public static final DeferredItem<CustomUtensilItem> MORTAR_AND_PESTLE = ITEMS.registerItem("mortar_and_pestle", (properties) -> new CustomUtensilItem(properties.stacksTo(1)));
+	public static final DeferredItem<CustomUtensilItem> POT = ITEMS.registerItem("pot", CustomUtensilItem::new, new Item.Properties().stacksTo(1));
+	public static final DeferredItem<CustomUtensilItem> CUTTING_BOARD = ITEMS.registerItem("cutting_board", CustomUtensilItem::new, new Item.Properties().stacksTo(1));
+	public static final DeferredItem<CustomUtensilItem> MORTAR_AND_PESTLE = ITEMS.registerItem("mortar_and_pestle", CustomUtensilItem::new, new Item.Properties().stacksTo(1));
 
 	public static final DeferredItem<CustomFoodItem> AUBERGINE = ITEMS.registerItem("aubergine", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.AUBERGINE), 32));
 	public static final DeferredItem<CustomFoodItem> AVOCADO = ITEMS.registerItem("avocado", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.AVOCADO), 32));

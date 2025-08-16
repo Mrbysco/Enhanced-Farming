@@ -769,7 +769,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.define('F', fruit.get())
 				.unlockedBy("has_gold_nugget", has(Tags.Items.NUGGETS_GOLD))
 				.unlockedBy("has_fruit", has(fruit.get()))
-				.save(recipeOutput, goldFruit.getId().toString());
+				.save(recipeOutput);
 	}
 
 	private TagKey<Item> createTag(String name) {
