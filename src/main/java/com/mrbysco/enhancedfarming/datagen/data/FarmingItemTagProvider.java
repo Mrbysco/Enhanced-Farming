@@ -6,14 +6,13 @@ import com.mrbysco.enhancedfarming.init.FarmingTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,9 +20,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class FarmingItemTagProvider extends ItemTagsProvider {
 
-	public FarmingItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-	                              CompletableFuture<TagLookup<Block>> blockTagProvider) {
-		super(output, lookupProvider, blockTagProvider, EnhancedFarming.MOD_ID);
+	public FarmingItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+		super(output, lookupProvider, EnhancedFarming.MOD_ID);
 	}
 
 	private final String VEGETABLES = "foods/vegetables";

@@ -31,7 +31,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber
 public class FarmingDataGen {
 
 	@SubscribeEvent
@@ -43,9 +43,8 @@ public class FarmingDataGen {
 		generator.addProvider(true, new FarmingLootProvider(packOutput, lookupProvider));
 		generator.addProvider(true, new FarmingLootModifierProvider(packOutput, lookupProvider));
 		generator.addProvider(true, new FarmingRecipeProvider.Runner(packOutput, lookupProvider));
-		FarmingBlockTagProvider blockTagProvider;
-		generator.addProvider(true, blockTagProvider = new FarmingBlockTagProvider(packOutput, lookupProvider));
-		generator.addProvider(true, new FarmingItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter()));
+		generator.addProvider(true, new FarmingBlockTagProvider(packOutput, lookupProvider));
+		generator.addProvider(true, new FarmingItemTagProvider(packOutput, lookupProvider));
 
 		generator.addProvider(true, new DatapackBuiltinEntriesProvider(
 				packOutput, CompletableFuture.supplyAsync(FarmingDataGen::getProvider), Set.of(EnhancedFarming.MOD_ID)));

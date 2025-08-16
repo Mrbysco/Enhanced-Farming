@@ -6,7 +6,7 @@ import com.mrbysco.enhancedfarming.recipes.PistonRecipe;
 import com.mrbysco.enhancedfarming.recipes.PistonRecipeCache;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
@@ -23,7 +23,7 @@ public class ClientHandler {
 	public static void onClientSetup(final FMLClientSetupEvent event) {
 		for (DeferredHolder<Block, ? extends Block> registryObject : FarmingRegistry.BLOCKS.getEntries()) {
 			if (registryObject.get() instanceof BushBlock) {
-				ItemBlockRenderTypes.setRenderLayer(registryObject.get(), RenderType.cutout());
+				ItemBlockRenderTypes.setRenderLayer(registryObject.get(), ChunkSectionLayer.CUTOUT);
 			}
 		}
 	}
