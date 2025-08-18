@@ -75,17 +75,17 @@ public class FarmingRegistry {
 	public static final DeferredBlock<FruitLeavesBlock> MANGO_LEAVES = BLOCKS.registerBlock("mango_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.MANGO), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
 	public static final DeferredBlock<FruitLeavesBlock> OLIVE_LEAVES = BLOCKS.registerBlock("olive_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.OLIVE), BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES));
 
-	public static final DeferredBlock<FiveAgeCropBlock> MINT_CROP = registerCrop("mint_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.MINT), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> MINT_CROP = registerCrop("mint_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.MINT_SEEDS), BlockBehaviour.Properties.of());
 	public static final DeferredBlock<NetherFlowerBlock> NETHER_FLOWER_CROP = registerCrop("nether_flower_crop", NetherFlowerBlock::new, BlockBehaviour.Properties.of());
-	public static final DeferredBlock<SixAgeCropBlock> TOMATO_CROP = registerCrop("tomato_crop", (properties) -> new SixAgeCropBlock(properties, FarmingRegistry.TOMATO), BlockBehaviour.Properties.of());
-	public static final DeferredBlock<FiveAgeCropBlock> CUCUMBER_CROP = registerCrop("cucumber_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.CUCUMBER), BlockBehaviour.Properties.of());
-	public static final DeferredBlock<FiveAgeCropBlock> AUBERGINE_CROP = registerCrop("aubergine_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.AUBERGINE), BlockBehaviour.Properties.of());
-	public static final DeferredBlock<CropstickCropBlock> GRAPE_CROP = registerCrop("grape_crop", (properties) -> new CropstickCropBlock(properties, FarmingRegistry.GRAPES), BlockBehaviour.Properties.of());
-	public static final DeferredBlock<FiveAgeCropBlock> PINEAPPLE_CROP = registerCrop("pineapple_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.PINEAPPLE), BlockBehaviour.Properties.of());
-	public static final DeferredBlock<SevenAgeCropBlock> CORN_CROP = registerCrop("corn_crop", (properties) -> new SevenAgeCropBlock(properties, FarmingRegistry.CORN), BlockBehaviour.Properties.of());
-	public static final DeferredBlock<FiveAgeCropBlock> ONION_CROP = registerCrop("onion_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.ONION), BlockBehaviour.Properties.of());
-	public static final DeferredBlock<FiveAgeCropBlock> GARLIC_CROP = registerCrop("garlic_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.GARLIC), BlockBehaviour.Properties.of());
-	public static final DeferredBlock<FiveAgeCropBlock> LETTUCE_CROP = registerCrop("lettuce_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.LETTUCE), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<SixAgeCropBlock> TOMATO_CROP = registerCrop("tomato_crop", (properties) -> new SixAgeCropBlock(properties, FarmingRegistry.TOMATO_SEEDS), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> CUCUMBER_CROP = registerCrop("cucumber_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.CUCUMBER_SEEDS), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> AUBERGINE_CROP = registerCrop("aubergine_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.AUBERGINE_SEEDS), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<CropstickCropBlock> GRAPE_CROP = registerCrop("grape_crop", (properties) -> new CropstickCropBlock(properties, FarmingRegistry.GRAPE_SEEDS), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> PINEAPPLE_CROP = registerCrop("pineapple_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.PINEAPPLE_SEEDS), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<SevenAgeCropBlock> CORN_CROP = registerCrop("corn_crop", (properties) -> new SevenAgeCropBlock(properties, FarmingRegistry.CORN_SEEDS), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> ONION_CROP = registerCrop("onion_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.ONION_SEEDS), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> GARLIC_CROP = registerCrop("garlic_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.GARLIC_SEEDS), BlockBehaviour.Properties.of());
+	public static final DeferredBlock<FiveAgeCropBlock> LETTUCE_CROP = registerCrop("lettuce_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.LETTUCE_SEEDS), BlockBehaviour.Properties.of());
 
 	public static <T extends VegetationBlock> DeferredBlock<T> registerCrop(String name, Function<BlockBehaviour.Properties, ? extends T> func, BlockBehaviour.Properties props) {
 		return BLOCKS.registerBlock(name, func,

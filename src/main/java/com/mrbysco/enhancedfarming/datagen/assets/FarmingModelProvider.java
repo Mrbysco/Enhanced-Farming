@@ -14,6 +14,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.ItemModelUtils;
@@ -28,6 +29,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 
 public class FarmingModelProvider extends ModelProvider {
 	public static final ModelTemplate CUTOUT_CROP = ModelTemplates.CROP.extend().renderType("cutout").build();
@@ -41,17 +43,17 @@ public class FarmingModelProvider extends ModelProvider {
 
 	@Override
 	protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
-		blockModels.createCropBlock(FarmingRegistry.MINT_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
-		blockModels.createCropBlock(FarmingRegistry.NETHER_FLOWER_CROP.get(), NetherFlowerBlock.AGE, 0, 1, 2, 3, 4, 5);
-		blockModels.createCropBlock(FarmingRegistry.TOMATO_CROP.get(), SixAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6);
-		blockModels.createCropBlock(FarmingRegistry.CUCUMBER_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
-		blockModels.createCropBlock(FarmingRegistry.AUBERGINE_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
-		blockModels.createCropBlock(FarmingRegistry.GRAPE_CROP.get(), CropstickCropBlock.AGE, 0, 1, 2, 3, 4, 5);
-		blockModels.createCropBlock(FarmingRegistry.PINEAPPLE_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+		createCropBlock(blockModels, FarmingRegistry.MINT_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+		createCropBlock(blockModels, FarmingRegistry.NETHER_FLOWER_CROP.get(), NetherFlowerBlock.AGE, 0, 1, 2, 3, 4, 5);
+		createCropBlock(blockModels, FarmingRegistry.TOMATO_CROP.get(), SixAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6);
+		createCropBlock(blockModels, FarmingRegistry.CUCUMBER_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+		createCropBlock(blockModels, FarmingRegistry.AUBERGINE_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+		createCropBlock(blockModels, FarmingRegistry.GRAPE_CROP.get(), CropstickCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+		createCropBlock(blockModels, FarmingRegistry.PINEAPPLE_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
 		createCropStickBlock(blockModels, FarmingRegistry.CORN_CROP.get(), SevenAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
-		blockModels.createCropBlock(FarmingRegistry.ONION_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
-		blockModels.createCropBlock(FarmingRegistry.GARLIC_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
-		blockModels.createCropBlock(FarmingRegistry.LETTUCE_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+		createCropBlock(blockModels, FarmingRegistry.ONION_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+		createCropBlock(blockModels, FarmingRegistry.GARLIC_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
+		createCropBlock(blockModels, FarmingRegistry.LETTUCE_CROP.get(), FiveAgeCropBlock.AGE, 0, 1, 2, 3, 4, 5);
 
 		buildSaplings(blockModels, FarmingRegistry.APPLE_SAPLING.get(), "oak_sapling");
 		buildSaplings(blockModels, FarmingRegistry.LEMON_SAPLING.get(), "oak_sapling");
@@ -105,17 +107,47 @@ public class FarmingModelProvider extends ModelProvider {
 				);
 	}
 
+
+	public void createCropBlock(BlockModelGenerators blockModels, Block cropBlock, IntegerProperty ageProperty, int... ageToVisualStageMapping) {
+		blockModels.registerSimpleFlatItemModel(cropBlock.asItem());
+		if (ageProperty.getPossibleValues().size() != ageToVisualStageMapping.length) {
+			throw new IllegalArgumentException();
+		} else {
+			Int2ObjectMap<ResourceLocation> int2objectmap = new Int2ObjectOpenHashMap<>();
+			blockModels.blockStateOutput
+					.accept(
+							MultiVariantGenerator.dispatch(cropBlock)
+									.with(
+											PropertyDispatch.initial(ageProperty)
+													.generate(
+															p_408977_ -> {
+																int i = ageToVisualStageMapping[p_408977_];
+																return BlockModelGenerators.plainVariant(
+																		int2objectmap.computeIfAbsent(
+																				i,
+																				p_387308_ -> blockModels.createSuffixedVariant(
+																						cropBlock, "_" + p_387308_, CUTOUT_CROP, FarmingModelProvider::crop
+																				)
+																		)
+																);
+															}
+													)
+									)
+					);
+		}
+	}
+
 	private void createCropStickBlock(BlockModelGenerators blockModels, Block cropBlock, IntegerProperty ageProperty, int... ageToVisualStageMapping) {
 		if (ageProperty.getPossibleValues().size() != ageToVisualStageMapping.length) {
 			throw new IllegalArgumentException();
 		} else {
 			Int2ObjectMap<ResourceLocation> int2objectmap = new Int2ObjectOpenHashMap<>();
-			PropertyDispatch propertydispatch = PropertyDispatch.initial(ageProperty)
+			PropertyDispatch<MultiVariant> propertydispatch = PropertyDispatch.initial(ageProperty)
 					.generate(
 							p_388091_ -> {
 								int i = ageToVisualStageMapping[p_388091_];
 								ResourceLocation resourcelocation = int2objectmap.computeIfAbsent(
-										i, p_387534_ -> blockModels.createSuffixedVariant(cropBlock, "_stage" + i, STICK_CROP, TextureMapping::crop)
+										i, p_387534_ -> blockModels.createSuffixedVariant(cropBlock, "_" + i, STICK_CROP, FarmingModelProvider::crop)
 								);
 								return BlockModelGenerators.plainVariant(resourcelocation);
 							}
@@ -123,6 +155,13 @@ public class FarmingModelProvider extends ModelProvider {
 			blockModels.registerSimpleFlatItemModel(cropBlock.asItem());
 			blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(cropBlock).with(propertydispatch));
 		}
+	}
+
+	public static TextureMapping crop(ResourceLocation block) {
+		ResourceLocation adjustedLocation = ResourceLocation.fromNamespaceAndPath(
+				block.getNamespace(), block.getPath().replace("block/", "block/crops/") // Adjust the path to point to the crops directory
+		);
+		return TextureMapping.singleSlot(TextureSlot.CROP, adjustedLocation);
 	}
 
 	protected void buildSaplings(BlockModelGenerators blockModels, GrowableSaplingBlock block, String base) {
