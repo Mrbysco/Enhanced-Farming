@@ -29,11 +29,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 
 public class FarmingModelProvider extends ModelProvider {
 	public static final ModelTemplate CUTOUT_CROP = ModelTemplates.CROP.extend().renderType("cutout").build();
-	public static final ModelTemplate STICK_CROP = ModelTemplates.create("enhancedfarming:stick_crops", TextureSlot.CROP);
+	public static final ModelTemplate STICK_CROP = ModelTemplates.create("enhancedfarming:stick_crops", TextureSlot.CROP).extend().renderType("cutout").build();
 	public static final ModelTemplate LEAVE_OVERLAY = ModelTemplates.create("enhancedfarming:leave_overlay", TextureSlot.LAYER0, TextureSlot.LAYER1)
 			.extend().renderType("cutout_mipped").build();
 
