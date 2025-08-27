@@ -1,1 +1,1 @@
-* Fix texture issues
+* Fix issue that caused the corn crop not to render properly
