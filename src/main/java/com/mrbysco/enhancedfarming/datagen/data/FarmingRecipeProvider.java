@@ -376,7 +376,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_olive_oil", has(FarmingRegistry.OLIVE_OIL.get()))
 				.unlockedBy("has_raw_fries", has(FarmingRegistry.RAW_FRIES.get()))
 				.save(recipeOutput);
-		TagKey<Item> rawFishTag = createTag("foods/raw_fish");
+		TagKey<Item> rawFishTag = Tags.Items.FOODS_RAW_FISH;
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.FISH_AND_CHIPS.get())
 				.requires(FarmingRegistry.POT.get())
 				.requires(FarmingRegistry.OLIVE_OIL.get())
@@ -387,7 +387,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_raw_fries", has(FarmingRegistry.RAW_FRIES.get()))
 				.unlockedBy("has_raw_fish", has(rawFishTag))
 				.save(recipeOutput);
-		TagKey<Item> cookedFishTag = createTag("foods/cooked_fish");
+		TagKey<Item> cookedFishTag = Tags.Items.FOODS_COOKED_FISH;
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.FISH_AND_CHIPS.get())
 				.requires(FarmingRegistry.FRIES.get())
 				.requires(cookedFishTag)
