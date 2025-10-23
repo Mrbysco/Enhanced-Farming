@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-02T20:51:13.3284342	Tags for minecraft:item mod id enhancedfarming
+// 1.21.1	2025-10-24T00:50:25.956628778	Tags for minecraft:item mod id enhancedfarming
 4b494acf257d81d333817c989cef849eec1170f0 data/c/tags/item/crops.json
 4770eeaeccf0a1a577448b12d52e860c92b53555 data/c/tags/item/crops/aubergine.json
 d4fdaec78176594bb8769215f997a2058fa2efb9 data/c/tags/item/crops/corn.json
@@ -42,6 +42,7 @@ d14710b6121edb04c184b88cb21ce8d106aafd32 data/c/tags/item/foods/raw_meats/beef.j
 113f509ec498e488c93d8c889a20d330cc8967d0 data/c/tags/item/foods/raw_meats/mutton.json
 33cb78441f05ba4ca385d72ebd7ddc4849b986d1 data/c/tags/item/foods/raw_meats/porkchop.json
 676cee16d107d62d62093f32df13eb8e934c7db9 data/c/tags/item/foods/raw_meats/rabbit.json
+33cb78441f05ba4ca385d72ebd7ddc4849b986d1 data/c/tags/item/foods/raw_pork.json
 70cef0b834906dbcc0c06c8fbd772c603d86cb5f data/c/tags/item/foods/soup.json
 a649e46104cf526921588272b610d97d00a402fc data/c/tags/item/foods/vegetables.json
 4770eeaeccf0a1a577448b12d52e860c92b53555 data/c/tags/item/foods/vegetables/aubergine.json

@@ -31,6 +31,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	private final String HERBS = "herbs";
 	private final String RAWMEATS = "foods/raw_meats";
 	private final String RAW_BEEF = "foods/raw_beef";
+	private final String RAW_PORK = "foods/raw_pork";
 	private final String RAW_CHICKEN = "foods/raw_chicken";
 	private final String COOKED_BEEF = "foods/cooked_beef";
 	private final String COOKED_CHICKEN = "foods/cooked_chicken";
@@ -80,6 +81,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		addCategory(SALAD_INGREDIENTS, FarmingRegistry.ONION.get(), FarmingRegistry.OLIVE.get());
 
 		addRegular(RAW_BEEF, Items.BEEF);
+		addRegular(RAW_PORK, Items.PORKCHOP);
 		addRegular(RAW_CHICKEN, Items.CHICKEN);
 		addRegular(COOKED_BEEF, Items.COOKED_BEEF);
 		addRegular(COOKED_CHICKEN, Items.COOKED_CHICKEN);

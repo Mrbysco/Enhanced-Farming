@@ -59,10 +59,10 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generatePie(recipeOutput, FarmingRegistry.LEMON_PIE, "foods/fruits/lemon", "sugar", "eggs");
 		generatePie(recipeOutput, FarmingRegistry.PEAR_PIE, "foods/fruits/pear", "sugar", "eggs");
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.BACON_AND_EGG_PIE.get())
-				.requires(createTag("foods/raw_beef"))
+				.requires(createTag("foods/raw_pork"))
 				.requires(createTag("eggs"))
 				.requires(createTag("dough/wheat"))
-				.unlockedBy("has_beef", has(createTag("foods/raw_beef")))
+				.unlockedBy("has_pork", has(createTag("foods/raw_pork")))
 				.unlockedBy("has_egg", has(createTag("eggs")))
 				.unlockedBy("has_dough", has(createTag("dough/wheat")))
 				.save(recipeOutput, FarmingRegistry.BACON_AND_EGG_PIE.getId().withPrefix("pie/"));
