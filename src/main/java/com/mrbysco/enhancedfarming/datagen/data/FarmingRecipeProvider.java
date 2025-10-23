@@ -52,12 +52,12 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generateSapling(recipeOutput, FarmingRegistry.MANGO_SAPLING_ITEM, Items.OAK_SAPLING, "foods/fruits/mango");
 		generateSapling(recipeOutput, FarmingRegistry.OLIVE_SAPLING_ITEM, Items.ACACIA_SAPLING, "foods/vegetables/olive");
 
-		generatePie(recipeOutput, FarmingRegistry.APPLE_PIE, "sugar", "eggs");
-		generatePie(recipeOutput, FarmingRegistry.BANANA_PIE, "sugar", "eggs", "milk");
-		generatePie(recipeOutput, FarmingRegistry.CHERRY_PIE, "sugar", "eggs");
-		generatePie(recipeOutput, FarmingRegistry.GRAPE_PIE, "sugar", "eggs");
-		generatePie(recipeOutput, FarmingRegistry.LEMON_PIE, "sugar", "eggs");
-		generatePie(recipeOutput, FarmingRegistry.PEAR_PIE, "sugar", "eggs");
+		generatePie(recipeOutput, FarmingRegistry.APPLE_PIE, "foods/fruits/apple", "sugar", "eggs");
+		generatePie(recipeOutput, FarmingRegistry.BANANA_PIE, "foods/fruits/banana", "sugar", "eggs", "milk");
+		generatePie(recipeOutput, FarmingRegistry.CHERRY_PIE, "foods/fruits/cherry", "sugar", "eggs");
+		generatePie(recipeOutput, FarmingRegistry.GRAPE_PIE, "foods/fruits/grapes", "sugar", "eggs");
+		generatePie(recipeOutput, FarmingRegistry.LEMON_PIE, "foods/fruits/lemon", "sugar", "eggs");
+		generatePie(recipeOutput, FarmingRegistry.PEAR_PIE, "foods/fruits/pear", "sugar", "eggs");
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FarmingRegistry.BACON_AND_EGG_PIE.get())
 				.requires(createTag("foods/raw_beef"))
 				.requires(createTag("eggs"))
@@ -556,10 +556,10 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.save(recipeOutput, juice.getId().withPrefix("smoothie/"));
 	}
 
-	private void generatePie(RecipeOutput recipeOutput, DeferredItem<? extends Item> juice, String... tags) {
+	private void generatePie(RecipeOutput recipeOutput, DeferredItem<? extends Item> pie, String... tags) {
 		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
 
-		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, juice.get())
+		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, pie.get())
 				.requires(FLOUR_TAG)
 				.unlockedBy("has_flour", has(FLOUR_TAG));
 		List<String> knownTags = new ArrayList<>();
@@ -567,11 +567,11 @@ public class FarmingRecipeProvider extends RecipeProvider {
 			builder = builder.requires(itemTag);
 			String hasTag = "has_" + itemTag.location().getPath().replace(":", "_");
 			if (!knownTags.contains(hasTag)) {
-				builder = builder.unlockedBy("has_" + itemTag.location().getPath().replace(":", "_"), has(itemTag));
+				builder = builder.unlockedBy(hasTag, has(itemTag));
 				knownTags.add(hasTag);
 			}
 		}
-		builder.save(recipeOutput, juice.getId().withPrefix("pie/"));
+		builder.save(recipeOutput, pie.getId().withPrefix("pie/"));
 	}
 
 	private void generateSoup(RecipeOutput recipeOutput, DeferredItem<? extends Item> soup, String... tags) {
