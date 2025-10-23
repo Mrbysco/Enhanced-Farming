@@ -73,13 +73,13 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generateJuice(recipeOutput, FarmingRegistry.CHERRY_JUICE, "foods/fruits/cherry");
 		generateJuice(recipeOutput, FarmingRegistry.PEAR_JUICE, "foods/fruits/pear");
 		generateJuice(recipeOutput, FarmingRegistry.BANANA_JUICE, "foods/fruits/banana");
-		generateJuice(recipeOutput, FarmingRegistry.GRAPE_JUICE, "foods/fruits/grape");
+		generateJuice(recipeOutput, FarmingRegistry.GRAPE_JUICE, "foods/fruits/grapes");
 		generateJuice(recipeOutput, FarmingRegistry.MANGO_JUICE, "foods/fruits/mango");
 		generateJuice(recipeOutput, FarmingRegistry.PINEAPPLE_JUICE, "foods/fruits/pineapple");
 
 		generateSmoothie(recipeOutput, FarmingRegistry.SMOOTHIE_APPLE, "foods/fruits/apple");
 		generateSmoothie(recipeOutput, FarmingRegistry.SMOOTHIE_BANANA, "foods/fruits/banana");
-		generateSmoothie(recipeOutput, FarmingRegistry.SMOOTHIE_CHERRY, "foods/fruits/1cherry");
+		generateSmoothie(recipeOutput, FarmingRegistry.SMOOTHIE_CHERRY, "foods/fruits/cherry");
 		generateSmoothie(recipeOutput, FarmingRegistry.SMOOTHIE_CUCUMBER, "foods/vegetables/cucumber");
 		generateSmoothie(recipeOutput, FarmingRegistry.SMOOTHIE_GRAPE, "foods/fruits/grapes");
 		generateSmoothie(recipeOutput, FarmingRegistry.SMOOTHIE_LEMON, "foods/fruits/lemon");
