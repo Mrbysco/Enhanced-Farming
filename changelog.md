@@ -1,1 +1,1 @@
-* Update to 1.21.5
+* Fix some textures not showing properly
