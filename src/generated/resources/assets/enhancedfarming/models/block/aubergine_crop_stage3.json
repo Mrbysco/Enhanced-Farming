@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "enhancedfarming:block/aubergine_crop_stage3"
-  }
-}

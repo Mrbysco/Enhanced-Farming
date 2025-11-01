@@ -1,0 +1,7 @@
+{
+  "parent": "enhancedfarming:block/stick_crops",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "crop": "enhancedfarming:block/crops/corn_crop_6"
+  }
+}
