@@ -119,13 +119,13 @@ public class FarmingModelProvider extends ModelProvider {
 									.with(
 											PropertyDispatch.initial(ageProperty)
 													.generate(
-															p_408977_ -> {
-																int i = ageToVisualStageMapping[p_408977_];
+															age -> {
+																int i = ageToVisualStageMapping[age];
 																return BlockModelGenerators.plainVariant(
 																		int2objectmap.computeIfAbsent(
 																				i,
-																				p_387308_ -> blockModels.createSuffixedVariant(
-																						cropBlock, "_" + p_387308_, CUTOUT_CROP, FarmingModelProvider::crop
+																				i1 -> blockModels.createSuffixedVariant(
+																						cropBlock, "_" + i1, CUTOUT_CROP, FarmingModelProvider::crop
 																				)
 																		)
 																);
@@ -143,10 +143,10 @@ public class FarmingModelProvider extends ModelProvider {
 			Int2ObjectMap<ResourceLocation> int2objectmap = new Int2ObjectOpenHashMap<>();
 			PropertyDispatch<MultiVariant> propertydispatch = PropertyDispatch.initial(ageProperty)
 					.generate(
-							p_388091_ -> {
-								int i = ageToVisualStageMapping[p_388091_];
+							age -> {
+								int i = ageToVisualStageMapping[age];
 								ResourceLocation resourcelocation = int2objectmap.computeIfAbsent(
-										i, p_387534_ -> blockModels.createSuffixedVariant(cropBlock, "_" + i, STICK_CROP, FarmingModelProvider::crop)
+										i, i1 -> blockModels.createSuffixedVariant(cropBlock, "_" + i, STICK_CROP, FarmingModelProvider::crop)
 								);
 								return BlockModelGenerators.plainVariant(resourcelocation);
 							}
