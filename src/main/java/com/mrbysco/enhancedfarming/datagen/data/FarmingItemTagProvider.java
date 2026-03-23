@@ -6,7 +6,7 @@ import com.mrbysco.enhancedfarming.init.FarmingTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -140,6 +140,6 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 	}
 
 	private TagKey<Item> createCommonTag(String name) {
-		return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
+		return ItemTags.create(Identifier.fromNamespaceAndPath("c", name));
 	}
 }

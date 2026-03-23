@@ -90,7 +90,7 @@ public class FruitLeavesBlock extends TintedParticleLeavesBlock implements Bonem
 				}
 			} else {
 				if (!state.getValue(PERSISTENT)) {
-					if (!serverLevel.isClientSide && !FarmingConfig.COMMON.rightClickFruitHarvest.get()) {
+					if (!serverLevel.isClientSide() && !FarmingConfig.COMMON.rightClickFruitHarvest.get()) {
 						if (random.nextInt(FarmingConfig.COMMON.treeDropChance.get()) == 0) {
 							ItemEntity fruitItem = new ItemEntity(serverLevel, pos.getX(), pos.getY() - 0.2, pos.getZ(), new ItemStack(itemSupplier.get()));
 							serverLevel.addFreshEntity(fruitItem);

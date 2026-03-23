@@ -12,15 +12,15 @@ import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PistonCategory implements DisplayCategory<PistonDisplay> {
-	private static final ResourceLocation ICON_TEXTURE = EnhancedFarming.modLoc("textures/gui/jei/piston_icon.png");
-	private static final ResourceLocation TEXTURE = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
+	private static final Identifier ICON_TEXTURE = EnhancedFarming.modLoc("textures/gui/jei/piston_icon.png");
+	private static final Identifier TEXTURE = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
 
 	@Override
 	public CategoryIdentifier<? extends PistonDisplay> getCategoryIdentifier() {

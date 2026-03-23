@@ -9,20 +9,20 @@
 //import dev.emi.emi.api.stack.EmiIngredient;
 //import dev.emi.emi.api.stack.EmiStack;
 //import dev.emi.emi.api.widget.WidgetHolder;
-//import net.minecraft.resources.ResourceLocation;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.world.item.crafting.RecipeHolder;
 //import org.jetbrains.annotations.Nullable;
 //
 //import java.util.List;
 //
 //public class EMIPistonRecipe implements EmiRecipe {
-//	public static final ResourceLocation PISTON_BACKGROUND_TEXTURE = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
+//	public static final Identifier PISTON_BACKGROUND_TEXTURE = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
 //	public static final EmiTexture BACKGROUND = new EmiTexture(PISTON_BACKGROUND_TEXTURE, 0, 0, 84, 62);
 //
 //	EmiIngredient input;
 //	List<EmiIngredient> inputs;
 //	EmiStack output;
-//	ResourceLocation id;
+//	Identifier id;
 //
 //	public EMIPistonRecipe(RecipeHolder<PistonRecipe> recipeHolder) {
 //		PistonRecipe recipe = recipeHolder.value();
@@ -38,7 +38,7 @@
 //	}
 //
 //	@Override
-//	public @Nullable ResourceLocation getId() {
+//	public @Nullable Identifier getId() {
 //		return this.id;
 //	}
 //

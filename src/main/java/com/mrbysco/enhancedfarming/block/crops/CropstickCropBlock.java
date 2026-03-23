@@ -81,7 +81,7 @@ public class CropstickCropBlock extends CropBlock {
 
 	@Override
 	public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity tileEntity, ItemStack stack) {
-		if (!level.isClientSide) {
+		if (!level.isClientSide()) {
 			level.setBlock(pos, FarmingRegistry.CROP_STICK.get().defaultBlockState(), 6);
 		}
 		super.playerDestroy(level, player, pos, state, tileEntity, stack);

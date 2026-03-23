@@ -70,7 +70,7 @@ public class ScarecrowBlock extends BaseEntityBlock implements SimpleWaterlogged
 
 	@Nullable
 	protected static <T extends BlockEntity> BlockEntityTicker<T> createScarecrowTicker(Level level, BlockEntityType<T> blockEntityType, BlockEntityType<? extends ScarecrowBlockEntity> blockEntityType1) {
-		return level.isClientSide ? null : createTickerHelper(blockEntityType, blockEntityType1, ScarecrowBlockEntity::serverTick);
+		return level.isClientSide() ? null : createTickerHelper(blockEntityType, blockEntityType1, ScarecrowBlockEntity::serverTick);
 	}
 
 	@SuppressWarnings("deprecation")

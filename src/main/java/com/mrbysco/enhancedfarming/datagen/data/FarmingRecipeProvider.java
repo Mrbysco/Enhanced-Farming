@@ -16,7 +16,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -511,7 +511,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 
 	private void generateFurnace(RecipeOutput recipeOutput, Item output, String ingredientTag) {
 		TagKey<Item> itemTag = createTag(ingredientTag);
-		ResourceLocation id = EnhancedFarming.modLoc(BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
+		Identifier id = EnhancedFarming.modLoc(BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
 
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(tagSet(itemTag)), RecipeCategory.FOOD, output, 0.35F, 200)
 				.unlockedBy("has_item", has(itemTag))
@@ -523,7 +523,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 	}
 
 	private void generateFurnace(RecipeOutput recipeOutput, Item output, Item ingredient) {
-		ResourceLocation id = EnhancedFarming.modLoc(BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
+		Identifier id = EnhancedFarming.modLoc(BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
 
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.FOOD, output, 0.35F, 200)
 				.unlockedBy("has_item", has(ingredient))
@@ -686,7 +686,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 			}
 		}
 		for (Item item : items) {
-			ResourceLocation itemLocation = BuiltInRegistries.ITEM.getKey(item);
+			Identifier itemLocation = BuiltInRegistries.ITEM.getKey(item);
 			if (itemLocation != null) {
 				builder = builder.requires(item);
 				String hasTag = "has_" + itemLocation.getPath();
@@ -719,7 +719,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 			}
 		}
 		for (Item item : items) {
-			ResourceLocation itemLocation = BuiltInRegistries.ITEM.getKey(item);
+			Identifier itemLocation = BuiltInRegistries.ITEM.getKey(item);
 			if (itemLocation != null) {
 				builder = builder.requires(item);
 				String hasTag = "has_" + itemLocation.getPath();
@@ -777,11 +777,11 @@ public class FarmingRecipeProvider extends RecipeProvider {
 	}
 
 	private TagKey<Item> createTag(String path) {
-		return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
+		return ItemTags.create(Identifier.fromNamespaceAndPath("c", path));
 	}
 
 	private static TagKey<Item> createCTag(String path) {
-		return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
+		return ItemTags.create(Identifier.fromNamespaceAndPath("c", path));
 	}
 
 	private HolderSet<Item> tagSet(TagKey<Item> tagKey) {

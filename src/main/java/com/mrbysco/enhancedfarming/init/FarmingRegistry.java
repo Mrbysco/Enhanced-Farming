@@ -55,25 +55,25 @@ public class FarmingRegistry {
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, EnhancedFarming.MOD_ID);
 
 	//Blocks
-	public static final DeferredBlock<GrowableSaplingBlock> APPLE_SAPLING = BLOCKS.registerBlock("apple_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.APPLE, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
-	public static final DeferredBlock<GrowableSaplingBlock> LEMON_SAPLING = BLOCKS.registerBlock("lemon_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.LEMON, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
-	public static final DeferredBlock<GrowableSaplingBlock> ORANGE_SAPLING = BLOCKS.registerBlock("orange_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.ORANGE, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
-	public static final DeferredBlock<GrowableSaplingBlock> CHERRY_SAPLING = BLOCKS.registerBlock("cherry_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.CHERRY, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
-	public static final DeferredBlock<GrowableSaplingBlock> PEAR_SAPLING = BLOCKS.registerBlock("pear_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.PEAR, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
-	public static final DeferredBlock<GrowableSaplingBlock> BANANA_SAPLING = BLOCKS.registerBlock("banana_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.BANANA, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
-	public static final DeferredBlock<GrowableSaplingBlock> AVOCADO_SAPLING = BLOCKS.registerBlock("avocado_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.AVOCADO, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
-	public static final DeferredBlock<GrowableSaplingBlock> MANGO_SAPLING = BLOCKS.registerBlock("mango_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.MANGO, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
-	public static final DeferredBlock<GrowableSaplingBlock> OLIVE_SAPLING = BLOCKS.registerBlock("olive_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.OLIVE, properties), BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> APPLE_SAPLING = BLOCKS.registerBlock("apple_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.APPLE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollision().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> LEMON_SAPLING = BLOCKS.registerBlock("lemon_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.LEMON, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollision().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> ORANGE_SAPLING = BLOCKS.registerBlock("orange_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.ORANGE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollision().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> CHERRY_SAPLING = BLOCKS.registerBlock("cherry_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.CHERRY, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollision().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> PEAR_SAPLING = BLOCKS.registerBlock("pear_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.PEAR, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollision().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> BANANA_SAPLING = BLOCKS.registerBlock("banana_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.BANANA, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING).noCollision().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> AVOCADO_SAPLING = BLOCKS.registerBlock("avocado_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.AVOCADO, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollision().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> MANGO_SAPLING = BLOCKS.registerBlock("mango_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.MANGO, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).noCollision().randomTicks().instabreak().sound(SoundType.GRASS));
+	public static final DeferredBlock<GrowableSaplingBlock> OLIVE_SAPLING = BLOCKS.registerBlock("olive_sapling", (properties) -> new GrowableSaplingBlock(FarmingTrees.OLIVE, properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_SAPLING).noCollision().randomTicks().instabreak().sound(SoundType.GRASS));
 
-	public static final DeferredBlock<FruitLeavesBlock> APPLE_LEAVES = BLOCKS.registerBlock("apple_leaves", (properties) -> new FruitLeavesBlock(properties, () -> Items.APPLE), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
-	public static final DeferredBlock<FruitLeavesBlock> LEMON_LEAVES = BLOCKS.registerBlock("lemon_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.LEMON), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
-	public static final DeferredBlock<FruitLeavesBlock> ORANGE_LEAVES = BLOCKS.registerBlock("orange_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.ORANGE), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
-	public static final DeferredBlock<FruitLeavesBlock> CHERRY_LEAVES = BLOCKS.registerBlock("cherry_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.CHERRY), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
-	public static final DeferredBlock<FruitLeavesBlock> PEAR_LEAVES = BLOCKS.registerBlock("pear_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.PEAR), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
-	public static final DeferredBlock<FruitLeavesBlock> BANANA_LEAVES = BLOCKS.registerBlock("banana_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.BANANA), BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LEAVES));
-	public static final DeferredBlock<FruitLeavesBlock> AVOCADO_LEAVES = BLOCKS.registerBlock("avocado_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.AVOCADO), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
-	public static final DeferredBlock<FruitLeavesBlock> MANGO_LEAVES = BLOCKS.registerBlock("mango_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.MANGO), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
-	public static final DeferredBlock<FruitLeavesBlock> OLIVE_LEAVES = BLOCKS.registerBlock("olive_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.OLIVE), BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> APPLE_LEAVES = BLOCKS.registerBlock("apple_leaves", (properties) -> new FruitLeavesBlock(properties, () -> Items.APPLE), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> LEMON_LEAVES = BLOCKS.registerBlock("lemon_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.LEMON), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> ORANGE_LEAVES = BLOCKS.registerBlock("orange_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.ORANGE), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> CHERRY_LEAVES = BLOCKS.registerBlock("cherry_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.CHERRY), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> PEAR_LEAVES = BLOCKS.registerBlock("pear_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.PEAR), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> BANANA_LEAVES = BLOCKS.registerBlock("banana_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.BANANA), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> AVOCADO_LEAVES = BLOCKS.registerBlock("avocado_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.AVOCADO), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> MANGO_LEAVES = BLOCKS.registerBlock("mango_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.MANGO), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+	public static final DeferredBlock<FruitLeavesBlock> OLIVE_LEAVES = BLOCKS.registerBlock("olive_leaves", (properties) -> new FruitLeavesBlock(properties, FarmingRegistry.OLIVE), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES));
 
 	public static final DeferredBlock<FiveAgeCropBlock> MINT_CROP = registerCrop("mint_crop", (properties) -> new FiveAgeCropBlock(properties, FarmingRegistry.MINT_SEEDS), BlockBehaviour.Properties.of());
 	public static final DeferredBlock<NetherFlowerBlock> NETHER_FLOWER_CROP = registerCrop("nether_flower_crop", NetherFlowerBlock::new, BlockBehaviour.Properties.of());
@@ -89,7 +89,7 @@ public class FarmingRegistry {
 
 	public static <T extends VegetationBlock> DeferredBlock<T> registerCrop(String name, Function<BlockBehaviour.Properties, ? extends T> func, BlockBehaviour.Properties props) {
 		return BLOCKS.registerBlock(name, func,
-				props.noCollission()
+				() -> props.noCollision()
 						.randomTicks()
 						.instabreak()
 						.sound(SoundType.CROP)
@@ -97,12 +97,12 @@ public class FarmingRegistry {
 	}
 
 	public static final DeferredBlock<CropStickBlock> CROP_STICK = registerCrop("crop_stick", CropStickBlock::new, BlockBehaviour.Properties.of());
-	public static final DeferredBlock<ScarecrowBlock> SCARECROW = BLOCKS.registerBlock("scarecrow", ScarecrowBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).sound(SoundType.WOOL));
+	public static final DeferredBlock<ScarecrowBlock> SCARECROW = BLOCKS.registerBlock("scarecrow", ScarecrowBlock::new, () -> BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).sound(SoundType.WOOL));
 
 	//Items
-	public static final DeferredItem<CustomUtensilItem> POT = ITEMS.registerItem("pot", CustomUtensilItem::new, new Item.Properties().stacksTo(1));
-	public static final DeferredItem<CustomUtensilItem> CUTTING_BOARD = ITEMS.registerItem("cutting_board", CustomUtensilItem::new, new Item.Properties().stacksTo(1));
-	public static final DeferredItem<CustomUtensilItem> MORTAR_AND_PESTLE = ITEMS.registerItem("mortar_and_pestle", CustomUtensilItem::new, new Item.Properties().stacksTo(1));
+	public static final DeferredItem<CustomUtensilItem> POT = ITEMS.registerItem("pot", CustomUtensilItem::new, () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<CustomUtensilItem> CUTTING_BOARD = ITEMS.registerItem("cutting_board", CustomUtensilItem::new, () -> new Item.Properties().stacksTo(1));
+	public static final DeferredItem<CustomUtensilItem> MORTAR_AND_PESTLE = ITEMS.registerItem("mortar_and_pestle", CustomUtensilItem::new, () -> new Item.Properties().stacksTo(1));
 
 	public static final DeferredItem<CustomFoodItem> AUBERGINE = ITEMS.registerItem("aubergine", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.AUBERGINE), 32));
 	public static final DeferredItem<CustomFoodItem> AVOCADO = ITEMS.registerItem("avocado", (properties) -> new CustomFoodItem(properties.food(FarmingFoods.AVOCADO), 32));
@@ -167,7 +167,7 @@ public class FarmingRegistry {
 	//Actual food
 	public static final DeferredItem<Item> DOUGH = ITEMS.registerSimpleItem("dough");
 	public static final DeferredItem<Item> FLOUR = ITEMS.registerSimpleItem("flour");
-	public static final DeferredItem<Item> OLIVE_OIL = ITEMS.registerSimpleItem("olive_oil", new Properties().craftRemainder(Items.GLASS_BOTTLE));
+	public static final DeferredItem<Item> OLIVE_OIL = ITEMS.registerSimpleItem("olive_oil", () -> new Properties().craftRemainder(Items.GLASS_BOTTLE));
 	public static final DeferredItem<Item> PASTA = ITEMS.registerSimpleItem("pasta");
 	public static final DeferredItem<Item> RAW_FRIES = ITEMS.registerSimpleItem("raw_fries");
 	public static final DeferredItem<Item> SALT = ITEMS.registerSimpleItem("salt");
@@ -226,17 +226,17 @@ public class FarmingRegistry {
 	public static final DeferredItem<RakeToolItem> DIAMOND_RAKE = ITEMS.registerItem("diamond_rake", (properties) -> new RakeToolItem(ToolMaterial.DIAMOND, 3, 0.0F, 5, properties));
 
 	//Seeds
-	public static final DeferredItem<BlockItem> MINT_SEEDS = ITEMS.registerSimpleBlockItem("mint_seeds", FarmingRegistry.MINT_CROP, new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> NETHER_FLOWER_SEEDS = ITEMS.registerSimpleBlockItem("nether_flower_seeds", FarmingRegistry.NETHER_FLOWER_CROP, new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> TOMATO_SEEDS = ITEMS.registerSimpleBlockItem("tomato_seeds", FarmingRegistry.TOMATO_CROP, new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> CUCUMBER_SEEDS = ITEMS.registerSimpleBlockItem("cucumber_seeds", FarmingRegistry.CUCUMBER_CROP, new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> AUBERGINE_SEEDS = ITEMS.registerSimpleBlockItem("aubergine_seeds", FarmingRegistry.AUBERGINE_CROP, new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> GRAPE_SEEDS = ITEMS.registerItem("grape_seeds", (properties) -> new CropsticksSeedsBlock(FarmingRegistry.GRAPE_CROP.get(), properties), new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> PINEAPPLE_SEEDS = ITEMS.registerSimpleBlockItem("pineapple_seeds", FarmingRegistry.PINEAPPLE_CROP, new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> CORN_SEEDS = ITEMS.registerSimpleBlockItem("corn_seeds", FarmingRegistry.CORN_CROP, new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> ONION_SEEDS = ITEMS.registerSimpleBlockItem("onion_seeds", FarmingRegistry.ONION_CROP, new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> GARLIC_SEEDS = ITEMS.registerSimpleBlockItem("garlic_seeds", FarmingRegistry.GARLIC_CROP, new Properties().useItemDescriptionPrefix());
-	public static final DeferredItem<BlockItem> LETTUCE_SEEDS = ITEMS.registerSimpleBlockItem("lettuce_seeds", FarmingRegistry.LETTUCE_CROP, new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> MINT_SEEDS = ITEMS.registerSimpleBlockItem("mint_seeds", FarmingRegistry.MINT_CROP, () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> NETHER_FLOWER_SEEDS = ITEMS.registerSimpleBlockItem("nether_flower_seeds", FarmingRegistry.NETHER_FLOWER_CROP, () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> TOMATO_SEEDS = ITEMS.registerSimpleBlockItem("tomato_seeds", FarmingRegistry.TOMATO_CROP, () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> CUCUMBER_SEEDS = ITEMS.registerSimpleBlockItem("cucumber_seeds", FarmingRegistry.CUCUMBER_CROP, () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> AUBERGINE_SEEDS = ITEMS.registerSimpleBlockItem("aubergine_seeds", FarmingRegistry.AUBERGINE_CROP, () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> GRAPE_SEEDS = ITEMS.registerItem("grape_seeds", (properties) -> new CropsticksSeedsBlock(FarmingRegistry.GRAPE_CROP.get(), properties), () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> PINEAPPLE_SEEDS = ITEMS.registerSimpleBlockItem("pineapple_seeds", FarmingRegistry.PINEAPPLE_CROP, () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> CORN_SEEDS = ITEMS.registerSimpleBlockItem("corn_seeds", FarmingRegistry.CORN_CROP, () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> ONION_SEEDS = ITEMS.registerSimpleBlockItem("onion_seeds", FarmingRegistry.ONION_CROP, () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> GARLIC_SEEDS = ITEMS.registerSimpleBlockItem("garlic_seeds", FarmingRegistry.GARLIC_CROP, () -> new Properties().useItemDescriptionPrefix());
+	public static final DeferredItem<BlockItem> LETTUCE_SEEDS = ITEMS.registerSimpleBlockItem("lettuce_seeds", FarmingRegistry.LETTUCE_CROP, () -> new Properties().useItemDescriptionPrefix());
 
 	public static final DeferredItem<BlockItem> APPLE_SAPLING_ITEM = ITEMS.registerSimpleBlockItem("apple_sapling", FarmingRegistry.APPLE_SAPLING);
 	public static final DeferredItem<BlockItem> LEMON_SAPLING_ITEM = ITEMS.registerSimpleBlockItem("lemon_sapling", FarmingRegistry.LEMON_SAPLING);

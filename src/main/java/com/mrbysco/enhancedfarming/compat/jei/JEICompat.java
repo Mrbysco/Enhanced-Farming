@@ -13,7 +13,7 @@ import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -21,10 +21,10 @@ import org.jetbrains.annotations.Nullable;
 
 @JeiPlugin
 public class JEICompat implements IModPlugin {
-	public static final ResourceLocation RECIPE_PISTON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
-	public static final ResourceLocation RECIPE_PISTON_ICON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston_icon.png");
+	public static final Identifier RECIPE_PISTON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston.png");
+	public static final Identifier RECIPE_PISTON_ICON_JEI = EnhancedFarming.modLoc("textures/gui/jei/piston_icon.png");
 
-	public static final ResourceLocation PLUGIN_UID = EnhancedFarming.modLoc("main");
+	public static final Identifier PLUGIN_UID = EnhancedFarming.modLoc("main");
 
 	public static final IRecipeType<PistonRecipe> PISTON_TYPE = IRecipeType.create(EnhancedFarming.MOD_ID, "piston", PistonRecipe.class);
 
@@ -32,7 +32,7 @@ public class JEICompat implements IModPlugin {
 	private IRecipeCategory<PistonRecipe> pistonCategory;
 
 	@Override
-	public ResourceLocation getPluginUid() {
+	public Identifier getPluginUid() {
 		return PLUGIN_UID;
 	}
 

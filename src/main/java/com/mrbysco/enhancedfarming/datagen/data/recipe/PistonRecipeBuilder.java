@@ -5,7 +5,7 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
@@ -24,7 +24,7 @@ public class PistonRecipeBuilder implements RecipeBuilder {
 	private final Item result;
 	private final int count;
 	private final Ingredient ingredient;
-	private final Map<String, Criterion<?>> criteria = new LinkedHashMap();
+	private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
 	@Nullable
 	private String group;
 
@@ -58,12 +58,12 @@ public class PistonRecipeBuilder implements RecipeBuilder {
 		Objects.requireNonNull(advancement$builder);
 		this.criteria.forEach(advancement$builder::addCriterion);
 		PistonRecipe recipe = new PistonRecipe(this.group == null ? "" : this.group, this.ingredient, new ItemStack(this.result, this.count));
-		recipeConsumer.accept(id, recipe, advancement$builder.build(id.location().withPrefix("recipes/")));
+		recipeConsumer.accept(id, recipe, advancement$builder.build(id.identifier().withPrefix("recipes/")));
 	}
 
 	private void ensureValid(ResourceKey<Recipe<?>> recipe) {
 		if (this.criteria.isEmpty()) {
-			throw new IllegalStateException("No way of obtaining recipe " + recipe.location());
+			throw new IllegalStateException("No way of obtaining recipe " + recipe.identifier());
 		}
 	}
 }

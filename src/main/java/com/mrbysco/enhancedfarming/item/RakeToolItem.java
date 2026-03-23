@@ -36,7 +36,7 @@ public class RakeToolItem extends Item {
 			return;
 		}
 		final int rand = level.random.nextInt(30 / (this.dropModifier + 1));
-		if (!level.isClientSide && rand == 0 && level.getServer() != null) {
+		if (!level.isClientSide() && rand == 0 && level.getServer() != null) {
 			LootTable table = level.getServer().reloadableRegistries().getLootTable(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
 			LootParams.Builder lootParams = (new LootParams.Builder((ServerLevel) level))
 					.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
@@ -60,10 +60,10 @@ public class RakeToolItem extends Item {
 		}
 
 		if (finalState != null) {
-			if (!level.isClientSide) {
+			if (!level.isClientSide()) {
 				level.setBlock(blockpos, finalState, 11);
 				if (player != null) {
-					context.getItemInHand().hurtAndBreak(1, player, Player.getSlotForHand(context.getHand()));
+					context.getItemInHand().hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
 					this.dropSeedsWithChance(context.getItemInHand(), level, blockpos);
 				}
 			}

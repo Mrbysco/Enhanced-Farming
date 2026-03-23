@@ -37,7 +37,7 @@ public class ContainerFoodItem extends SpecialCustomFoodItem {
 
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-		if (!level.isClientSide && cure) ClearAllStatusEffectsConsumeEffect.INSTANCE.apply(level, stack, livingEntity);
+		if (!level.isClientSide() && cure) ClearAllStatusEffectsConsumeEffect.INSTANCE.apply(level, stack, livingEntity);
 		if (stack.has(DataComponents.FOOD)) {
 			if (directheal) {
 				livingEntity.heal(stack.get(DataComponents.FOOD).nutrition());

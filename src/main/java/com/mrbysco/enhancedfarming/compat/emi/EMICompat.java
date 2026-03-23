@@ -11,7 +11,7 @@
 //import dev.emi.emi.api.render.EmiTexture;
 //import dev.emi.emi.api.stack.EmiStack;
 //import net.minecraft.client.Minecraft;
-//import net.minecraft.resources.ResourceLocation;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.world.item.Items;
 //import net.minecraft.world.item.crafting.RecipeManager;
 //
@@ -19,7 +19,7 @@
 //
 //@EmiEntrypoint
 //public class EMICompat implements EmiPlugin {
-//	private static final ResourceLocation UID = EnhancedFarming.modLoc("emi_plugin");
+//	private static final Identifier UID = EnhancedFarming.modLoc("emi_plugin");
 //
 //	private static final EmiTexture PISTON_ICON = new EmiTexture(EnhancedFarming.modLoc("textures/gui/jei/piston_icon.png"), 0, 0, 16, 16);
 //	public static final EmiRecipeCategory PISTON_CATEGORY = new EmiRecipeCategory(EnhancedFarming.modLoc("plugins/piston"),
