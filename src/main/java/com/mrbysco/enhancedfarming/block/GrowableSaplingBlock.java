@@ -94,11 +94,11 @@ public class GrowableSaplingBlock extends VegetationBlock implements Bonemealabl
 
 	@Override
 	public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-		return (double) level.random.nextFloat() < 0.45D;
+		return (double) level.getRandom().nextFloat() < 0.45D;
 	}
 
 	protected int getBonemealAgeIncrease(Level level) {
-		return Mth.nextInt(level.random, 2, 5) / 4;
+		return Mth.nextInt(level.getRandom(), 2, 5) / 4;
 	}
 
 	public void performBonemeal(ServerLevel serverLevel, RandomSource random, BlockPos pos, BlockState state) {

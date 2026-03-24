@@ -8,7 +8,6 @@
     "#c:foods/fruits/pineapple"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:pineapple_pizza"
   }
 }

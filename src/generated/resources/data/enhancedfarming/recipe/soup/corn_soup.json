@@ -8,7 +8,6 @@
     "#c:foods/vegetables/corn"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:corn_soup"
   }
 }

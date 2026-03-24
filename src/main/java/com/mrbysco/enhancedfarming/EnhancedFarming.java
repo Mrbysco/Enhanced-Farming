@@ -1,6 +1,5 @@
 package com.mrbysco.enhancedfarming;
 
-import com.mrbysco.enhancedfarming.client.ClientHandler;
 import com.mrbysco.enhancedfarming.config.FarmingConfig;
 import com.mrbysco.enhancedfarming.handler.HotHandler;
 import com.mrbysco.enhancedfarming.handler.InWorldCraftingHandler;
@@ -61,9 +60,6 @@ public class EnhancedFarming {
 
 		if (dist.isClient()) {
 			container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
-			eventBus.addListener(ClientHandler::onClientSetup);
-			eventBus.addListener(ClientHandler::registerBlockColors);
-			NeoForge.EVENT_BUS.addListener(ClientHandler::onRecipeReceived);
 		}
 	}
 

@@ -11,7 +11,6 @@
     "#c:foods/fruits/cherry"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:cherry_sapling"
   }
 }

@@ -20,8 +20,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
@@ -42,7 +43,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 
 	@Override
 	protected void buildRecipes() {
-		final ItemStack waterBottle = Items.POTION.getDefaultInstance();
+		final ItemStackTemplate waterBottle = new ItemStackTemplate(Items.POTION);
 
 		generateSapling(output, FarmingRegistry.APPLE_SAPLING_ITEM, Items.OAK_SAPLING, "foods/fruits/apple");
 		generateSapling(output, FarmingRegistry.LEMON_SAPLING_ITEM, Items.OAK_SAPLING, "foods/fruits/lemon");
@@ -104,11 +105,11 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generateFurnace(output, FarmingRegistry.BAKED_EGG.get(), "eggs");
 		generateFurnace(output, Items.BREAD, FarmingRegistry.DOUGH.get());
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(FarmingRegistry.COLD_CHOCOLATE_BOTTLE.get()), RecipeCategory.FOOD,
-						FarmingRegistry.HOT_CHOCOLATE_BOTTLE.get(), 0.25F, 200)
+						CookingBookCategory.FOOD, FarmingRegistry.HOT_CHOCOLATE_BOTTLE.get(), 0.25F, 200)
 				.unlockedBy("has_item", has(FarmingRegistry.COLD_CHOCOLATE_BOTTLE.get()))
 				.save(output, FarmingRegistry.HOT_CHOCOLATE_BOTTLE.getId().withPrefix("cooking/").toString());
 		SimpleCookingRecipeBuilder.smelting(DataComponentIngredient.of(true, waterBottle), RecipeCategory.FOOD,
-						FarmingRegistry.HOT_WATER.get(), 0.25F, 200)
+						CookingBookCategory.FOOD, FarmingRegistry.HOT_WATER.get(), 0.25F, 200)
 				.unlockedBy("has_item", has(Items.POTION))
 				.save(output, FarmingRegistry.HOT_WATER.getId().withPrefix("cooking/").toString());
 
@@ -513,7 +514,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		TagKey<Item> itemTag = createTag(ingredientTag);
 		Identifier id = EnhancedFarming.modLoc(BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
 
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(tagSet(itemTag)), RecipeCategory.FOOD, output, 0.35F, 200)
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(tagSet(itemTag)), RecipeCategory.FOOD, CookingBookCategory.FOOD, output, 0.35F, 200)
 				.unlockedBy("has_item", has(itemTag))
 				.save(recipeOutput, id.toString());
 
@@ -525,7 +526,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 	private void generateFurnace(RecipeOutput recipeOutput, Item output, Item ingredient) {
 		Identifier id = EnhancedFarming.modLoc(BuiltInRegistries.ITEM.getKey(output).getPath()).withPrefix("cooking/");
 
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.FOOD, output, 0.35F, 200)
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.FOOD, CookingBookCategory.FOOD, output, 0.35F, 200)
 				.unlockedBy("has_item", has(ingredient))
 				.save(recipeOutput, id.toString());
 
@@ -536,7 +537,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 
 	private void generateJuice(RecipeOutput recipeOutput, DeferredItem<? extends Item> juice, String tag) {
 		TagKey<Item> itemTag = createTag(tag);
-		final ItemStack waterBottle = Items.POTION.getDefaultInstance();
+		final ItemStackTemplate waterBottle = new ItemStackTemplate(Items.POTION);
 
 		shapeless(RecipeCategory.FOOD, juice.get())
 				.requires(DataComponentIngredient.of(true, waterBottle))

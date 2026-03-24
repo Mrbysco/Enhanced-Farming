@@ -8,7 +8,6 @@
     "#c:foods/vegetables/onion"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:onion_soup"
   }
 }

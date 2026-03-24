@@ -9,7 +9,6 @@
     "#c:foods/cooked_beef"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:bacon_sandwich"
   }
 }

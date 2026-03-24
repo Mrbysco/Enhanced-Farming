@@ -271,9 +271,8 @@ public class FarmingFeatureConfigs {
 		FeatureUtils.register(context, MANGO, FarmingFeatures.FRUIT_TREE.get(), getMango().build());
 		FeatureUtils.register(context, OLIVE, FarmingFeatures.FRUIT_TREE.get(), getOlive().build());
 
-		FeatureUtils.register(context, PATCH_NETHER_FLOWER, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
-				new SimpleBlockConfiguration(BlockStateProvider.simple(States.NETHER_FLOWER_CROP)),
-				List.of(Blocks.SOUL_SAND), 64));
+		FeatureUtils.register(context, PATCH_NETHER_FLOWER, Feature.SIMPLE_BLOCK,
+				new SimpleBlockConfiguration(BlockStateProvider.simple(States.NETHER_FLOWER_CROP))); //TODO: Check nether flower
 
 	}
 }

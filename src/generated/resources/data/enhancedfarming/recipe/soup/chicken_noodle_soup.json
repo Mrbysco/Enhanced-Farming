@@ -11,7 +11,6 @@
     "#c:foods/raw_chicken"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:chicken_noodle_soup"
   }
 }

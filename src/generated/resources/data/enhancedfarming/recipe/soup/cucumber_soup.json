@@ -8,7 +8,6 @@
     "#c:foods/vegetables/cucumber"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:cucumber_soup"
   }
 }

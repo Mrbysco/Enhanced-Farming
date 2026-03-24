@@ -43,7 +43,8 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
 
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-		if (!level.isClientSide() && cure) ClearAllStatusEffectsConsumeEffect.INSTANCE.apply(level, stack, livingEntity);
+		if (!level.isClientSide() && cure)
+			ClearAllStatusEffectsConsumeEffect.INSTANCE.apply(level, stack, livingEntity);
 		if (stack.has(DataComponents.FOOD)) {
 			if (directheal) {
 				livingEntity.heal(stack.get(DataComponents.FOOD).nutrition());
@@ -69,14 +70,16 @@ public class SpecialCustomFoodItem extends CustomFoodItem {
 				player.getFoodData().eat(stack.get(DataComponents.FOOD));
 			}
 			player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
-			level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
+			level.playSound((Player) null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
 			if (player instanceof ServerPlayer) {
 				CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer) player, stack);
 			}
 		} else {
 			Consumable consumable = stack.get(DataComponents.CONSUMABLE);
 			if (consumable != null) {
-				level.playSound((Player) null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), consumable.sound(), SoundSource.NEUTRAL, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
+				level.playSound((Player) null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(),
+						consumable.sound(), SoundSource.NEUTRAL, 1.0F,
+						1.0F + (level.getRandom().nextFloat() - level.getRandom().nextFloat()) * 0.4F);
 				consumable.onConsume(level, livingEntity, stack);
 			}
 		}

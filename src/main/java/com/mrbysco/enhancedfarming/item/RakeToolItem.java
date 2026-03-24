@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.context.UseOnContext;
@@ -35,7 +36,7 @@ public class RakeToolItem extends Item {
 		if (this.dropModifier < 0) {
 			return;
 		}
-		final int rand = level.random.nextInt(30 / (this.dropModifier + 1));
+		final int rand = level.getRandom().nextInt(30 / (this.dropModifier + 1));
 		if (!level.isClientSide() && rand == 0 && level.getServer() != null) {
 			LootTable table = level.getServer().reloadableRegistries().getLootTable(FarmingLootTables.GAMEPLAY_RAKE_DROPS);
 			LootParams.Builder lootParams = (new LootParams.Builder((ServerLevel) level))
@@ -75,7 +76,7 @@ public class RakeToolItem extends Item {
 	}
 
 	@Override
-	public boolean canPerformAction(ItemStack stack, ItemAbility toolAction) {
-		return FarmingActions.DEFAULT_RAKE_ACTIONS.contains(toolAction);
+	public boolean canPerformAction(ItemInstance stack, ItemAbility itemAbility) {
+		return FarmingActions.DEFAULT_RAKE_ACTIONS.contains(itemAbility);
 	}
 }

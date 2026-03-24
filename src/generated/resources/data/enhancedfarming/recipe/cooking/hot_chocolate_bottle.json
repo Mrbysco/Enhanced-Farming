@@ -5,7 +5,6 @@
   "experience": 0.25,
   "ingredient": "enhancedfarming:cold_chocolate_bottle",
   "result": {
-    "count": 1,
     "id": "enhancedfarming:hot_chocolate_bottle"
   }
 }

@@ -23,6 +23,7 @@ import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
@@ -31,10 +32,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class FarmingModelProvider extends ModelProvider {
-	public static final ModelTemplate CUTOUT_CROP = ModelTemplates.CROP.extend().renderType("cutout").build();
-	public static final ModelTemplate STICK_CROP = ModelTemplates.create("enhancedfarming:stick_crops", TextureSlot.CROP).extend().renderType("cutout").build();
+	public static final ModelTemplate STICK_CROP = ModelTemplates.create("enhancedfarming:stick_crops", TextureSlot.CROP).extend().build();
 	public static final ModelTemplate LEAVE_OVERLAY = ModelTemplates.create("enhancedfarming:leave_overlay", TextureSlot.LAYER0, TextureSlot.LAYER1)
-			.extend().renderType("cutout_mipped").build();
+			.extend().build();
 
 	public FarmingModelProvider(PackOutput output) {
 		super(output, EnhancedFarming.MOD_ID);
@@ -125,7 +125,7 @@ public class FarmingModelProvider extends ModelProvider {
 																		int2objectmap.computeIfAbsent(
 																				i,
 																				p_387308_ -> blockModels.createSuffixedVariant(
-																						cropBlock, "_" + p_387308_, CUTOUT_CROP, FarmingModelProvider::crop
+																						cropBlock, "_" + p_387308_, ModelTemplates.CROP, FarmingModelProvider::crop
 																				)
 																		)
 																);
@@ -145,10 +145,10 @@ public class FarmingModelProvider extends ModelProvider {
 					.generate(
 							p_388091_ -> {
 								int i = ageToVisualStageMapping[p_388091_];
-								Identifier resourcelocation = int2objectmap.computeIfAbsent(
+								Identifier identifier = int2objectmap.computeIfAbsent(
 										i, p_387534_ -> blockModels.createSuffixedVariant(cropBlock, "_" + i, STICK_CROP, FarmingModelProvider::crop)
 								);
-								return BlockModelGenerators.plainVariant(resourcelocation);
+								return BlockModelGenerators.plainVariant(identifier);
 							}
 					);
 			blockModels.registerSimpleFlatItemModel(cropBlock.asItem());
@@ -156,18 +156,19 @@ public class FarmingModelProvider extends ModelProvider {
 		}
 	}
 
-	public static TextureMapping crop(Identifier block) {
+	public static TextureMapping crop(Material block) {
+		Identifier originalId = block.sprite();
 		Identifier adjustedLocation = Identifier.fromNamespaceAndPath(
-				block.getNamespace(), block.getPath().replace("block/", "block/crops/") // Adjust the path to point to the crops directory
+				originalId.getNamespace(), originalId.getPath().replace("block/", "block/crops/") // Adjust the path to point to the crops directory
 		);
-		return TextureMapping.singleSlot(TextureSlot.CROP, adjustedLocation);
+		return TextureMapping.singleSlot(TextureSlot.CROP, new Material(adjustedLocation));
 	}
 
 	protected void buildSaplings(BlockModelGenerators blockModels, GrowableSaplingBlock block, String base) {
 		String path = BuiltInRegistries.BLOCK.getKey(block).getPath();
-		Identifier finalModel = CUTOUT_CROP.createWithSuffix(block, ("_" + block.getMatureStage()),
+		Identifier finalModel = ModelTemplates.CROP.createWithSuffix(block, ("_" + block.getMatureStage()),
 				TextureMapping.crop(
-						EnhancedFarming.modLoc("block/saplings/" + path)),
+						new Material(EnhancedFarming.modLoc("block/saplings/" + path))),
 				blockModels.modelOutput);
 
 		var propertyDispatch = PropertyDispatch.initial(block.getStageProperty());
@@ -175,8 +176,8 @@ public class FarmingModelProvider extends ModelProvider {
 			if (i == block.getMatureStage()) {
 				propertyDispatch.select(i, BlockModelGenerators.plainVariant(finalModel));
 			} else {
-				Identifier model = CUTOUT_CROP.createWithSuffix(block, "_" + i,
-						TextureMapping.crop(EnhancedFarming.modLoc("block/saplings/" + base + "_" + (i))), blockModels.modelOutput);
+				Identifier model = ModelTemplates.CROP.createWithSuffix(block, "_" + i,
+						TextureMapping.crop(new Material(EnhancedFarming.modLoc("block/saplings/" + base + "_" + (i)))), blockModels.modelOutput);
 				propertyDispatch.select(i, BlockModelGenerators.plainVariant(model));
 			}
 		}
@@ -188,7 +189,7 @@ public class FarmingModelProvider extends ModelProvider {
 
 		Identifier itemModel = ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(block.asItem()),
 				TextureMapping.layer0(
-						EnhancedFarming.modLoc("block/saplings/" + path)
+						new Material(EnhancedFarming.modLoc("block/saplings/" + path))
 				), blockModels.modelOutput);
 		blockModels.registerSimpleItemModel(block, itemModel);
 	}
@@ -196,18 +197,18 @@ public class FarmingModelProvider extends ModelProvider {
 	protected void buildLeaves(BlockModelGenerators blockModels, FruitLeavesBlock block, String originalLeaves, int tint) {
 		Identifier bloomingModel = LEAVE_OVERLAY.createWithSuffix(block, "_blooming",
 				TextureMapping.singleSlot(TextureSlot.LAYER1,
-						EnhancedFarming.modLoc("block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_blooming")
+						new Material(EnhancedFarming.modLoc("block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_blooming"))
 				).put(
 						TextureSlot.LAYER0,
-						Identifier.withDefaultNamespace("block/" + originalLeaves)
+						new Material(Identifier.withDefaultNamespace("block/" + originalLeaves))
 				),
 				blockModels.modelOutput);
 		Identifier fruityModel = LEAVE_OVERLAY.createWithSuffix(block, "_fruity",
 				TextureMapping.singleSlot(TextureSlot.LAYER1,
-						EnhancedFarming.modLoc("block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruity")
+						new Material(EnhancedFarming.modLoc("block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_fruity"))
 				).put(
 						TextureSlot.LAYER0,
-						Identifier.withDefaultNamespace("block/" + originalLeaves)
+						new Material(Identifier.withDefaultNamespace("block/" + originalLeaves))
 				),
 				blockModels.modelOutput);
 		var propertyDispatch = PropertyDispatch.initial(block.getAgeProperty());

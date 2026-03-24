@@ -8,7 +8,6 @@
     "#c:foods/cheeses/normal"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:cheeseburger"
   }
 }

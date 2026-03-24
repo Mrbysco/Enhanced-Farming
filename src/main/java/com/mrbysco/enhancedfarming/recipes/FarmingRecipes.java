@@ -1,10 +1,10 @@
 package com.mrbysco.enhancedfarming.recipes;
 
 import com.mrbysco.enhancedfarming.EnhancedFarming;
-import com.mrbysco.enhancedfarming.recipes.PistonRecipe.Serializer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -16,5 +16,5 @@ public class FarmingRecipes {
 	public static final Supplier<RecipeType<PistonRecipe>> PISTON_CRAFTING_TYPE = RECIPE_TYPES.register("piston_crafting", () -> new RecipeType<>() {
 	});
 
-	public static final Supplier<Serializer> PISTON_CRAFTING_SERIALIZER = RECIPE_SERIALIZERS.register("piston_crafting", Serializer::new);
+	public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<PistonRecipe>> PISTON_CRAFTING_SERIALIZER = RECIPE_SERIALIZERS.register("piston_crafting", () -> PistonRecipe.SERIALIZER);
 }

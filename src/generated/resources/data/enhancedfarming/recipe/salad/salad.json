@@ -9,7 +9,6 @@
     "#c:foods/vegetables/onion"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:salad"
   }
 }

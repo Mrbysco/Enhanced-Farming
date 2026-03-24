@@ -9,6 +9,7 @@ import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -42,7 +43,7 @@ public class GrassDropModifier extends LootModifier {
 	protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 		ServerLevel level = context.getLevel();
 		BlockState state = context.getOptionalParameter(LootContextParams.BLOCK_STATE);
-		ItemStack tool = context.getOptionalParameter(LootContextParams.TOOL);
+		ItemInstance tool = context.getOptionalParameter(LootContextParams.TOOL);
 		if (state != null && tool != null && context.getRandom().nextDouble() <= 0.1) {
 			if (state.getBlock() instanceof TallGrassBlock && !tool.is(Items.TOOLS_SHEAR) &&
 					EnchantmentHelper.getTagEnchantmentLevel(level.holderOrThrow(Enchantments.SILK_TOUCH), tool) <= 0) {

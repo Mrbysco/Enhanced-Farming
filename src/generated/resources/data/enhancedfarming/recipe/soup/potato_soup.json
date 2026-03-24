@@ -8,7 +8,6 @@
     "#c:foods/vegetables/potato"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:potato_soup"
   }
 }

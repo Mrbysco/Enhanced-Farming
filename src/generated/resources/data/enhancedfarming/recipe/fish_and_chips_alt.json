@@ -6,7 +6,6 @@
     "#c:foods/cooked_fish"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:fish_and_chips"
   }
 }

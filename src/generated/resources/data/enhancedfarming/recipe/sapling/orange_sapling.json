@@ -11,7 +11,6 @@
     "#c:foods/fruits/orange"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:orange_sapling"
   }
 }

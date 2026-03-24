@@ -122,7 +122,7 @@ public class FruitLeavesBlock extends TintedParticleLeavesBlock implements Bonem
 	}
 
 	protected int getBonemealAgeIncrease(Level level) {
-		return Mth.nextInt(level.random, 0, 2);
+		return Mth.nextInt(level.getRandom(), 0, 2);
 	}
 
 	@Override
@@ -147,7 +147,7 @@ public class FruitLeavesBlock extends TintedParticleLeavesBlock implements Bonem
 
 	@Override
 	public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-		return (double) level.random.nextFloat() < 0.45D;
+		return (double) level.getRandom().nextFloat() < 0.45D;
 	}
 
 	@Override

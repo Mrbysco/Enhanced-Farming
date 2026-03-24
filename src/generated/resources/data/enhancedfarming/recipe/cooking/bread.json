@@ -5,7 +5,6 @@
   "experience": 0.35,
   "ingredient": "enhancedfarming:dough",
   "result": {
-    "count": 1,
     "id": "minecraft:bread"
   }
 }

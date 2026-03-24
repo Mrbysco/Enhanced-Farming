@@ -8,7 +8,6 @@
     "#c:foods/vegetables/carrot"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:carrot_soup"
   }
 }

@@ -8,7 +8,6 @@
     "#c:foods/cooked_chicken"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:chicken_sandwich"
   }
 }

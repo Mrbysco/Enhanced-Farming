@@ -2,7 +2,6 @@
   "type": "enhancedfarming:piston_crafting",
   "ingredient": "#c:foods/vegetables/olive",
   "result": {
-    "count": 1,
     "id": "enhancedfarming:olive_oil"
   }
 }

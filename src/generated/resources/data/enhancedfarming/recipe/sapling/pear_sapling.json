@@ -11,7 +11,6 @@
     "#c:foods/fruits/pear"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:pear_sapling"
   }
 }

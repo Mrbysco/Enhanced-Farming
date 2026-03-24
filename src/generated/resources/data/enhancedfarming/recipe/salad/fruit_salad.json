@@ -8,7 +8,6 @@
     "#c:foods/fruits"
   ],
   "result": {
-    "count": 1,
     "id": "enhancedfarming:fruit_salad"
   }
 }
