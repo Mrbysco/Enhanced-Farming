@@ -31,11 +31,11 @@ public class GrassDropModifier extends LootModifier {
 			RecordCodecBuilder.mapCodec(inst -> codecStart(inst).apply(inst, GrassDropModifier::new)));
 
 	public GrassDropModifier() {
-		super(new LootItemCondition[0]);
+		super(new LootItemCondition[0], 1000);
 	}
 
-	public GrassDropModifier(LootItemCondition[] lootConditions) {
-		super(lootConditions);
+	public GrassDropModifier(LootItemCondition[] lootConditions, int priority) {
+		super(lootConditions, priority);
 	}
 
 	@NotNull
