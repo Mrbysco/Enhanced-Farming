@@ -3,7 +3,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'net.neoforged.moddev' version '2.0.141'
-    id 'net.darkhax.curseforgegradle' version '1.1.28'
+    id 'net.darkhax.curseforgegradle' version '1.2.30'
     id 'com.modrinth.minotaur' version "2.+"
 }
 
@@ -13,17 +13,12 @@ base {
     archivesName = "${mod_archive_name}-${mc_version}"
 }
 
-// Mojang ships Java 21 to end users in 1.20.5+, so your mod should target Java 21.
+// Mojang ships Java 25 to end users in 26.1+, so your mod should target Java 25.
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     // Specify the version of NeoForge to use.
     version = project.neo_version
-
-    parchment {
-        mappingsVersion = "${parchment_mappings_version}"
-        minecraftVersion = "${parchment_minecraft_version}"
-    }
 
     // This line is optional. Access Transformers are automatically detected
     accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
@@ -100,30 +95,13 @@ repositories {
     maven {
         url = "https://maven.blamejared.com"
     }
-    maven {
-        url = "https://maven.shedaniel.me/"
-    }
-    maven {
-        name = "TerraformersMC"
-        url = "https://maven.terraformersmc.com/"
-    }
 }
 
 dependencies {
-//    compileOnly "mezz.jei:jei-${jei_minecraft}-common-api:${jei_version}"
-//    compileOnly "mezz.jei:jei-${jei_minecraft}-neoforge-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${jei_minecraft}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${jei_minecraft}-neoforge-api:${jei_version}"
 
-//    localRuntime "mezz.jei:jei-${jei_minecraft}-neoforge:${jei_version}"
-
-//    compileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
-//    compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}"
-//    compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${rei_version}"
-
-//    compileOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
-//    compileOnly "dev.architectury:architectury-neoforge:${architectury_version}"
-
-//    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
-//    compileOnly "dev.emi:emi-neoforge:${emi_version}"
+    localRuntime "mezz.jei:jei-${jei_minecraft}-neoforge:${jei_version}"
 }
 
 jar {
@@ -177,9 +155,7 @@ if (System.getenv().CURSEFORGE_KEY) {
         mainFile.changelogType = 'markdown'
 
 //        mainFile.addRequirement()
-//        mainFile.addOptional("jei")
-//        mainFile.addOptional("roughly-enough-items")
-//        mainFile.addOptional("emi")
+//        mainFile.addOptional()
     }
 }
 
@@ -196,9 +172,7 @@ if (System.getenv().MODRINTH_KEY) {
         loaders = ["neoforge"]
 
         dependencies {
-//            optional.project "jei"
-//            optional.project "rei"
-//            optional.project "emi"
+
         }
     }
 }
