@@ -1,1 +1,1 @@
-* Re-enable JEI and REI support
+* Update to 26.2
