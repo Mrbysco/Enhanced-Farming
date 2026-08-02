@@ -5,7 +5,6 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "minecraft:jungle_sapling",
     "#c:foods/fruits/banana"

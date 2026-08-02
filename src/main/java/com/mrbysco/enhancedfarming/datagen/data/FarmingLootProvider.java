@@ -7,7 +7,7 @@ import com.mrbysco.enhancedfarming.block.crops.SevenAgeCropBlock;
 import com.mrbysco.enhancedfarming.block.crops.SixAgeCropBlock;
 import com.mrbysco.enhancedfarming.init.FarmingLootTables;
 import com.mrbysco.enhancedfarming.init.FarmingRegistry;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
+import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.WritableRegistry;
 import net.minecraft.core.registries.Registries;

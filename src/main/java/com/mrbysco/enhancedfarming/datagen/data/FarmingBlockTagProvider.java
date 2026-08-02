@@ -5,6 +5,7 @@ import com.mrbysco.enhancedfarming.init.FarmingRegistry;
 import com.mrbysco.enhancedfarming.init.FarmingTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
@@ -19,22 +20,22 @@ public class FarmingBlockTagProvider extends BlockTagsProvider {
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		this.tag(FarmingTags.RAKE_BLOCKS).add(
-				Blocks.PODZOL, Blocks.GRASS_BLOCK, Blocks.MYCELIUM
+				Blocks.PODZOL.builtInRegistryHolder().key(), Blocks.GRASS_BLOCK.builtInRegistryHolder().key(), Blocks.MYCELIUM.builtInRegistryHolder().key()
 		);
 
-		this.tag(BlockTags.CROPS).add(FarmingRegistry.MINT_CROP.get(), FarmingRegistry.NETHER_FLOWER_CROP.get(),
-				FarmingRegistry.TOMATO_CROP.get(), FarmingRegistry.CUCUMBER_CROP.get(), FarmingRegistry.AUBERGINE_CROP.get(),
-				FarmingRegistry.GRAPE_CROP.get(), FarmingRegistry.PINEAPPLE_CROP.get(), FarmingRegistry.CORN_CROP.get(),
-				FarmingRegistry.ONION_CROP.get(), FarmingRegistry.GARLIC_CROP.get(), FarmingRegistry.LETTUCE_CROP.get());
-		this.tag(BlockTags.SAPLINGS).add(FarmingRegistry.APPLE_SAPLING.get(), FarmingRegistry.LEMON_SAPLING.get(),
-				FarmingRegistry.ORANGE_SAPLING.get(), FarmingRegistry.CHERRY_SAPLING.get(), FarmingRegistry.PEAR_SAPLING.get(),
-				FarmingRegistry.BANANA_SAPLING.get(), FarmingRegistry.AVOCADO_SAPLING.get(), FarmingRegistry.MANGO_SAPLING.get(),
-				FarmingRegistry.OLIVE_SAPLING.get()
+		this.tag(BlockTags.CROPS).add(FarmingRegistry.MINT_CROP.getKey(), FarmingRegistry.NETHER_FLOWER_CROP.getKey(),
+				FarmingRegistry.TOMATO_CROP.getKey(), FarmingRegistry.CUCUMBER_CROP.getKey(), FarmingRegistry.AUBERGINE_CROP.getKey(),
+				FarmingRegistry.GRAPE_CROP.getKey(), FarmingRegistry.PINEAPPLE_CROP.getKey(), FarmingRegistry.CORN_CROP.getKey(),
+				FarmingRegistry.ONION_CROP.getKey(), FarmingRegistry.GARLIC_CROP.getKey(), FarmingRegistry.LETTUCE_CROP.getKey());
+		this.tag(BlockItemTags.SAPLINGS.block()).add(FarmingRegistry.APPLE_SAPLING.getKey(), FarmingRegistry.LEMON_SAPLING.getKey(),
+				FarmingRegistry.ORANGE_SAPLING.getKey(), FarmingRegistry.CHERRY_SAPLING.getKey(), FarmingRegistry.PEAR_SAPLING.getKey(),
+				FarmingRegistry.BANANA_SAPLING.getKey(), FarmingRegistry.AVOCADO_SAPLING.getKey(), FarmingRegistry.MANGO_SAPLING.getKey(),
+				FarmingRegistry.OLIVE_SAPLING.getKey()
 		);
-		this.tag(BlockTags.LEAVES).add(FarmingRegistry.APPLE_LEAVES.get(), FarmingRegistry.LEMON_LEAVES.get(),
-				FarmingRegistry.ORANGE_LEAVES.get(), FarmingRegistry.CHERRY_LEAVES.get(), FarmingRegistry.PEAR_LEAVES.get(),
-				FarmingRegistry.BANANA_LEAVES.get(), FarmingRegistry.AVOCADO_LEAVES.get(), FarmingRegistry.MANGO_LEAVES.get(),
-				FarmingRegistry.OLIVE_LEAVES.get()
+		this.tag(BlockTags.LEAVES).add(FarmingRegistry.APPLE_LEAVES.getKey(), FarmingRegistry.LEMON_LEAVES.getKey(),
+				FarmingRegistry.ORANGE_LEAVES.getKey(), FarmingRegistry.CHERRY_LEAVES.getKey(), FarmingRegistry.PEAR_LEAVES.getKey(),
+				FarmingRegistry.BANANA_LEAVES.getKey(), FarmingRegistry.AVOCADO_LEAVES.getKey(), FarmingRegistry.MANGO_LEAVES.getKey(),
+				FarmingRegistry.OLIVE_LEAVES.getKey()
 		);
 
 

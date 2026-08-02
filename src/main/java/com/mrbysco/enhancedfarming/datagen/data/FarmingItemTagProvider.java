@@ -46,7 +46,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 	@Override
 	public void addTags(HolderLookup.Provider lookupProvider) {
-		this.tag(FarmingTags.HOT_ITEMS).add(FarmingRegistry.HOT_WATER.get(), FarmingRegistry.HOT_CHOCOLATE_BOTTLE.get(), FarmingRegistry.MINT_TEA.get());
+		this.tag(FarmingTags.HOT_ITEMS).add(FarmingRegistry.HOT_WATER.getKey(), FarmingRegistry.HOT_CHOCOLATE_BOTTLE.getKey(), FarmingRegistry.MINT_TEA.getKey());
 
 		addCrop(FarmingRegistry.AUBERGINE, FarmingRegistry.AUBERGINE_SEEDS, VEGETABLES);
 		addCrop(FarmingRegistry.CORN, FarmingRegistry.CORN_SEEDS, VEGETABLES);
@@ -83,15 +83,17 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		addRegular(SALT, FarmingRegistry.SALT.get());
 
 		this.tag(Tags.Items.FOODS_SOUP).add(
-				FarmingRegistry.CARROT_SOUP.get(), FarmingRegistry.CHICKEN_NOODLE_SOUP.get(),
-				FarmingRegistry.CORN_SOUP.get(), FarmingRegistry.CUCUMBER_SOUP.get(), FarmingRegistry.ONION_SOUP.get(),
-				FarmingRegistry.POTATO_SOUP.get(), FarmingRegistry.TOMATO_SOUP.get());
+				FarmingRegistry.CARROT_SOUP.getKey(), FarmingRegistry.CHICKEN_NOODLE_SOUP.getKey(),
+				FarmingRegistry.CORN_SOUP.getKey(), FarmingRegistry.CUCUMBER_SOUP.getKey(), FarmingRegistry.ONION_SOUP.getKey(),
+				FarmingRegistry.POTATO_SOUP.getKey(), FarmingRegistry.TOMATO_SOUP.getKey());
 
 	}
 
 	private void addRegular(String category, Item... items) {
 		TagKey<Item> mainTag = createCommonTag(category);
-		this.tag(mainTag).add(items);
+		for (Item item : items) {
+			this.tag(mainTag).add(item.builtInRegistryHolder().key());
+		}
 	}
 
 	private void addCategory(String category, Item... items) {
@@ -99,7 +101,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		for (Item item : items) {
 			String path = BuiltInRegistries.ITEM.getKey(item).getPath();
 			TagKey<Item> categoryTag = createCommonTag(category + "/" + path);
-			this.tag(categoryTag).add(item);
+			this.tag(categoryTag).add(item.builtInRegistryHolder().key());
 			this.tag(mainTag).addTag(categoryTag);
 		}
 	}
@@ -109,7 +111,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		for (Item item : items) {
 			String path = BuiltInRegistries.ITEM.getKey(item).getPath();
 			TagKey<Item> categoryTag = createCommonTag(category + "/" + path);
-			this.tag(categoryTag).add(item);
+			this.tag(categoryTag).add(item.builtInRegistryHolder().key());
 			this.tag(mainTag).addTag(categoryTag);
 		}
 	}
@@ -118,7 +120,7 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		TagKey<Item> mainTag = createCommonTag(category);
 		for (Item item : items) {
 			TagKey<Item> categoryTag = createCommonTag(category + "/" + type);
-			this.tag(categoryTag).add(item);
+			this.tag(categoryTag).add(item.builtInRegistryHolder().key());
 			this.tag(mainTag).addTag(categoryTag);
 		}
 	}
@@ -128,13 +130,13 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		TagKey<Item> cropTag = createCommonTag("crops/" + cropName);
 		TagKey<Item> mainFoodTag = createCommonTag(foodType);
 		TagKey<Item> foodTypeTag = createCommonTag(foodType + "/" + cropName);
-		this.tag(cropTag).add(crop.get());
-		this.tag(foodTypeTag).add(crop.get());
+		this.tag(cropTag).add(crop.get().builtInRegistryHolder().key());
+		this.tag(foodTypeTag).add(crop.getKey());
 		this.tag(mainFoodTag).addTag(foodTypeTag);
 		this.tag(Tags.Items.CROPS).addTag(cropTag);
 		if (seed != null) {
 			TagKey<Item> seedTag = createCommonTag("seeds/" + cropName);
-			this.tag(seedTag).add(seed.get());
+			this.tag(seedTag).add(seed.getKey());
 			this.tag(Tags.Items.SEEDS).addTag(seedTag);
 		}
 	}

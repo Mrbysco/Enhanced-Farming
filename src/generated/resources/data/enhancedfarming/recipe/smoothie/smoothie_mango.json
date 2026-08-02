@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "enhancedfarming:milk_bottle",
     "#c:foods/fruits/mango",
