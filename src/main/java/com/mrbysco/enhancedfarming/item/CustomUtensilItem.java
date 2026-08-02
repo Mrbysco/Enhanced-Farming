@@ -2,7 +2,6 @@ package com.mrbysco.enhancedfarming.item;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import org.jspecify.annotations.Nullable;
 
