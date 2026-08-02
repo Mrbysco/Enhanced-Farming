@@ -5,6 +5,7 @@ import com.mrbysco.enhancedfarming.datagen.assets.FarmingLanguageProvider;
 import com.mrbysco.enhancedfarming.datagen.assets.FarmingModelProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingBiomeModifiers;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingBlockTagProvider;
+import com.mrbysco.enhancedfarming.datagen.data.FarmingDataMapProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingItemTagProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingLootModifierProvider;
 import com.mrbysco.enhancedfarming.datagen.data.FarmingLootProvider;
@@ -45,6 +46,7 @@ public class FarmingDataGen {
 		generator.addProvider(true, new FarmingRecipeProvider.Runner(packOutput, lookupProvider));
 		generator.addProvider(true, new FarmingBlockTagProvider(packOutput, lookupProvider));
 		generator.addProvider(true, new FarmingItemTagProvider(packOutput, lookupProvider));
+		generator.addProvider(true, new FarmingDataMapProvider(packOutput, lookupProvider));
 
 		generator.addProvider(true, new DatapackBuiltinEntriesProvider(
 				packOutput, CompletableFuture.supplyAsync(FarmingDataGen::getProvider), Set.of(EnhancedFarming.MOD_ID)));

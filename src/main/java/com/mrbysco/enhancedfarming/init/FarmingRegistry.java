@@ -272,32 +272,4 @@ public class FarmingRegistry {
 
 	public static final Supplier<BlockEntityType<ScarecrowBlockEntity>> SCARECROW_TILE = BLOCK_ENTITY_TYPES.register("scarecrow", () ->
 			new BlockEntityType<>(ScarecrowBlockEntity::new, FarmingRegistry.SCARECROW.get()));
-
-	public static void registerCompostable() {
-		for (DeferredHolder<Item, ? extends Item> item : FarmingRegistry.ITEMS.getEntries()) {
-			if (item.get() instanceof BlockItem blockItem) {
-				Block block = blockItem.getBlock();
-				if (block instanceof FruitLeavesBlock || block instanceof BushBlock)
-					ComposterBlock.COMPOSTABLES.put(item.get(), 0.3F);
-			}
-		}
-		ComposterBlock.COMPOSTABLES.put(AUBERGINE.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(AVOCADO.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(BANANA.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(CHERRY.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(CUCUMBER.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(GRAPES.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(LEMON.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(MANGO.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(MINT.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(OLIVE.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(ORANGE.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(PEAR.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(PINEAPPLE.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(TOMATO.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(CORN.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(GARLIC.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(LETTUCE.get(), 0.65F);
-		ComposterBlock.COMPOSTABLES.put(ONION.get(), 0.65F);
-	}
 }

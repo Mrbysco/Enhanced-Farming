@@ -19,7 +19,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
@@ -39,7 +38,6 @@ public class EnhancedFarming {
 		container.registerConfig(ModConfig.Type.COMMON, FarmingConfig.commonSpec);
 		eventBus.register(FarmingConfig.class);
 
-		eventBus.addListener(this::setup);
 		eventBus.addListener(this::buildTabContents);
 
 		FarmingRegistry.BLOCKS.register(eventBus);
@@ -65,10 +63,6 @@ public class EnhancedFarming {
 
 	private void onDatapackSync(OnDatapackSyncEvent event) {
 		event.sendRecipes(FarmingRecipes.PISTON_CRAFTING_TYPE.get());
-	}
-
-	private void setup(final FMLCommonSetupEvent event) {
-		FarmingRegistry.registerCompostable();
 	}
 
 	private void buildTabContents(final BuildCreativeModeTabContentsEvent event) {

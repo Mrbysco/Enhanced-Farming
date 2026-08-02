@@ -1,0 +1,85 @@
+{
+  "values": {
+    "enhancedfarming:apple_leaves": {
+      "chance": 0.3
+    },
+    "enhancedfarming:aubergine": {
+      "chance": 0.65
+    },
+    "enhancedfarming:avocado": {
+      "chance": 0.65
+    },
+    "enhancedfarming:avocado_leaves": {
+      "chance": 0.3
+    },
+    "enhancedfarming:banana": {
+      "chance": 0.65
+    },
+    "enhancedfarming:banana_leaves": {
+      "chance": 0.3
+    },
+    "enhancedfarming:cherry": {
+      "chance": 0.65
+    },
+    "enhancedfarming:cherry_leaves": {
+      "chance": 0.3
+    },
+    "enhancedfarming:corn": {
+      "chance": 0.65
+    },
+    "enhancedfarming:cucumber": {
+      "chance": 0.65
+    },
+    "enhancedfarming:garlic": {
+      "chance": 0.65
+    },
+    "enhancedfarming:grapes": {
+      "chance": 0.65
+    },
+    "enhancedfarming:lemon": {
+      "chance": 0.65
+    },
+    "enhancedfarming:lemon_leaves": {
+      "chance": 0.3
+    },
+    "enhancedfarming:lettuce": {
+      "chance": 0.65
+    },
+    "enhancedfarming:mango": {
+      "chance": 0.65
+    },
+    "enhancedfarming:mango_leaves": {
+      "chance": 0.3
+    },
+    "enhancedfarming:mint": {
+      "chance": 0.65
+    },
+    "enhancedfarming:olive": {
+      "chance": 0.65
+    },
+    "enhancedfarming:olive_leaves": {
+      "chance": 0.3
+    },
+    "enhancedfarming:onion": {
+      "chance": 0.65
+    },
+    "enhancedfarming:orange": {
+      "chance": 0.65
+    },
+    "enhancedfarming:orange_leaves": {
+      "chance": 0.3
+    },
+    "enhancedfarming:pear": {
+      "chance": 0.65
+    },
+    "enhancedfarming:pear_leaves": {
+      "chance": 0.3
+    },
+    "enhancedfarming:pineapple": {
+      "chance": 0.65
+    },
+    "enhancedfarming:tomato": {
+      "chance": 0.65
+    }
+  }
+}
