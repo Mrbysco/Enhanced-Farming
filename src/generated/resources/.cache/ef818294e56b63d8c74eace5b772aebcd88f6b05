@@ -1,4 +1,4 @@
-// 26.1.2	2026-04-20T23:07:55.6690118	Enhanced Farmning Recipes
+// 26.1.2	2026-08-05T15:26:00.7778597	Enhanced Farmning Recipes
 e04f4ec7fa214560f9b960d06dd0f88933a4aa19 data/enhancedfarming/advancement/recipes/food/boiled_egg.json
 2f213716bdf423b400df394c44ad976652a1fe9e data/enhancedfarming/advancement/recipes/food/cheese.json
 321f11bd28d06d57db5ddf28aaa70d14e8652d37 data/enhancedfarming/advancement/recipes/food/cheeseburger.json
@@ -25,7 +25,7 @@ da2a5b9b933f030a3b37de566ea82f0b48f2383b data/enhancedfarming/advancement/recipe
 18af688a1aeb23647d2869f0c58e907891f822fc data/enhancedfarming/advancement/recipes/food/juice/apple_juice.json
 2528ee417288940f7a4da37157b52deef0ff1f90 data/enhancedfarming/advancement/recipes/food/juice/banana_juice.json
 64aa3677b6cec6936b4c075a53f3df5be8c0613d data/enhancedfarming/advancement/recipes/food/juice/cherry_juice.json
-74cd982423613b4f9b0eb4ae0c3d17d1319a2ceb data/enhancedfarming/advancement/recipes/food/juice/grape_juice.json
+08575c5e286e2ae04017d976b2f6327d0e4e3692 data/enhancedfarming/advancement/recipes/food/juice/grape_juice.json
 7c506e7b41c53b06f4bdee8fe5071d70e66ca524 data/enhancedfarming/advancement/recipes/food/juice/lemonade.json
 79ac7e89276a503417f3aa008b7a072e8d826a16 data/enhancedfarming/advancement/recipes/food/juice/mango_juice.json
 9763ef7346fae9f67a5aa4f370f83905646e1426 data/enhancedfarming/advancement/recipes/food/juice/orange_juice.json
@@ -54,7 +54,7 @@ dd113a4b6a8acaf775875f3f190222cfac8cb215 data/enhancedfarming/advancement/recipe
 3dfb17c1a9d8a69cf160593f8eebe7d6170b35a4 data/enhancedfarming/advancement/recipes/food/sandwich/jc_sandwich.json
 d2edefcca6cb52f6a88d7813eca3dca2afd85cca data/enhancedfarming/advancement/recipes/food/smoothie/smoothie_apple.json
 b9e59f8abc2607507d2fbebe2bc238a94c5d71e1 data/enhancedfarming/advancement/recipes/food/smoothie/smoothie_banana.json
-c2d47ac7dc05ebf62a606dca93bab0d39c1e786a data/enhancedfarming/advancement/recipes/food/smoothie/smoothie_cherry.json
+1ad3691cd5c660da239e34f6c1b684599aba59f2 data/enhancedfarming/advancement/recipes/food/smoothie/smoothie_cherry.json
 dae50a330c1f6c58af037751aa3088617bc74ea0 data/enhancedfarming/advancement/recipes/food/smoothie/smoothie_cucumber.json
 0ebf2d4e1d70f699f9f3e6018f724142678d138c data/enhancedfarming/advancement/recipes/food/smoothie/smoothie_grape.json
 d89698eb35850b4f44d5b49be7712cb960219a9f data/enhancedfarming/advancement/recipes/food/smoothie/smoothie_lemon.json
@@ -141,7 +141,7 @@ ea5a605ba9ce98f5185a9ba532a22d38559d7867 data/enhancedfarming/recipe/jam.json
 93539bebc30f557a7601dd1a8d0ab9c473911afb data/enhancedfarming/recipe/juice/apple_juice.json
 039c8a77c14e13e1d9ea60dac920e8b9adc0f7d9 data/enhancedfarming/recipe/juice/banana_juice.json
 fcba0d2d04b3373377329973334361ceb77631c9 data/enhancedfarming/recipe/juice/cherry_juice.json
-7823bad3eb013b4e33dfc2ae343e67a46c2d2500 data/enhancedfarming/recipe/juice/grape_juice.json
+689c83214d7a0177210bd603de5552ca799b5cb2 data/enhancedfarming/recipe/juice/grape_juice.json
 034bc9397a81f0976f3f9a83461e9059801e8ff2 data/enhancedfarming/recipe/juice/lemonade.json
 0481573dd2c2642605c16e57b96b9e1bbd733f59 data/enhancedfarming/recipe/juice/mango_juice.json
 9e619f0387756dc81f8c0ff04d248a5c300df0d3 data/enhancedfarming/recipe/juice/orange_juice.json
@@ -201,7 +201,7 @@ dfa187c5aa300129bcdaa1dfd978081d0891ccea data/enhancedfarming/recipe/seed/tomato
 c2d6f002f2b54c777db730d7febde5635aa7fea2 data/enhancedfarming/recipe/sliced_bread.json
 9dfe64c92a38785e75d4e074a31adb1a82ed56a6 data/enhancedfarming/recipe/smoothie/smoothie_apple.json
 8bbc1a15eb36dec187e2d2d753708d8bf93c3a9f data/enhancedfarming/recipe/smoothie/smoothie_banana.json
-9d49c80f049bd08ee805251dad0c1efed562c717 data/enhancedfarming/recipe/smoothie/smoothie_cherry.json
+b7afec424059bbb17ecbc4c579ef4c048fe62940 data/enhancedfarming/recipe/smoothie/smoothie_cherry.json
 0daca23417ee9645b6102f0c9cd0c94555770db1 data/enhancedfarming/recipe/smoothie/smoothie_cucumber.json
 3fa49969ec3ab035cd7a5369eeb1bc18068221c3 data/enhancedfarming/recipe/smoothie/smoothie_grape.json
 31ceb990630b5d8bd464c08efeac6a6b9a651427 data/enhancedfarming/recipe/smoothie/smoothie_lemon.json

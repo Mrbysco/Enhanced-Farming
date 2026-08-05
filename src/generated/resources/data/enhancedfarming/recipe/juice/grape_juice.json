@@ -8,7 +8,7 @@
       "items": "minecraft:potion",
       "strict": true
     },
-    "#c:foods/fruits/grape"
+    "#c:foods/fruits/grapes"
   ],
   "result": {
     "id": "enhancedfarming:grape_juice"
