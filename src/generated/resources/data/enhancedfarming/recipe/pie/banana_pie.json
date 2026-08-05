@@ -3,6 +3,7 @@
   "category": "misc",
   "ingredients": [
     "#c:flour/wheat",
+    "#c:foods/fruits/banana",
     "#c:sugar",
     "#c:eggs",
     "#c:milk"

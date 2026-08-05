@@ -3,6 +3,7 @@
   "category": "misc",
   "ingredients": [
     "#c:flour/wheat",
+    "#c:foods/fruits/grapes",
     "#c:sugar",
     "#c:eggs"
   ],
