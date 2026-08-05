@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-02T20:51:13.3284342	Tags for minecraft:item mod id enhancedfarming
+// 1.21.1	2026-08-05T16:23:14.3071762	Tags for minecraft:item mod id enhancedfarming
 4b494acf257d81d333817c989cef849eec1170f0 data/c/tags/item/crops.json
 4770eeaeccf0a1a577448b12d52e860c92b53555 data/c/tags/item/crops/aubergine.json
 d4fdaec78176594bb8769215f997a2058fa2efb9 data/c/tags/item/crops/corn.json
@@ -20,8 +20,6 @@ d840dc0792f339408bb23ed1afe4c0374342330d data/c/tags/item/foods/cheeses/normal.j
 6ddb26f62487e2f1691999b5c3549e4a5bf5e8fb data/c/tags/item/foods/cooked_beef.json
 c3c27458abd0552603e7efa5057e67df2cdca0e5 data/c/tags/item/foods/cooked_chicken.json
 01a03023ed613ee68cd3f763508294d8bbaf0ae2 data/c/tags/item/foods/edible_salt.json
-315678b2cd4c6e30ffa4f08c310e7562a8187101 data/c/tags/item/foods/fish/cod.json
-3fe6df0882f02c83c296f5dfaed148dab475c556 data/c/tags/item/foods/fish/salmon.json
 f832a50124712c42fda28f0fec983f604189de7c data/c/tags/item/foods/fruits.json
 b33dde3cf95c3f821d49bc84b8c46f9fd65289e8 data/c/tags/item/foods/fruits/apple.json
 b76cf2d32a0d5bb9d702dd2724caeb5d7d4e30c5 data/c/tags/item/foods/fruits/avocado.json
@@ -35,13 +33,6 @@ b76cf2d32a0d5bb9d702dd2724caeb5d7d4e30c5 data/c/tags/item/foods/fruits/avocado.j
 a87f6ab8355b25b881e72a0c6eee69ff4f71f154 data/c/tags/item/foods/fruits/pineapple.json
 d14710b6121edb04c184b88cb21ce8d106aafd32 data/c/tags/item/foods/raw_beef.json
 3acc48b98a61c64992c20898e3cda550f0dac516 data/c/tags/item/foods/raw_chicken.json
-a0967b834e4cd5c637ad98a2ff3447df3116fc39 data/c/tags/item/foods/raw_fish.json
-d9fc1b1d508a4c8ad3fc78b0ccec6361c063efee data/c/tags/item/foods/raw_meats.json
-d14710b6121edb04c184b88cb21ce8d106aafd32 data/c/tags/item/foods/raw_meats/beef.json
-3acc48b98a61c64992c20898e3cda550f0dac516 data/c/tags/item/foods/raw_meats/chicken.json
-113f509ec498e488c93d8c889a20d330cc8967d0 data/c/tags/item/foods/raw_meats/mutton.json
-33cb78441f05ba4ca385d72ebd7ddc4849b986d1 data/c/tags/item/foods/raw_meats/porkchop.json
-676cee16d107d62d62093f32df13eb8e934c7db9 data/c/tags/item/foods/raw_meats/rabbit.json
 70cef0b834906dbcc0c06c8fbd772c603d86cb5f data/c/tags/item/foods/soup.json
 a649e46104cf526921588272b610d97d00a402fc data/c/tags/item/foods/vegetables.json
 4770eeaeccf0a1a577448b12d52e860c92b53555 data/c/tags/item/foods/vegetables/aubergine.json

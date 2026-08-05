@@ -21,6 +21,16 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
+    "has_foods/fruits/banana": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods/fruits/banana"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_milk": {
       "conditions": {
         "items": [
@@ -52,6 +62,7 @@
     [
       "has_the_recipe",
       "has_flour",
+      "has_foods/fruits/banana",
       "has_sugar",
       "has_eggs",
       "has_milk"
