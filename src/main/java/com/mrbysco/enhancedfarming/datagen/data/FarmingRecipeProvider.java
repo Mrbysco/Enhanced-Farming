@@ -564,7 +564,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.save(consumer, juice.getId().withPrefix("smoothie/"));
 	}
 
-	private void generatePie(Consumer<FinishedRecipe> consumer, RegistryObject<Item> juice, String... tags) {
+	private void generatePie(Consumer<FinishedRecipe> consumer, RegistryObject<Item> pie, String... tags) {
 		List<TagKey<Item>> itemTags = Arrays.stream(tags).map(this::createTag).toList();
 
 		ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, pie.get())
@@ -579,7 +579,7 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				knownTags.add(hasTag);
 			}
 		}
-		builder.save(consumer, juice.getId().withPrefix("pie/"));
+		builder.save(consumer, pie.getId().withPrefix("pie/"));
 	}
 
 	private void generateSoup(Consumer<FinishedRecipe> consumer, RegistryObject<Item> soup, String... tags) {
