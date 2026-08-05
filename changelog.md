@@ -1,1 +1,1 @@
-* Fix the recipe of the golden lemon and orange
+* Fix pie recipes and juice/smoothies
