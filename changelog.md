@@ -1,1 +1,1 @@
-* Re-enable JEI and REI support
+* Fix juice recipes
