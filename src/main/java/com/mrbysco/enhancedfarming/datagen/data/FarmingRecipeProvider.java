@@ -73,26 +73,26 @@ public class FarmingRecipeProvider extends RecipeProvider {
 				.unlockedBy("has_dough", has(createTag("dough/wheat")))
 				.save(consumer, FarmingRegistry.BACON_AND_EGG_PIE.getId().withPrefix("pie/"));
 
-		generateJuice(consumer, FarmingRegistry.APPLE_JUICE, "fruits/apple");
-		generateJuice(consumer, FarmingRegistry.LEMONADE, "fruits/lemon");
-		generateJuice(consumer, FarmingRegistry.ORANGE_JUICE, "fruits/orange");
-		generateJuice(consumer, FarmingRegistry.CHERRY_JUICE, "fruits/cherry");
-		generateJuice(consumer, FarmingRegistry.PEAR_JUICE, "fruits/pear");
-		generateJuice(consumer, FarmingRegistry.BANANA_JUICE, "fruits/banana");
-		generateJuice(consumer, FarmingRegistry.GRAPE_JUICE, "fruits/grape");
-		generateJuice(consumer, FarmingRegistry.MANGO_JUICE, "fruits/mango");
-		generateJuice(consumer, FarmingRegistry.PINEAPPLE_JUICE, "fruits/pineapple");
+		generateJuice(consumer, FarmingRegistry.APPLE_JUICE, "foods/fruits/apple");
+		generateJuice(consumer, FarmingRegistry.LEMONADE, "foods/fruits/lemon");
+		generateJuice(consumer, FarmingRegistry.ORANGE_JUICE, "foods/fruits/orange");
+		generateJuice(consumer, FarmingRegistry.CHERRY_JUICE, "foods/fruits/cherry");
+		generateJuice(consumer, FarmingRegistry.PEAR_JUICE, "foods/fruits/pear");
+		generateJuice(consumer, FarmingRegistry.BANANA_JUICE, "foods/fruits/banana");
+		generateJuice(consumer, FarmingRegistry.GRAPE_JUICE, "foods/fruits/grapes");
+		generateJuice(consumer, FarmingRegistry.MANGO_JUICE, "foods/fruits/mango");
+		generateJuice(consumer, FarmingRegistry.PINEAPPLE_JUICE, "foods/fruits/pineapple");
 
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_APPLE, "fruits/apple");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_BANANA, "fruits/banana");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_CHERRY, "fruits/1cherry");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_CUCUMBER, "vegetables/cucumber");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_GRAPE, "fruits/grapes");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_LEMON, "fruits/lemon");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_MANGO, "fruits/mango");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_ORANGE, "fruits/orange");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_PEAR, "fruits/pear");
-		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_PINEAPPLE, "fruits/pineapple");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_APPLE, "foods/fruits/apple");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_LEMON, "foods/fruits/lemon");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_ORANGE, "foods/fruits/orange");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_CHERRY, "foods/fruits/cherry");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_PEAR, "foods/fruits/pear");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_BANANA, "foods/fruits/banana");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_GRAPE, "foods/fruits/grapes");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_MANGO, "foods/fruits/mango");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_PINEAPPLE, "foods/fruits/pineapple");
+		generateSmoothie(consumer, FarmingRegistry.SMOOTHIE_CUCUMBER, "foods/vegetables/cucumber");
 
 		generateSeed(consumer, FarmingRegistry.TOMATO_SEEDS, FarmingRegistry.TOMATO.get());
 		generateSeed(consumer, FarmingRegistry.CUCUMBER_SEEDS, FarmingRegistry.CUCUMBER.get());
