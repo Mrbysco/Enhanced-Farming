@@ -76,20 +76,20 @@ public class FarmingRecipeProvider extends RecipeProvider {
 		generateJuice(output, FarmingRegistry.CHERRY_JUICE, "foods/fruits/cherry");
 		generateJuice(output, FarmingRegistry.PEAR_JUICE, "foods/fruits/pear");
 		generateJuice(output, FarmingRegistry.BANANA_JUICE, "foods/fruits/banana");
-		generateJuice(output, FarmingRegistry.GRAPE_JUICE, "foods/fruits/grape");
+		generateJuice(output, FarmingRegistry.GRAPE_JUICE, "foods/fruits/grapes");
 		generateJuice(output, FarmingRegistry.MANGO_JUICE, "foods/fruits/mango");
 		generateJuice(output, FarmingRegistry.PINEAPPLE_JUICE, "foods/fruits/pineapple");
 
 		generateSmoothie(output, FarmingRegistry.SMOOTHIE_APPLE, "foods/fruits/apple");
-		generateSmoothie(output, FarmingRegistry.SMOOTHIE_BANANA, "foods/fruits/banana");
-		generateSmoothie(output, FarmingRegistry.SMOOTHIE_CHERRY, "foods/fruits/1cherry");
-		generateSmoothie(output, FarmingRegistry.SMOOTHIE_CUCUMBER, "foods/vegetables/cucumber");
-		generateSmoothie(output, FarmingRegistry.SMOOTHIE_GRAPE, "foods/fruits/grapes");
 		generateSmoothie(output, FarmingRegistry.SMOOTHIE_LEMON, "foods/fruits/lemon");
-		generateSmoothie(output, FarmingRegistry.SMOOTHIE_MANGO, "foods/fruits/mango");
 		generateSmoothie(output, FarmingRegistry.SMOOTHIE_ORANGE, "foods/fruits/orange");
+		generateSmoothie(output, FarmingRegistry.SMOOTHIE_CHERRY, "foods/fruits/cherry");
 		generateSmoothie(output, FarmingRegistry.SMOOTHIE_PEAR, "foods/fruits/pear");
+		generateSmoothie(output, FarmingRegistry.SMOOTHIE_BANANA, "foods/fruits/banana");
+		generateSmoothie(output, FarmingRegistry.SMOOTHIE_GRAPE, "foods/fruits/grapes");
+		generateSmoothie(output, FarmingRegistry.SMOOTHIE_MANGO, "foods/fruits/mango");
 		generateSmoothie(output, FarmingRegistry.SMOOTHIE_PINEAPPLE, "foods/fruits/pineapple");
+		generateSmoothie(output, FarmingRegistry.SMOOTHIE_CUCUMBER, "foods/vegetables/cucumber");
 
 		generateSeed(output, FarmingRegistry.TOMATO_SEEDS, FarmingRegistry.TOMATO.get());
 		generateSeed(output, FarmingRegistry.CUCUMBER_SEEDS, FarmingRegistry.CUCUMBER.get());
