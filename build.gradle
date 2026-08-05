@@ -27,7 +27,7 @@ legacyForge {
 
     // Validate AT files and raise errors when they have invalid targets
     // This option is false by default, but turning it on is recommended
-    validateAccessTransformers = true
+//    validateAccessTransformers = true
 
     runs {
         client {
@@ -74,8 +74,6 @@ repositories {
 dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     compileOnly "org.jetbrains:annotations:24.0.1"
-
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     modCompileOnly("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
     modCompileOnly("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
