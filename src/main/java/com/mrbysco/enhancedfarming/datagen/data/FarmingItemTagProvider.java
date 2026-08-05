@@ -29,12 +29,10 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 
 	private final String VEGETABLES = "foods/vegetables";
 	private final String HERBS = "herbs";
-	private final String RAWMEATS = "foods/raw_meats";
 	private final String RAW_BEEF = "foods/raw_beef";
 	private final String RAW_CHICKEN = "foods/raw_chicken";
 	private final String COOKED_BEEF = "foods/cooked_beef";
 	private final String COOKED_CHICKEN = "foods/cooked_chicken";
-	private final String COOKED_FISH = "foods/cooked_fish";
 	private final String FRUITS = "foods/fruits";
 	private final String FISH = "foods/fish";
 	private final String SUGAR = "sugar";
@@ -64,11 +62,9 @@ public class FarmingItemTagProvider extends ItemTagsProvider {
 		addCrop(FarmingRegistry.GRAPES, FarmingRegistry.GRAPE_SEEDS, FRUITS);
 
 		addCategory(VEGETABLES, Items.POTATO, Items.CARROT, Items.BEETROOT);
-		addCategory(RAWMEATS, Items.BEEF, Items.CHICKEN, Items.MUTTON, Items.PORKCHOP, Items.RABBIT);
 		addCategory(FRUITS, Items.APPLE, FarmingRegistry.BANANA.get(), FarmingRegistry.CHERRY.get(),
 				FarmingRegistry.LEMON.get(), FarmingRegistry.MANGO.get(), FarmingRegistry.ORANGE.get(),
 				FarmingRegistry.PEAR.get(), FarmingRegistry.AVOCADO.get());
-		addCategory(FISH, "foods/raw_fish", Items.COD, Items.SALMON);
 		addCategory(SUGAR, Items.SUGAR);
 		addCategory(WATER, Items.WATER_BUCKET);
 		addCategory(MILK, Items.MILK_BUCKET);
