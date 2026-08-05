@@ -1,1 +1,1 @@
-* Enable in-game config
+* Fix recipes / tags
